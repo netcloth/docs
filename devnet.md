@@ -253,3 +253,86 @@ nchcli query account $(nchcli keys show dan -a)
 ```
 nchcli issue --from nch13lmppkumkmf6699q4gpukg8fz5pf2lgzm8mfsm --to nch13lmppkumkmf6699q4gpukg8fz5pf2lgzm8mfsm --amount=10usd
 ```
+执行后，会返回类似如下信息：
+```
+{
+  "height": "0",
+  "txhash": "F6EB13B37C4561179B78618DC71BF8B4FC900D4424B36ACC8D9727F972803C37",
+  "raw_log": "[{\"msg_index\":0,\"success\":true,\"log\":\"\"}]",
+  "logs": [
+    {
+      "msg_index": 0,
+      "success": true,
+      "log": ""
+    }
+  ]
+}
+```
+
+根据txhash查询上链后交易详情：
+```
+nchcli query tx F6EB13B37C4561179B78618DC71BF8B4FC900D4424B36ACC8D9727F972803C37
+
+
+{
+  "height": "728",
+  "txhash": "F6EB13B37C4561179B78618DC71BF8B4FC900D4424B36ACC8D9727F972803C37",
+  "raw_log": "[{\"msg_index\":0,\"success\":true,\"log\":\"\"}]",
+  "logs": [
+    {
+      "msg_index": 0,
+      "success": true, // true表示交易执行成功，false表示执行失败
+      "log": ""
+    }
+  ],
+  "gas_wanted": "200000",
+  "gas_used": "18504",
+  "events": [
+    {
+      "type": "message",
+      "attributes": [
+        {
+          "key": "action",
+          "value": "issue"
+        }
+      ]
+    }
+  ],
+  "tx": {  // 交易详情
+    "type": "nch/StdTx",
+    "value": {
+      "msg": [
+        {
+          "type": "token/issue",
+          "value": {
+            "banker": "nch13lmppkumkmf6699q4gpukg8fz5pf2lgzm8mfsm",
+            "address": "nch13lmppkumkmf6699q4gpukg8fz5pf2lgzm8mfsm",
+            "amount": {
+              "denom": "usd",
+              "amount": "10"
+            }
+          }
+        }
+      ],
+      "fee": {
+        "amount": [],
+        "gas": "200000"
+      },
+      "signatures": [
+        {
+          "pub_key": {
+            "type": "tendermint/PubKeySecp256k1",
+            "value": "A3MzhC3AHSdUw1UyNLLnrXcpvaAT+yNKOGbAjOvlZ8B5"
+          },
+          "signature": "G+IpmYVe5ZgT+wmbXH4vuRjulQWgD8rnOnRXRVGuThZ02BypFkcYISUVZzUxT/mPWOddOJQ+9Ds6tno4sm5xZA=="
+        }
+      ],
+      "memo": ""
+    }
+  },
+  "timestamp": "2019-09-10T07:58:08Z"
+}
+
+```
+
+
