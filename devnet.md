@@ -23,6 +23,12 @@ export GOPATH=$HOME/go
 export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
 export GO111MODULE=on
 ```
+
+修改完成后，执行如下命令：
+```
+source ~/.bash_profile
+```
+
 ### 2. 源码编译nch节点程序
 ```
 # 获取nch 源码
