@@ -104,20 +104,24 @@ curl http://127.0.0.1:26657/status
 ### 6. 导入助记词到钱包
 
 ```
-# 导入助记词
+# 导入助记词(alice为本地钱包用户名，可自定义)
 nchcli keys add alice --recover
 
 # 交互输出如下：
 Enter a passphrase to encrypt your key to disk:
 <此处会提示输入密码>
 <再输入一次密码确认>
-> Enter your bip39 mnemonic
-<此处输入刚才生成的助记词>
+> Enter your bip39 mnemonic (此处会等待输入助记词，导入初始帐户)
+
+使用下面的助记词：
+later orient logic fog car foam awful doctor path iron airport adjust forum course cigar obscure coconut portion today donor lyrics frown clever ticket
+
+
 # 屏幕输出是这样的：
 - name: alice // 本地帐户名
   type: local
-  address: nch133vmttt6n49jac5zn3z0klcpe7m8qlugyggx5w // 帐户地址 
-  pubkey: nchpub1addwnpepqvawpe3hd5tvdszs6af9kz5lfdw6tent7kv6ru6tacwjtz5fqelh28r3kzv // 帐户公钥
+  address: nch13lmppkumkmf6699q4gpukg8fz5pf2lgzm8mfsm // 帐户地址 
+  pubkey: nchpub1addwnpepqden8ppdcqwjw4xr25erfvh844mjn0dqz0ajxj3cvmqge6l9vlq8j4c3cv5 // 帐户公钥
   mnemonic: ""
   threshold: 0
   pubkeys: []
@@ -129,7 +133,7 @@ Enter a passphrase to encrypt your key to disk:
 ```
 # nchcli
 # Configure your CLI to eliminate need for chain-id flag
-nchcli config chain-id nch-chain
+nchcli config chain-id nch-devnet
 nchcli config output json
 nchcli config indent true
 nchcli config trust-node true
@@ -160,4 +164,86 @@ Repeat the passphrase:
 It is the only way to recover your account if you ever forget your password.
 # 下面的即助记词
 connect plug cigar purchase inflict enroll ten limb quantum never supply grid home case process claw truly grape federal liberty tree remove side quantum
+```
+
+### 8. 转帐
+
+
+#### * 查询余额
+```
+nchcli query account nch13lmppkumkmf6699q4gpukg8fz5pf2lgzm8mfsm
+{
+  "type": "nch/Account",
+  "value": {
+    "address": "nch13lmppkumkmf6699q4gpukg8fz5pf2lgzm8mfsm",
+    "coins": [
+      {
+        "denom": "unch",
+        "amount": "100000000"
+      }
+    ],
+    "public_key": null,
+    "account_number": "1",
+    "sequence": "0"
+  }
+}
+
+nchcli query account nch19gs3mav6jtln6clwfneg296shz09xtcun2pjw7
+ERROR: {"codespace":"sdk","code":9,"message":"account nch19gs3mav6jtln6clwfneg296shz09xtcun2pjw7 does not exist"}`
+
+```
+
+#### * 转帐
+```
+nchcli send --from nch13lmppkumkmf6699q4gpukg8fz5pf2lgzm8mfsm --to nch19gs3mav6jtln6clwfneg296shz09xtcun2pjw7 --amount 10unch
+
+或者
+nchcli send --from $(nchcli keys show alice -a) --to $(nchcli keys show dan -a) --amount 10unch
+```
+
+#### * 查询余额
+```
+nchcli query account nch13lmppkumkmf6699q4gpukg8fz5pf2lgzm8mfsm
+或者
+nchcli query account $(nchcli keys show alice -a)
+
+
+{
+  "type": "nch/Account",
+  "value": {
+    "address": "nch13lmppkumkmf6699q4gpukg8fz5pf2lgzm8mfsm",
+    "coins": [
+      {
+        "denom": "unch",
+        "amount": "99999990"
+      }
+    ],
+    "public_key": {
+      "type": "tendermint/PubKeySecp256k1",
+      "value": "A3MzhC3AHSdUw1UyNLLnrXcpvaAT+yNKOGbAjOvlZ8B5"
+    },
+    "account_number": "1",
+    "sequence": "1"
+  }
+}
+
+nchcli query account nch19gs3mav6jtln6clwfneg296shz09xtcun2pjw7
+或者
+nchcli query account $(nchcli keys show dan -a)
+
+{
+  "type": "nch/Account",
+  "value": {
+    "address": "nch19gs3mav6jtln6clwfneg296shz09xtcun2pjw7",
+    "coins": [
+      {
+        "denom": "unch",
+        "amount": "10"
+      }
+    ],
+    "public_key": null,
+    "account_number": "8",
+    "sequence": "0"
+  }
+}
 ```
