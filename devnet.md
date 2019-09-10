@@ -248,3 +248,8 @@ nchcli query account $(nchcli keys show dan -a)
   }
 }
 ```
+
+### 9. 发资产
+```
+nchcli issue --from nch13lmppkumkmf6699q4gpukg8fz5pf2lgzm8mfsm --to nch13lmppkumkmf6699q4gpukg8fz5pf2lgzm8mfsm --amount=10usd
+```
