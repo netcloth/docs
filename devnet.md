@@ -27,7 +27,7 @@ export GO111MODULE=on
 ```
 # 获取nch 源码
 git clone https://github.com/NetCloth/netcloth-chain.git
-cd netcloth-chain
+cd netcloth-chain && git checkout v1.0.0
 
 # 编译安装
 make install
