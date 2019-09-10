@@ -9,7 +9,7 @@ wget https://dl.google.com/go/go1.12.2.darwin-amd64.tar.gz
 tar -xvf go1.12.2.darwin-amd64.tar.gz
 mv go /usr/local
 
-## ubuntu系统执行如下命令
+# ubuntu系统执行如下命令
 wget https://dl.google.com/go/go1.12.2.linux-amd64.tar.gz
 tar -xvf go1.12.2.linux-amd64.tar.gz
 sudo mv go /usr/local
@@ -17,7 +17,7 @@ sudo mv go /usr/local
 
 #### * 设置环境变量
 ```
-修改~/.bashrc，添加如下：
+# 修改~/.bashrc，添加如下：
 export GOROOT=/usr/local/go
 export GOPATH=$HOME/go
 export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
@@ -61,6 +61,7 @@ nchd start --log_level "*:debug" --trace
 ```
 curl http://127.0.0.1:26657/status
 
+输出如下：
 {
   "jsonrpc": "2.0",
   "id": "",
@@ -71,25 +72,25 @@ curl http://127.0.0.1:26657/status
         "block": "10",
         "app": "0"
       },
-      "id": "e6fe547b3b876b8603bf5e02bb0bfa0c73f4a5fa",
-      "listen_addr": "tcp://0.0.0.0:26656",
-      "network": "nch-devnet",
+      "id": "e6fe547b3b876b8603bf5e02bb0bfa0c73f4a5fa", //节点id
+      "listen_addr": "tcp://0.0.0.0:26656", // 节点p2p连接监听地址
+      "network": "nch-devnet", //chain-id
       "version": "0.32.2",
       "channels": "4020212223303800",
-      "moniker": "local-nch-1",
+      "moniker": "local-nch-1", // 节点名称
       "other": {
         "tx_index": "on",
         "rpc_address": "tcp://127.0.0.1:26657"
       }
     },
-    "sync_info": {
-      "latest_block_hash": "A4E5D60DE7CFB6598846A4131302C8FD28F2697DF2291B33B0892A9EACB562D8",
+    "sync_info": {  //当前节点信息
+      "latest_block_hash": "A4E5D60DE7CFB6598846A4131302C8FD28F2697DF2291B33B0892A9EACB562D8", // 最新的区块 hash
       "latest_app_hash": "32F0B29280EDF3BEAE98424D9AA256EDBEFC973D1C33431A8D74FCA3BC3B6582",
-      "latest_block_height": "1489",
-      "latest_block_time": "2019-09-10T05:33:13.428333584Z",
+      "latest_block_height": "1489",                                                           //最新区块高度
+      "latest_block_time": "2019-09-10T05:33:13.428333584Z",                                  //最新区块时间 
       "catching_up": false
     },
-    "validator_info": {
+    "validator_info": { // 验证人信息
       "address": "92E0F0A50779E67A2AC25AAF6BCD1E5CF0841DFE",
       "pub_key": {
         "type": "tendermint/PubKeyEd25519",
@@ -98,7 +99,6 @@ curl http://127.0.0.1:26657/status
       "voting_power": "0"
     }
   }
-
 ```
 
 ### 6. 导入助记词到钱包
@@ -106,6 +106,8 @@ curl http://127.0.0.1:26657/status
 ```
 # 导入助记词
 nchcli keys add alice --recover
+
+# 交互输出如下：
 Enter a passphrase to encrypt your key to disk:
 <此处会提示输入密码>
 <再输入一次密码确认>
@@ -131,7 +133,6 @@ nchcli config chain-id nch-chain
 nchcli config output json
 nchcli config indent true
 nchcli config trust-node true
-
 ```
 
 
