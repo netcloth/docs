@@ -119,17 +119,17 @@ nchcli keys add alice --recover
 Enter a passphrase to encrypt your key to disk:
 <此处会提示输入密码>
 <再输入一次密码确认>
-> Enter your bip39 mnemonic (此处会等待输入助记词，导入初始帐户)
+> Enter your bip39 mnemonic (此处会等待输入助记词，导入初始账户)
 
 使用下面的助记词：
 later orient logic fog car foam awful doctor path iron airport adjust forum course cigar obscure coconut portion today donor lyrics frown clever ticket
 
 
 # 屏幕输出是这样的：
-- name: alice // 本地帐户名
+- name: alice // 本地账户名
   type: local
-  address: nch13lmppkumkmf6699q4gpukg8fz5pf2lgzm8mfsm // 帐户地址 
-  pubkey: nchpub1addwnpepqden8ppdcqwjw4xr25erfvh844mjn0dqz0ajxj3cvmqge6l9vlq8j4c3cv5 // 帐户公钥
+  address: nch13lmppkumkmf6699q4gpukg8fz5pf2lgzm8mfsm // 账户地址 
+  pubkey: nchpub1addwnpepqden8ppdcqwjw4xr25erfvh844mjn0dqz0ajxj3cvmqge6l9vlq8j4c3cv5 // 账户公钥
   mnemonic: ""
   threshold: 0
   pubkeys: []
