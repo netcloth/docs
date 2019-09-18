@@ -174,10 +174,10 @@ It is the only way to recover your account if you ever forget your password.
 connect plug cigar purchase inflict enroll ten limb quantum never supply grid home case process claw truly grape federal liberty tree remove side quantum
 ```
 
-### 8. 转帐
+### 8. 转账
 
 
-#### * 查询转帐前余额
+#### * 查询转账前余额
 ```
 nchcli query account nch13lmppkumkmf6699q4gpukg8fz5pf2lgzm8mfsm
 {
@@ -200,7 +200,7 @@ nchcli query account nch19gs3mav6jtln6clwfneg296shz09xtcun2pjw7
 ERROR: {"codespace":"sdk","code":9,"message":"account nch19gs3mav6jtln6clwfneg296shz09xtcun2pjw7 does not exist"}`
 ```
 
-#### * 转帐
+#### * 转账
 ```
 nchcli send --from nch13lmppkumkmf6699q4gpukg8fz5pf2lgzm8mfsm --to nch19gs3mav6jtln6clwfneg296shz09xtcun2pjw7 --amount 10unch
 
@@ -208,7 +208,7 @@ nchcli send --from nch13lmppkumkmf6699q4gpukg8fz5pf2lgzm8mfsm --to nch19gs3mav6j
 nchcli send --from $(nchcli keys show alice -a) --to $(nchcli keys show dan -a) --amount 10unch
 ```
 
-#### * 查询转帐后余额
+#### * 查询转账后余额
 ```
 nchcli query account nch13lmppkumkmf6699q4gpukg8fz5pf2lgzm8mfsm
 或者
