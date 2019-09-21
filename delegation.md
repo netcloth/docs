@@ -28,7 +28,7 @@ nchcli query staking validators
 response:
 [
   {
-    "operator_address": "nchvaloper13lmppkumkmf6699q4gpukg8fz5pf2lgzqx0mrh",
+    "operator_address": "nchvaloper13lmppkumkmf6699q4gpukg8fz5pf2lgzqx0mrh", // 地址
     "consensus_pubkey": "nchvalconspub1zcjduepq6d8u2egnr2255yccgg2st2d0k5uzjq72lh2z2ktfsupry2mk0dqs3tpqkd",
     "jailed": false,
     "status": 2,
@@ -42,7 +42,7 @@ response:
     },
     "unbonding_height": "0",
     "unbonding_time": "1970-01-01T00:00:00Z",
-    "commission": {
+    "commission": { // 佣金
       "commission_rates": {
         "rate": "0.100000000000000000",
         "max_rate": "0.200000000000000000",
@@ -50,8 +50,8 @@ response:
       },
       "update_time": "2019-09-21T02:40:32.766803Z"
     },
-    "min_self_delegation": "1",
-    "self_delegation": "0.000000000000000000"
+    "min_self_delegation": "1",   // 验证人自委托最小数量
+    "self_delegation": "0.000000000000000000" // 自委托数量
   }
 ]
 ```
@@ -153,8 +153,7 @@ nchcli query tx <txhash>
 ```
 
 
-* 也可以根据验证人的operator_address查询验证人信息
-
+* 也可以根据验证人的地址查询
 ```
 # 根据operator_address查询对应的验证人信息(本例中查询的地址为nchvaloper13lmppkumkmf6699q4gpukg8fz5pf2lgzqx0mrh)
 # usage: nchcli query staking validator  <validatorAddress>
@@ -192,7 +191,8 @@ response:
 #### 2.委托
 * 向验证人委托nch
 ```
-# usage: nchcli tx staking delegate <validatorAddress> <amountToBond> --from <delegatorKeyName> --gas auto --gas-adjustment 1.5 --gas-prices <gasPrice>
+#委托分2种：验证人自委托 和 用户委托
+# usage: nchcli tx staking delegate <validatorAddress> <amountToBond> --from <delegatorKeyName> 
 
 # 使用alice账号向验证人
 nchcli tx staking delegate nchvaloper1l3c8k72wwt5fps9fs7h4tfdz9352m6dlt34lyc 6000000unch --from  $(nchcli keys show alice -a)
@@ -237,7 +237,6 @@ Password to sign with 'alice':
   ]
 }
 ```
-
 
 * 查询委托信息
 ```
