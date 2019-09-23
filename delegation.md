@@ -65,7 +65,7 @@ response:
 # 使用刚才创建的dan作为验证人
 nchcli tx staking create-validator \
   --amount=10000unch \
-  --pubkey=$(nchd tendermint show-validator) \
+  --pubkey=$(nchd tendermint show-validator -o text) \
   --moniker="unch" \
   --commission-rate="0.10" \
   --commission-max-rate="0.20" \
