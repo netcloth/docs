@@ -52,10 +52,10 @@ wget https://raw.githubusercontent.com/NetCloth/devnet/master/genesis.json -O  ~
 
 修改配置文件：~/.nchd/config/config.toml， 添加主节点seed， 如下：
 # Comma separated list of seed nodes to connect to
-seeds = "9af752dbf5848d4649d52a1a1639efd685e69f82@13.58.188.155:26656"
+seeds = "86bb44abcf16884de244de553066dd929593f568@13.58.188.155:26656"
 
 # Comma separated list of nodes to keep persistent connections to
-persistent_peers = "9af752dbf5848d4649d52a1a1639efd685e69f82@13.58.188.155:26656"
+persistent_peers = "86bb44abcf16884de244de553066dd929593f568@13.58.188.155:26656"
 ```
 
 ### 4. 启动节点，同步区块
