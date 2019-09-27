@@ -274,7 +274,7 @@ nchcli tx staking delegate nchvaloper15wgyc7vaydddxn4m3yxlwuylgfcmzy2tpk0x54 500
 nchcli tx staking delegate nchvaloper15wgyc7vaydddxn4m3yxlwuylgfcmzy2tpk0x54 490000unch --from $(nchcli keys show sky -a)
 ```
 
-11.1和11.2唯一不同的--from参数是从那个账号抵押
+11.1和11.2唯一不同的--from参数是从哪个账号抵押
 
 #### 12.再次确认验证人状态为活跃验证人
 ```
