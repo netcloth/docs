@@ -43,7 +43,7 @@ response:
 # usage
 # nchcli ipal server-node-claim  --from=<user key name> --moniker=<name> --identity=<identity> --website=<website> --server=<server_endpoint> --details=<details>
 
-nchcli ipal server-node-claim  --from=nch13lmppkumkmf6699q4gpukg8fz5pf2lgzm8mfsm --moniker="nch-server-node-moniker --identity="nch-server-node-identity --website="http://website.com/server" --server=192.168.1.111:25559 --details="server node details" 
+nchcli ipal server-node-claim  --from=nch13lmppkumkmf6699q4gpukg8fz5pf2lgzm8mfsm --moniker="nch-server-node-moniker" --identity="nch-server-node-identity" --website="http://website.com/server" --server="192.168.1.111:25559" --details="server node details" 
 
 ```
 
@@ -58,8 +58,8 @@ response:
 [
   {
     "operator_address": "nch13lmppkumkmf6699q4gpukg8fz5pf2lgzm8mfsm",
-    "moniker": "nch-server-node-moniker --identity=nch-server-node-identity",
-    "identity": "",
+    "moniker": "nch-server-node-moniker",
+    "identity": "nch-server-node-identity",
     "website": "http://website.com/server",
     "server_endpoint": "192.168.1.111:25559",
     "details": "server node details"
