@@ -1,6 +1,7 @@
 ## 如何加入devnet
 
 ### 1. 环境配置
+
 配置go环境，参见[这里](go-install.md)
 
 ### 2. 源码编译nch节点程序
@@ -19,17 +20,17 @@ nchcli version
 
 ### 3. 节点设置
 ```
-nchd init local-nch-1 --chain-id nch-devnet
+nchd init local-nch-1 --chain-id nch-internal-testnet
 
 # 拷贝主节点genesis文件,此处从github下载
-wget https://raw.githubusercontent.com/NetCloth/devnet/master/genesis.json -O  ~/.nchd/config/genesis.json
+wget https://raw.githubusercontent.com/NetCloth/docs/master/testnet/genesis.json -O  ~/.nchd/config/genesis.json
 
 修改配置文件：~/.nchd/config/config.toml， 添加主节点seed， 如下：
 # Comma separated list of seed nodes to connect to
-seeds = "386f2d09583f925edca20d8b68e8977900aa9436@13.58.188.155:26656"
+seeds = "2a631b0341e971eccc8fde7b7c8e7f4dd02a57e0@18.191.12.61:26656"
 
 # Comma separated list of nodes to keep persistent connections to
-persistent_peers = "386f2d09583f925edca20d8b68e8977900aa9436@13.58.188.155:26656"
+persistent_peers = "2a631b0341e971eccc8fde7b7c8e7f4dd02a57e0@18.191.12.61:26656"
 ```
 
 ### 4. 启动节点，同步区块
@@ -56,7 +57,7 @@ curl http://127.0.0.1:26657/status
       },
       "id": "e6fe547b3b876b8603bf5e02bb0bfa0c73f4a5fa", //节点id
       "listen_addr": "tcp://0.0.0.0:26656", // 节点p2p连接监听地址
-      "network": "nch-devnet", //chain-id
+      "network": "nch-internal-testnet", //chain-id
       "version": "0.32.2",
       "channels": "4020212223303800",
       "moniker": "local-nch-1", // 节点名称
@@ -115,7 +116,7 @@ later orient logic fog car foam awful doctor path iron airport adjust forum cour
 ```
 # nchcli
 # Configure your CLI to eliminate need for chain-id flag
-nchcli config chain-id nch-devnet
+nchcli config chain-id nch-internal-testnet
 nchcli config output json
 nchcli config indent true
 nchcli config trust-node true
