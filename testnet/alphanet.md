@@ -20,17 +20,17 @@ nchcli version
 
 ### 3. 节点设置
 ```
-nchd init local-nch-1 --chain-id nch-internal-testnet
+nchd init local-nch-1 --chain-id nch-alphanet
 
 # 拷贝主节点genesis文件,此处从github下载
 wget https://raw.githubusercontent.com/NetCloth/docs/master/testnet/genesis.json -O  ~/.nchd/config/genesis.json
 
 修改配置文件：~/.nchd/config/config.toml， 添加主节点seed， 如下：
 # Comma separated list of seed nodes to connect to
-seeds = "2a631b0341e971eccc8fde7b7c8e7f4dd02a57e0@18.191.12.61:26656"
+seeds = "204d94d5a6dbf73a89101a0d084c2fb56462963a@18.191.12.61:26656"
 
 # Comma separated list of nodes to keep persistent connections to
-persistent_peers = "2a631b0341e971eccc8fde7b7c8e7f4dd02a57e0@18.191.12.61:26656"
+persistent_peers = "204d94d5a6dbf73a89101a0d084c2fb56462963a@18.191.12.61:26656"
 ```
 
 ### 4. 启动节点，同步区块
@@ -55,9 +55,9 @@ curl http://127.0.0.1:26657/status
         "block": "10",
         "app": "0"
       },
-      "id": "e6fe547b3b876b8603bf5e02bb0bfa0c73f4a5fa", //节点id
+      "id": "204d94d5a6dbf73a89101a0d084c2fb56462963a", //节点id
       "listen_addr": "tcp://0.0.0.0:26656", // 节点p2p连接监听地址
-      "network": "nch-internal-testnet", //chain-id
+      "network": "nch-alphanet", //chain-id
       "version": "0.32.2",
       "channels": "4020212223303800",
       "moniker": "local-nch-1", // 节点名称
@@ -116,7 +116,7 @@ later orient logic fog car foam awful doctor path iron airport adjust forum cour
 ```
 # nchcli
 # Configure your CLI to eliminate need for chain-id flag
-nchcli config chain-id nch-internal-testnet
+nchcli config chain-id nch-alphanet
 nchcli config output json
 nchcli config indent true
 nchcli config trust-node true

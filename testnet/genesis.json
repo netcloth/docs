@@ -1,6 +1,6 @@
 {
-  "genesis_time": "2019-10-16T06:06:22.151778237Z",
-  "chain_id": "nch-internal-testnet",
+  "genesis_time": "2019-10-22T04:28:03.638317566Z",
+  "chain_id": "nch-alphanet",
   "consensus_params": {
     "block": {
       "max_bytes": "22020096",
@@ -18,8 +18,8 @@
   },
   "app_hash": "",
   "app_state": {
-    "bank": {
-      "send_enabled": true
+    "supply": {
+      "supply": []
     },
     "distribution": {
       "fee_pool": {
@@ -38,6 +38,38 @@
       "delegator_starting_infos": [],
       "validator_slash_events": []
     },
+    "params": null,
+    "staking": {
+      "params": {
+        "unbonding_time": "604800000000000",
+        "max_validators": 100,
+        "max_validators_extending": 300,
+        "max_validators_extending_speed": 10,
+        "next_extending_time": "1603276083",
+        "max_entries": 7,
+        "bond_denom": "unch",
+        "max_lever": "20.000000000000000000"
+      },
+      "last_total_power": "0",
+      "last_validator_powers": null,
+      "validators": null,
+      "delegations": null,
+      "unbonding_delegations": null,
+      "redelegations": null,
+      "exported": false
+    },
+    "slashing": {
+      "params": {
+        "max_evidence_age": "120000000000",
+        "signed_blocks_window": "100",
+        "min_signed_per_window": "0.500000000000000000",
+        "downtime_jail_duration": "600000000000",
+        "slash_fraction_double_sign": "0.050000000000000000",
+        "slash_fraction_downtime": "0.010000000000000000"
+      },
+      "signing_infos": {},
+      "missed_blocks": {}
+    },
     "auth": {
       "params": {
         "max_memo_characters": "256",
@@ -47,21 +79,6 @@
         "sig_verify_cost_secp256k1": "1000"
       }
     },
-    "mint": {
-      "minter": {
-        "inflation": "0.130000000000000000",
-        "annual_provisions": "0.000000000000000000"
-      },
-      "params": {
-        "mint_denom": "unch",
-        "inflation_rate_change": "0.130000000000000000",
-        "inflation_max": "0.200000000000000000",
-        "inflation_min": "0.070000000000000000",
-        "goal_bonded": "0.670000000000000000",
-        "blocks_per_year": "6311520"
-      }
-    },
-    "params": null,
     "accounts": [
       {
         "address": "nch133vmttt6n49jac5zn3z0klcpe7m8qlugyggx5w",
@@ -104,30 +121,22 @@
         ]
       }
     ],
-    "crisis": {
-      "constant_fee": {
-        "denom": "unch",
-        "amount": "1000"
-      }
+    "bank": {
+      "send_enabled": true
     },
-    "staking": {
-      "params": {
-        "unbonding_time": "604800000000000",
-        "max_validators": 100,
-        "max_validators_extending": 300,
-        "max_validators_extending_speed": 10,
-        "next_extending_time": "1602763582",
-        "max_entries": 7,
-        "bond_denom": "unch",
-        "max_lever": "20.000000000000000000"
+    "mint": {
+      "minter": {
+        "inflation": "0.130000000000000000",
+        "annual_provisions": "0.000000000000000000"
       },
-      "last_total_power": "0",
-      "last_validator_powers": null,
-      "validators": null,
-      "delegations": null,
-      "unbonding_delegations": null,
-      "redelegations": null,
-      "exported": false
+      "params": {
+        "mint_denom": "unch",
+        "inflation_rate_change": "0.130000000000000000",
+        "inflation_max": "0.200000000000000000",
+        "inflation_min": "0.070000000000000000",
+        "goal_bonded": "0.670000000000000000",
+        "blocks_per_year": "6311520"
+      }
     },
     "gov": {
       "starting_proposal_id": "1",
@@ -152,17 +161,11 @@
         "veto": "0.334000000000000000"
       }
     },
-    "slashing": {
-      "params": {
-        "max_evidence_age": "120000000000",
-        "signed_blocks_window": "100",
-        "min_signed_per_window": "0.500000000000000000",
-        "downtime_jail_duration": "600000000000",
-        "slash_fraction_double_sign": "0.050000000000000000",
-        "slash_fraction_downtime": "0.010000000000000000"
-      },
-      "signing_infos": {},
-      "missed_blocks": {}
+    "crisis": {
+      "constant_fee": {
+        "denom": "unch",
+        "amount": "1000"
+      }
     },
     "genutil": {
       "gentxs": [
@@ -187,7 +190,7 @@
                   "min_self_delegation": "1",
                   "delegator_address": "nch133vmttt6n49jac5zn3z0klcpe7m8qlugyggx5w",
                   "validator_address": "nchvaloper133vmttt6n49jac5zn3z0klcpe7m8qluglfu58z",
-                  "pubkey": "nchvalconspub1zcjduepqelf00cquq2rlawf3m80u5vlfp8gf254e7luppmwq2qmutyud65rql5q07v",
+                  "pubkey": "nchvalconspub1zcjduepql5m3y58chnqml8hp8sn38m8sdly40qes6saczrm3eh66ztch7mvs9z45p4",
                   "value": {
                     "denom": "unch",
                     "amount": "1000000"
@@ -205,16 +208,13 @@
                   "type": "tendermint/PubKeySecp256k1",
                   "value": "Azrg5jdtFsbAUNdSWwqfS12l5mv1maHzS+4dJYqJBn91"
                 },
-                "signature": "y5h0RWOMBrzoydfvKODuAjAx8OvivmbohwKZEz9P7UB8x2xqT3np5f/yKyQjpOVZZhlt101rKqCpg3nsCJVTAg=="
+                "signature": "ikSWezUytIx88v6IYQNoKNK14aLUpK2okBfH3n8oRthDyeOAnLhf1wK6nsaWyeCwfthqz1YckhFhfsmVJZVsWw=="
               }
             ],
-            "memo": "2a631b0341e971eccc8fde7b7c8e7f4dd02a57e0@172.31.22.186:26656"
+            "memo": "204d94d5a6dbf73a89101a0d084c2fb56462963a@172.31.22.186:26656"
           }
         }
       ]
-    },
-    "supply": {
-      "supply": []
     }
   }
 }
