@@ -2,7 +2,7 @@
 
 ### 1. 环境配置
 
-配置go环境，参见[这里](../go-install.md)
+配置go环境，参见[这里](./go-install.md)
 
 ### 2. 源码编译nch节点程序
 ```
@@ -84,33 +84,7 @@ curl http://127.0.0.1:26657/status
   }
 ```
 
-### 6. 导入助记词到钱包
-
-```
-# 导入助记词(alice为本地钱包用户名，可自定义)
-nchcli keys add alice --recover
-
-# 交互输出如下：
-Enter a passphrase to encrypt your key to disk:
-<此处会提示输入密码>
-<再输入一次密码确认>
-> Enter your bip39 mnemonic (此处会等待输入助记词，导入初始账户)
-
-使用下面的助记词：
-later orient logic fog car foam awful doctor path iron airport adjust forum course cigar obscure coconut portion today donor lyrics frown clever ticket
-
-
-# 屏幕输出是这样的：
-- name: alice // 本地账户名
-  type: local
-  address: nch13lmppkumkmf6699q4gpukg8fz5pf2lgzm8mfsm // 账户地址 
-  pubkey: nchpub1addwnpepqden8ppdcqwjw4xr25erfvh844mjn0dqz0ajxj3cvmqge6l9vlq8j4c3cv5 // 账户公钥
-  mnemonic: ""
-  threshold: 0
-  pubkeys: []
-```
-
-### 7. 创建新钱包地址：
+### 6. 创建新钱包地址：
 
 #### * 设置nchcli命令行环境 
 ```
@@ -149,7 +123,11 @@ It is the only way to recover your account if you ever forget your password.
 connect plug cigar purchase inflict enroll ten limb quantum never supply grid home case process claw truly grape federal liberty tree remove side quantum
 ```
 
-### 8. 转账
+内测链token申请地址：https://explorer.netcloth.org/nch/get_token?<你的钱包地址>
+
+内测链区块浏览器地址： https://explorer.netcloth.org
+
+### 7. 转账
 
 
 #### * 查询转账前余额
@@ -229,91 +207,3 @@ nchcli query account $(nchcli keys show dan -a)
   }
 }
 ```
-
-### 9. 发资产
-```
-nchcli issue --from nch13lmppkumkmf6699q4gpukg8fz5pf2lgzm8mfsm --to nch13lmppkumkmf6699q4gpukg8fz5pf2lgzm8mfsm --amount=10usd
-```
-执行后，会返回类似如下信息：
-```
-{
-  "height": "0",
-  "txhash": "F6EB13B37C4561179B78618DC71BF8B4FC900D4424B36ACC8D9727F972803C37",
-  "raw_log": "[{\"msg_index\":0,\"success\":true,\"log\":\"\"}]",
-  "logs": [
-    {
-      "msg_index": 0,
-      "success": true,
-      "log": ""
-    }
-  ]
-}
-```
-
-根据txhash查询上链后交易详情：
-```
-nchcli query tx F6EB13B37C4561179B78618DC71BF8B4FC900D4424B36ACC8D9727F972803C37
-
-
-{
-  "height": "728",
-  "txhash": "F6EB13B37C4561179B78618DC71BF8B4FC900D4424B36ACC8D9727F972803C37",
-  "raw_log": "[{\"msg_index\":0,\"success\":true,\"log\":\"\"}]",
-  "logs": [
-    {
-      "msg_index": 0,
-      "success": true, // true表示交易执行成功，false表示执行失败
-      "log": ""
-    }
-  ],
-  "gas_wanted": "200000",
-  "gas_used": "18504",
-  "events": [
-    {
-      "type": "message",
-      "attributes": [
-        {
-          "key": "action",
-          "value": "issue"
-        }
-      ]
-    }
-  ],
-  "tx": {  // 交易详情
-    "type": "nch/StdTx",
-    "value": {
-      "msg": [
-        {
-          "type": "token/issue",
-          "value": {
-            "banker": "nch13lmppkumkmf6699q4gpukg8fz5pf2lgzm8mfsm",
-            "address": "nch13lmppkumkmf6699q4gpukg8fz5pf2lgzm8mfsm",
-            "amount": {
-              "denom": "usd",
-              "amount": "10"
-            }
-          }
-        }
-      ],
-      "fee": {
-        "amount": [],
-        "gas": "200000"
-      },
-      "signatures": [
-        {
-          "pub_key": {
-            "type": "tendermint/PubKeySecp256k1",
-            "value": "A3MzhC3AHSdUw1UyNLLnrXcpvaAT+yNKOGbAjOvlZ8B5"
-          },
-          "signature": "G+IpmYVe5ZgT+wmbXH4vuRjulQWgD8rnOnRXRVGuThZ02BypFkcYISUVZzUxT/mPWOddOJQ+9Ds6tno4sm5xZA=="
-        }
-      ],
-      "memo": ""
-    }
-  },
-  "timestamp": "2019-09-10T07:58:08Z"
-}
-
-```
-
-
