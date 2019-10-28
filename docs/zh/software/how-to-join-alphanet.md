@@ -69,7 +69,7 @@ curl http://127.0.0.1:26657/status
     "sync_info": {  //当前节点信息
       "latest_block_hash": "A4E5D60DE7CFB6598846A4131302C8FD28F2697DF2291B33B0892A9EACB562D8", // 最新的区块 hash
       "latest_app_hash": "32F0B29280EDF3BEAE98424D9AA256EDBEFC973D1C33431A8D74FCA3BC3B6582",
-      "latest_block_height": "1489",                                                           //最新区块高度
+      "latest_block_height": "1489",     // 当前节点同步到的最新区块高度                                                      //最新区块高度
       "latest_block_time": "2019-09-10T05:33:13.428333584Z",                                  //最新区块时间 
       "catching_up": false
     },
@@ -84,126 +84,8 @@ curl http://127.0.0.1:26657/status
   }
 ```
 
-### 6. 创建新钱包地址：
-
-#### * 设置nchcli命令行环境 
-```
-# nchcli
-# Configure your CLI to eliminate need for chain-id flag
-nchcli config chain-id nch-alphanet
-nchcli config output json
-nchcli config indent true
-nchcli config trust-node true
-```
-
-
-#### * 创建新钱包地址 
-```
-# 创建地址
-nchcli keys add dan
-
-#根据提示，输入钱包密码，得到如下输出：
-
-Enter a passphrase to encrypt your key to disk:
-Repeat the passphrase:
-
-- name: dan
-  type: local
-  address: nch1p3fuppcxud5rjsaywuyuguh6achmj5p0r6z6ve
-  pubkey: nchpub1addwnpepqg8mfc6t9eaw9lal0c4tzma5vgmqzkgszwcgljcz3sy8rd2rukgxz9dtmph
-  mnemonic: ""
-  threshold: 0
-  pubkeys: []
-
-
-
-**Important** write this mnemonic phrase in a safe place.
-It is the only way to recover your account if you ever forget your password.
-# 下面的即助记词
-connect plug cigar purchase inflict enroll ten limb quantum never supply grid home case process claw truly grape federal liberty tree remove side quantum
-```
-
-内测链token申请地址：https://explorer.netcloth.org/nch/get_token?<你的钱包地址>
+当节点同步到的区块高度和区块浏览器上一致时，表示节点已经同步完成，此时一个全节点就部署完成了。
 
 内测链区块浏览器地址： https://explorer.netcloth.org
 
-### 7. 转账
-
-
-#### * 查询转账前余额
-```
-nchcli query account nch13lmppkumkmf6699q4gpukg8fz5pf2lgzm8mfsm
-{
-  "type": "nch/Account",
-  "value": {
-    "address": "nch13lmppkumkmf6699q4gpukg8fz5pf2lgzm8mfsm",
-    "coins": [
-      {
-        "denom": "unch",
-        "amount": "100000000"
-      }
-    ],
-    "public_key": null,
-    "account_number": "1",
-    "sequence": "0"
-  }
-}
-
-nchcli query account nch19gs3mav6jtln6clwfneg296shz09xtcun2pjw7
-ERROR: {"codespace":"sdk","code":9,"message":"account nch19gs3mav6jtln6clwfneg296shz09xtcun2pjw7 does not exist"}`
-```
-
-#### * 转账
-```
-nchcli send --from nch13lmppkumkmf6699q4gpukg8fz5pf2lgzm8mfsm --to nch19gs3mav6jtln6clwfneg296shz09xtcun2pjw7 --amount 10unch
-
-或者
-nchcli send --from $(nchcli keys show alice -a) --to $(nchcli keys show dan -a) --amount 10unch
-```
-
-#### * 查询转账后余额
-```
-nchcli query account nch13lmppkumkmf6699q4gpukg8fz5pf2lgzm8mfsm
-或者
-nchcli query account $(nchcli keys show alice -a)
-
-
-{
-  "type": "nch/Account",
-  "value": {
-    "address": "nch13lmppkumkmf6699q4gpukg8fz5pf2lgzm8mfsm",
-    "coins": [
-      {
-        "denom": "unch",
-        "amount": "99999990"
-      }
-    ],
-    "public_key": {
-      "type": "tendermint/PubKeySecp256k1",
-      "value": "A3MzhC3AHSdUw1UyNLLnrXcpvaAT+yNKOGbAjOvlZ8B5"
-    },
-    "account_number": "1",
-    "sequence": "1"
-  }
-}
-
-nchcli query account nch19gs3mav6jtln6clwfneg296shz09xtcun2pjw7
-或者
-nchcli query account $(nchcli keys show dan -a)
-
-{
-  "type": "nch/Account",
-  "value": {
-    "address": "nch19gs3mav6jtln6clwfneg296shz09xtcun2pjw7",
-    "coins": [
-      {
-        "denom": "unch",
-        "amount": "10"
-      }
-    ],
-    "public_key": null,
-    "account_number": "8",
-    "sequence": "0"
-  }
-}
-```
+接下来，你可以申请内测的token，点击[这里](./testcoin.md)
