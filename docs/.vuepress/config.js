@@ -49,6 +49,10 @@ module.exports = {
                     {
                         text: 'Software',
                         link: '/software/',
+                    },
+                    {
+                        text: 'Advanced',
+                        link: '/advanced/',
                     }
                 ],
                 sidebar: {
@@ -79,11 +83,15 @@ module.exports = {
                     {
                         text: '软件',
                         link: '/zh/software/'
+                    },
+                    {
+                        text: '高级教程',
+                        link: '/zh/advanced/'
                     }
                 ],
                 sidebar: {
-                    '/get-started/': genSidebarConfig ('get-started', '快速开始'),
-                    '/software/': genSidebarConfig ('software', '软件')
+                    '/zh/get-started/': genSidebarConfig ('get-started', '快速开始'),
+                    '/zh/software/': genSidebarConfig ('software', '软件')
                 }
             }
         }
@@ -98,6 +106,10 @@ function genSidebarConfig (module, title) {
                 collapsable:false,
                 children: [
                     '',
+                    'how-to-join-alphanet',
+                    'how-to-become-validator',
+                    'how-to-delegate',
+                    'how-to-create-proposal',
                     'validator-node'
                 ]
             }

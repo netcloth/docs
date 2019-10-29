@@ -2,7 +2,7 @@
 
 ### 1. 环境配置
 
-配置go环境，参见[这里](go-install.md)
+配置go环境，参见[这里](../software/go-install.md)
 
 ### 2. 源码编译nch节点程序
 ```
@@ -88,4 +88,4 @@ curl http://127.0.0.1:26657/status
 
 内测链区块浏览器地址： https://explorer.netcloth.org
 
-接下来，你可以申请内测的token，点击[这里](./testcoin.md)
+接下来，你可以申请内测的token，点击[这里](testcoin.md)
