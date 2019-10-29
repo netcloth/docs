@@ -109,8 +109,7 @@ function genSidebarConfig (module, title) {
                     'how-to-join-alphanet',
                     'how-to-become-validator',
                     'how-to-delegate',
-                    'how-to-create-proposal',
-                    'validator-node'
+                    'how-to-create-proposal'
                 ]
             }
         ]
@@ -123,8 +122,7 @@ function genSidebarConfig (module, title) {
                 collapsable: false,
                 children: [
                     '',
-                    'go-install',
-                    'how-to-delegate'
+                    'go-install'
                 ]
             }
         ];
