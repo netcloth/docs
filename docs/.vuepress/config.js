@@ -29,13 +29,9 @@ module.exports = {
             '/en/': {
                 label: 'English',
                 selectText: 'Languages',
-                editLinkText: 'Edit this page on GitHub',
+                editLinkText: 'Edit on GitHub',
                 lastUpdated: 'Last Updated',
                 serviceWorker: {
-                    updatePopup: {
-                        message: "New content is available.",
-                        buttonText: "Refresh"
-                    }
                 },
                 nav: [
                     {
@@ -63,13 +59,9 @@ module.exports = {
             '/': {
                 label: '简体中文',
                 selectText: '选择语言',
-                editLinkText: '在 GitHub 上编辑此页',
+                editLinkText: '编辑此页',
                 lastUpdated: '上次更新',
                 serviceWorker: {
-                    updatePopup: {
-                        message: "发现新内容可用",
-                        buttonText: "刷新"
-                    }
                 },
                 nav: [
                     {

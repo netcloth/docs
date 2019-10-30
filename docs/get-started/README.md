@@ -1,8 +1,5 @@
 ### 快速开始
 
-请按照以下[教程](how-to-join-alphanet.md)加入内测网
-
-
 * [如何加入内测网](how-to-join-alphanet.md)
 * [申领内测token](testcoin.md)
 * [如何创建验证人](how-to-become-validator.md)
