@@ -1,9 +1,8 @@
 
-## NetCloth 内测网
 
-NetCloth简介
+## NetCloth简介
 
-NetCloth-Chain是一个开源的区块链网络 。
+NetCloth-Chain是一个基于隐私保护和数据安全的区块链应用网络。
 
 ### 快速开始
 

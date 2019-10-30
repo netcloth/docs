@@ -1,61 +1,15 @@
 ## 如何运行一个验证人
 
-搭建环境为mac osx，linux环境也适应
+#### 1. 安装nch
+请按照[教程](./how-to-join-alphanet.md)，安装nch
 
-#### 1.源码安装节点
-
-```
-mkdir -p ${GOPATH}/src/github.com/NetCloth
-
-cd ${GOPATH}/src/github.com/NetCloth
-
-git clone https://github.com/NetCloth/netcloth-chain.git
-
-go get -d -v ./...
-
-cd netcloth-chain
-
-make install
-```
-
-#### 2.配置节点
-```
-nchd init local-nch-1 --chain-id nch-devnet
-
-wget https://raw.githubusercontent.com/NetCloth/devnet/master/genesis.json -O  ~/.nchd/config/genesis.json
-
-修改配置文件：~/.nchd/config/config.toml， 添加主节点seed， 如下：
-# Comma separated list of seed nodes to connect to
-seeds = "86bb44abcf16884de244de553066dd929593f568@13.58.188.155:26656"
-
-# Comma separated list of nodes to keep persistent connections to
-persistent_peers = "86bb44abcf16884de244de553066dd929593f568@13.58.188.155:26656"
-```
-
-#### 3.配置节点客户端
-```
-nchcli config chain-id nch-devnet
-nchcli config output json
-nchcli config indent true
-nchcli config trust-node true
-```
-
-#### 4.同步区块节点到最新
-```
-nchd start --log_level "*:info"
-
-查询同步状态: curl http://127.0.0.1:26657/status
-
-查看latest_block_time字段的时间是否是当前时间，注意这里是utc时间
-```
-
-#### 5.创建账号
+#### 2.创建账号
 ```
 nchcli keys add cpucc
 # 按照提示输入加密账号用的密码(后续执行各种交易都需要用该密码)，将命令返回的信息谨慎保存
 ```
 
-#### 6.导入dev账号
+#### 3.导入dev账号
 ```
 # 导入助记词(sky为本地钱包用户名，可自定义)
 nchcli keys add sky --recover
@@ -70,7 +24,7 @@ Enter a passphrase to encrypt your key to disk:
 later orient logic fog car foam awful doctor path iron airport adjust forum course cigar obscure coconut portion today donor lyrics frown clever ticket
 ```
 
-#### 7.向cpucc账号转账
+#### 4.向cpucc账号转账
 ```
 nchcli send --from $(nchcli keys show sky -a) --to $(nchcli keys show cpucc -a) --amount 2000000unch
 
@@ -88,7 +42,7 @@ nchcli query account $(nchcli keys show cpucc -a)
     ],
 ```
 
-#### 8.查询当前验证人列表
+#### 5.查询当前验证人列表
 ```
 nchcli query staking validators
 
@@ -150,7 +104,7 @@ nchcli query staking validators
 ]
 ```
 
-#### 9.创建验证人
+#### 6.创建验证人
 ```
 nchcli tx staking create-validator \
   --amount=10000unch \
@@ -165,7 +119,7 @@ nchcli tx staking create-validator \
   重点关注命令中最后一行--from=$(nchcli keys show cpucc -a)，cpucc对应的账号作为抵押者将成为要创建的验证人
 ```
 
-#### 10.再次查询验证人列表
+#### 7.再次查询验证人列表
 ```
 nchcli query staking validators         
 
@@ -254,29 +208,28 @@ nchcli query staking validators
 
 ```
 
-#### 11.让刚创建的验证者出块
+#### 8.让刚创建的验证者出块
 step10中成功创建了验证人，此时其状态为0，0表示还没有绑定，因为没有抵押足够的unch;
 
 1000000unch为1个voting power，voting power的最小单位为1，只有它>=1时候才能够变成绑定状态2，才能成为活跃验证者出块，因此至少还需要抵押990000unch
 
 可以用自己的账号给自己抵押，也可以让别的账号给自己的验证者抵押，这里分别展示：
 
-这里需要用到步骤10中cpucc账号对应的验证人地址operator_address: nchvaloper15wgyc7vaydddxn4m3yxlwuylgfcmzy2tpk0x54
+这里需要用到步骤7中cpucc账号对应的验证人地址operator_address: nchvaloper15wgyc7vaydddxn4m3yxlwuylgfcmzy2tpk0x54
 
-##### 11.1 给自己抵押500000unch
+##### 8.1 给自己抵押500000unch
 ```
 nchcli tx staking delegate nchvaloper15wgyc7vaydddxn4m3yxlwuylgfcmzy2tpk0x54 500000unch --from $(nchcli keys show cpucc -a)
 
 ```
-
-##### 11.2 用别的账号给自己抵押490000unch
+##### 8.2 用别的账号给自己抵押490000unch
 ```
 nchcli tx staking delegate nchvaloper15wgyc7vaydddxn4m3yxlwuylgfcmzy2tpk0x54 490000unch --from $(nchcli keys show sky -a)
 ```
 
-11.1和11.2唯一不同的--from参数是从哪个账号抵押
+8.1和8.2唯一不同的--from参数是从哪个账号抵押
 
-#### 12.再次确认验证人状态为活跃验证人
+#### 9.再次确认验证人状态为活跃验证人
 ```
 nchcli query staking validators
 

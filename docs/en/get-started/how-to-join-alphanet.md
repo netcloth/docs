@@ -1,1 +1,1 @@
-## TODO
+## How to join alphanet

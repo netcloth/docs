@@ -1,22 +1,7 @@
 ## 如何加入内测网
 
-### 1. 环境配置
-
-配置go环境，参见[这里](../software/go-install.md)
-
-### 2. 源码编译nch节点程序
-```
-# 获取nch 源码
-git clone https://github.com/NetCloth/netcloth-chain.git
-cd netcloth-chain && git checkout v1.0.0
-
-# 编译安装
-make install
-
-# 编译完成后，检查版本号
-nchd version
-nchcli version
-```
+### 1. 安装nch
+请按照[教程](../software/how-to-install)，安装nch
 
 ### 3. 节点设置
 ```

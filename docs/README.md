@@ -1,6 +1,6 @@
 ---
 home: true
 heroImage: /hero.png
-actionText: Getting Started →
+actionText: 快速开始 →
 actionLink: /introduction/
 ---

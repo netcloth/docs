@@ -1,1 +1,1 @@
-## TODO
+## How to get alphanet test coins

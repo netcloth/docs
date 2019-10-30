@@ -48,7 +48,7 @@ module.exports = {
                     },
                     {
                         text: 'Software',
-                        link: '/en/software/',
+                        link: '/en/software/how-to-install',
                     },
                     {
                         text: 'Advanced',
@@ -82,7 +82,7 @@ module.exports = {
                     },
                     {
                         text: '软件',
-                        link: '/software/'
+                        link: '/software/how-to-install'
                     },
                     {
                         text: '高级教程',
@@ -122,7 +122,8 @@ function genSidebarConfig (module, title) {
                 collapsable: false,
                 children: [
                     '',
-                    'go-install'
+                    'go-install',
+                    'how-to-install'
                 ]
             }
         ];
