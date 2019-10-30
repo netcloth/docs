@@ -71,6 +71,8 @@ curl http://127.0.0.1:26657/status
 
 当节点同步到的区块高度和区块浏览器上一致时，表示节点已经同步完成，此时一个全节点就部署完成了。
 
-内测链区块浏览器地址： https://explorer.netcloth.org
 
-接下来，你可以申请内测的token，点击[这里](testcoin.md)
+### 更多资源
+
+* 内测链区块浏览器地址： https://explorer.netcloth.org
+* 申请内测的token，点击[这里](testcoin.md)
