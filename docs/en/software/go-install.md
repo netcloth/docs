@@ -1,28 +1,35 @@
-## Install and setup go env
+## How to install nch
 
-### * download and install go
-```
-# for macOS, run commands:
-wget https://dl.google.com/go/go1.12.2.darwin-amd64.tar.gz
-tar -xvf go1.12.2.darwin-amd64.tar.gz
-mv go /usr/local
+### Latest Version
 
-# for ubuntu, run commands:
-wget https://dl.google.com/go/go1.12.2.linux-amd64.tar.gz
-tar -xvf go1.12.2.linux-amd64.tar.gz
-sudo mv go /usr/local
-```
+The latest version of nch is v1.0.0
 
-### * setup go env
-```
-# edit ~/.bashrc and append：
-export GOROOT=/usr/local/go
-export GOPATH=$HOME/go
-export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
-export GO111MODULE=on
-```
+### Server configuration
 
-and then, run commands：
+Recommended server configurations：
+* CPU cores： 2
+* Memory： 4GB
+* Disk：100GB SSD
+* OS： Ubuntu 16.04+
+* Bandwidth：10Mbps
+* Open ports： 26656 and 26657
+
+### Install
+
+#### Install go
+
+Install go by following the [instructions](../software/go-install.md)
+
+#### Build nch from source
 ```
-source ~/.bashrc
+# Get source code
+git clone https://github.com/NetCloth/netcloth-chain.git
+cd netcloth-chain && git checkout v1.0.0
+
+# build and install
+make install
+
+# check version
+nchd version
+nchcli version
 ```

@@ -48,7 +48,7 @@ module.exports = {
                     },
                     {
                         text: 'Software',
-                        link: '/en/software/how-to-install',
+                        link: '/software/how-to-install'
                     },
                     {
                         text: 'Advanced',
@@ -121,7 +121,6 @@ function genSidebarConfig (module, title) {
                 title,
                 collapsable: false,
                 children: [
-                    '',
                     'go-install',
                     'how-to-install'
                 ]
