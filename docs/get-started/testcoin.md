@@ -38,5 +38,5 @@ It is the only way to recover your account if you ever forget your password.
 connect plug cigar purchase inflict enroll ten limb quantum never supply grid home case process claw truly grape federal liberty tree remove side quantum
 ```
 
-内测链token申请地址：https://explorer.netcloth.org/nch/get_token?<你的钱包地址>
+内测链token申请地址：https://docs.netcloth.org/nch/get_token?<你的钱包地址>
 
