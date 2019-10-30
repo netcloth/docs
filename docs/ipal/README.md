@@ -20,9 +20,9 @@ nchcli ipal claim --user nch13850ev9txukgjk5v42dsaey3ww7sjudtujsu6f --proxy nch1
 
 ```cassandraql
 # usage
-# nchcli query ipal <user-address>
+# nchcli query ipal ipal <user-address>
 
-nchcli query ipal nch13850ev9txukgjk5v42dsaey3ww7sjudtujsu6f
+nchcli query ipal ipal nch13850ev9txukgjk5v42dsaey3ww7sjudtujsu6f
 ```
 
 response:
@@ -41,28 +41,32 @@ response:
 声明服务节点信息
 ```cassandraql
 # usage
-# nchcli ipal server-node-claim  --from=<user key name> --moniker=<name> --identity=<identity> --website=<website> --server=<server_endpoint> --details=<details>
+# nchcli aipal claim--from=<user key name> --moniker=<name> --website=<website> --server=<server_endpoint> --details=<details> --service_type=<uint64> --bond=<bond tokens>
 
-nchcli ipal server-node-claim  --from=nch13lmppkumkmf6699q4gpukg8fz5pf2lgzm8mfsm --moniker="nch-server-node-moniker" --identity="nch-server-node-identity" --website="http://website.com/server" --server="192.168.1.111:25559" --details="server node details" 
-
+nchcli aipal claim  --from=nch13lmppkumkmf6699q4gpukg8fz5pf2lgzm8mfsm --moniker="nch-server-node-moniker"  --website="http://website.com/server" --server="192.168.1.111:25559" --details="server node details" --bond 1000000unch
 ```
 
 * 查询
 
 查询所有的服务节点声明
 ```cassandraql
-nchcli query server-nodes
+nchcli query aipal servicenodes
 ```
+
 response:
 ```cassandraql
 [
   {
     "operator_address": "nch13lmppkumkmf6699q4gpukg8fz5pf2lgzm8mfsm",
     "moniker": "nch-server-node-moniker",
-    "identity": "nch-server-node-identity",
     "website": "http://website.com/server",
+    "service_type": "1",
     "server_endpoint": "192.168.1.111:25559",
-    "details": "server node details"
+    "details": "server node details",
+    "bond": {
+      "denom": "unch",
+      "amount": "1000000"
+    }
   }
 ]
 ```
