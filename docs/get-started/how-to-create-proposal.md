@@ -1,4 +1,4 @@
-### netcloth-chain操作提案
+### 如何发起提案
 
 本文介绍通过nchcli客户端操作提案的方法；本文假设你在运行私链或者devnet，并且有对应区块链的validator在出块；
 
