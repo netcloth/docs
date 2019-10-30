@@ -1,7 +1,7 @@
 ## 如何加入内测网
 
 ### 1. 安装nch
-请按照[教程](../software/how-to-install)，安装nch
+请按照[教程](../software/how-to-install.md)，安装nch
 
 ### 3. 节点设置
 ```
