@@ -12,10 +12,10 @@ wget https://raw.githubusercontent.com/NetCloth/docs/master/alphanet/genesis.jso
 
 修改配置文件：~/.nchd/config/config.toml， 添加主节点seed， 如下：
 # Comma separated list of seed nodes to connect to
-seeds = "204d94d5a6dbf73a89101a0d084c2fb56462963a@18.191.12.61:26656"
+seeds = "1d71d8f60a20a5a0f379226b092aa56b64348347@18.191.12.61:26656"
 
 # Comma separated list of nodes to keep persistent connections to
-persistent_peers = "204d94d5a6dbf73a89101a0d084c2fb56462963a@18.191.12.61:26656"
+persistent_peers = "1d71d8f60a20a5a0f379226b092aa56b64348347@18.191.12.61:26656"
 ```
 
 ### 4. 启动节点，同步区块
