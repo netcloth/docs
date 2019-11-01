@@ -1,14 +1,14 @@
-## 如何向验证人委托
+# 如何向验证人委托
 
 这里假设你部署并同步了内测网的节点。
 
 如何加入内测网，点击[这里](how-to-join-alphanet.md)。
 
-* 新创建一个钱包地址
+## 新创建一个钱包地址
 
 如果你已经拥有钱包，可跳过此步骤
 
-```
+```shell
 nchcli keys add dan
 
 override the existing name dan [y/N]: y
@@ -23,12 +23,15 @@ Repeat the passphrase:
 }
 ```
 
-* 获得内测token
+## 获得内测token
 
 获得内测token， 请参照[这里](./testcoin.md)
 
-* 查询验证人列表
-```
+## 委托
+
+### 查询验证人列表
+
+```shell
 nchcli query staking validators
 
 response:
@@ -88,8 +91,9 @@ response:
 ]
 ```
 
-* 根据验证人的地址查询验证人
-```
+* 也可以根据验证人的地址查询验证人
+
+```shell
 # 根据operator_address查询对应的验证人信息(本例中查询的地址为nchvaloper133vmttt6n49jac5zn3z0klcpe7m8qluglfu58z)
 # usage: nchcli query staking validator  <validatorAddress>
 nchcli query staking validator nchvaloper133vmttt6n49jac5zn3z0klcpe7m8qluglfu58z
@@ -123,8 +127,9 @@ response:
 }
 ```
 
-* 向验证人委托nch
-```
+### 向验证人委托nch
+
+```shell
 #委托分2种：验证人自委托 和 用户委托
 # usage: nchcli tx staking delegate <validatorAddress> <amountToBond> --from <delegatorKeyName> 
 
@@ -172,8 +177,9 @@ Password to sign with 'alice':
 }
 ```
 
-* 查询委托信息
-```
+### 查询委托信息
+
+```shell
 # 查询账户alice的所有委托
 usage: nchcli query staking delegations <delegatorAddress>
 nchcli query staking delegations $(nchcli keys show alice -a) 
@@ -226,9 +232,9 @@ response:
 }
 ```
 
-* 取回委托的nch
+### 取回委托的nch
 
-```cassandraql
+```shell
 # usage: nchcli tx staking unbond <validator_address> 100unch --from <mykey>
 # 示例：
 nchcli tx staking unbond nchvaloper133vmttt6n49jac5zn3z0klcpe7m8qluglfu58z 100unch --from alice
