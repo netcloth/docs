@@ -1,4 +1,4 @@
-### 如何发起提案
+# 如何发起提案
 
 本文介绍通过nchcli客户端操作提案的方法；本文假设你在运行私链或者devnet，并且有对应区块链的validator在出块；
 
@@ -7,11 +7,11 @@
 * 提案抵押
 * 提案投票
 
-
 ----
 
 以修改最大验证人数量为例，首先查看当前值max_validators=100:
-```
+
+```shell
 nchcli query staking params
 
 {
@@ -23,9 +23,11 @@ nchcli query staking params
 }
 ```
 
-#### 1.提案提交
-##### 执行
-```
+## 1.提案提交
+
+* 执行
+  
+```shell
 nchcli tx gov submit-proposal param-change ./prososal.json --from $(nchcli keys show sky -a)
 
 ./prososal.json文件的内容如下，该提案是将最大验证人数量max_validators改成101:
@@ -42,8 +44,10 @@ nchcli tx gov submit-proposal param-change ./prososal.json --from $(nchcli keys 
   ]
 }
 ```
-#### 查询
-```
+
+* 查询
+  
+```shell
 nchcli query gov proposals
 
 [
@@ -79,17 +83,21 @@ nchcli query gov proposals
 ]
 ```
 
-#### 2.提案抵押
+## 2.提案抵押
+
 此时提案处于抵押阶段，只有对提案抵押一定的token提案才能进入下一阶段投票阶段
 
-##### 执行
-```
+* 执行
+  
+```shell
 nchcli tx gov deposit 1 10000000unch --from $(nchcli keys show sky -a)
 
 # nchcli tx gov deposit 提案号 token数量 --from 抵押者的公钥
 ```
-#### 查询
-```
+
+* 查询
+
+```shell
 nchcli query gov proposals
 
 [
@@ -132,15 +140,21 @@ nchcli query gov proposals
 可以得知目前提案处于投票阶段: VotingPeriod
 ```
 
-#### 3.提案投票
+## 3.提案投票
+
 只有提案投票数超过一定的比例提案才会被通过，否则提案被拒绝
-##### 执行
-```
+
+* 执行
+
+```shell
 nchcli tx gov vote 1 yes --from $(nchcli keys show sky -a)
 ```
-#### 查询
+
+* 查询
+
 投票阶段会一直持续到voting_end_time为止，每个区块间隔都会统计投票，以voting_end_time时间点判定最终的投票结果决定提案是否被通过，例子中的投票时间为10分钟，该参数在区块链第一次启动前在创世文件中修改，如果没有修改默认是2天，也就是投票阶段会持续2天才能确认提案是否被通过
-```
+
+```shell
 # 本例在10分钟后查询提案状态如下：
 nchcli query gov proposals
 [

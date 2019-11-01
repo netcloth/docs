@@ -1,10 +1,12 @@
-## 如何加入内测网
+# 如何加入内测网
 
-### 1. 安装nch
+## 1. 安装nch
+
 请按照[教程](../software/how-to-install.md)，安装nch
 
-### 3. 节点设置
-```
+## 2. 节点设置
+
+```shell
 nchd init local-nch-1 --chain-id nch-alphanet
 
 # 拷贝主节点genesis文件,此处从github下载
@@ -18,18 +20,20 @@ seeds = "1d71d8f60a20a5a0f379226b092aa56b64348347@18.191.12.61:26656"
 persistent_peers = "1d71d8f60a20a5a0f379226b092aa56b64348347@18.191.12.61:26656"
 ```
 
-### 4. 启动节点，同步区块
-```
+## 3. 启动节点，同步区块
+
+```shell
 # 执行下面的命令后，控制台会打印日志，同步区块
 nchd start --log_level "*:debug" --trace
 ```
 
-### 5. 查看节点同步状态
-```
+## 4. 查看节点同步状态
+
+```shell
 # 打开一个新的终端
 curl http://127.0.0.1:26657/status
 
-输出如下：
+# 输出如下：
 {
   "jsonrpc": "2.0",
   "id": "",
@@ -71,8 +75,7 @@ curl http://127.0.0.1:26657/status
 
 当节点同步到的区块高度和区块浏览器上一致时，表示节点已经同步完成，此时一个全节点就部署完成了。
 
+## 更多资源
 
-### 更多资源
-
-* 内测链区块浏览器地址： https://explorer.netcloth.org
+* 内测链区块浏览器地址： <https://explorer.netcloth.org>
 * 申请内测的token，点击[这里](testcoin.md)
