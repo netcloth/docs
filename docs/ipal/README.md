@@ -1,6 +1,6 @@
 ## IPAL使用
 
-IPAL相关操作，需要 nchcli工具，首先需要跑一个nchd节点。 加入测试网，参考[这里](alphanet.md)
+IPAL相关操作，需要 nchcli工具，首先需要跑一个nchd节点。 加入测试网，参考[这里](how-to-join-alphanet.md)
 
 ### 1. IPAL声明
 
