@@ -11,6 +11,7 @@ nchd init local-nch-1 --chain-id nch-alphanet
 
 # 拷贝主节点genesis文件,此处从github下载
 wget https://raw.githubusercontent.com/NetCloth/docs/master/alphanet/genesis.json -O  ~/.nchd/config/genesis.json
+如果wget很慢或失败请尝试手动下载文件,地址:https://github.com/NetCloth/docs/blob/master/alphanet/genesis.json
 
 修改配置文件：~/.nchd/config/config.toml， 添加主节点seed， 如下：
 # Comma separated list of seed nodes to connect to
