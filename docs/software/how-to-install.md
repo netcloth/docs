@@ -38,10 +38,8 @@ cd netcloth-chain && git checkout v1.0.2
 export GOPROXY=https://mirrors.aliyun.com/goproxy/
 
 # 安装statik
-``` bash
 sudo apt-get update
 sudo apt-get install golang-statik
-```
 
 # 编译安装
 make install
