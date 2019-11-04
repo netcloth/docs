@@ -17,7 +17,13 @@
 
 ## 安装
 
-### 1. 安装并配置go
+### 1. 搭建开发环境
+
+安装git
+``` bash
+sudo apt-get update
+sudo apt-get install git
+```
 
 安装和配置go，请点击[这里](../software/go-install.md)
 
