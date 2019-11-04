@@ -18,7 +18,15 @@ nchcli keys add dan
 
 获得内测token， 请参照[这里](./testcoin.md)
 
-## 4.创建验证人
+## 4. 设置nchcli环境变量
+``` bash
+nchcli config chain-id nch-alphanet 
+nchcli config output json 
+nchcli config indent true 
+nchcli config trust-node true
+```
+
+## 5.创建验证人
 
 ```shell
 # usage: nchcli tx staking create-validator --from=<key_name> --amount=1000000unch --moniker=<your_custom_name>  --commission-rate=0.1 --identity=<identity_string>
@@ -37,7 +45,7 @@ nchcli tx staking create-validator \
 # 重点关注命令中最后一行--from=$(nchcli keys show dan -a)，dan对应的账号作为抵押者将成为要创建的验证人
 ```
 
-## 4.查询验证人列表
+## 6.查询验证人列表
 
 ```shell
 nchcli query staking validators
@@ -101,9 +109,9 @@ nchcli query staking validators
 
 ```
 
-## 5.让刚创建的验证者出块
+## 7.让刚创建的验证者出块
 
-step10中成功创建了验证人，此时其状态为0，0表示还没有绑定，因为没有抵押足够的unch;
+step5创建了验证人，此时其状态为0，0表示还没有绑定，因为没有抵押足够的unch;
 
 1000000unch为1个voting power，voting power的最小单位为1，只有它>=1时候才能够变成绑定状态2，才能成为活跃验证者出块，因此至少还需要抵押990000unch
 
@@ -111,14 +119,14 @@ step10中成功创建了验证人，此时其状态为0，0表示还没有绑定
 
 这里需要用到步骤4中dan账号对应的验证人地址operator_address: nchvaloper18q4pv9qvmqx7dcd2jq3dl3d0755urk8300709e
 
-### 5.1 给自己抵押500000unch
+### 7.1 给自己抵押500000unch
 
 ```shell
 nchcli tx staking delegate nchvaloper18q4pv9qvmqx7dcd2jq3dl3d0755urk8300709e 500000unch --from $(nchcli keys show dan -a)
 
 ```
 
-### 5.2 也可用别的账号给dan抵押490000unch
+### 7.2 也可用别的账号给dan抵押490000unch
 
 ```shell
 nchcli tx staking delegate nchvaloper18q4pv9qvmqx7dcd2jq3dl3d0755urk8300709e 490000unch --from $(nchcli keys show bob -a)
@@ -126,7 +134,7 @@ nchcli tx staking delegate nchvaloper18q4pv9qvmqx7dcd2jq3dl3d0755urk8300709e 490
 
 5.1和5.2唯一不同的--from参数是从哪个账号抵押
 
-## 6.再次确认验证人状态为活跃验证人
+## 8.再次确认验证人状态为活跃验证人
 
 ```shell
 nchcli query staking validators
