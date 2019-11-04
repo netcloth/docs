@@ -1,4 +1,21 @@
 # go 环境配置
+要求golang版本号>=1.12.2
+
+## 检查golang安装
+```shell
+查看golang版本
+go version
+
+在ubuntu上执行结果如下:
+[20:09:04] root:~ # go version
+go version go1.12.2 linux/amd64
+
+在mac os上执行结果如下:
+➜  ~ go version
+go version go1.13 darwin/amd64
+
+如果版本号低于1.12.2请彻底卸载golang，并将GO相关的path从PATH环境变量中删除
+```
 
 ## 下载并安装go
 
