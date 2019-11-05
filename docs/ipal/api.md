@@ -26,7 +26,7 @@ curl -X POST "http://localhost:1317/txs" -H "accept: application/json" -H "Conte
 * 注册aipal节点，目前不提供api，通过命令行完成
 
 ``` shell
-# 该命令以交互的方式创建账号aipaltest并关联相应的公钥账号，需要输入两次密码来创建账号，密码用户加密生成的私钥，相当于生成keystore，同时会输出24个单词的助记词
+# 该命令以交互的方式创建账号aipaltest并关联相应的公钥账号，需要输入两次密码来创建账号，私钥通过密码加密，相当于生成keystore，同时会输出24个单词的助记词
 nchcli keys add aipaltest
 
 # 向aipaltest账号转账，sky也需要创建账号，并申请测试token，申请方法(TODO: url)
