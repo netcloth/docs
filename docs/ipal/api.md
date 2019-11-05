@@ -1,24 +1,24 @@
 
 ## REST APIs
 
-```nchcli``` 开启rest-server后，浏览器访问 ```http://localhost:1317/swagger-ui/``` 可以看到所有的REST APIs
+```nchcli``` 开启rest-server后，浏览器访问 ```http://18.191.12.61:2317/swagger-ui/``` 可以看到所有的REST APIs
 
 * 获取最新区块
 
 ```cassandraql
-curl http://localhost:1317/blocks/latest
+curl http://18.191.12.61:2317/blocks/latest
 ```
 
 * 获取指定高度的区块
 
 ```cassandraql
-curl http://localhost:1317/blocks/{height}
+curl http://18.191.12.61:2317/blocks/{height}
 ```
 
 * 广播交易
   
 ```cassandraql
-curl -X POST "http://localhost:1317/txs" -H "accept: application/json" -H "Content-Type: application/json" -d "{transaction msg}"
+curl -X POST "http://18.191.12.61:2317/txs" -H "accept: application/json" -H "Content-Type: application/json" -d "{transaction msg}"
 ```
 
 ### aipal API
@@ -41,7 +41,7 @@ nchcli aipal claim --from=aipaltest --moniker=aipaltest  --website=sky.com --det
 rest接口查询
 
  ``` cassandraql
-curl http://localhost:1317/aipal/list
+curl http://18.191.12.61:2317/aipal/list
 ```
 
 命令行查询
@@ -54,10 +54,10 @@ nchcli q aipal list
 rest接口查询
 
 ``` cassandraql
-curl http://localhost:1317/aipal/node/{addr}
+curl http://18.191.12.61:2317/aipal/node/{addr}
 
 e.g.
-curl http://localhost:1317/aipal/node/nch19uspwrym4wr366teytlu4hre9rs7afsf33dgcy
+curl http://18.191.12.61:2317/aipal/node/nch19uspwrym4wr366teytlu4hre9rs7afsf33dgcy
 
 {
   "height": "10005",
@@ -114,10 +114,10 @@ nchcli q aipal node nch19uspwrym4wr366teytlu4hre9rs7afsf33dgcy
 rest接口查询
 
 ``` cassandraql
-curl http://localhost:1317/ipal/ipal/{addr}
+curl http://18.191.12.61:2317/ipal/ipal/{addr}
 
 e.g. 已经注册
-curl http://localhost:1317/ipal/ipal/nch1jx2jcycf86vll2yfqttrj85ukws34xjhn8ef4q
+curl http://18.191.12.61:2317/ipal/ipal/nch1jx2jcycf86vll2yfqttrj85ukws34xjhn8ef4q
 
 {
   "height": "10405",
@@ -128,7 +128,7 @@ curl http://localhost:1317/ipal/ipal/nch1jx2jcycf86vll2yfqttrj85ukws34xjhn8ef4q
 }
 
 e.g. 没有注册
-http://localhost:1317/ipal/ipal/nch1a6hy8k6hscffcjgpggjs9dru4x4g58znj6pn0z
+http://18.191.12.61:2317/ipal/ipal/nch1a6hy8k6hscffcjgpggjs9dru4x4g58znj6pn0z
 
 {"error":"{\"codespace\":\"sdk\",\"code\":1,\"message\":\"not found\"}"}
 ```
@@ -154,10 +154,10 @@ nchcli q ipal ipal nch1jx2jcycf86vll2yfqttrj85ukws34xjhn8ef4q
 rest接口查询
 
 ``` cassandraql
-curl http://localhost:1317/txs/{tx_hash}
+curl http://18.191.12.61:2317/txs/{tx_hash}
 
 e.g.
-curl http://localhost:1317/txs/779C97E3882E14FD13407E78C49C2BA343FC5F55BAA2C912B8D8216C1EE269E7
+curl http://18.191.12.61:2317/txs/779C97E3882E14FD13407E78C49C2BA343FC5F55BAA2C912B8D8216C1EE269E7
 
 {
   "height": "9845",
