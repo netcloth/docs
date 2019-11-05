@@ -11,7 +11,6 @@ curl http://localhost:1317/blocks/latest
 ```
 
 * 获取指定高度的区块
-* 
 ```cassandraql
 curl http://localhost:1317/blocks/{height}
 ```
