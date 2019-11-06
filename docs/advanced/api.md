@@ -1,23 +1,25 @@
 
+# IPAL相关API
+
 ## REST APIs
 
 ```nchcli``` 开启rest-server后，浏览器访问 ```http://18.191.12.61:2317/swagger-ui/``` 可以看到所有的REST APIs
 
 * 获取最新区块
 
-```cassandraql
+```shell
 curl http://18.191.12.61:2317/blocks/latest
 ```
 
 * 获取指定高度的区块
 
-```cassandraql
+```shell
 curl http://18.191.12.61:2317/blocks/{height}
 ```
 
 * 广播交易
   
-```cassandraql
+```shell
 curl -X POST "http://18.191.12.61:2317/txs" -H "accept: application/json" -H "Content-Type: application/json" -d "{transaction msg}"
 ```
 
@@ -40,7 +42,7 @@ nchcli aipal claim --from=aipaltest --moniker=aipaltest  --website=sky.com --det
 
 rest接口查询
 
- ``` cassandraql
+ ``` shell
 curl http://18.191.12.61:2317/aipal/list
 ```
 
@@ -53,7 +55,7 @@ nchcli q aipal list
 * 根据地址/公钥查询节点信息(包含ip地址和类型标签)，区块链只支持按照地址查询，按照公钥查询需要sdk支持(将公钥转成地址再到区块链查询)
 rest接口查询
 
-``` cassandraql
+``` shell
 curl http://18.191.12.61:2317/aipal/node/{addr}
 
 e.g.
@@ -113,7 +115,7 @@ nchcli q aipal node nch19uspwrym4wr366teytlu4hre9rs7afsf33dgcy
 
 rest接口查询
 
-``` cassandraql
+``` shell
 curl http://18.191.12.61:2317/ipal/ipal/{addr}
 
 e.g. 已经注册
@@ -153,7 +155,7 @@ nchcli q ipal ipal nch1jx2jcycf86vll2yfqttrj85ukws34xjhn8ef4q
 
 rest接口查询
 
-``` cassandraql
+``` shell
 curl http://18.191.12.61:2317/txs/{tx_hash}
 
 e.g.

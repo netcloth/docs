@@ -83,7 +83,8 @@ module.exports = {
                 ],
                 sidebar: {
                     '/get-started/': genSidebarConfig ('get-started', '快速开始'),
-                    '/software/': genSidebarConfig ('software', '软件')
+                    '/software/': genSidebarConfig ('software', '软件'),
+                    '/advanced/': genSidebarConfig('advanced', '高级教程')
                 }
             }
         }
@@ -115,6 +116,20 @@ function genSidebarConfig (module, title) {
                 children: [
                     'go-install',
                     'how-to-install'
+                ]
+            }
+        ];
+    }
+
+    if (module === 'advanced') {
+        return [
+            {
+                title,
+                collapsable: false,
+                children: [
+                    'api',
+                    'ipal',
+                    'ipal-sdk'
                 ]
             }
         ];
