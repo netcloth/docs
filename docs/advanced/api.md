@@ -23,19 +23,19 @@ curl http://18.191.12.61:2317/blocks/{height}
 curl -X POST "http://18.191.12.61:2317/txs" -H "accept: application/json" -H "Content-Type: application/json" -d "{transaction msg}"
 ```
 
-### aipal API
+### ipal API
 
-* 注册aipal节点，目前不提供api，通过命令行完成
+* 注册ipal节点，目前不提供api，通过命令行完成
 
 ``` shell
 # 该命令以交互的方式创建账号aipaltest并关联相应的公钥账号，需要输入两次密码来创建账号，私钥通过密码加密，相当于生成keystore，同时会输出24个单词的助记词
-nchcli keys add aipaltest
+nchcli keys add ipaltest
 
 # 向aipaltest账号转账，sky也需要创建账号，并申请测试token，申请方法(TODO: url)
-nchcli send --from $(nchcli keys show sky -a) --to $(nchcli keys show cipaltest -a) --amount 2000000unch;
+nchcli send --from $(nchcli keys show sky -a) --to $(nchcli keys show ipaltest -a) --amount 2000000unch
 
 # 在区块链上注册服务节点，各个参数的含义请执行nchcli aipal cliam -h查看
-nchcli aipal claim --from=aipaltest --moniker=aipaltest  --website=sky.com --details="nch up" --endpoints "1|192.168.1.100:02" --bond=1000000unch;
+nchcli ipal claim --from=$(nchcli keys show ipaltest -a) --moniker=ipaltest  --website=sky.com --details="nch up" --endpoints "1|192.168.1.100:02" --bond=1000000unch
 ```
 
 * 查询服务节点列表
@@ -43,23 +43,66 @@ nchcli aipal claim --from=aipaltest --moniker=aipaltest  --website=sky.com --det
 rest接口查询
 
  ``` shell
-curl http://18.191.12.61:2317/aipal/list
+curl http://18.191.12.61:2317/ipal/list
+
+response:
+{
+  "height": "66",
+  "result": [
+    {
+      "operator_address": "nch1njcjlsgd59gnjhz3yy0u6sqntcelexdahggnsr",
+      "moniker": "ipaltest",
+      "website": "sky.com",
+      "details": "nch up",
+      "endpoints": [
+        {
+          "type": "1",
+          "endpoint": "192.168.1.100:02"
+        }
+      ],
+      "bond": {
+        "denom": "unch",
+        "amount": "1000000"
+      }
+    }
+  ]
+}
 ```
 
 命令行查询
 
 ``` shell
-nchcli q aipal list
+nchcli q ipal list
+
+response:
+[
+  {
+    "operator_address": "nch1njcjlsgd59gnjhz3yy0u6sqntcelexdahggnsr",
+    "moniker": "ipaltest",
+    "website": "sky.com",
+    "details": "nch up",
+    "endpoints": [
+      {
+        "type": "1",
+        "endpoint": "192.168.1.100:02"
+      }
+    ],
+    "bond": {
+      "denom": "unch",
+      "amount": "1000000"
+    }
+  }
+]
 ```
 
-* 根据地址/公钥查询节点信息(包含ip地址和类型标签)，区块链只支持按照地址查询，按照公钥查询需要sdk支持(将公钥转成地址再到区块链查询)
+* 根据地址查询节点信息(包含入口ip地址和类型标签)，区块链只支持按照地址查询，按照公钥查询需要sdk支持(将公钥转成地址再到区块链查询)
 rest接口查询
 
 ``` shell
-curl http://18.191.12.61:2317/aipal/node/{addr}
+curl http://18.191.12.61:2317/ipal/node/{addr}
 
 e.g.
-curl http://18.191.12.61:2317/aipal/node/nch19uspwrym4wr366teytlu4hre9rs7afsf33dgcy
+curl http://18.191.12.61:2317/ipal/node/nch19uspwrym4wr366teytlu4hre9rs7afsf33dgcy
 
 {
   "height": "10005",
@@ -85,14 +128,14 @@ curl http://18.191.12.61:2317/aipal/node/nch19uspwrym4wr366teytlu4hre9rs7afsf33d
 命令行查询
 
 ``` shell
-nchcli q aipal node 地址
+nchcli q ipal node 地址
 
 e.g.
 nchcli q aipal node nch19uspwrym4wr366teytlu4hre9rs7afsf33dgcy
 
 {
-  "operator_address": "nch19uspwrym4wr366teytlu4hre9rs7afsf33dgcy",
-  "moniker": "aipaltest",
+  "operator_address": "nch1njcjlsgd59gnjhz3yy0u6sqntcelexdahggnsr",
+  "moniker": "ipaltest",
   "website": "sky.com",
   "details": "nch up",
   "endpoints": [
@@ -103,7 +146,7 @@ nchcli q aipal node nch19uspwrym4wr366teytlu4hre9rs7afsf33dgcy
   ],
   "bond": {
     "denom": "unch",
-    "amount": "1400000"
+    "amount": "1000000"
   }
 }
 
@@ -111,7 +154,7 @@ nchcli q aipal node nch19uspwrym4wr366teytlu4hre9rs7afsf33dgcy
 
 ### cipal API
 
-* 根据地址/公钥查询ip地址，区块链只支持按照地址查询，按照公钥查询需要sdk支持(将公钥转成地址再到区块链查询)
+* 根据地址查询ip地址，区块链只支持按照地址查询，按照公钥查询需要sdk支持(将公钥转成地址再到区块链查询)
 
 rest接口查询
 
