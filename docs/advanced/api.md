@@ -159,21 +159,26 @@ nchcli q aipal node nch19uspwrym4wr366teytlu4hre9rs7afsf33dgcy
 rest接口查询
 
 ``` shell
-curl http://18.191.12.61:2317/ipal/ipal/{addr}
+curl http://18.191.12.61:2317/cipal/cipal/{addr}
 
 e.g. 已经注册
-curl http://18.191.12.61:2317/ipal/ipal/nch1jx2jcycf86vll2yfqttrj85ukws34xjhn8ef4q
+curl http://18.191.12.61:2317/cipal/cipal/nch12zsau56la368qs23f6nmn2kfe6er6d5gue7u7g
 
 {
-  "height": "10405",
+  "height": "480",
   "result": {
-    "user_address": "nch1jx2jcycf86vll2yfqttrj85ukws34xjhn8ef4q",
-    "server_ip": "192.168.1.111"
+    "user_address": "nch12zsau56la368qs23f6nmn2kfe6er6d5gue7u7g",
+    "service_infos": [
+      {
+        "type": "1",
+        "address": "nch1f94fzxp6hthrx3gzy4dmj6ccwh2xljuyzlwj8t"
+      }
+    ]
   }
 }
 
 e.g. 没有注册
-http://18.191.12.61:2317/ipal/ipal/nch1a6hy8k6hscffcjgpggjs9dru4x4g58znj6pn0z
+http://18.191.12.61:2317/cipal/cipal/nch1a6hy8k6hscffcjgpggjs9dru4x4g58znj6pn0z
 
 {"error":"{\"codespace\":\"sdk\",\"code\":1,\"message\":\"not found\"}"}
 ```
@@ -181,14 +186,19 @@ http://18.191.12.61:2317/ipal/ipal/nch1a6hy8k6hscffcjgpggjs9dru4x4g58znj6pn0z
 命令行查询
 
 ``` shell
-nchcli q ipal ipal addr
+nchcli q cipal cipal addr
 
 e.g.
-nchcli q ipal ipal nch1jx2jcycf86vll2yfqttrj85ukws34xjhn8ef4q
+nchcli q cipal cipal nch12zsau56la368qs23f6nmn2kfe6er6d5gue7u7g
 
 {
-  "user_address": "nch1jx2jcycf86vll2yfqttrj85ukws34xjhn8ef4q",
-  "server_ip": "192.168.1.111"
+  "user_address": "nch12zsau56la368qs23f6nmn2kfe6er6d5gue7u7g",
+  "service_infos": [
+    {
+      "type": "1",
+      "address": "nch1f94fzxp6hthrx3gzy4dmj6ccwh2xljuyzlwj8t"
+    }
+  ]
 }
 ```
 
