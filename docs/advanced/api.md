@@ -3,24 +3,24 @@
 
 ## REST APIs
 
-```nchcli``` 开启rest-server后，浏览器访问 ```http://18.191.12.61:2317/swagger-ui/``` 可以看到所有的REST APIs
+```nchcli``` 开启rest-server后，浏览器访问 ```http://rpc.netcloth.org/swagger-ui/``` 可以看到所有的REST APIs
 
 * 获取最新区块
 
 ```shell
-curl http://18.191.12.61:2317/blocks/latest
+curl http://rpc.netcloth.org/blocks/latest
 ```
 
 * 获取指定高度的区块
 
 ```shell
-curl http://18.191.12.61:2317/blocks/{height}
+curl http://rpc.netcloth.org/blocks/{height}
 ```
 
 * 广播交易
   
 ```shell
-curl -X POST "http://18.191.12.61:2317/txs" -H "accept: application/json" -H "Content-Type: application/json" -d "{transaction msg}"
+curl -X POST "http://rpc.netcloth.org/txs" -H "accept: application/json" -H "Content-Type: application/json" -d "{transaction msg}"
 ```
 
 ### ipal API
@@ -43,7 +43,7 @@ nchcli ipal claim --from=$(nchcli keys show ipaltest -a) --moniker=ipaltest  --w
 rest接口查询
 
  ``` shell
-curl http://18.191.12.61:2317/ipal/list
+curl http://rpc.netcloth.org/ipal/list
 
 response:
 {
@@ -69,40 +69,14 @@ response:
 }
 ```
 
-命令行查询
-
-``` shell
-nchcli q ipal list
-
-response:
-[
-  {
-    "operator_address": "nch1njcjlsgd59gnjhz3yy0u6sqntcelexdahggnsr",
-    "moniker": "ipaltest",
-    "website": "sky.com",
-    "details": "nch up",
-    "endpoints": [
-      {
-        "type": "1",
-        "endpoint": "192.168.1.100:02"
-      }
-    ],
-    "bond": {
-      "denom": "unch",
-      "amount": "1000000"
-    }
-  }
-]
-```
-
-* 根据地址查询节点信息(包含入口ip地址和类型标签)，区块链只支持按照地址查询，按照公钥查询需要sdk支持(将公钥转成地址再到区块链查询)
+* 根据地址查询IPAL
 rest接口查询
 
 ``` shell
-curl http://18.191.12.61:2317/ipal/node/{addr}
+curl http://rpc.netcloth.org/ipal/node/{addr}
 
 e.g.
-curl http://18.191.12.61:2317/ipal/node/nch19uspwrym4wr366teytlu4hre9rs7afsf33dgcy
+curl http://rpc.netcloth.org/ipal/node/nch19uspwrym4wr366teytlu4hre9rs7afsf33dgcy
 
 {
   "height": "10005",
@@ -125,44 +99,17 @@ curl http://18.191.12.61:2317/ipal/node/nch19uspwrym4wr366teytlu4hre9rs7afsf33dg
 }
 ```
 
-命令行查询
-
-``` shell
-nchcli q ipal node 地址
-
-e.g.
-nchcli q aipal node nch19uspwrym4wr366teytlu4hre9rs7afsf33dgcy
-
-{
-  "operator_address": "nch1njcjlsgd59gnjhz3yy0u6sqntcelexdahggnsr",
-  "moniker": "ipaltest",
-  "website": "sky.com",
-  "details": "nch up",
-  "endpoints": [
-    {
-      "type": "1",
-      "endpoint": "192.168.1.100:02"
-    }
-  ],
-  "bond": {
-    "denom": "unch",
-    "amount": "1000000"
-  }
-}
-
-```
-
 ### cipal API
 
-* 根据地址查询ip地址，区块链只支持按照地址查询，按照公钥查询需要sdk支持(将公钥转成地址再到区块链查询)
+* 根据地址查询CIPAL
 
 rest接口查询
 
 ``` shell
-curl http://18.191.12.61:2317/cipal/cipal/{addr}
+curl http://rpc.netcloth.org/cipal/query/{addr}
 
 e.g. 已经注册
-curl http://18.191.12.61:2317/cipal/cipal/nch12zsau56la368qs23f6nmn2kfe6er6d5gue7u7g
+curl http://rpc.netcloth.org/cipal/query/nch12zsau56la368qs23f6nmn2kfe6er6d5gue7u7g
 
 {
   "height": "480",
@@ -178,27 +125,11 @@ curl http://18.191.12.61:2317/cipal/cipal/nch12zsau56la368qs23f6nmn2kfe6er6d5gue
 }
 
 e.g. 没有注册
-http://18.191.12.61:2317/cipal/cipal/nch1a6hy8k6hscffcjgpggjs9dru4x4g58znj6pn0z
-
-{"error":"{\"codespace\":\"sdk\",\"code\":1,\"message\":\"not found\"}"}
-```
-
-命令行查询
-
-``` shell
-nchcli q cipal cipal addr
-
-e.g.
-nchcli q cipal cipal nch12zsau56la368qs23f6nmn2kfe6er6d5gue7u7g
+http://rpc.netcloth.org/cipal/query/nch1a6hy8k6hscffcjgpggjs9dru4x4g58znj6pn0z
 
 {
-  "user_address": "nch12zsau56la368qs23f6nmn2kfe6er6d5gue7u7g",
-  "service_infos": [
-    {
-      "type": "1",
-      "address": "nch1f94fzxp6hthrx3gzy4dmj6ccwh2xljuyzlwj8t"
-    }
-  ]
+  "height": "446",
+  "result": null
 }
 ```
 
@@ -209,10 +140,10 @@ nchcli q cipal cipal nch12zsau56la368qs23f6nmn2kfe6er6d5gue7u7g
 rest接口查询
 
 ``` shell
-curl http://18.191.12.61:2317/txs/{tx_hash}
+curl http://rpc.netcloth.org/txs/{tx_hash}
 
 e.g.
-curl http://18.191.12.61:2317/txs/779C97E3882E14FD13407E78C49C2BA343FC5F55BAA2C912B8D8216C1EE269E7
+curl http://rpc.netcloth.org/txs/779C97E3882E14FD13407E78C49C2BA343FC5F55BAA2C912B8D8216C1EE269E7
 
 {
   "height": "9845",
@@ -285,13 +216,4 @@ curl http://18.191.12.61:2317/txs/779C97E3882E14FD13407E78C49C2BA343FC5F55BAA2C9
   },
   "timestamp": "2019-11-05T03:33:47Z"
 }
-```
-
-命令行查询
-
-``` shell
-nchcli q tx tx_id
-
-e.g.
-nchcli q tx 779C97E3882E14FD13407E78C49C2BA343FC5F55BAA2C912B8D8216C1EE269E7
 ```
