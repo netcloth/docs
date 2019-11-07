@@ -6,4 +6,4 @@
 * [如何抵押和委托](how-to-delegate.md)
 * [如何发起提案](how-to-create-proposal.md)
 * [IPAL操作文档](../advanced/ipal.md)
-* [IPAL操作文档](../advanced/api.md)
+* [IPAL API](../advanced/api.md)
