@@ -44,10 +44,18 @@ go get -u github.com/golang/protobuf/protoc-gen-go
 ```
 
 ## 3 编译Go服务
+账户名和密码
+
+```
+netcloth_guest
+diei12@31kl#$ed
+```
+
 ```
 cd /home/admin/code
 git clone https://gitee.com/hangzhouzengxinxinxi/netcloth-server.git
 cd /home/admin/code/netcloth-server
+git submodule update --init --recursive
 cd chat_proto/pb
 ./gen,sh
 cd -
