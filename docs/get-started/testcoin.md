@@ -13,7 +13,7 @@ nchcli keys add <key_name>
 根据提示，输入钱包密码，得到示例如下输出：
 
 ```shell
-- name: dan
+- name: lucy
   type: local
   address: nch1p3fuppcxud5rjsaywuyuguh6achmj5p0r6z6ve  // 地址
   pubkey: nchpub1addwnpepqg8mfc6t9eaw9lal0c4tzma5vgmqzkgszwcgljcz3sy8rd2rukgxz9dtmph  // 公钥

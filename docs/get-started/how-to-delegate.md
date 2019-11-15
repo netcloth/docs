@@ -9,13 +9,13 @@
 如果你已经拥有钱包，可跳过此步骤
 
 ```shell
-nchcli keys add dan
+nchcli keys add lucy
 
-override the existing name dan [y/N]: y
+override the existing name lucy [y/N]: y
 Enter a passphrase to encrypt your key to disk:
 Repeat the passphrase:
 {
-  "name": "dan",
+  "name": "lucy",
   "type": "local",
   "address": "nch1l3c8k72wwt5fps9fs7h4tfdz9352m6dlsspdh5",
   "pubkey": "nchpub1addwnpepqt48jfuqrqy9n7d7vr6wvudq4nxrmupem8lw6t23k255j3mexgu0q3l6wuq",
@@ -44,7 +44,7 @@ response:
     "tokens": "1000000",
     "delegator_shares": "1000000.000000000000000000",
     "description": {
-      "moniker": "dan",
+      "moniker": "lucy",
       "identity": "",
       "website": "",
       "details": ""
