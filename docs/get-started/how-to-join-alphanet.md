@@ -7,7 +7,7 @@
 ## 2. 节点设置
 
 ```shell
-nchd init local-nch-1 --chain-id nch-alphanet
+nchd init lucy --chain-id nch-alphanet
 
 # 拷贝主节点genesis文件,此处从github下载
 wget https://raw.githubusercontent.com/NetCloth/docs/master/alphanet/genesis.json -O  ~/.nchd/config/genesis.json
@@ -50,7 +50,7 @@ curl http://127.0.0.1:26657/status
       "network": "nch-alphanet", //chain-id
       "version": "0.32.2",
       "channels": "4020212223303800",
-      "moniker": "local-nch-1", // 节点名称
+      "moniker": "lucy", // 节点名称
       "other": {
         "tx_index": "on",
         "rpc_address": "tcp://127.0.0.1:26657"
