@@ -12,3 +12,4 @@ NetCloth-Chain是一个基于隐私保护和数据安全的区块链应用网络
 * [如何抵押和委托](../get-started/how-to-delegate.md)
 * [如何发起提案](../get-started/how-to-create-proposal.md)
 * [IPAL操作文档](../ipal/README.md)
+* [即时通讯服务部署](../im/README.md)
