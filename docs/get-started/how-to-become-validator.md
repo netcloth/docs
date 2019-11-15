@@ -19,7 +19,7 @@ nchcli config trust-node true
 # usage: nchcli keys add <key_name>
 
 # 示例：
-nchcli keys add dan
+nchcli keys add lucy
 # 按照提示输入加密账号用的密码(后续执行各种交易都需要用该密码)，将命令返回的信息谨慎保存
 ```
 
@@ -36,14 +36,14 @@ nchcli keys add dan
 nchcli tx staking create-validator \
   --amount=10000unch \
   --pubkey=$(nchd tendermint show-validator -o text) \
-  --moniker="dan" \
+  --moniker="lucy" \
   --commission-rate="0.10" \
   --commission-max-rate="0.20" \
   --commission-max-change-rate="0.01" \
   --min-self-delegation="100" \
-  --from=$(nchcli keys show dan -a)
+  --from=$(nchcli keys show lucy -a)
   
-# 重点关注命令中最后一行--from=$(nchcli keys show dan -a)，dan对应的账号作为抵押者将成为要创建的验证人
+# 重点关注命令中最后一行--from=$(nchcli keys show lucy -a)，lucy对应的账号作为抵押者将成为要创建的验证人
 ```
 
 ## 6.查询验证人列表
@@ -51,7 +51,7 @@ nchcli tx staking create-validator \
 ```shell
 nchcli query staking validators
 
-可以发现多了一个moniker为dan的验证人
+可以发现多了一个moniker为lucy的验证人
 
 [
   {
@@ -62,7 +62,7 @@ nchcli query staking validators
     "tokens": "10000",
     "delegator_shares": "10000.000000000000000000",
     "description": {
-      "moniker": "dan",
+      "moniker": "lucy",
       "identity": "",
       "website": "",
       "details": ""
@@ -118,16 +118,16 @@ step5创建了验证人，此时其状态为0，0表示还没有绑定，因为�
 
 可以用自己的账号给自己抵押，也可以让别的账号给自己的验证者抵押，这里分别展示：
 
-这里需要用到步骤4中dan账号对应的验证人地址operator_address: nchvaloper18q4pv9qvmqx7dcd2jq3dl3d0755urk8300709e
+这里需要用到步骤4中lucy账号对应的验证人地址operator_address: nchvaloper18q4pv9qvmqx7dcd2jq3dl3d0755urk8300709e
 
 ### 7.1 给自己抵押500000unch
 
 ```shell
-nchcli tx staking delegate nchvaloper18q4pv9qvmqx7dcd2jq3dl3d0755urk8300709e 500000unch --from $(nchcli keys show dan -a)
+nchcli tx staking delegate nchvaloper18q4pv9qvmqx7dcd2jq3dl3d0755urk8300709e 500000unch --from $(nchcli keys show lucy -a)
 
 ```
 
-### 7.2 也可用别的账号给dan抵押490000unch
+### 7.2 也可用别的账号给lucy抵押490000unch
 
 ```shell
 nchcli tx staking delegate nchvaloper18q4pv9qvmqx7dcd2jq3dl3d0755urk8300709e 490000unch --from $(nchcli keys show bob -a)
@@ -149,7 +149,7 @@ nchcli query staking validators
     "tokens": "1000000",
     "delegator_shares": "1000000.000000000000000000",
     "description": {
-      "moniker": "dan",
+      "moniker": "lucy",
       "identity": "",
       "website": "",
       "details": ""
@@ -195,5 +195,5 @@ nchcli query staking validators
   }
 ]
 
-# 可以看到dan对应的status变成2，此时节点成为活跃验证人，可通过区块浏览器查看出块情况
+# 可以看到lucy对应的status变成2，此时节点成为活跃验证人，可通过区块浏览器查看出块情况
 ```
