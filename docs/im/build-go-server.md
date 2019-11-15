@@ -84,13 +84,13 @@ gateway:
   endpoint: "47.104.248.183:4455"
 将此处的IP换成所在机器的公网IP
 
-# 编译rourer
-cd /home/admin/code/netcloth-server/go/server/rourer
+# 编译router
+cd /home/admin/code/netcloth-server/go/server/router
 go build
-mkdir -p /home/admin/rourer/conf
-mkdir -p /home/admin/rourer/logs
-cp ./servicehub /home/admin/rourer
-cp -r ./conf/* /home/admin/rourer/conf
+mkdir -p /home/admin/router/conf
+mkdir -p /home/admin/router/logs
+cp ./router /home/admin/router
+cp -r ./conf/* /home/admin/router/conf
 ```
 
 ## 4 拷贝keystore.txt文件
@@ -98,7 +98,7 @@ cp -r ./conf/* /home/admin/rourer/conf
 
 * /home/admin/filestore/conf
 * /home/admin/servicesub/conf
-* /home/admin/rourer/conf
+* /home/admin/router/conf
 
 将相应的conf/sdk.yaml里面的KeyStorePasswd配置修改下
 
