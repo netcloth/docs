@@ -18,7 +18,7 @@ nchcli config trust-node true
 ```shell
 # 示例 <> 中的内容需要根据情况替换，后面不再提示
 
-nchcli keys add lucy
+nchcli keys add <key_name>
 # 按照提示输入加密账号用的密码(后续执行各种交易都需要用该密码)，将命令返回的信息谨慎保存
 ```
 
@@ -33,12 +33,12 @@ nchcli keys add lucy
 nchcli tx staking create-validator \
   --amount=10000unch \
   --pubkey=$(nchd tendermint show-validator -o text) \
-  --moniker="lucy" \
+  --moniker=<key_name> \
   --commission-rate="0.10" \
   --commission-max-rate="0.20" \
   --commission-max-change-rate="0.01" \
   --min-self-delegation="100" \
-  --from=$(nchcli keys show -a lucy)
+  --from=$(nchcli keys show -a <key_name>)
   
 ```
 
@@ -96,7 +96,7 @@ step5创建了验证人，此时其状态为0，0表示还没有绑定，因为�
 nchcli tx staking delegate <address-validator-operator> 990000unch --from=<key name>
 
 e.g.:
-nchcli tx staking delegate nchvaloper18q4pv9qvmqx7dcd2jq3dl3d0755urk8300709e 990000unch --from=$(nchcli keys show -a lucy)
+nchcli tx staking delegate nchvaloper18q4pv9qvmqx7dcd2jq3dl3d0755urk8300709e 990000unch --from=$(nchcli keys show -a <key name>)
 
 ```
 

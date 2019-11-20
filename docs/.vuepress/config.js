@@ -47,12 +47,17 @@ module.exports = {
                         link: '/software/how-to-install'
                     },
                     {
+                        text: 'Applications',
+                        link: '/applications/im/'
+                    },
+                    {
                         text: 'Advanced',
                         link: '/en/advanced/',
                     }
                 ],
                 sidebar: {
                     '/en/get-started/': genSidebarConfig ('get-started', 'Getting Started'),
+                    '/en/applications/im/': genSidebarConfig ('applications', 'Applications'),
                     '/en/software/': genSidebarConfig ('software', 'NetCloth daemon')
                 }
             },
@@ -77,6 +82,10 @@ module.exports = {
                         link: '/software/how-to-install'
                     },
                     {
+                        text: '应用',
+                        link: '/applications/'
+                    },
+                    {
                         text: '高级教程',
                         link: '/advanced/'
                     }
@@ -84,6 +93,7 @@ module.exports = {
                 sidebar: {
                     '/get-started/': genSidebarConfig ('get-started', '快速开始'),
                     '/software/': genSidebarConfig ('software', '软件'),
+                    '/applications/': genSidebarConfig ('applications', '应用'),
                     '/advanced/': genSidebarConfig('advanced', '高级教程')
                 }
             }
