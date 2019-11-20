@@ -94,6 +94,7 @@ module.exports = {
                     '/get-started/': genSidebarConfig ('get-started', '快速开始'),
                     '/software/': genSidebarConfig ('software', '软件'),
                     '/applications/': genSidebarConfig ('applications', '应用'),
+                    '/im/': genSidebarConfig ('im', '即时通讯服务器部署'),
                     '/advanced/': genSidebarConfig('advanced', '高级教程')
                 }
             }
@@ -140,6 +141,21 @@ function genSidebarConfig (module, title) {
                     'api',
                     'ipal',
                     'ipal-sdk'
+                ]
+            }
+        ];
+    }
+
+    if (module === 'im') {
+        return [
+            {
+                title,
+                collapsable: false,
+                children: [
+                    'prepare-deploy-environment',
+                    'build-go-server',
+                    'build-cpp-server',
+                    'deploy'
                 ]
             }
         ];
