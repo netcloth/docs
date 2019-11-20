@@ -59,7 +59,7 @@ module.exports = {
             '/': {
                 label: '简体中文',
                 selectText: '选择语言',
-                editLinkText: '编辑此页',
+                editLinkText: '完善此文档',
                 lastUpdated: '上次更新',
                 serviceWorker: {
                 },
