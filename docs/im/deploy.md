@@ -1,77 +1,54 @@
-# 启动和部署所有服务
-除了C++的chatserver以后，其他的服务都使用supervisor管理，supervisor管理脚本放在/etc/supervisor/conf.d目录
+# 服务部署
 
-需要创建如下配置文件
+服务的部署按照文档顺序执行
 
-### 1 配置redis-server，使用  touch redis.conf 命令
+## 1 对外端口开放
+当前需要以下端口可在外网访问
 
-```
-[program:redis]
-command=/usr/bin/redis-server
-stdout_logfile=/run/log/redis.log
-stderr_logfile=/run/log/redis_error.log
-```
+* 4455 客户端和服务端建立TCP长链接端口
+* 80   HTTP服务
 
-### 2  配置 consul.conf
-```
-[program:consul]
-command=/usr/local/bin/consul agent -dev -client 0.0.0.0 --ui
-autostart=true
-autorestart=true
-startsecs=20
-startretries=3
-stopasgroup=true
-stdout_logfile=/run/log/consul.log
-stderr_logfile=/run/log/consul_error.log
-```
+## 2 启动基础服务
 
-### 3 配置 filestore.conf
+在基础环境准备中已启动了nginx服务，这里需要启动redis-server和consul服务
 
 ```
-[program:filestore]
-directory=/home/admin/filestore/
-command=./filestore
-autostart=true
-autorestart=true
-startsecs=20
-startretries=3
-stopasgroup=true
-stdout_logfile=/home/admin/filestore/logs/stdout.log
-stderr_logfile=/home/admin/filestore/logs/stderr.log
+sudo cp /home/admin/code/netcloth-server/script/supervisor/consul.conf /etc/supervisor/conf.d/
+sudo cp /home/admin/code/netcloth-server/script/supervisor/redis.conf /etc/supervisor/conf.d/
+
+sudo supervisorctl
+> update
+> start consul
+> start redis
+> status
 ```
 
-### 4 配置 router.conf
+如果supervisor守护进程未启动，先启动supervisor守护进程
+
 ```
-[program:router]
-directory=/home/admin/router/
-command=./router
-autostart=true
-autorestart=true
-startsecs=20
-startretries=3
-stopasgroup=true
-stdout_logfile=/home/admin/router/logs/stdout.log
-stderr_logfile=/home/admin/router/logs/stderr.log
+sudo service supervisor start
 ```
 
-### 5 配置 servicehub.conf
+## 3 启动Go服务
+
 ```
-[program:servicehub]
-directory=/home/admin/servicehub/
-command=./servicehub
-autostart=true
-autorestart=true
-startsecs=20
-startretries=3
-stopasgroup=true
-stdout_logfile=/home/admin/servicehub/logs/stdout.log
-stderr_logfile=/home/admin/servicehub/logs/stderr.log
+sudo cp /home/admin/code/netcloth-server/script/supervisor/filestore.conf /etc/supervisor/conf.d/
+sudo cp /home/admin/code/netcloth-server/script/supervisor/router.conf /etc/supervisor/conf.d/
+sudo cp /home/admin/code/netcloth-server/script/supervisor/servicehub.conf /etc/supervisor/conf.d/
+
+sudo supervisorctl
+> update
+> start filestore
+> start router
+> start servicehub
+> status
 ```
 
-### 6 启动所有服务
+通过supervisorctl工具的status命令查看服务启动状态
 
-执行 supervisoctl 命令
-然后输入  reload
-输入 status 查看服务状态,应该需要全部是running状态才是正常
+## 4 启动C++服务
 
-
+```
+cd /home/admin/chatserver
+./chatserver
+```

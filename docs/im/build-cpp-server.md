@@ -38,17 +38,7 @@ sudo make install
 ### 2.3 安装libcurl
 
 ```
-cd /home/admin/code
-wget https://curl.haxx.se/download/curl-7.67.0.tar.gz
-tar xvzf curl-7.67.0.tar.gz
-cd curl-7.67.0
-./configure
-make
-sudo make install
-
-
-sudo rm -rf /usr/local/lib/libcurl.so.4
-sudo ln -s /usr/lib/x86_64-linux-gnu/libcurl.so.4.4.0 /usr/local/lib/libcurl.so.4 
+sudo apt install libcurl4-openssl-dev
 ```
 
 ### 2.4 安装hiredis
@@ -62,18 +52,19 @@ sudo make install
 ```
 
 ## 3 编译C++服务
+使用代码的*<font color=red>master</font>分支
+
 ```
 cd /home/admin/code
 git clone https://gitee.com/hangzhouzengxinxinxi/chat-server.git
 cd chat-server
 git submodule update --init --recursive
-cd chat_proto/
-./gen.sh
-cd pb
+cd chat_proto/pb
 ./gen.sh
 
 cd /home/admin/code/chat-server/CommonLib/out/for_linux
 ./build-boost.sh
+cd boost_1_69_0
 sudo ./b2 install
 
 cd /home/admin/code/chat-server/server
@@ -91,11 +82,9 @@ cd /home/admin/code/chat-server/server
 mkdir -p /home/admin/chatserver/conf
 mkdir -p /home/admin/chatserver/logs
 mkdir -p /home/admin/chatserver/run
-mkdir -p /home/admin/chatserver/script
 
 cp build/chatserver /home/admin/chatserver/
 cp conf/* /home/admin/chatserver/conf
-cp script/* /home/admin/chatserver/script
 ```
 
 修改 /home/admin/chatserver/conf/chatserver.conf

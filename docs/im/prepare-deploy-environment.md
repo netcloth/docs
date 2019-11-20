@@ -1,9 +1,9 @@
 # NetCloth即时通讯服务部署环境准备
 ## 1 操作系统和用户添加
 ### 1.1 操作系统要求
-必须使用Linux操作系统
+软件的开发和运维都是基于**<font color=red>Linux</font>**操作系统。
 
-当前使用的操作系统为Ubuntu 18.04 server版本，如果使用其他Linux版本在部署过程中会有略微差异。
+当前使用的操作系统为Ubuntu 18.04 server版本，C++编译器为7.x以上版本，支持**<font color=red>C++17</font>**，如果使用其他Linux版本在部署过程中会有略微差异。
 
 ### 1.2 创建admin用户
 使用admin用户部署，需要新建一个admin账号，并且添加sudo执行权限
@@ -16,30 +16,14 @@ usermod -aG sudo admin
 ```
 ## 2 基础服务部署
 
-### 2.1 PHP环境
-下载[XAMPP](https://sourceforge.net/projects/xampp/files/XAMPP%20Linux/7.3.11/xampp-linux-x64-7.3.11-0-installer.run/download), 下载完成后执行如下操作：
-
-```
-chmod +x xampp-linux-x64-7.3.11-0-installer.run
-sudo ./xampp-linux-x64-7.3.11-0-installer.run
-```
-
-安装完成后，停止Apache HTTP服务，执行如下操作
-
-```
-sudo /opt/lampp/lampp stop
-```
-
- 安装和配置nginx服务器
-
-### 2.2 nginx安装和配置
-#### 2.2.1 安装nginx
+### 2.1 nginx安装和配置
+#### 2.1.1 安装nginx
 ```
 sudo apt install nginx-full
 ```
-安装完成后执行nginx -v检查
+安装完成后执行nginx -v检查，使用nginx 1.14以上版本
 
-#### 2.2.2 修改nginx参数
+#### 2.1.2 修改nginx参数
 修改文件： /etc/nginx/nginx.conf
 
 在http选项里面新增一行，设置POST请求Body大小限制
@@ -47,9 +31,9 @@ sudo apt install nginx-full
 ```
 client_max_body_size 20m;
 ```
-#### 2.2.3 设置反向代理
+#### 2.1.3 设置反向代理
 
-修改/etc/nginx/sites-available文件
+修改/etc/nginx/sites-available/default（Ubutu nginx 1.14）  或 /etc/nginx/conf.d/default.conf （nginx 1.15以上本部）文件.
 
 在server配置里面增加如下选项
 
@@ -122,13 +106,13 @@ nginx
 * [default](./config/default)
 
 
-### 2.3 部署redis-server
+### 2.2 部署redis-server
 
 ```
 sudo apt install redis-server
 ```
 
-### 2.4 consul下载和安装
+### 2.3 consul下载和安装
 
 ```
 wget https://releases.hashicorp.com/consul/1.6.1/consul_1.6.1_linux_amd64.zip
@@ -137,8 +121,22 @@ unzip consul_1.6.1_linux_amd64.zip
 sudo mv consul /usr/local/bin
 ```
 
-### 2.5 supervisor安装
+### 2.4 supervisor安装
 
 ```
 sudo apt install supervisor
+```
+
+## 3 环境变量设置
+在.bashrc或.bash_profile中添加如下配置，GOPROXY变量看网络状况决定是否配置,配置完后执行source .bashrc
+
+```
+export PATH=$PATH:/usr/local/bin:/usr/local/go/bin:/home/admin/go/bin
+
+export GOPATH=/home/admin/go
+export GO111MODULE=on
+export GOPROXY=https://goproxy.io
+
+LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib
+export LD_LIBRARY_PATH
 ```
