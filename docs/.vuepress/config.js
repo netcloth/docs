@@ -44,11 +44,11 @@ module.exports = {
                     },
                     {
                         text: 'Software',
-                        link: '/software/how-to-install'
+                        link: '/en/software/how-to-install'
                     },
                     {
                         text: 'Applications',
-                        link: '/applications/im/'
+                        link: '/en/applications/'
                     },
                     {
                         text: 'Advanced',
@@ -57,8 +57,10 @@ module.exports = {
                 ],
                 sidebar: {
                     '/en/get-started/': genSidebarConfig ('get-started', 'Getting Started'),
-                    '/en/applications/im/': genSidebarConfig ('applications', 'Applications'),
-                    '/en/software/': genSidebarConfig ('software', 'NetCloth daemon')
+                    '/en/software/': genSidebarConfig ('software', 'Software'),
+                    '/en/applications/': genSidebarConfig ('applications', 'Applications'),
+                    '/en/im/': genSidebarConfig ('im', 'IM Server Deploy'),
+                    '/en/advanced/': genSidebarConfig('advanced', 'Advanced')
                 }
             },
             '/': {
