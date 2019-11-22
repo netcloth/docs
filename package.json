@@ -10,6 +10,7 @@
     "shelljs": "^0.8.2"
   },
   "dependencies": {
-    "vuepress": "^1.2.0"
+    "vuepress": "^1.2.0",
+    "web3": "^1.2.4"
   }
 }
