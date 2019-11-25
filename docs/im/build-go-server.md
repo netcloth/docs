@@ -49,8 +49,8 @@ go get -u github.com/golang/protobuf/protoc-gen-go
 ### 3.1 代码权限
 
 ```
-netcloth_guest
-diei12@31kl#$ed
+账号：netcloth_guest
+密码：diei12@31kl#$ed
 ```
 
 ### 3.2 获取源代码和相关依赖生成
