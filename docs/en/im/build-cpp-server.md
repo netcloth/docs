@@ -1,10 +1,10 @@
 # NetCloth即时通讯C++服务编译
 ## 1 编译环境准备
 
-### 1.1 安装cmake
+### 1.1 安装autotool
 
 ```
-sudo apt install cmake
+sudo apt install automake autoconf libtool
 ```
 
 
@@ -51,48 +51,45 @@ make
 sudo make install
 ```
 
+### 2.5 安装boost
+
+```
+wget https://dl.bintray.com/boostorg/release/1.69.0/source/boost_1_69_0.tar.gz
+tar xvzf boost_1_69_0.tar.gz
+cd boost_1_69_0
+./bootstrap.sh
+sudo ./b2 install
+```
+
 ## 3 编译C++服务
 使用代码的*<font color=red>master</font>分支
 
 ```
-cd /home/admin/code
-git clone https://gitee.com/hangzhouzengxinxinxi/chat-server.git
-cd chat-server
-git submodule update --init --recursive
-cd chat_proto/pb
-./gen.sh
-
-cd /home/admin/code/chat-server/CommonLib/out/for_linux
-./build-boost.sh
-cd boost_1_69_0
-sudo ./b2 install
-
-cd /home/admin/code/chat-server/server
+cd /home/admin/code/netcloth-server
+./autogen.sh
 mkdir build
 cd build
-cmake ../
+../configure
 make
 ```
 
 ## 部署C++服务
 
 ```
-cd /home/admin/code/chat-server/server
+mkdir -p /home/admin/gateway/conf
+mkdir -p /home/admin/gateway/logs
+mkdir -p /home/admin/gateway/run
 
-mkdir -p /home/admin/chatserver/conf
-mkdir -p /home/admin/chatserver/logs
-mkdir -p /home/admin/chatserver/run
-
-cp build/chatserver /home/admin/chatserver/
-cp conf/* /home/admin/chatserver/conf
+cp /home/admin/code/netcloth-server/cpp/build/src/gateway/home/admin/gateway/ /home/admin/gateway/
+cp /home/admin/code/netcloth-server/cpp/src/gateway/conf/* /home/admin/gateway/conf
 ```
 
-修改 /home/admin/chatserver/conf/chatserver.conf
+修改 /home/admin/gateway/conf/gateway.conf
 将server.local_ip 和 router.addr 替换成本机的内网IP
 
 启动服务
 
 ```
-cd home/admin/chatserver/
-./chatserver
+cd home/admin/gateway/
+./gateway
 ```
