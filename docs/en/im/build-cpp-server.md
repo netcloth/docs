@@ -1,16 +1,16 @@
-# NetCloth即时通讯C++服务编译
-## 1 编译环境准备
+# Instant Messaging C ++ Service Compilation
+## 1 Compilation environment preparation
 
-### 1.1 安装autotool
+### 1.1 Install cmake
 
 ```
-sudo apt install automake autoconf libtool
+sudo apt install cmake
 ```
 
 
-## 2 安装C++编译依赖环境
+## 2 nstall C ++ compilation dependencies
 
-### 2.1 安装spdlog
+### 2.1 Install spdlog
 
 ```
 cd /home/admin/code
@@ -23,7 +23,7 @@ make
 sudo make install
 ```
 
-### 2.2 安装json库
+### 2.2 Install json library
 ```
 cd /home/admin/code
 git cone https://github.com/nlohmann/json.git
@@ -35,13 +35,13 @@ make
 sudo make install
 ```
 
-### 2.3 安装libcurl
+### 2.3 Install libcurl
 
 ```
 sudo apt install libcurl4-openssl-dev
 ```
 
-### 2.4 安装hiredis
+### 2.4  Install hiredis
 
 ```
 cd /home/admin/code
@@ -51,45 +51,49 @@ make
 sudo make install
 ```
 
-### 2.5 安装boost
+## 3  Compile C ++ services
+*Use code of *<font color=red>master</font> branch
 
 ```
-wget https://dl.bintray.com/boostorg/release/1.69.0/source/boost_1_69_0.tar.gz
-tar xvzf boost_1_69_0.tar.gz
+cd /home/admin/code
+git clone https://gitee.com/hangzhouzengxinxinxi/chat-server.git
+cd chat-server
+git submodule update --init --recursive
+cd chat_proto/pb
+./gen.sh
+
+cd /home/admin/code/chat-server/CommonLib/out/for_linux
+./build-boost.sh
 cd boost_1_69_0
-./bootstrap.sh
 sudo ./b2 install
-```
 
-## 3 编译C++服务
-使用代码的*<font color=red>master</font>分支
-
-```
-cd /home/admin/code/netcloth-server
-./autogen.sh
+cd /home/admin/code/chat-server/server
 mkdir build
 cd build
-../configure
+cmake ../
 make
 ```
 
-## 部署C++服务
+## Deploying C ++ services
 
 ```
-mkdir -p /home/admin/gateway/conf
-mkdir -p /home/admin/gateway/logs
-mkdir -p /home/admin/gateway/run
+cd /home/admin/code/chat-server/server
 
-cp /home/admin/code/netcloth-server/cpp/build/src/gateway/home/admin/gateway/ /home/admin/gateway/
-cp /home/admin/code/netcloth-server/cpp/src/gateway/conf/* /home/admin/gateway/conf
+mkdir -p /home/admin/chatserver/conf
+mkdir -p /home/admin/chatserver/logs
+mkdir -p /home/admin/chatserver/run
+
+cp build/chatserver /home/admin/chatserver/
+cp conf/* /home/admin/chatserver/conf
 ```
 
-修改 /home/admin/gateway/conf/gateway.conf
-将server.local_ip 和 router.addr 替换成本机的内网IP
+modify /home/admin/chatserver/conf/chatserver.conf
 
-启动服务
+Replace server.local_ip and router.addr with your local IP
+
+Start service
 
 ```
-cd home/admin/gateway/
-./gateway
+cd home/admin/chatserver/
+./chatserver
 ```

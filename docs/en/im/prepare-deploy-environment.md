@@ -1,41 +1,45 @@
-# NetCloth即时通讯服务部署环境准备
-## 1 操作系统和用户添加
-### 1.1 操作系统要求
-软件的开发和运维都是基于**<font color=red>Linux</font>**操作系统。
+# NetCloth Instant messaging service deployment environment preparation
 
-当前使用的操作系统为Ubuntu 18.04 server版本，C++编译器为7.x以上版本，支持**<font color=red>C++17</font>**，如果使用其他Linux版本在部署过程中会有略微差异。
+## 1 OS and user add
 
-### 1.2 创建admin用户
-使用admin用户部署，需要新建一个admin账号，并且添加sudo执行权限
+### 1.1 OS requirements
 
-* 新造admin用户操作，需要sudo用户或root用户，执行以下操作
+Software development and operation and maintenance are based on **<font color=red>Linux</font>** operating system.
+
+The current operating system is Ubuntu 18.04 server version, C ++ compiler is 7.x or above, and supports **<font color=red>C++ 17</font> **. If you use other Linux versions during the deployment There will be slight differences.
+
+### 1.2 Create admin user
+
+To deploy using the admin user, you need to create a new admin account and add sudo execution permissions
+
+* To create a new admin user, you need the sudo or root user to perform the following operations:
 
 ```
 adduser admin
 usermod -aG sudo admin
 ```
-## 2 基础服务部署
+## 2 Basic service deployment
 
-### 2.1 nginx安装和配置
-#### 2.1.1 安装nginx
+### 2.1 nginx install and configuration
+#### 2.1.1 Install nginx
 ```
 sudo apt install nginx-full
 ```
-安装完成后执行nginx -v检查，使用nginx 1.14以上版本
+Perform nginx -v check after installation, use nginx 1.14 or later
 
-#### 2.1.2 修改nginx参数
-修改文件： /etc/nginx/nginx.conf
+#### 2.1.2 Modify nginx parameters
+Modify the file: /etc/nginx/nginx.conf
 
-在http选项里面新增一行，设置POST请求Body大小限制
+Add a new line in the http option to set the body size limit of the POST request
 
 ```
 client_max_body_size 20m;
 ```
-#### 2.1.3 设置反向代理
+#### 2.1.3 Setting up a reverse proxy
 
-修改/etc/nginx/sites-available/default（Ubutu nginx 1.14）  或 /etc/nginx/conf.d/default.conf （nginx 1.15以上本部）文件.
+Modify / etc / nginx / sites-available / default (Ubutu nginx 1.14) or /etc/nginx/conf.d/default.conf (nginx 1.15 and above) files.
 
-在server配置里面增加如下选项
+Add the following options in the server configuration
 
 ```
 	location ~* ^/v1/(image|video|file|contacts) {
@@ -93,26 +97,26 @@ client_max_body_size 20m;
 	}
 ```
 
-修改完成后执行如下命令检测和启动nginx
+After the modification is completed, execute the following command to detect and start nginx
 
 ```
 nginx -t
 nginx
 ```
 
-相关配置文件
+Related configuration files
 
 * [nginx.conf](./config/nginx.conf)
 * [default](./config/default)
 
 
-### 2.2 部署redis-server
+### 2.2 deploy redis-server
 
 ```
 sudo apt install redis-server
 ```
 
-### 2.3 consul下载和安装
+### 2.3 Download and install consul
 
 ```
 wget https://releases.hashicorp.com/consul/1.6.1/consul_1.6.1_linux_amd64.zip
@@ -121,14 +125,14 @@ unzip consul_1.6.1_linux_amd64.zip
 sudo mv consul /usr/local/bin
 ```
 
-### 2.4 supervisor安装
+### 2.4 Install supervisor
 
 ```
 sudo apt install supervisor
 ```
 
-## 3 环境变量设置
-在.bashrc或.bash_profile中添加如下配置，GOPROXY变量看网络状况决定是否配置,配置完后执行source .bashrc
+## 3 Environment variable settings
+ Add the following configuration to the .bashrc or .bash_profile. The GOPROXY variable depends on the network status to determine whether to configure. After the configuration, execute source .bashrc
 
 ```
 export PATH=$PATH:/usr/local/bin:/usr/local/go/bin:/home/admin/go/bin
