@@ -1,15 +1,15 @@
-# 如何发起提案
+# How to create a proposal
 
-本文介绍通过nchcli客户端操作提案的方法；本文假设你在运行私链或者devnet，并且有对应区块链的validator在出块；
+This article describes how to operate proposals with the nchcli client. This article assumes that you are running a private chain or devnet, and there is a validator corresponding to the blockchain;
 
-* 提案的状态迁移: 创建提案-->抵押阶段-->投票阶段-->提案通过/失败
-* 创建提案
-* 提案抵押
-* 提案投票
+* Proposal status transition: Create Proposal-> Delegate Phase-> Voting Phase-> Proposal Pass / Fail
+* Create proposal
+* Proposal delegation
+* Proposal voting
 
 ----
 
-以修改最大验证人数量为例，首先查看当前值max_validators=100:
+Take modifying the maximum number of validators as an example, first check the current value max_validators = 100:
 
 ```shell
 nchcli query staking params
@@ -23,14 +23,14 @@ nchcli query staking params
 }
 ```
 
-## 1.提案提交
+## 1.Proposal submission
 
-* 执行
+* submit a proposal
   
 ```shell
 nchcli tx gov submit-proposal param-change ./prososal.json --from $(nchcli keys show sky -a)
 
-./prososal.json文件的内容如下，该提案是将最大验证人数量max_validators改成101:
+# The content of the file is to change the maximum number of validators max_validators to 101:
 
 {
   "title": "Staking Param Change",
@@ -45,7 +45,7 @@ nchcli tx gov submit-proposal param-change ./prososal.json --from $(nchcli keys 
 }
 ```
 
-* 查询
+* query proposal
   
 ```shell
 nchcli query gov proposals
@@ -83,19 +83,18 @@ nchcli query gov proposals
 ]
 ```
 
-## 2.提案抵押
+## 2.Proposal delegation
 
-此时提案处于抵押阶段，只有对提案抵押一定的token提案才能进入下一阶段投票阶段
+At this point the proposal is in the delegate phase. Only proposals with a certain delegations can enter the next voting stage
 
-* 执行
+* delegate a proposal
   
 ```shell
 nchcli tx gov deposit 1 10000000unch --from $(nchcli keys show sky -a)
 
-# nchcli tx gov deposit 提案号 token数量 --from 抵押者的公钥
 ```
 
-* 查询
+* query proposal
 
 ```shell
 nchcli query gov proposals
@@ -137,25 +136,23 @@ nchcli query gov proposals
   }
 ]
 
-可以得知目前提案处于投票阶段: VotingPeriod
+# It can be seen that the current proposal is in the voting stage: VotingPeriod
 ```
 
-## 3.提案投票
+## 3.Proposal voting
 
-只有提案投票数超过一定的比例提案才会被通过，否则提案被拒绝
+The proposal will be approved only if the number of votes in the proposal exceeds a certain percentage, otherwise the proposal will be rejected
 
-* 执行
-
+* vote a proposal
+  
 ```shell
 nchcli tx gov vote 1 yes --from $(nchcli keys show sky -a)
 ```
 
-* 查询
-
-投票阶段会一直持续到voting_end_time为止，每个区块间隔都会统计投票，以voting_end_time时间点判定最终的投票结果决定提案是否被通过，例子中的投票时间为10分钟，该参数在区块链第一次启动前在创世文件中修改，如果没有修改默认是2天，也就是投票阶段会持续2天才能确认提案是否被通过
+* query a proposal
 
 ```shell
-# 本例在10分钟后查询提案状态如下：
+# In this example, the query status of the proposal after 10 minutes is as follows:
 nchcli query gov proposals
 [
   {
@@ -194,7 +191,7 @@ nchcli query gov proposals
   }
 ]
 
-# 确认最大验证人数量是否修改为101
+# Confirm whether the maximum number of validators is changed to 101
 nchcli query staking params
 
 {
@@ -207,4 +204,4 @@ nchcli query staking params
 
 ```
 
-以上最终最大验证人数量由100修改成101
+The above final maximum number of validators was changed from 100 to 101

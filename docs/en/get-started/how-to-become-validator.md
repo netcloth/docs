@@ -1,10 +1,10 @@
-# 如何运行一个验证人
+# How to run a validator
 
-## 1. 安装并部署全节点
+## 1. Install and deploy a full node
 
-请首先按照[教程](./how-to-join-alphanet.md)，部署内测网的全节点，并且确保同步到了最新区块高度。
+Please follow the [tutorial](./how-to-join-alphanet.md) to deploy the full node of the internal test network and ensure that it is synchronized to the latest block height.
 
-## 2. 设置nchcli环境变量
+## 2. Set the environment
 
 ``` bash
 nchcli config chain-id nch-alphanet
@@ -13,20 +13,20 @@ nchcli config indent true
 nchcli config trust-node true
 ```
 
-## 3.创建账号
+## 3.Create an account
 
 ```shell
-# 示例 <> 中的内容需要根据情况替换，后面不再提示
+# The content in the example <> needs to be replaced according to the situation.
 
 nchcli keys add <key_name>
-# 按照提示输入加密账号用的密码(后续执行各种交易都需要用该密码)，将命令返回的信息谨慎保存
+# Enter the password for the encrypted account as prompted (required for subsequent transactions), and carefully save the information returned by the command
 ```
 
-## 4. 获得内测token
+## 4. Obtain test Token
 
-获得内测token， 请参照[这里](./testcoin.md)
+To get the internal test token, please refer to [here](./testcoin.md)
 
-## 5.创建验证人
+## 5. Create a validator
 
 ```shell
 
@@ -42,12 +42,12 @@ nchcli tx staking create-validator \
   
 ```
 
-## 6.查询验证人列表
+## 6. Query validators
 
 ```shell
 nchcli query staking validators
 
-可以发现列表中新增加的验证人lucy
+# You can find the newly added validator lucy in the list
 
 [
   {
@@ -80,17 +80,17 @@ nchcli query staking validators
 
 ```
 
-## 7.让刚创建的验证者出块
+## 7. Let the validator just create block
 
-step5创建了验证人，此时其状态为0，0表示还没有绑定，因为没有抵押足够的unch;
+Step5 creates a validator, and its status is 0 at this time, 0 means that it has not been bound because there is not enough unch to mortgage;
 
-1000000unch为1个voting power，voting power的最小单位为1，只有它>=1时候才能够变成绑定状态2，才能成为活跃验证者出块，因此至少还需要抵押990000unch
+1000000unch is a voting power, and the minimum unit of voting power is 1. Only when it is> = 1 can it become the binding state 2 and become an active validator to produce blocks.
 
-可以用自己的账号给自己抵押，也可以让别的账号给自己的验证者抵押，这里分别展示：
+Therefore, at least 990000unch needs to be mortgaged. You can use your own account to collateral yourself, or you can let other accounts collateral to your verifier. Here are shown separately:
 
-这里需要用到步骤4中lucy账号对应的验证人地址operator_address: nchvaloper18q4pv9qvmqx7dcd2jq3dl3d0755urk8300709e
+Here you need to use the validator address corresponding to the lucy account in step 4. operator_address: nchvaloper18q4pv9qvmqx7dcd2jq3dl3d0755urk8300709e
 
-### 7.1 抵押990000unch
+### Delegate 990000unch
 
 ```shell
 nchcli tx staking delegate <address-validator-operator> 990000unch --from=<key name>
@@ -100,7 +100,7 @@ nchcli tx staking delegate nchvaloper18q4pv9qvmqx7dcd2jq3dl3d0755urk8300709e 990
 
 ```
 
-## 8.再次确认验证人状态为活跃验证人
+## 8. Confirm the validator status
 
 ```shell
 nchcli query staking validators
@@ -160,5 +160,5 @@ nchcli query staking validators
   }
 ]
 
-# 可以看到新增加验证人lucy的status变成2，成为活跃验证人，可通过区块浏览器查看出块情况
+# You can see that the status of the newly added validator lucy becomes 2, an active validator, you can check the block status through the block browser
 ```

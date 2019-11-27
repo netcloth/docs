@@ -1,16 +1,16 @@
-## 快速开始
+## Quick start
 
-### 区块链操作
+### Blockchain
 
-* [如何加入内测网](how-to-join-alphanet.md)
-* [申领内测token](testcoin.md)
-* [如何创建验证人](how-to-become-validator.md)
-* [如何抵押和委托](how-to-delegate.md)
-* [如何发起提案](how-to-create-proposal.md)
+* [How to join alphanet](how-to-join-alphanet.md)
+* [How to get test token](testcoin.md)
+* [How to become a validator](how-to-become-validator.md)
+* [How to delegate](how-to-delegate.md)
+* [How to create a proposal](how-to-create-proposal.md)
 
-### IPAL操作
-* [IPAL操作文档](../advanced/ipal.md)
+### IPAL
+* [IPAL documents](../advanced/ipal.md)
 * [IPAL API](../advanced/api.md)
   
-### 即时通讯服务部署
-* [即时通讯服务部署](../im/README.md)
+### Instant messaging service
+* [Instant messaging service deployment](../im/README.md)

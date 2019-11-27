@@ -1,12 +1,12 @@
-# 如何向验证人委托
+# How to delegate to a validator
 
-这里假设你部署并同步了内测网的节点。
+It is assumed here that you have deployed and synchronized the nodes of the internal test network.
 
-如何加入内测网，点击[这里](how-to-join-alphanet.md)。
+How to join the internal test network, click [here](how-to-join-alphanet.md)。
 
-## 新创建一个钱包地址
+## Create a new wallet
 
-如果你已经拥有钱包，可跳过此步骤
+If you already have a wallet, you can skip this step
 
 ```shell
 nchcli keys add lucy
@@ -23,13 +23,13 @@ Repeat the passphrase:
 }
 ```
 
-## 获得内测token
+## Obtain test Token
 
-获得内测token， 请参照[这里](./testcoin.md)
+Obtain test Token, refer to [here](./testcoin.md)
 
-## 委托
+## delegation
 
-### 查询验证人列表
+### Query validator list
 
 ```shell
 nchcli query staking validators
@@ -91,10 +91,10 @@ response:
 ]
 ```
 
-* 也可以根据验证人的地址查询验证人
+* You can also check the validator based on the address of the validator
 
 ```shell
-# 根据operator_address查询对应的验证人信息(本例中查询的地址为nchvaloper133vmttt6n49jac5zn3z0klcpe7m8qluglfu58z)
+# Query corresponding validator information according to operator_address(The address queried in this example is nchvaloper133vmttt6n49jac5zn3z0klcpe7m8qluglfu58z)
 # usage: nchcli query staking validator  <validatorAddress>
 nchcli query staking validator nchvaloper133vmttt6n49jac5zn3z0klcpe7m8qluglfu58z
 
@@ -127,13 +127,13 @@ response:
 }
 ```
 
-### 向验证人委托nch
+### Delegate to validator
 
 ```shell
-#委托分2种：验证人自委托 和 用户委托
+# There are 2 types of commission: self-delegation and user delegation
 # usage: nchcli tx staking delegate <validatorAddress> <amountToBond> --from <delegatorKeyName> 
 
-# 使用alice账号向验证人
+# Use alice account
 nchcli tx staking delegate nchvaloper133vmttt6n49jac5zn3z0klcpe7m8qluglfu58z 6000000unch --from  $(nchcli keys show alice -a)
 
 response:
@@ -177,10 +177,10 @@ Password to sign with 'alice':
 }
 ```
 
-### 查询委托信息
+### query delegation
 
 ```shell
-# 查询账户alice的所有委托
+# Check all delegations for account alice
 usage: nchcli query staking delegations <delegatorAddress>
 nchcli query staking delegations $(nchcli keys show alice -a) 
 
@@ -194,7 +194,7 @@ response:
   }
 ]
 
-# 查询特定账户和验证人之间的委托（参数为委托者地址和验证人地址）
+# Query delegation between specific account and validator(The parameters are the address of the principal and the address of the validator)
 # usage: nchcli query staking delegation  <delegatorAddress> <validatorAddress>
 nchcli query staking delegation  $(nchcli keys show alice -a) nchvaloper133vmttt6n49jac5zn3z0klcpe7m8qluglfu58z
 
@@ -206,7 +206,7 @@ response:
   "balance": "13000000"
 }
 
-# 查询账户的委托收益
+# uery the commission income of an account
 # usage: nchcli query distribution rewards <delegatorAddress> 
 nchcli query distribution rewards nch133vmttt6n49jac5zn3z0klcpe7m8qlugyggx5w
 
@@ -232,12 +232,11 @@ response:
 }
 ```
 
-### 取回委托的nch
+### Unbond delegation
 
 ```shell
 # usage: nchcli tx staking unbond <validator_address> 100unch --from <mykey>
-# 示例：
+# Example:
 nchcli tx staking unbond nchvaloper133vmttt6n49jac5zn3z0klcpe7m8qluglfu58z 100unch --from alice
 
 ```
-
