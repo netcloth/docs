@@ -1,22 +1,21 @@
 
+##  Introduction
 
-## NetCloth简介
+NetCloth-Chain is a blockchain application network based on privacy protection and data security.
 
-NetCloth-Chain是一个基于隐私保护和数据安全的区块链应用网络。
+###  Quick start
 
-### 快速开始
+### Blockchain operations
 
-### 区块链操作
+* [How to join the internal test network](../get-started/how-to-join-alphanet.md)
+* [Claim an internal test token](../get-started/testcoin.md)
+* [How to create a validator](../get-started/how-to-become-validator.md)
+* [How to delegate](../get-started/how-to-delegate.md)
+* [How to create a proposal](../get-started/how-to-create-proposal.md)
 
-* [如何加入内测网](../get-started/how-to-join-alphanet.md)
-* [申领内测token](../get-started/testcoin.md)
-* [如何创建验证人](../get-started/how-to-become-validator.md)
-* [如何抵押和委托](../get-started/how-to-delegate.md)
-* [如何发起提案](../get-started/how-to-create-proposal.md)
-
-### IPAL操作
-* [IPAL操作文档](../advanced/ipal.md)
+### IPAL operation
+* [IPAL  Document](../advanced/ipal.md)
 * [IPAL API](../advanced/api.md)
   
-### 即时通讯服务部署
-* [即时通讯服务部署](../im/README.md)
+### Instant messaging service deployment
+* [Instant messaging service deployment](../im/README.md)

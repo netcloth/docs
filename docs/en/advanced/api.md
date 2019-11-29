@@ -1,46 +1,44 @@
 
-# IPAL相关API
+# IPAL API
 
 ## REST APIs
 
-```nchcli``` 开启rest-server后，浏览器访问 ```http://rpc.netcloth.org/swagger-ui/``` 可以看到所有的REST APIs
+ After ```nchcli``` rest-server is enabled, You can see all the REST APIs from ```http://localhost:1317/swagger-ui/```  
 
-* 获取最新区块
+* Get the latest block
 
 ```shell
 curl http://rpc.netcloth.org/blocks/latest
 ```
 
-* 获取指定高度的区块
+* Get block by height
 
 ```shell
 curl http://rpc.netcloth.org/blocks/{height}
 ```
 
-* 广播交易
+* Broadcast transaction
   
 ```shell
 curl -X POST "http://rpc.netcloth.org/txs" -H "accept: application/json" -H "Content-Type: application/json" -d "{transaction msg}"
 ```
 
-### ipal API
+### IPAL API
 
-* 注册ipal节点，目前不提供api，通过命令行完成
+* Register ipal node with command line
 
 ``` shell
-# 该命令以交互的方式创建账号aipaltest并关联相应的公钥账号，需要输入两次密码来创建账号，私钥通过密码加密，相当于生成keystore，同时会输出24个单词的助记词
-nchcli keys add ipaltest
+# This command creates an account interactively. The private key is encrypted with a password.
+nchcli keys add <key name>
 
-# 向aipaltest账号转账，sky也需要创建账号，并申请测试token，申请方法(TODO: url)
-nchcli send --from $(nchcli keys show sky -a) --to $(nchcli keys show ipaltest -a) --amount 2000000unch
+# Transfer
+nchcli send --from $(nchcli keys show <key name2> -a) --to $(nchcli keys show <key name> -a) --amount 2000000unch
 
-# 在区块链上注册服务节点，各个参数的含义请执行nchcli aipal cliam -h查看
-nchcli ipal claim --from=$(nchcli keys show ipaltest -a) --moniker=ipaltest  --website=sky.com --details="nch up" --endpoints "1|192.168.1.100:02" --bond=1000000unch
+# Register the service node on the blockchain. For the meaning of each parameter, please execute nchcli aipal cliam -h
+nchcli ipal claim --from=$(nchcli keys show <key name> -a) --moniker=<node name>  --website=<website>--details="nch up" --endpoints "1|192.168.1.100:02" --bond=1000000unch
 ```
 
-* 查询服务节点列表
-
-rest接口查询
+* Query service node list
 
  ``` shell
 curl http://rpc.netcloth.org/ipal/list
@@ -69,8 +67,7 @@ response:
 }
 ```
 
-* 根据地址查询IPAL
-rest接口查询
+* Querying IPAL by Address
 
 ``` shell
 curl http://rpc.netcloth.org/ipal/node/{addr}
@@ -99,16 +96,15 @@ curl http://rpc.netcloth.org/ipal/node/nch19uspwrym4wr366teytlu4hre9rs7afsf33dgc
 }
 ```
 
-### cipal API
+### CIPAL API
 
-* 根据地址查询CIPAL
+* Querying CIPAL by Address
 
-rest接口查询
 
 ``` shell
 curl http://rpc.netcloth.org/cipal/query/{addr}
 
-e.g. 已经注册
+e.g. Already registered
 curl http://rpc.netcloth.org/cipal/query/nch12zsau56la368qs23f6nmn2kfe6er6d5gue7u7g
 
 {
@@ -124,7 +120,7 @@ curl http://rpc.netcloth.org/cipal/query/nch12zsau56la368qs23f6nmn2kfe6er6d5gue7
   }
 }
 
-e.g. 没有注册
+e.g. unregistered
 http://rpc.netcloth.org/cipal/query/nch1a6hy8k6hscffcjgpggjs9dru4x4g58znj6pn0z
 
 {
@@ -133,11 +129,7 @@ http://rpc.netcloth.org/cipal/query/nch1a6hy8k6hscffcjgpggjs9dru4x4g58znj6pn0z
 }
 ```
 
-### 根据交易hash查询交易结果
-
-通用接口
-
-rest接口查询
+### Query transaction by transaction hash
 
 ``` shell
 curl http://rpc.netcloth.org/txs/{tx_hash}

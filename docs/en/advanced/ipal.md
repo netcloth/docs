@@ -1,10 +1,11 @@
-# IPAL使用
+# How to use IPAL
 
-IPAL相关操作，需要 nchcli工具，首先需要跑一个nchd节点。 加入测试网，参考[这里](../get-started/how-to-join-alphanet.md)
+For IPAL related operations, the nchcli tool is required. 
+First, an nchd full node needs to be run. Join the testnet, see [here](../get-started/how-to-join-alphanet.md)
 
 ## 1. IPAL
 
-* 声明IPAL
+* IPAL claim
 
 ```shell
 # usage :
@@ -13,7 +14,7 @@ IPAL相关操作，需要 nchcli工具，首先需要跑一个nchd节点。 加�
 nchcli ipal claim --from=ipaltest --moniker=ipaltest  --website=ipaltest.com --details="ipal test" --endpoints "1|192.168.1.100:1000,2|192.168.1.200:2000" --bond=1400000unch
 ```
 
-* 查询IPAL列表
+* Querying the IPAL List
 
 ```shell
 # usage
@@ -70,7 +71,7 @@ response:
 
 ```
 
-* 查询IPAL
+* Query IPAL
 
 ```shell
 # usage
@@ -107,7 +108,7 @@ response:
 
 ## 2. CIPAL
 
-* 声明
+* claim
 
 ```shell
 # usage
@@ -116,7 +117,7 @@ response:
 nchcli cipal claim --user cipaltest --proxy nch1f2h4shfaugqgmryg9wxjyu8ehhddc5yuh0t0fw --service_type 1 --service_address nch196mwu4e5l86t73rhw690xkfdagx6lkmkrxpsta
 ```
 
-* 查询
+* query
 
 ```shell
 # usage

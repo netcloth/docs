@@ -1,6 +1,6 @@
-# 使用sdk发起IPAL记账
+# How to use nch-sdk
 
-## IPAL交易结构
+## IPAL transaction structure
 
 user_request
 
@@ -23,7 +23,7 @@ type MsgIPALClaim struct {
 }
 ```
 
-* 填充交易结构
+*  Filling the transaction structure
   
 ```go
 msg := types.NewMsgIPALClaim(cliCtxProxy.GetFromAddress(), userAddress, serverIP, expiration, stdSig)
@@ -52,7 +52,7 @@ func NewADParam(userAddress string, serverIP string, expiration time.Time) ADPar
 ```
 
 
-* 签名
+* signature
   
 ```go
 
@@ -76,10 +76,10 @@ newTx := auth.NewStdTx(msg.Msgs, msg.Fee, []auth.StdSignature{sig}, msg.Memo)
 
 ```
 
-* 广播交易
+* Broadcast transaction
   
 ```go
 curl -X POST "http://rpc.netcloth.org/txs" -H "accept: application/json" -H "Content-Type: application/json" -d "{transaction msg}"
 ```
 
-**SDK示例，参考[这里](https://github.com/NetCloth/go-sdk)**
+**SDK example, refer to [here](https://github.com/NetCloth/go-sdk)**

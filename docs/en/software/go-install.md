@@ -1,47 +1,46 @@
-# go 环境配置
-要求golang版本号>=1.12.2
+# go environment configuration
+Require golang version number>=1.12.2
 
-## 检查golang安装
+## Check golang installation
 ```shell
-查看golang版本
 go version
 
-在ubuntu上执行结果如下:
+Results on ubuntu are as follows:
 [20:09:04] root:~ # go version
 go version go1.12.2 linux/amd64
 
-在mac os上执行结果如下:
+Results on mac os are as follows:
 ➜  ~ go version
 go version go1.13 darwin/amd64
 
-如果版本号低于1.12.2请彻底卸载golang，并将GO相关的path从PATH环境变量中删除
+If go version number is lower than 1.12.2, please uninstall golang completely, and remove the GO related path from the PATH environment variable
 ```
 
-## 下载并安装go
+## Download and install go
 
 ```shell
-# macOS系统执行如下命令
+# for macOS
 wget https://dl.google.com/go/go1.12.2.darwin-amd64.tar.gz
 tar -xvf go1.12.2.darwin-amd64.tar.gz
 mv go /usr/local
 
-# ubuntu系统执行如下命令
+# for ubuntu
 wget https://dl.google.com/go/go1.12.2.linux-amd64.tar.gz
 tar -xvf go1.12.2.linux-amd64.tar.gz
 sudo mv go /usr/local
 ```
 
-## 设置环境变量
+## Setting environment variables
 
 ```shell
-# 修改~/.bashrc，添加如下：
+# ：Modify ~/.bashrc and add the following:
 export GOROOT=/usr/local/go
 export GOPATH=$HOME/go
 export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
 export GO111MODULE=on
 ```
 
-修改完成后，执行如下命令：
+After the modification , execute the following command:
 
 ```shell
 source ~/.bashrc

@@ -1,3 +1,3 @@
-## 高级教程
+## Advanced tutorial
 
-* [交易结构](./transaction.md)
+* [Transaction structure](./transaction.md)

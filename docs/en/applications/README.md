@@ -1,14 +1,14 @@
-## IPAL 操作指南
+## IPAL  Guide
 
-* [IPAL操作文档](../advanced/ipal.md)
+* [IPAL Document](../advanced/ipal.md)
 * [IPAL API](../advanced/api.md)
   
 
-## NetCloth即时通讯服务部署指南
+## NetCloth Instant Messaging Service Deployment Guide
 
-### 部署步骤
+### Deployment steps
 
-* [部署环境准备](../im/prepare-deploy-environment.md)
-* [Go服务编译](../im/build-go-server.md)
-* [C++服务编译](../im/build-cpp-server.md)
-* [部署启动服务](../im/deploy.md)
+* [Preparation for deployment environment](../im/prepare-deploy-environment.md)
+* [Build go server](../im/build-go-server.md)
+* [Build C++ server](../im/build-cpp-server.md)
+* [Deploy](../im/deploy.md)
