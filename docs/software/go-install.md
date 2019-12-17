@@ -1,5 +1,5 @@
 # go 环境配置
-要求golang版本号>=1.12.2
+要求golang版本号>=1.13.5
 
 ## 检查golang安装
 ```shell
@@ -8,26 +8,26 @@ go version
 
 在ubuntu上执行结果如下:
 [20:09:04] root:~ # go version
-go version go1.12.2 linux/amd64
+go version go1.13.5 linux/amd64
 
 在mac os上执行结果如下:
 ➜  ~ go version
-go version go1.13 darwin/amd64
+go version go1.13.3 darwin/amd64
 
-如果版本号低于1.12.2请彻底卸载golang，并将GO相关的path从PATH环境变量中删除
+如果版本号低于1.13.5请彻底卸载golang，并将GO相关的path从PATH环境变量中删除
 ```
 
 ## 下载并安装go
 
 ```shell
 # macOS系统执行如下命令
-wget https://dl.google.com/go/go1.12.2.darwin-amd64.tar.gz
-tar -xvf go1.12.2.darwin-amd64.tar.gz
+wget https://dl.google.com/go/go1.13.5.darwin-amd64.tar.gz
+tar -xvf go1.13.5.darwin-amd64.tar.gz
 mv go /usr/local
 
 # ubuntu系统执行如下命令
-wget https://dl.google.com/go/go1.12.2.linux-amd64.tar.gz
-tar -xvf go1.12.2.linux-amd64.tar.gz
+wget https://dl.google.com/go/go1.13.5.linux-amd64.tar.gz
+tar -xvf go1.13.5.linux-amd64.tar.gz
 sudo mv go /usr/local
 ```
 
