@@ -1,35 +1,47 @@
-## How to install nch
+# go environment configuration
+Require golang version number>=1.13.5
 
-### Latest Version
+## Check golang installation
+```shell
+go version
 
-The latest version of nch is v1.0.0
+Results on ubuntu are as follows:
+[20:09:04] root:~ # go version
+go version go1.13.5 linux/amd64
 
-### Server configuration
+Results on mac os are as follows:
+➜  ~ go version
+go version go1.13.5 darwin/amd64
 
-Recommended server configurations：
-* CPU cores： 2
-* Memory： 4GB
-* Disk：100GB SSD
-* OS： Ubuntu 16.04+
-* Bandwidth：10Mbps
-* Open ports： 26656 and 26657
-
-### Install
-
-#### Install go
-
-Install go by following the [instructions](../software/go-install.md)
-
-#### Build nch from source
+If go version number is lower than 1.13.5, please uninstall golang completely, and remove the GO related path from the PATH environment variable
 ```
-# Get source code
-git clone https://github.com/NetCloth/netcloth-chain.git
-cd netcloth-chain && git checkout v1.0.0
 
-# build and install
-make install
+## Download and install go
 
-# check version
-nchd version
-nchcli version
+```shell
+# for macOS
+wget https://dl.google.com/go/go1.13.5.darwin-amd64.tar.gz
+tar -xvf go1.13.5.darwin-amd64.tar.gz
+mv go /usr/local
+
+# for ubuntu
+wget https://dl.google.com/go/go1.13.5.linux-amd64.tar.gz
+tar -xvf go1.13.5.linux-amd64.tar.gz
+sudo mv go /usr/local
+```
+
+## Setting environment variables
+
+```shell
+# ：Modify ~/.bashrc and add the following:
+export GOROOT=/usr/local/go
+export GOPATH=$HOME/go
+export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
+export GO111MODULE=on
+```
+
+After the modification , execute the following command:
+
+```shell
+source ~/.bashrc
 ```

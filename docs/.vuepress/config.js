@@ -44,7 +44,11 @@ module.exports = {
                     },
                     {
                         text: 'Software',
-                        link: '/software/how-to-install'
+                        link: '/en/software/how-to-install'
+                    },
+                    {
+                        text: 'Applications',
+                        link: '/en/applications/'
                     },
                     {
                         text: 'Advanced',
@@ -53,13 +57,16 @@ module.exports = {
                 ],
                 sidebar: {
                     '/en/get-started/': genSidebarConfig ('get-started', 'Getting Started'),
-                    '/en/software/': genSidebarConfig ('software', 'NetCloth daemon')
+                    '/en/software/': genSidebarConfig ('software', 'Software'),
+                    '/en/applications/': genSidebarConfig ('applications', 'Applications'),
+                    '/en/im/': genSidebarConfig ('im', 'IM Server Deploy'),
+                    '/en/advanced/': genSidebarConfig('advanced', 'Advanced')
                 }
             },
             '/': {
                 label: '简体中文',
                 selectText: '选择语言',
-                editLinkText: '编辑此页',
+                editLinkText: '完善此文档',
                 lastUpdated: '上次更新',
                 serviceWorker: {
                 },
@@ -77,6 +84,10 @@ module.exports = {
                         link: '/software/how-to-install'
                     },
                     {
+                        text: '应用',
+                        link: '/applications/'
+                    },
+                    {
                         text: '高级教程',
                         link: '/advanced/'
                     }
@@ -84,6 +95,8 @@ module.exports = {
                 sidebar: {
                     '/get-started/': genSidebarConfig ('get-started', '快速开始'),
                     '/software/': genSidebarConfig ('software', '软件'),
+                    '/applications/': genSidebarConfig ('applications', '应用'),
+                    '/im/': genSidebarConfig ('im', '即时通讯服务器部署'),
                     '/advanced/': genSidebarConfig('advanced', '高级教程')
                 }
             }
@@ -130,6 +143,21 @@ function genSidebarConfig (module, title) {
                     'api',
                     'ipal',
                     'ipal-sdk'
+                ]
+            }
+        ];
+    }
+
+    if (module === 'im') {
+        return [
+            {
+                title,
+                collapsable: false,
+                children: [
+                    'prepare-deploy-environment',
+                    'build-go-server',
+                    'build-cpp-server',
+                    'deploy'
                 ]
             }
         ];

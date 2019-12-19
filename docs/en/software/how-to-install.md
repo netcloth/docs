@@ -1,34 +1,49 @@
-## 如何安装nch
+# How to install nch
 
-### 最新版本
-当前最新的内测版本为 v1.0.0
+## The latest version
 
-### 服务器配置
+The latest internal beta version is v1.0.8
 
-推荐的服务器配置：
-* CPU 核数： 2
-* 内存： 4GB
-* 磁盘：100GB SSD
-* 操作系统： Ubuntu 16.04+
-* 带宽：10Mbps
-* 开放端口： 26656和26657
+## Server configuration
 
-### 安装
+Recommended server configuration:
 
-#### 1. 安装并配置go
+* CPU cores: 2
+* RAM: 4GB+
+* Disk: 100GB+ SSD
+* OS: Ubuntu 18.04
+* Bandwidth:10Mbps
+* Open ports: 26656 and 26657
 
-安装和配置go，请点击[这里](../software/go-install.md)
+## Installation
 
-#### 2. 源码编译nch节点程序
+### 1. Setting up a development environment
+
+* Install git
+
+```shell
+sudo apt-get update
+sudo apt-get install git
 ```
-# 获取nch 源码
-git clone https://github.com/NetCloth/netcloth-chain.git
-cd netcloth-chain && git checkout v1.0.0
 
-# 编译安装
+To install and configure go, click [here](../software/go-install.md)
+
+### 2. Build nch from source code
+
+```shell 
+# Get nch source
+git clone https://github.com/NetCloth/netcloth-chain.git
+cd netcloth-chain && git checkout v1.0.8
+
+
+# Install statik
+sudo apt-get update
+sudo apt-get install golang-statik
+
+# Compile and install
 make install
 
-# 编译完成后，检查版本号
+# After compiling, Check version number
 nchd version
 nchcli version
 ```

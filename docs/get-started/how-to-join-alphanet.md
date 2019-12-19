@@ -7,6 +7,9 @@
 ## 2. 节点设置
 
 ```shell
+# usage: 
+# nchd init <your_custom_name> --chain-id nch-alphanet
+# example:
 nchd init lucy --chain-id nch-alphanet
 
 # 拷贝主节点genesis文件,此处从github下载
