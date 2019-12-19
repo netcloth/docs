@@ -11,7 +11,7 @@ Recommended server configuration:
 * CPU cores: 2
 * RAM: 4GB+
 * Disk: 100GB+ SSD
-* OS: Ubuntu 16.04+
+* OS: Ubuntu 18.04
 * Bandwidth:10Mbps
 * Open ports: 26656 and 26657
 
