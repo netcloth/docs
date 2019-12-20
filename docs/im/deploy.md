@@ -7,10 +7,13 @@
 
 * 4455 客户端和服务端建立TCP长链接端口
 * 80   HTTP服务
+* 1080 gRPC服务
 
 ## 2 启动基础服务
 
 在基础环境准备中已启动了nginx服务，这里需要启动redis-server和consul服务
+
+注意：如果redis-server已启动，则不需要执行redis相关操作
 
 ```
 sudo cp /home/admin/code/netcloth-server/script/supervisor/consul.conf /etc/supervisor/conf.d/
@@ -35,20 +38,24 @@ sudo service supervisor start
 sudo cp /home/admin/code/netcloth-server/script/supervisor/filestore.conf /etc/supervisor/conf.d/
 sudo cp /home/admin/code/netcloth-server/script/supervisor/router.conf /etc/supervisor/conf.d/
 sudo cp /home/admin/code/netcloth-server/script/supervisor/servicehub.conf /etc/supervisor/conf.d/
+sudo cp /home/admin/code/netcloth-server/script/supervisor/group.conf /etc/supervisor/conf.d/
 
 sudo supervisorctl
 > update
+> start consul
 > start filestore
 > start router
 > start servicehub
+> start group
 > status
 ```
 
 通过supervisorctl工具的status命令查看服务启动状态
 
 ## 4 启动C++服务
+启动服务
 
 ```
-cd /home/admin/chatserver
-./chatserver
+cd home/admin/gateway/
+./gateway
 ```

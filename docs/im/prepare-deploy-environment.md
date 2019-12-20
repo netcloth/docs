@@ -1,9 +1,9 @@
 # NetCloth即时通讯服务部署环境准备
 ## 1 操作系统和用户添加
 ### 1.1 操作系统要求
-软件的开发和运维都是基于**<font color=red>Linux</font>**操作系统。
+软件的开发和运维都是基于**<font color=red>Ubuntu 18.04 server版本</font>**操作系统。
 
-当前使用的操作系统为Ubuntu 18.04 server版本，C++编译器为7.x以上版本，支持**<font color=red>C++17</font>**，如果使用其他Linux版本在部署过程中会有略微差异。
+如果使用其他Linux版本在部署过程中会有略微差异。
 
 ### 1.2 创建admin用户
 使用admin用户部署，需要新建一个admin账号，并且添加sudo执行权限
@@ -14,17 +14,52 @@
 adduser admin
 usermod -aG sudo admin
 ```
+
+### 1.3 获取netcloth-server源代码
+当前代码托管在[码云](https://gitee.com)平台，账户名和密码如下
+
+#### 1.3.1 代码权限
+
+```
+账号：netcloth_guest
+密码：diei12@31kl#$ed
+```
+
+#### 1.3.2 获取源代码和相关依赖生成
+
+```
+mkdir -p /home/admin/code
+cd /home/admin/code
+git clone https://gitee.com/hangzhouzengxinxinxi/netcloth-server.git
+```
+
+使用代码的*<font color=red>master</font>分支
+
 ## 2 基础服务部署
 
 ### 2.1 nginx安装和配置
-#### 2.1.1 安装nginx
+#### 2.1.1 安装新本部nginx
+* 创建 /etc/apt/sources.list.d/nginx.list 文件，添加如下内容到该文件
 ```
-sudo apt install nginx-full
+deb http://nginx.org/packages/mainline/ubuntu/ bionic nginx
+deb-src http://nginx.org/packages/mainline/ubuntu/ bionic nginx
 ```
-安装完成后执行nginx -v检查，使用nginx 1.14以上版本
+* 配置完nginx源以后，执行如下命令
+```
+wget http://nginx.org/keys/nginx_signing.key
+apt-key add nginx_signing.key
+apt-get update
+apt-get install -y nginx
+/etc/init.d/nginx start
+```
+* 执行nginx -v检查，使用nginx 1.16以上版本
 
 #### 2.1.2 修改nginx参数
 修改文件： /etc/nginx/nginx.conf
+
+```
+worker_processes  auto;
+```
 
 在http选项里面新增一行，设置POST请求Body大小限制
 
@@ -33,86 +68,34 @@ client_max_body_size 20m;
 ```
 #### 2.1.3 设置反向代理
 
-修改/etc/nginx/sites-available/default（Ubutu nginx 1.14）  或 /etc/nginx/conf.d/default.conf （nginx 1.15以上本部）文件.
-
-在server配置里面增加如下选项
-
+* 执行如下命令
 ```
-	location ~* ^/v1/(image|video|file|contacts) {
-		proxy_next_upstream error timeout invalid_header http_500 http_503;
-		proxy_pass  http://127.0.0.1:8001;
-		proxy_set_header X-Forwarded-Proto http;
-		proxy_set_header   Host             $host;
-		proxy_set_header   X-Real-IP        $remote_addr;
-		proxy_set_header   X-Forwarded-For $proxy_add_x_forwarded_for;
-		proxy_redirect     off;
-		proxy_connect_timeout      1000;
-		proxy_send_timeout         2000;
-		proxy_read_timeout         2000;
-		#proxy_send_lowat          12000;
-		proxy_buffer_size          128k;
-		proxy_buffers              8 64k;
-		proxy_busy_buffers_size    128k;
-		proxy_temp_file_write_size 128k;
-	}
-
-	location ~* ^/v1/(ping|service|ipal) {
-		proxy_next_upstream error timeout invalid_header http_500 http_503;
-		proxy_pass  http://127.0.0.1:8000;
-		proxy_set_header X-Forwarded-Proto http;
-		proxy_set_header   Host             $host;
-		proxy_set_header   X-Real-IP        $remote_addr;
-		proxy_set_header   X-Forwarded-For $proxy_add_x_forwarded_for;
-		proxy_redirect     off;
-		proxy_connect_timeout      1000;
-		proxy_send_timeout         2000;
-		proxy_read_timeout         2000;
-		#proxy_send_lowat          12000;
-		proxy_buffer_size          128k;
-		proxy_buffers              8 64k;
-		proxy_busy_buffers_size    128k;
-		proxy_temp_file_write_size 128k;
-	}
-
-	location ~* ^/v1/router {
-		proxy_next_upstream error timeout invalid_header http_500 http_503;
-		proxy_pass  http://127.0.0.1:8002;
-		proxy_set_header X-Forwarded-Proto http;
-		proxy_set_header   Host             $host;
-		proxy_set_header   X-Real-IP        $remote_addr;
-		proxy_set_header   X-Forwarded-For $proxy_add_x_forwarded_for;
-		proxy_redirect     off;
-		proxy_connect_timeout      1000;
-		proxy_send_timeout         2000;
-		proxy_read_timeout         2000;
-		#proxy_send_lowat          12000;
-		proxy_buffer_size          128k;
-		proxy_buffers              8 64k;
-		proxy_busy_buffers_size    128k;
-		proxy_temp_file_write_size 128k;
-	}
+sudo cp /home/admin/code/netcloth-server/script/nginx/* /etc/nginx/conf.d/
 ```
+* 修改/etc/nginx/conf.d/grpc.conf配置，将里面的IP 172.31.199.154 替换成本机的局域网IP，例如网卡eth0的IP
 
-修改完成后执行如下命令检测和启动nginx
+修改完成后执行如下命令检测和重新加载配置
 
 ```
 nginx -t
-nginx
+nginx -s reload
 ```
 
-相关配置文件
+### 2.2 mongodb安装
+* 参考[Install MongoDB Community Edition on Ubuntu](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/#install-mongodb-community-edition-using-deb-packages)文档 安装4.2.X版本 mongodb 
+* 通过如下命令，以默认配置启动mongodb
+```
+systemctl start mongod
+```
+* 用户名账号设置(可选)：如果出于安全考虑，可以增加权限控制，参考mongodb相关文档设置
 
-* [nginx.conf](./config/nginx.conf)
-* [default](./config/default)
-
-
-### 2.2 部署redis-server
+### 2.3 部署redis-server
 
 ```
 sudo apt install redis-server
 ```
 
-### 2.3 consul下载和安装
+### 2.4 consul下载和安装
 
 ```
 wget https://releases.hashicorp.com/consul/1.6.1/consul_1.6.1_linux_amd64.zip
@@ -121,7 +104,7 @@ unzip consul_1.6.1_linux_amd64.zip
 sudo mv consul /usr/local/bin
 ```
 
-### 2.4 supervisor安装
+### 2.5 supervisor安装
 
 ```
 sudo apt install supervisor

@@ -2,7 +2,7 @@
 
 ## 1 Golang编译环境
 
-安装Golang 1.12以上版本，最好安装1.13版本,设置GOPROXY和打开Module功能
+安装Golang 1.13.5 版本,设置GOPROXY和打开Module功能
 
 ## 2 gRPC和Protobuf相关依赖
 
@@ -44,30 +44,11 @@ go get -u github.com/golang/protobuf/protoc-gen-go
 ```
 
 ## 3 编译Go服务
-当前代码托管在[码云](https://gitee.com)平台，账户名和密码如下
 
-### 3.1 代码权限
-
+##### 3.1 生成协议文件
 ```
-账号：netcloth_guest
-密码：diei12@31kl#$ed
-```
-
-### 3.2 获取源代码和相关依赖生成
-
-```
-cd /home/admin/code
-git clone https://gitee.com/hangzhouzengxinxinxi/netcloth-server.git
-```
-
-使用代码的*<font color=red>master</font>分支
-
-### 3.3 编译
-
-##### 3.3.1 依赖获取
-```
-cd /home/admin/code/netcloth-server
-sh deps.sh
+cd /home/admin/code/netcloth-server/chat_proto
+./gen.sh
 ```
 
 #### 3.3.2 服务编译
@@ -95,8 +76,6 @@ gateway:
 * /home/admin/filestore/conf
 * /home/admin/servicesub/conf
 * /home/admin/router/conf
-
+* /home/admin/group/conf
 
 将相应的conf/sdk.yaml里面的配置keystore.KeyStorePasswd修改成相应的密码
-
-

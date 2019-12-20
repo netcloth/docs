@@ -85,11 +85,5 @@ cp /home/admin/code/netcloth-server/cpp/src/gateway/conf/* /home/admin/gateway/c
 ```
 
 修改 /home/admin/gateway/conf/gateway.conf
-将server.local_ip 和 router.addr 替换成本机的内网IP
+将172.31.199.154替换成本机的内网IP
 
-启动服务
-
-```
-cd home/admin/gateway/
-./gateway
-```
