@@ -142,7 +142,8 @@ function genSidebarConfig (module, title) {
                 children: [
                     'api',
                     'ipal',
-                    'ipal-sdk'
+                    'ipal-sdk',
+                    'multisig'
                 ]
             }
         ];
