@@ -1,7 +1,7 @@
 # 多签账户教程
 
 多签账户操作，需要使用命令行钱包工具```nchcli```。
-命令行钱包工具，可参考[这里](../software/how-to-install)。
+命令行钱包工具，可参考[这里](../software/how-to-install.md)。
 
 ## 创建多签账号
 
