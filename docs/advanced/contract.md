@@ -90,9 +90,88 @@ nchd start --log_level "*:debug" --trace
 ### 编写智能合约
 
 智能合约支持solidity语言。
+以下面的合约为示例：
+
+```js
+pragma solidity ^0.4.16;
+contract token {
+    uint256 public amount;
+    event Transfer(uint256 value);
+    function token() public {
+       amount = 0;
+    }
+    
+    function transfer(uint256 value) public payable {
+       amount += value;
+    }
+
+    function balance() public constant returns (uint balance) {
+        return amount;
+    }
+    
+}
+```
+
 可通过[remix](http://remix.ethereum.org/)在线编译完成后，将字节码(json结构体中object字段对应的值，不带双引号)和abi文件保存至本地文件。
 
 假设本地的./demo/demo.bc为字节码文件，./demo/demo.abi为abi文件。
+
+字节码:
+
+```js
+6060604052341561000f57600080fd5b5b600080819055505b5b60f3806100276000396000f30060606040526000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff1680638a4068dd146051578063aa8c217c146059578063b69ef8a814607f575b600080fd5b605760a5565b005b3415606357600080fd5b606960b7565b6040518082815260200191505060405180910390f35b3415608957600080fd5b608f60bd565b6040518082815260200191505060405180910390f35b3460008082825401925050819055505b565b60005481565b6000805490505b905600a165627a7a7230582008fe16294f8095fa1b7b3c98d8ee5ace307dcfbd3d38b3de2463c026567c84d30029
+```
+
+abi:
+
+```js
+[
+	{
+		"constant": false,
+		"inputs": [],
+		"name": "transfer",
+		"outputs": [],
+		"payable": true,
+		"stateMutability": "payable",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "amount",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "balance",
+		"outputs": [
+			{
+				"name": "balance",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "constructor"
+	}
+]
+```
+
 
 ### 部署智能合约
 
@@ -115,21 +194,33 @@ nchcli q tx <txhash>
 ```bash
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 +                                                                             +
-+         contractAddr = nch1ncce66negyp2gpjd89gpvy99kll3shzzjjrnpz           +
++         contractAddr = nch1zmpvdp4f65shmj0eqg38shu4wexqzfugr6uhar           +
 +                                                                             +
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 ```
 
-如上，其中 ```nch1ncce66negyp2gpjd89gpvy99kll3shzzjjrnpz``` 即新部署的合约地址。
+如上，其中 ```nch1zmpvdp4f65shmj0eqg38shu4wexqzfugr6uhar``` 即新部署的合约地址。
+
+
+查询合约代码
+
+```bash
+nchcli query vm code nch1zmpvdp4f65shmj0eqg38shu4wexqzfugr6uhar
+```
 
 ## 调用智能合约
 
 调用智能合约，需要使用abi文件。 假设合约对应的abi文件已经保存至./demo/demo.abi 。
 
 ```bash
-nchcli vm call --contract_addr nch1ncce66negyp2gpjd89gpvy99kll3shzzjjrnpz \
+nchcli vm call --contract_addr nch1zmpvdp4f65shmj0eqg38shu4wexqzfugr6uhar \
 --abi_file ./demo/demo.abi --method transfer \
---args  "00000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000002" \
---from $(nchcli keys show -a alice) -y
+--args  "" --amount 1000000pnch \
+--from $(nchcli keys show -a alice)
 ```
 
+上述命令行调用合约，向合约发送了1000000pnch。 查询合约账户余额：
+
+```bash
+nchcli q account nch1zmpvdp4f65shmj0eqg38shu4wexqzfugr6uhar
+```
