@@ -23,8 +23,6 @@ make install
 # usage:
 nchd init <local-node-name> --chain-id <chain-id>
 
-# 示例：
-nchd init local-nch --chain-id nch-chain
 ```
 
 :::warning
@@ -71,7 +69,7 @@ nchd collect-gentxs
 
 ```bash
 # Configure your CLI to eliminate need for chain-id flag
-nchcli config chain-id nch-chain
+nchcli config chain-id <chain-id>
 nchcli config output json
 nchcli config indent true
 nchcli config trust-node true
