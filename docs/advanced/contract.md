@@ -222,3 +222,13 @@ nchcli vm call --contract_addr nch1zmpvdp4f65shmj0eqg38shu4wexqzfugr6uhar \
 ```bash
 nchcli q account nch1zmpvdp4f65shmj0eqg38shu4wexqzfugr6uhar
 ```
+
+## 查询合约状态
+
+查询合约状态需要使用abi文件。假设合约对应的abi文件已经保存至./demo/demo.abi
+
+``` bash
+nchcli q vm call $(nchcli keys show -a alice) nch1zmpvdp4f65shmj0eqg38shu4wexqzfugr6uhar balance "" punch ./demo/demo.abi
+```
+
+该命令仅在本地区块链节点执行存储查询操作，不会产生交易，仅用于查询
