@@ -175,7 +175,7 @@ abi:
 
 ```bash
 nchcli vm create --code_file=./demo/demo.bc \
---from $(nchcli keys show -a alice) --amount=0unch \
+--from $(nchcli keys show -a alice) --amount=1000000pnch \
 --gas=1000000
 ```
 
@@ -228,6 +228,7 @@ nchcli q account nch1zmpvdp4f65shmj0eqg38shu4wexqzfugr6uhar
 查询合约状态需要使用abi文件。假设合约对应的abi文件已经保存至./demo/demo.abi
 
 ``` bash
+# 调用合约的balance方法，获取状态
 nchcli q vm call $(nchcli keys show -a alice) nch1zmpvdp4f65shmj0eqg38shu4wexqzfugr6uhar balance "" 0pnch ./demo/demo.abi
 ```
 
