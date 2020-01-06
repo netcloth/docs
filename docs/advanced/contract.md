@@ -231,7 +231,7 @@ nchcli vm create --code_file=./demo/demo.bc \
 
 其中：
  ```--code_file``` 指定字节码文件路径, 
- ```--amount``` 表示向合约发送的资产数量， 由于示例合约的构造函数属性不为payable，所以传0pnch,
+ ```--amount``` 表示向合约发送的资产数量， 由于示例合约的构造函数不带payable修饰符，所以只能传0pnch,
  ```--gas``` 指定本次交易的gas上限，nchcli默认为10万; 创建合约消耗的gas比较多，需要指定一个比较大的值
 
 交易发出后，终端响应如下：
