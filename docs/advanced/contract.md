@@ -320,4 +320,16 @@ nchcli q account nch1vp0pzeyst7zjkck5qk0kvplu3szsdxp04kg5xc
 nchcli q vm call $(nchcli keys show -a alice) nch1vp0pzeyst7zjkck5qk0kvplu3szsdxp04kg5xc balanceOf "0000000000000000000000000000000000000000000000000000000000000000" 0pnch ./demo/demo.abi
 ```
 
+查询alice帐户在合约中的状态：
+```
+# 使用nchcli先将alice的地址转成16进制
+nchcli keys parse $(nchcli keys show -a alice)
+
+# 补齐为32个字节, 例如: 0000000000000000000000008a68bdace7153f631c35a5d9eec55e9e1eb0c85f
+
+# 使用nchcli查询状态
+nchcli q vm call $(nchcli keys show -a alice) nch1vp0pzeyst7zjkck5qk0kvplu3szsdxp04kg5xc balanceOf "0000000000000000000000008a68bdace7153f631c35a5d9eec55e9e1eb0c85f" 0pnch ./demo/demo.abi
+```
+
+
 该命令仅在本地区块链节点执行存储查询操作，不会产生交易，仅用于查询
