@@ -308,7 +308,7 @@ nchcli vm call --contract_addr nch1vp0pzeyst7zjkck5qk0kvplu3szsdxp04kg5xc \
 nchcli q account nch1vp0pzeyst7zjkck5qk0kvplu3szsdxp04kg5xc
 ```
 
-## 调用只读方法，查询合约状态
+## 调用合约方法，查询合约状态
 
 查询合约状态需要使用abi文件。假设合约对应的abi文件已经保存至./demo/demo.abi
 
@@ -333,3 +333,7 @@ nchcli q vm call $(nchcli keys show -a alice) nch1vp0pzeyst7zjkck5qk0kvplu3szsdx
 
 
 该命令仅在本地区块链节点执行存储查询操作，不会产生交易，仅用于查询
+
+
+## 智能合约相关API
+参考[这里](./api.md#合约相关api)
