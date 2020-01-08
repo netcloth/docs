@@ -1,31 +1,361 @@
 
-# IPAL相关API
+# API 参考
 
-## REST APIs
+```nchcli``` 开启rest-server后，浏览器访问 ```http://127.0.0.1:1317/swagger-ui/``` 可以看到所有的REST APIs
 
-```nchcli``` 开启rest-server后，浏览器访问 ```http://rpc.netcloth.org/swagger-ui/``` 可以看到所有的REST APIs
+```shell
+# 开启 rest-server
+nchcli rest-server --node=http://127.0.0.1:26657
+```
 
-* 获取最新区块
+## 常用 API
+
+### 查询节点信息
+
+request：
+
+```shell
+curl http://127.0.0.1:1317/node_info
+```
+
+response：
+
+```shell
+{
+  "node_info": {
+    "protocol_version": {
+      "p2p": "7",
+      "block": "10",
+      "app": "0"
+    },
+    "id": "32d9a41f23c27d7e7b51b6ab7f6d30ba53319e31",
+    "listen_addr": "tcp://0.0.0.0:26656",
+    "network": "nch-chain",
+    "version": "0.32.8",
+    "channels": "4020212223303800",
+    "moniker": "local-nch",
+    "other": {
+      "tx_index": "on",
+      "rpc_address": "tcp://127.0.0.1:26657"
+    }
+  },
+  "application_version": {
+    "name": "nch",
+    "server_name": "nchd",
+    "client_name": "nchcli",
+    "version": "1.0.11-192-gfa5a542",
+    "commit": "fa5a542a4af5493d45c3934a3c6e8e41cb724c98",
+    "build_tags": "netgo",
+    "go": "go version go1.13.5 darwin/amd64"
+  }
+}
+```
+
+### 查询节点同步状态
+
+request:
+
+```shell
+curl http://127.0.0.1:1317/syncing
+```
+
+response:
+
+```shell
+{
+  "syncing": false   // true表示节点正在追赶最新区块，false表示节点已经处于最新区块状态
+}
+```
+
+### 获取最新区块
+
+request:
 
 ```shell
 curl http://rpc.netcloth.org/blocks/latest
 ```
 
-* 获取指定高度的区块
+response:
+
+```shell
+{
+  "block_meta": {
+    "block_id": {
+      "hash": "D1DCF02C7BEB781E532BF02E5964EB2B13FFF6C334DDD3FC9F0320CF5293DEFB",
+      "parts": {
+        "total": "1",
+        "hash": "E7233052B3DE6B99677FF48EC5B610D4D288ED5F65D2CFC14B96388441DA190D"
+      }
+    },
+    "header": {
+      "version": {
+        "block": "10",
+        "app": "0"
+      },
+      "chain_id": "nch-chain",
+      "height": "964",
+      "time": "2020-01-08T06:48:04.491292Z",
+      "num_txs": "0",
+      "total_txs": "6",
+      "last_block_id": {
+        "hash": "787390598CF683E7B1AE1E438AAD286D436F52F06C79AC459C4375E6C14628BE",
+        "parts": {
+          "total": "1",
+          "hash": "83E6CD2DB4FCE014E38CF1BEAA3746A2A7F9D92A8093BBD9B3FF14BB78A10E32"
+        }
+      },
+      "last_commit_hash": "6991E025A3AF65D7D444E354EAA6AD6F2454E93D9D029602D659E15928BF11F5",
+      "data_hash": "",
+      "validators_hash": "C414E30D196E83F711DCB8161748563A1D968EC51C48F3D20141D20FE3657788",
+      "next_validators_hash": "C414E30D196E83F711DCB8161748563A1D968EC51C48F3D20141D20FE3657788",
+      "consensus_hash": "048091BC7DDC283F77BFBF91D73C44DA58C3DF8A9CBC867405D8B7F3DAADA22F",
+      "app_hash": "1146068A69F9F0FC77B2BDD121A445D25705059F2F8A68D4E4688B5B9D8D0AD9",
+      "last_results_hash": "",
+      "evidence_hash": "",
+      "proposer_address": "A8FDB9C6D29B83E04EF9990107799BB598DBF3EE"
+    }
+  },
+  "block": {
+    "header": {
+      "version": {
+        "block": "10",
+        "app": "0"
+      },
+      "chain_id": "nch-chain",
+      "height": "964",
+      "time": "2020-01-08T06:48:04.491292Z",
+      "num_txs": "0",
+      "total_txs": "6",
+      "last_block_id": {
+        "hash": "787390598CF683E7B1AE1E438AAD286D436F52F06C79AC459C4375E6C14628BE",
+        "parts": {
+          "total": "1",
+          "hash": "83E6CD2DB4FCE014E38CF1BEAA3746A2A7F9D92A8093BBD9B3FF14BB78A10E32"
+        }
+      },
+      "last_commit_hash": "6991E025A3AF65D7D444E354EAA6AD6F2454E93D9D029602D659E15928BF11F5",
+      "data_hash": "",
+      "validators_hash": "C414E30D196E83F711DCB8161748563A1D968EC51C48F3D20141D20FE3657788",
+      "next_validators_hash": "C414E30D196E83F711DCB8161748563A1D968EC51C48F3D20141D20FE3657788",
+      "consensus_hash": "048091BC7DDC283F77BFBF91D73C44DA58C3DF8A9CBC867405D8B7F3DAADA22F",
+      "app_hash": "1146068A69F9F0FC77B2BDD121A445D25705059F2F8A68D4E4688B5B9D8D0AD9",
+      "last_results_hash": "",
+      "evidence_hash": "",
+      "proposer_address": "A8FDB9C6D29B83E04EF9990107799BB598DBF3EE"
+    },
+    "data": {
+      "txs": null
+    },
+    "evidence": {
+      "evidence": null
+    },
+    "last_commit": {
+      "block_id": {
+        "hash": "787390598CF683E7B1AE1E438AAD286D436F52F06C79AC459C4375E6C14628BE",
+        "parts": {
+          "total": "1",
+          "hash": "83E6CD2DB4FCE014E38CF1BEAA3746A2A7F9D92A8093BBD9B3FF14BB78A10E32"
+        }
+      },
+      "precommits": [
+        {
+          "type": 2,
+          "height": "963",
+          "round": "0",
+          "block_id": {
+            "hash": "787390598CF683E7B1AE1E438AAD286D436F52F06C79AC459C4375E6C14628BE",
+            "parts": {
+              "total": "1",
+              "hash": "83E6CD2DB4FCE014E38CF1BEAA3746A2A7F9D92A8093BBD9B3FF14BB78A10E32"
+            }
+          },
+          "timestamp": "2020-01-08T06:48:04.491292Z",
+          "validator_address": "A8FDB9C6D29B83E04EF9990107799BB598DBF3EE",
+          "validator_index": "0",
+          "signature": "utrPds1hjv5VBpfJZzZu0B4Rmz44AnWLgI4X63slekly+Z+qwuziC//rmtIUvhDAsD4A1bfMN2EgjVk/wOv4Cg=="
+        }
+      ]
+    }
+  }
+}
+```
+
+### 获取指定高度的区块
+
+参数说明：
+| 参数名称 | 类型 | 说明 |
+| ------- | --- | --- |
+| height | int | 指定区块高度 |
+
+request:
 
 ```shell
 curl http://rpc.netcloth.org/blocks/{height}
 ```
 
-* 广播交易
-  
+response 同上
+
+### 获取最新的验证人集合
+
+request:
+
 ```shell
-curl -X POST "http://rpc.netcloth.org/txs" -H "accept: application/json" -H "Content-Type: application/json" -d "{transaction msg}"
+curl http://127.0.0.1:1317/validatorsets/latest
 ```
 
-### ipal API
+response:
 
-* 注册ipal节点，目前不提供api，通过命令行完成
+```shell
+{
+  "height": "0",
+  "result": {
+    "block_height": "959100",
+    "validators": [
+      {
+        "address": "nchvalcons1zu8m6mmt53n4pr5twwlmw2c5lasv9w5yqx3vvr",
+        "pub_key": "nchvalconspub1zcjduepqdkjkn8kt4wtwd3j6mtl4rxxjp0al353hdrfne66rsmcpd2q837xq5nnfjp",
+        "proposer_priority": "13325070",
+        "voting_power": "10000000"
+      },
+      {
+        "address": "nchvalcons1t5gu4fg6jm3zxr2ytw5k6azj3rflx399eztgv3",
+        "pub_key": "nchvalconspub1zcjduepqmuwh6n4z00c30njm7935hwl3vqzrdkrzw48fjkdlhxgkhh4s6p8qupd7au",
+        "proposer_priority": "5587140",
+        "voting_power": "10"
+      },
+      {
+        "address": "nchvalcons16qd3q96uzau9lzup9gtl0g5e3py8t5q0z0m4gr",
+        "pub_key": "nchvalconspub1zcjduepqnnex0jl2whugnzmr84kytykykqjd0807ncjqdkqkhkkyr7g0e7fspcfqn6",
+        "proposer_priority": "4114340",
+        "voting_power": "9902960"
+      },
+      {
+        "address": "nchvalcons1m88754ad97scehy6kkjqa5d6pws88fpxfegzft",
+        "pub_key": "nchvalconspub1zcjduepq36m84fazfs0q8rc7mj4xy5zw7psmxtrefpagy40y0nmx45px98cqwchwh2",
+        "proposer_priority": "-19693618",
+        "voting_power": "5498351"
+      },
+      {
+        "address": "nchvalcons1mf5czylhw3zcv4nhhnd0xrtwn2ah0mvasr4f0k",
+        "pub_key": "nchvalconspub1zcjduepqjgta0rptwln6jz0rz4kw6cnhcm5g4wr9epm9spkcertkq5ty88nqe329lx",
+        "proposer_priority": "-3332930",
+        "voting_power": "10000000"
+      }
+    ]
+  }
+}
+```
+
+### 通过交易hash查询交易
+
+request:
+
+```shell
+http://127.0.0.1:1317/txs/{txhash}
+```
+
+response:
+
+```shell
+{
+  "height": "959150",
+  "txhash": "5E53D158DF0B117B2ED07211F8ADA27369A47C3341EF34B1F96070E0F681BF78",
+  "raw_log": "[{\"msg_index\":0,\"success\":true,\"log\":\"\"}]",
+  "logs": [
+    {
+      "msg_index": 0,
+      "success": true,
+      "log": ""
+    }
+  ],
+  "gas_wanted": "200000",
+  "gas_used": "40551",
+  "events": [
+    {
+      "type": "message",
+      "attributes": [
+        {
+          "key": "action",
+          "value": "send"
+        },
+        {
+          "key": "sender",
+          "value": "nch1qnazcenn7v5rdq02grglquc5kd3y4dh985rau4"
+        },
+        {
+          "key": "module",
+          "value": "bank"
+        }
+      ]
+    },
+    {
+      "type": "transfer",
+      "attributes": [
+        {
+          "key": "recipient",
+          "value": "nch19vnsnnseazkyuxgkt0098gqgvfx0wxmv96479m"
+        },
+        {
+          "key": "amount",
+          "value": "20000000unch"
+        }
+      ]
+    }
+  ],
+  "tx": {
+    "type": "nch/StdTx",
+    "value": {
+      "msg": [
+        {
+          "type": "nch/MsgSend",
+          "value": {
+            "from_address": "nch1qnazcenn7v5rdq02grglquc5kd3y4dh985rau4",
+            "to_address": "nch19vnsnnseazkyuxgkt0098gqgvfx0wxmv96479m",
+            "amount": [
+              {
+                "denom": "pnch",
+                "amount": "20000000"
+              }
+            ]
+          }
+        }
+      ],
+      "fee": {
+        "amount": [
+          {
+            "denom": "pnch",
+            "amount": "200"
+          }
+        ],
+        "gas": "200000"
+      },
+      "signatures": [
+        {
+          "pub_key": {
+            "type": "tendermint/PubKeySecp256k1",
+            "value": "A41jr9C+YQtzn3YxgYcB6/V9SeViUSyg1SI7TMFV+cSJ"
+          },
+          "signature": "hmYV0VQy38yQ2odp83g7Zq+tMicvnYgP7Uy2SnXoUGd/iFugdMwSc5+azWkKkkVQxrWdBy0n8Bn3iAvc0bR/ig=="
+        }
+      ],
+      "memo": "for test"
+    }
+  },
+  "timestamp": "2020-01-08T07:00:45Z"
+}
+```
+
+### 广播交易
+  
+```shell
+curl -X POST "http://127.0.0.1:1317/txs" -H "accept: application/json" -H "Content-Type: application/json" -d "{transaction msg}"
+```
+
+## ipal相关 API
+
+### 注册ipal节点
+
+目前不提供api，通过命令行完成
 
 ``` shell
 # 该命令以交互的方式创建账号aipaltest并关联相应的公钥账号，需要输入两次密码来创建账号，私钥通过密码加密，相当于生成keystore，同时会输出24个单词的助记词
@@ -38,12 +368,12 @@ nchcli send --from $(nchcli keys show sky -a) --to $(nchcli keys show ipaltest -
 nchcli ipal claim --from=$(nchcli keys show ipaltest -a) --moniker=ipaltest  --website=sky.com --details="nch up" --endpoints "1|192.168.1.100:02" --bond=1000000unch
 ```
 
-* 查询服务节点列表
+### 查询服务节点列表
 
 rest接口查询
 
  ``` shell
-curl http://rpc.netcloth.org/ipal/list
+curl http://127.0.0.1:1317/ipal/list
 
 response:
 {
@@ -69,14 +399,14 @@ response:
 }
 ```
 
-* 根据地址查询IPAL
+### 根据地址查询IPAL
 rest接口查询
 
 ``` shell
-curl http://rpc.netcloth.org/ipal/node/{addr}
+curl http://127.0.0.1:1317/ipal/node/{addr}
 
 e.g.
-curl http://rpc.netcloth.org/ipal/node/nch19uspwrym4wr366teytlu4hre9rs7afsf33dgcy
+curl http://127.0.0.1:1317/ipal/node/nch19uspwrym4wr366teytlu4hre9rs7afsf33dgcy
 
 {
   "height": "10005",
@@ -101,15 +431,15 @@ curl http://rpc.netcloth.org/ipal/node/nch19uspwrym4wr366teytlu4hre9rs7afsf33dgc
 
 ### cipal API
 
-* 根据地址查询CIPAL
+### 根据地址查询CIPAL
 
 rest接口查询
 
 ``` shell
-curl http://rpc.netcloth.org/cipal/query/{addr}
+curl http://127.0.0.1:1317/cipal/query/{addr}
 
 e.g. 已经注册
-curl http://rpc.netcloth.org/cipal/query/nch12zsau56la368qs23f6nmn2kfe6er6d5gue7u7g
+curl http://127.0.0.1:1317/cipal/query/nch12zsau56la368qs23f6nmn2kfe6er6d5gue7u7g
 
 {
   "height": "480",
@@ -125,7 +455,7 @@ curl http://rpc.netcloth.org/cipal/query/nch12zsau56la368qs23f6nmn2kfe6er6d5gue7
 }
 
 e.g. 没有注册
-http://rpc.netcloth.org/cipal/query/nch1a6hy8k6hscffcjgpggjs9dru4x4g58znj6pn0z
+http://127.0.0.1:1317/cipal/query/nch1a6hy8k6hscffcjgpggjs9dru4x4g58znj6pn0z
 
 {
   "height": "446",
@@ -133,87 +463,10 @@ http://rpc.netcloth.org/cipal/query/nch1a6hy8k6hscffcjgpggjs9dru4x4g58znj6pn0z
 }
 ```
 
-### 根据交易hash查询交易结果
+## 合约相关API
 
-通用接口
+### 查询合约代码
 
-rest接口查询
+### 预估交易费用 
 
-``` shell
-curl http://rpc.netcloth.org/txs/{tx_hash}
-
-e.g.
-curl http://rpc.netcloth.org/txs/779C97E3882E14FD13407E78C49C2BA343FC5F55BAA2C912B8D8216C1EE269E7
-
-{
-  "height": "9845",
-  "txhash": "779C97E3882E14FD13407E78C49C2BA343FC5F55BAA2C912B8D8216C1EE269E7",
-  "raw_log": "[{\"msg_index\":0,\"success\":true,\"log\":\"\"}]",
-  "logs": [
-    {
-      "msg_index": 0,
-      "success": true,
-      "log": ""
-    }
-  ],
-  "gas_wanted": "200000",
-  "gas_used": "14895",
-  "events": [
-    {
-      "type": "message",
-      "attributes": [
-        {
-          "key": "action",
-          "value": "ipal_claim"
-        },
-        {
-          "key": "module",
-          "value": "ipal"
-        }
-      ]
-    }
-  ],
-  "tx": {
-    "type": "nch/StdTx",
-    "value": {
-      "msg": [
-        {
-          "type": "nch/IPALClaim",
-          "value": {
-            "from": "nch1dtpryue8ptzjjm32fwr0a7u5qg6wz02hhnpa30",
-            "user_request": {
-              "params": {
-                "user_address": "nch1dtpryue8ptzjjm32fwr0a7u5qg6wz02hhnpa30",
-                "server_ip": "192.168.1.111",
-                "expiration": "2019-11-06T03:33:44.638974Z"
-              },
-              "signature": {
-                "pub_key": {
-                  "type": "tendermint/PubKeySecp256k1",
-                  "value": "A2SqRJVreon6ihBFDSYX2b0JZG7dKf6Ss3cRW4NVopVi"
-                },
-                "signature": "f4OE31p418i6+7RLuuvMn6Vkp4hsC/42R78f/ePPOEgzpXcdNVOQ3tTZcY1YVtqi2cKLWwThY733H2lOjagkwA=="
-              }
-            }
-          }
-        }
-      ],
-      "fee": {
-        "amount": [],
-        "gas": "200000"
-      },
-      "signatures": [
-        {
-          "pub_key": {
-            "type": "tendermint/PubKeySecp256k1",
-            "value": "A2SqRJVreon6ihBFDSYX2b0JZG7dKf6Ss3cRW4NVopVi"
-          },
-          "signature": "QrcehQVCOot64tCy3pRe/tFHc4d72IHAkzw4+Qs62oIux5a7Ul0THXVmjtNmMqek8Soh+xudEiomWwaDkUWeaA=="
-        }
-      ],
-      "memo": ""
-    }
-  },
-  "timestamp": "2019-11-05T03:33:47Z"
-}
-```
+### 调用合约方法
