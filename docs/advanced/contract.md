@@ -258,19 +258,40 @@ nchcli q tx <txhash>
 
 若返回结果中包含 ```"success": true```表示交易成功； 否则在raw_log字段会有错误详情。
 
-合约部署成功后，在链上会有一个新的地址生成。 可以通过```nchd```启动时的控制台输出，查找新部署的合约地址：
+交易详情中，其中的events结构中包含新创建的合约地址：
 
 ```bash
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-+                                                                             +
-+         contractAddr = nch1vp0pzeyst7zjkck5qk0kvplu3szsdxp04kg5xc           +
-+                                                                             +
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ "events": [
+    {
+      "type": "message",
+      "attributes": [
+        {
+          "key": "action",
+          "value": "contract"
+        },
+        {
+          "key": "module",
+          "value": "vm"
+        }
+      ]
+    },
+    {
+      "type": "new_contract",
+      "attributes": [
+        {
+          "key": "address",
+          "value": "nch1vp0pzeyst7zjkck5qk0kvplu3szsdxp04kg5xc"
+        }
+      ]
+    }
+  ],
 ```
+
 
 如上，其中 ```nch1vp0pzeyst7zjkck5qk0kvplu3szsdxp04kg5xc``` 即新部署的合约地址。
 
-合约部署成功后，可根据合约地址，查询合约代码
+
+根据上述新创建的合约地址，查询合约代码
 
 ```bash
 nchcli query vm code nch1vp0pzeyst7zjkck5qk0kvplu3szsdxp04kg5xc

@@ -476,7 +476,7 @@ curl http://localhost:1317/vm/code/nch19lhydp6k59c66x2vp3h4ua8r8535uh6dlmex6y
 }
 ```
 
-### 预估交易费用
+### 预估交易费用/调用合约方法
 
 #### 创建合约
 
@@ -499,14 +499,15 @@ curl -X POST localhost:1317/vm/estimate_gas -d "{\"from\":\"nch1hu9evhj63dwnw950
 
 调用合约的payload要根据调用方法的abi来构造，可参考代码 https://github.com/netcloth/netcloth-chain/blob/develop/modules/vm/client/cli/query.go的GetCmdQueryCallFee函数
 
+
 ```bash
-curl -X POST localhost:1317/vm/estimate_gas -d "{\"from\":\"nch1hu9evhj63dwnw950dcmgf8gep5y29hvhvc8pqj\",\"to\":\"nch1466300luxpzuw0euqr080xh63e8lpx8h2409a6\",\"payload\":\"3033413b\",\"amount\":{\"denom\":\"pnch\",\"amount\":\"0\"}}"
+curl -X POST localhost:1317/vm/estimate_gas -d "{\"from\":\"nch13f5tmt88z5lkx8p45hv7a327nc0tpjzlwsq35e\",\"to\":\"nch1j3wugtc520d56fkwcknkju86xr5rrkqzjh5xg4\",\"payload\":\"a9059cbb00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000002\",\"amount\":{\"denom\":\"pnch\",\"amount\":\"1000000\"}}"
 
 {
-  "height": "2340",
+  "height": "298",
   "result": {
-    "Gas": "1050",
-    "Res": "0000000000000000000000000000000000000000000000000000000000000000"
+    "Gas": "14924",
+    "Res": "0000000000000000000000000000000000000000000000000000000000000001"
   }
 }
 
@@ -514,159 +515,4 @@ curl -X POST localhost:1317/vm/estimate_gas -d "{\"from\":\"nch1hu9evhj63dwnw950
 # Res为调用方法的返回值
 ```
 
-### 调用合约方法
-
-调用合约需要签名，没有直接可用的api，可以通过以下方式构造:
-
-- 修改以下调用合约的模版参数:
-
-```json
-{"type":"nch/StdTx","value":{"msg":[{"type":"nch/MsgContract","value":{"from":"nch1hu9evhj63dwnw950dcmgf8gep5y29hvhvc8pqj","to":"nch1d6prneaceu6m6u34lfrz94x8qld2awcsujaxew","payload":"a17a9e660000000000000000000000000000000000000000000000000000000000000001","amount":{"denom":"pnch","amount":"0"}}}],"fee":{"amount":[{"denom":"pnch","amount":"100000000"}],"gas":"100000"},"signatures":null,"memo":""}}
-```
-
-需要修改的字段：
-from：合约调用者地址
-to：合约地址
-payload：通过abi构造，参考 #[调用合约]
-amount：像合约转账，必须是pnch，只修改数量即可，可以为0
-fee：根据需要修改
-gas：根据需要修改
-
-- 对消息进行签名
-
-```bash
-# 将上述修改的模板保存到文件中，本例保存在tx中
-nchcli tx sign ./tx --from $(nchcli keys show -a sky)
-
-# 根据提示输入keystore密码
-
-{
-  "type": "nch/StdTx",
-  "value": {
-    "msg": [
-      {
-        "type": "nch/MsgContract",
-        "value": {
-          "from": "nch1hu9evhj63dwnw950dcmgf8gep5y29hvhvc8pqj",
-          "to": "nch1d6prneaceu6m6u34lfrz94x8qld2awcsujaxew",
-          "payload": "a17a9e660000000000000000000000000000000000000000000000000000000000000001",
-          "amount": {
-            "denom": "pnch",
-            "amount": "0"
-          }
-        }
-      }
-    ],
-    "fee": {
-      "amount": [
-        {
-          "denom": "pnch",
-          "amount": "100000000"
-        }
-      ],
-      "gas": "100000"
-    },
-    "signatures": [
-      {
-        "pub_key": {
-          "type": "tendermint/PubKeySecp256k1",
-          "value": "Ayurs9zJaZe2hg0/bbdHF+VQpiiijJdXsOz5xsq72GrT"
-        },
-        "signature": "LqVWHAB+1XgvFfhynC+7/MRCwwYPd2J/lyrky8Ywb5sBeDRZhszsteWpmCYEFemvzGkhVSqQQc7jKJ+NJR34SQ=="
-      }
-    ],
-    "memo": ""
-  }
-}
-
-# 得到签名后的交易
-```
-
-- 发送交易请求：
-
-将上述签名交易以这样的格式保存到文件txsigned中：
-
-```json
-{
-  "tx": {
-    "msg": [
-      {
-        "type": "nch/MsgContract",
-        "value": {
-          "from": "nch1hu9evhj63dwnw950dcmgf8gep5y29hvhvc8pqj",
-          "to": "nch1d6prneaceu6m6u34lfrz94x8qld2awcsujaxew",
-          "payload": "a17a9e660000000000000000000000000000000000000000000000000000000000000001",
-          "amount": {
-            "denom": "pnch",
-            "amount": 0
-          }
-        }
-      }
-    ],
-    "fee": {
-      "amount": [
-        {
-          "denom": "pnch",
-          "amount": 100000000
-        }
-      ],
-      "gas": 100000
-    },
-    "signatures": [
-      {
-        "pub_key": {
-          "type": "tendermint/PubKeySecp256k1",
-          "value": "Ayurs9zJaZe2hg0/bbdHF+VQpiiijJdXsOz5xsq72GrT"
-        },
-        "signature": "LqVWHAB+1XgvFfhynC+7/MRCwwYPd2J/lyrky8Ywb5sBeDRZhszsteWpmCYEFemvzGkhVSqQQc7jKJ+NJR34SQ=="
-      }
-    ],
-    "memo": ""
-  },
-  "mode": "block"
-}
-```
-
-```bash
-curl -X POST "http://localhost:1317/txs" -H "accept: application/json" -H "Content-Type: application/json" -d @txsigned
-
-结果：
-{
-  "height": "3113",
-  "txhash": "AA43D31D1BCFCD29972380280F85BE92D5C9ED3FE3EDD31ECDA898AEE0CBE907",
-  "data": "0000000000000000000000000000000000000000000000000000000000000001",
-  "raw_log": "[{\"msg_index\":0,\"success\":true,\"log\":\"\"}]",
-  "logs": [
-    {
-      "msg_index": 0,
-      "success": true,
-      "log": ""
-    }
-  ],
-  "gas_wanted": "100000",
-  "gas_used": "62363",
-  "events": [
-    {
-      "type": "message",
-      "attributes": [
-        {
-          "key": "action",
-          "value": "contract"
-        },
-        {
-          "key": "module",
-          "value": "vm"
-        }
-      ]
-    },
-    {
-      "type": "new_contract",
-      "attributes": [
-        {
-          "key": "address"
-        }
-      ]
-    }
-  ]
-}
-```
+其中post_data及payload的生成 ，可以借助nchcli工具，参考[这里](./contract.md#调用智能合约)
