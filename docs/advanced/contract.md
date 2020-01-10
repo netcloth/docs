@@ -250,10 +250,10 @@ nchcli vm create --code_file=./demo/demo.bc \
 }
 ```
 
-其中的```txhash```为交易哈希，可根据返回的```txhash```，查询交易是否成功
+其中的```txhash```为交易哈希。 可根据返回的```txhash```，查询交易是否成功， 以及新创建的合约地址
 
 ```bash
-nchcli q tx <txhash>
+nchcli query tx <txhash>
 ```
 
 若返回结果中包含 ```"success": true```表示交易成功； 否则在raw_log字段会有错误详情。
@@ -287,11 +287,10 @@ nchcli q tx <txhash>
   ],
 ```
 
-
 如上，其中 ```nch1vp0pzeyst7zjkck5qk0kvplu3szsdxp04kg5xc``` 即新部署的合约地址。
 
 
-根据上述新创建的合约地址，查询合约代码
+根据上述新创建的合约地址，可查询区块链上的合约代码
 
 ```bash
 nchcli query vm code nch1vp0pzeyst7zjkck5qk0kvplu3szsdxp04kg5xc
@@ -302,10 +301,12 @@ nchcli query vm code nch1vp0pzeyst7zjkck5qk0kvplu3szsdxp04kg5xc
 调用智能合约，需要使用abi文件。 假设合约对应的abi文件已经保存至./demo/demo.abi 。
 
 ```bash
-nchcli vm call --contract_addr nch1vp0pzeyst7zjkck5qk0kvplu3szsdxp04kg5xc \
---abi_file ./demo/demo.abi --method transfer \
---args  "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000002" --amount 1000000pnch \
---from $(nchcli keys show -a alice)
+nchcli vm call --from $(nchcli keys show -a alice) \
+--contract_addr nch1vp0pzeyst7zjkck5qk0kvplu3szsdxp04kg5xc \
+--method transfer  \
+--args  "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000002" \
+--amount 1000000pnch \
+--abi_file ./demo/demo.abi
 ```
 
 其中:
@@ -313,7 +314,7 @@ nchcli vm call --contract_addr nch1vp0pzeyst7zjkck5qk0kvplu3szsdxp04kg5xc \
 
 上述示例调用了合约的```transfer```方法，该方法的声明如下
 ```js
-    function transfer(address to, uint256 value) public returns (bool success)
+function transfer(address to, uint256 value) public returns (bool success)
 ```
 
 ```transfer``` 方法需要2个参数，分别为接收方地址和转账数量。示例中接收地址为全0， 转帐数量为2， 分别将这2个参数转成16进制，并补齐为32个字节。如下：
@@ -322,39 +323,40 @@ nchcli vm call --contract_addr nch1vp0pzeyst7zjkck5qk0kvplu3szsdxp04kg5xc \
 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000002
 ```
 
-
  查询合约账户余额：
 
 ```bash
-nchcli q account nch1vp0pzeyst7zjkck5qk0kvplu3szsdxp04kg5xc
+nchcli query account nch1vp0pzeyst7zjkck5qk0kvplu3szsdxp04kg5xc
 ```
 
 ## 调用合约方法，查询合约状态
 
-查询合约状态需要使用abi文件。假设合约对应的abi文件已经保存至./demo/demo.abi
+查询合约状态需要使用abi文件。假设合约对应的abi文件已经保存至```./demo/demo.abi```
 
 
-合约示例中，```balanceOf```为只读方法，可以根据该方法查询指定地址在合约中的状态。
+合约示例中，```balanceOf```为只读方法，可以根据该方法查询指定地址在合约中的状态。 
 
 ``` bash
-# 调用合约的balanceOf方法，获取状态
-nchcli q vm call $(nchcli keys show -a alice) nch1vp0pzeyst7zjkck5qk0kvplu3szsdxp04kg5xc balanceOf "0000000000000000000000000000000000000000000000000000000000000000" 0pnch ./demo/demo.abi
+# 调用合约的balanceOf方法，
+nchcli query vm call $(nchcli keys show -a alice) nch1vp0pzeyst7zjkck5qk0kvplu3szsdxp04kg5xc balanceOf "0000000000000000000000000000000000000000000000000000000000000000" 0pnch ./demo/demo.abi
 ```
 
 查询alice帐户在合约中的状态：
 ```
-# 使用nchcli先将alice的地址转成16进制
+# 使用```nchcli```先将alice的地址转成16进制
 nchcli keys parse $(nchcli keys show -a alice)
 
 # 补齐为32个字节, 例如: 0000000000000000000000008a68bdace7153f631c35a5d9eec55e9e1eb0c85f
 
 # 使用nchcli查询状态
-nchcli q vm call $(nchcli keys show -a alice) nch1vp0pzeyst7zjkck5qk0kvplu3szsdxp04kg5xc balanceOf "0000000000000000000000008a68bdace7153f631c35a5d9eec55e9e1eb0c85f" 0pnch ./demo/demo.abi
+nchcli query vm call $(nchcli keys show -a alice) nch1vp0pzeyst7zjkck5qk0kvplu3szsdxp04kg5xc balanceOf "0000000000000000000000008a68bdace7153f631c35a5d9eec55e9e1eb0c85f" 0pnch ./demo/demo.abi
 ```
 
-
-该命令仅在本地区块链节点执行存储查询操作，不会产生交易，仅用于查询
+通过```nchcli```的```query```方式调用合约，只能够查询状态，不会在链上记账。 也可以使用nchcli的这种方式，构造payload字段，用于合约相关的REST API。
 
 
 ## 智能合约相关API
+
+智能合约相关的API，主要包括查询合约代码、预估交易gas和调用合约的方法。
+
 参考[这里](./api.md#合约相关api)
