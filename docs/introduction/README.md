@@ -9,6 +9,7 @@ NetCloth-Chain是一个基于隐私保护和数据安全的区块链应用网络
 ### 区块链操作
 
 * [如何加入内测网](../get-started/how-to-join-alphanet.md)
+* [如何加入公测网](../get-started/how-to-join-testnet.md)
 * [申领内测token](../get-started/testcoin.md)
 * [如何创建验证人](../get-started/how-to-become-validator.md)
 * [如何抵押和委托](../get-started/how-to-delegate.md)

@@ -3,6 +3,7 @@
 ### 区块链操作
 
 * [如何加入内测网](how-to-join-alphanet.md)
+* [如何加入公测网](how-to-join-testnet.md)
 * [申领内测token](testcoin.md)
 * [如何创建验证人](how-to-become-validator.md)
 * [如何抵押和委托](how-to-delegate.md)
