@@ -2,12 +2,12 @@
 
 ## 1. 安装并部署全节点
 
-请首先按照[教程](./how-to-join-alphanet.md)，部署内测网的全节点，并且确保同步到了最新区块高度。
+请首先按照[教程](./how-to-join-testnet.md)，部署测试网的全节点，并且确保同步到了最新区块高度。
 
 ## 2. 设置nchcli环境变量
 
 ``` bash
-nchcli config chain-id nch-alphanet
+nchcli config chain-id nch-testnet
 nchcli config output json
 nchcli config indent true
 nchcli config trust-node true
@@ -22,9 +22,9 @@ nchcli keys add <key_name>
 # 按照提示输入加密账号用的密码(后续执行各种交易都需要用该密码)，将命令返回的信息谨慎保存
 ```
 
-## 4. 获得内测token
+## 4. 获得测试token
 
-获得内测token， 请参照[这里](./testcoin.md)
+获得测试token， 请参照[这里](./testcoin.md)
 
 ## 5.创建验证人
 

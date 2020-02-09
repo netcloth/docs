@@ -1,82 +1,85 @@
-## 参与Testnet的Genesis文件生成
+# 如何加入测试网
 
-### 前置条件
+## 1. 安装nch
 
-推荐的服务器配置：
+请按照[教程](../software/how-to-install.md)，安装nch
 
-* CPU 核数： 2
-* 内存： 4GB
-* 磁盘：100GB SSD
-* 操作系统： Ubuntu 18.04
-* 带宽：10Mbps
-* 开放端口： 26656和26657
+## 2. 节点设置
 
+```shell
+# usage: 
+# nchd init <your_custom_name> --chain-id nch-testnet
+# example:
+nchd init lucy --chain-id nch-testnet
 
-安装和配置go，请点击[这里](https://docs.netcloth.org/software/go-install.html)
+# 拷贝主节点genesis文件,此处从github下载
+wget https://raw.githubusercontent.com/netcloth/docs/master/testnet/genesis.json -O  ~/.nchd/config/genesis.json
+如果wget很慢或失败请尝试手动下载文件,地址:https://github.com/NetCloth/docs/blob/master/testnet/genesis.json
 
-安装testnet版本的软件, 执行如下命令
+修改配置文件：~/.nchd/config/config.toml， 添加主节点seed， 如下：
+# Comma separated list of seed nodes to connect to
+seeds = "a3362f3a72860a7379b5f6da288487a7bd78e5ca@18.191.12.61:26656,573d63d4e6cdf16e38a60c918fa4ce0bd99b80ac@47.104.199.106:26656"
 
-```cassandraql
-# 获取nch 源码
-git clone https://github.com/NetCloth/netcloth-chain.git
-cd netcloth-chain && git checkout testnet
-
-# 设置goproxy(make install过程会下载依赖的go模块,设置适合自己的代理,大陆用户可以设置以下代理来加快下载速度)
-export GOPROXY=https://mirrors.aliyun.com/goproxy/
-
-# 安装statik
-sudo apt-get update
-sudo apt-get install golang-statik
-
-# 编译安装
-make install
-
-# 编译完成后，检查版本号
-nchd version
-nchcli version
+# Comma separated list of nodes to keep persistent connections to
+persistent_peers = "a3362f3a72860a7379b5f6da288487a7bd78e5ca@18.191.12.61:26656,573d63d4e6cdf16e38a60c918fa4ce0bd99b80ac@47.104.199.106:26656"
 ```
 
-### 1. 创建账户
-执行如下命令，创建一个验证人账户
+## 3. 启动节点，同步区块
 
-```cassandraql
-nchcli keys add <key_name>
+```shell
+# 执行下面的命令后，控制台会打印日志，同步区块
+nchd start --log_level "*:debug" --trace
 ```
 
-### 2. 初始化节点
-执行如下命令，初始化节点
+## 4. 查看节点同步状态
 
-```cassandraql
-# moniker字段为节点名，可自定义
-nchd init --moniker=<node_name> --chain-id nch-testnet
+```shell
+# 打开一个新的终端
+curl http://127.0.0.1:26657/status
+
+# 输出如下：
+{
+  "jsonrpc": "2.0",
+  "id": "",
+  "result": {
+    "node_info": {
+      "protocol_version": {
+        "p2p": "7",
+        "block": "10",
+        "app": "0"
+      },
+      "id": "204d94d5a6dbf73a89101a0d084c2fb56462963a", //节点id
+      "listen_addr": "tcp://0.0.0.0:26656", // 节点p2p连接监听地址
+      "network": "nch-testnet", //chain-id
+      "version": "0.32.2",
+      "channels": "4020212223303800",
+      "moniker": "lucy", // 节点名称
+      "other": {
+        "tx_index": "on",
+        "rpc_address": "tcp://127.0.0.1:26657"
+      }
+    },
+    "sync_info": {  //当前节点信息
+      "latest_block_hash": "A4E5D60DE7CFB6598846A4131302C8FD28F2697DF2291B33B0892A9EACB562D8", // 最新的区块 hash
+      "latest_app_hash": "32F0B29280EDF3BEAE98424D9AA256EDBEFC973D1C33431A8D74FCA3BC3B6582",
+      "latest_block_height": "1489",     // 当前节点同步到的最新区块高度                                                      //最新区块高度
+      "latest_block_time": "2019-09-10T05:33:13.428333584Z",                                  //最新区块时间 
+      "catching_up": false
+    },
+    "validator_info": { // 验证人信息
+      "address": "92E0F0A50779E67A2AC25AAF6BCD1E5CF0841DFE",
+      "pub_key": {
+        "type": "tendermint/PubKeyEd25519",
+        "value": "cGvHGxHXzOk/L5yVtxeyS9U1mGBNFszvAdYlQoQVGCw="
+      },
+      "voting_power": "0"
+    }
+  }
 ```
 
-该命令会在home目录下(默认为~/.nchd/)创建相应genesis&config文件
+当节点同步到的区块高度和区块浏览器上一致时，表示节点已经同步完成，此时一个全节点就部署完成了。
 
-### 3. 执行gentx交易
+## 更多资源
 
-使用步骤1创建的验证人账户，执行gentx交易
-
-```cassandraql
-nchd gentx \
-  --amount=10000000000000pnch \
-  --pubkey $(nchd tendermint show-validator) \
-  --name  <key_name>
-```
-
-交易的结果存储在 ``` ~/.nchd/config/gentx/``` 目录下。
-
-上述命令设置的验证人参数为：
-```cassandraql
-delegation amount: 10000000000000pnch
-commission rate: 0.1
-commission max rate: 0.2
-commission max change rate: 0.01
-min_self_delegation: 1pnch
-```
-
-如果要修改上述参数，可通过```nchd gentx -h```查看命令行选项。
-
-### 4. 提交gentx文件
-
-将步骤3产生的json文件保存为 [github-user-name].json,  通过提交pull request将json文件提交到https://github.com/netcloth/testnet/tree/master/gentx 目录下。
+* 测试区块浏览器地址： <https://explorer.netcloth.org>
+* 申请测试token，点击[这里](testcoin.md)
