@@ -1,6 +1,6 @@
 {
   "genesis_time": "2019-11-07T14:57:16.302737331Z",
-  "chain_id": "nch-alphanet",
+  "chain_id": "nch-testnet",
   "consensus_params": {
     "block": {
       "max_bytes": "22020096",

@@ -1,7 +1,7 @@
 # How to use IPAL
 
 For IPAL related operations, the nchcli tool is required. 
-First, an nchd full node needs to be run. Join the testnet, see [here](../get-started/how-to-join-alphanet.md)
+First, an nchd full node needs to be run. Join the testnet, see [here](../get-started/how-to-join-testnet.md)
 
 ## 1. IPAL
 

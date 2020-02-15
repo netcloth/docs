@@ -1,4 +1,4 @@
-# 如何申领内测token
+# 如何申领测试token
 
 ## 创建新账户
 
@@ -33,7 +33,7 @@ connect plug cigar purchase inflict enroll ten limb quantum never supply grid ho
 nchcli keys add <key_name> --recover
 ```
 
-## 申领内测token
+## 申测试token
 
 水龙头地址： ```https://docs.netcloth.org/nch/get_token?<address>```  
-浏览器访问该地址，将```<address>```替换为你的钱包地址即可获得内测token
+浏览器访问该地址，将```<address>```替换为你的钱包地址即可获得测试token

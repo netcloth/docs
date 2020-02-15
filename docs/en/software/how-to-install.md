@@ -2,7 +2,7 @@
 
 ## The latest version
 
-The latest internal beta version is v1.0.8
+The latest  testnet version is testnet-v1.0.0
 
 ## Server configuration
 
@@ -31,9 +31,9 @@ To install and configure go, click [here](../software/go-install.md)
 ### 2. Build nch from source code
 
 ```shell 
-# Get nch source
-git clone https://github.com/NetCloth/netcloth-chain.git
-cd netcloth-chain && git checkout v1.0.8
+# Get nch source code
+git clone https://github.com/netcloth/netcloth-chain.git
+cd netcloth-chain && git testnet-v1.0.0
 
 
 # Install statik
@@ -43,7 +43,7 @@ sudo apt-get install golang-statik
 # Compile and install
 make install
 
-# After compiling, Check version number
+# check version
 nchd version
 nchcli version
 ```

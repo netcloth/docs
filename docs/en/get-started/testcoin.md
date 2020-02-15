@@ -1,4 +1,4 @@
-# How to claim an internal test token
+# How to claim test token
 
 ## Create new account
 

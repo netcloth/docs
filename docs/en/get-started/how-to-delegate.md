@@ -1,8 +1,8 @@
 # How to delegate to a validator
 
-It is assumed here that you have deployed and synchronized the nodes of the internal test network.
+It is assumed here that you have deployed and synchronized the nodes of the  testnet network.
 
-How to join the internal test network, click [here](how-to-join-alphanet.md)。
+How to join the testnet, click [here](how-to-join-testnet.md)。
 
 ## Create a new wallet
 

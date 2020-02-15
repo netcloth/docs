@@ -1,8 +1,8 @@
 # 如何向验证人委托
 
-这里假设你部署并同步了内测网的节点。
+这里假设你部署并同步了测试网的节点。
 
-如何加入内测网，点击[这里](how-to-join-alphanet.md)。
+如何加入测试网，点击[这里](how-to-join-testnet.md)。
 
 ## 新创建一个钱包地址
 
@@ -23,9 +23,9 @@ Repeat the passphrase:
 }
 ```
 
-## 获得内测token
+## 获得测试token
 
-获得内测token， 请参照[这里](./testcoin.md)
+获得测试token， 请参照[这里](./testcoin.md)
 
 ## 委托
 

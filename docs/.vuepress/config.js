@@ -112,7 +112,6 @@ function genSidebarConfig (module, title) {
                 collapsable: false,
                 children: [
                     '',
-                    'how-to-join-alphanet',
                     'how-to-join-testnet',
                     'how-to-become-validator',
                     'how-to-delegate',

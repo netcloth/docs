@@ -7,9 +7,8 @@ NetCloth-Chain is a blockchain application network based on privacy protection a
 
 ### Blockchain operations
 
-* [How to join the alphanet](../get-started/how-to-join-alphanet.md)
 * [How to join the testnet](../get-started/how-to-join-testnet.md)
-* [Claim an internal test token](../get-started/testcoin.md)
+* [Claim test token](../get-started/testcoin.md)
 * [How to create a validator](../get-started/how-to-become-validator.md)
 * [How to delegate](../get-started/how-to-delegate.md)
 * [How to create a proposal](../get-started/how-to-create-proposal.md)

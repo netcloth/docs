@@ -1,4 +1,4 @@
-# How to join the beta network
+# How to join the tesetnet
 ## 1. Install nch
  
 Please follow the [tutorial](../software/how-to-install.md) to install nch
@@ -7,12 +7,12 @@ Please follow the [tutorial](../software/how-to-install.md) to install nch
 
 ```shell
 # usage: 
-# nchd init <your_custom_name> --chain-id nch-alphanet
+# nchd init <your_custom_name> --chain-id nch-testnet
 # example:
-nchd init lucy --chain-id nch-alphanet
+nchd init lucy --chain-id nch-testnet
 
 # Download genesis file  from github
-wget https://raw.githubusercontent.com/NetCloth/docs/master/alphanet/genesis.json -O  ~/.nchd/config/genesis.json
+wget https://raw.githubusercontent.com/netcloth/docs/master/testnet/genesis.json -O  ~/.nchd/config/genesis.json
 
 # Modify the configuration file:~/.nchd/config/config.toml， add seed-nodes as follows:
 # Comma separated list of seed nodes to connect to
@@ -48,7 +48,7 @@ curl http://127.0.0.1:26657/status
       },
       "id": "204d94d5a6dbf73a89101a0d084c2fb56462963a", // Node id
       "listen_addr": "tcp://0.0.0.0:26656", // Node p2p connection listening address
-      "network": "nch-alphanet", //chain-id
+      "network": "nch-testnet", //chain-id
       "version": "0.32.2",
       "channels": "4020212223303800",
       "moniker": "lucy", // Node name
@@ -79,5 +79,5 @@ When the height of the block synchronized by the node is the same as that on the
 
 ## More resources
 
-* Blockchain browser address of the internal test chain: <https://explorer.netcloth.org>
-* Apply for a token for internal test token, click [here](./testcoin.md)
+* Blockchain browser address of the testnet : <https://explorer.netcloth.org>
+* Apply for a token for test token, click [here](./testcoin.md)

@@ -2,12 +2,12 @@
 
 ## 1. Install and deploy a full node
 
-Please follow the [tutorial](./how-to-join-alphanet.md) to deploy the full node of the internal test network and ensure that it is synchronized to the latest block height.
+Please follow the [tutorial](./how-to-join-testnet.md) to deploy the full node of the testnet and ensure that it is synchronized to the latest block height.
 
 ## 2. Set the environment
 
 ``` bash
-nchcli config chain-id nch-alphanet
+nchcli config chain-id nch-testnet
 nchcli config output json
 nchcli config indent true
 nchcli config trust-node true
@@ -24,7 +24,7 @@ nchcli keys add <key_name>
 
 ## 4. Obtain test Token
 
-To get the internal test token, please refer to [here](./testcoin.md)
+To get the test token, please refer to [here](./testcoin.md)
 
 ## 5. Create a validator
 
