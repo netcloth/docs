@@ -162,3 +162,32 @@ nchcli query staking validators
 
 # 可以看到新增加验证人lucy的status变成2，成为活跃验证人，可通过区块浏览器查看出块情况
 ```
+
+## 9. 关于验证人出块奖励和离线惩罚
+
+验证人长期在线并参与网络共识，会得到对应比例的奖励。出块奖励取决于网络每年的通胀系统和当前验证人总质押toke的比重。
+
+
+针对活跃验证的人异常行为，区块链网络会将其设置为jail状态，并削减一定比例的质押token。异常行为主要有2种：
+
+#### 1. 长时间不参与网络共识
+
+在固定时间窗口```signed_blocks_window```内，验证人的缺块数目比例大于```min_signed_per_window```，则以```slash_fraction_downtime```比例惩罚验证人的绑定的token,并将其置为jail状态。直到jail时间超过```downtime_jail_duration```，才能通过unjail命令解除jail。
+
+默认参数如下:
+
+```
+signed_blocks_window: 10000
+min_signed_per_window: 50%
+slash_fraction_downtime: 0.05%
+downtime_jail_duration: 2天
+```
+
+#### 2. 恶意投票
+
+共识过程中发起相互矛盾的投票, 即验证人对同一高度同一Round区块进行不同签名。
+
+双签的惩罚默认参数:
+```
+slash_fraction_double_sign:0.5 %
+```
