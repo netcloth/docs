@@ -8,9 +8,9 @@ IPAL相关操作，需要 nchcli工具，首先需要跑一个nchd节点。 加�
 
 ```shell
 # usage :
-# nchcli ipal claim --from=<user key name> --moniker=<name> --website=<website> --endpoints=<endpoints> --details=<details> --bond=<bond>
+nchcli ipal claim --from=<from key> --moniker=<moniker> --website=<website> --endpoints=<endpoints> --details=<details> --bond=<bond coins>
 
-nchcli ipal claim --from=ipaltest --moniker=ipaltest  --website=ipaltest.com --details="ipal test" --endpoints "1|192.168.1.100:1000,2|192.168.1.200:2000" --bond=1400000unch
+nchcli ipal claim --from=$(nchcli keys show -a alice) --moniker=netcloth --website="www.netcloth.org" --endpoints="1|219.22.22.22:8899,2|221.11.11.11:9999" --details="netcloth official server endpoint" --bond=100000000000000000pnch
 ```
 
 * 查询IPAL列表
@@ -18,52 +18,30 @@ nchcli ipal claim --from=ipaltest --moniker=ipaltest  --website=ipaltest.com --d
 ```shell
 # usage
 # nchcli query ipal list
-
-nchcli query ipal ipal
 ```
 
 response:
 
 ```shell
-[
+[[
   {
-    "operator_address": "nch196mwu4e5l86t73rhw690xkfdagx6lkmkrxpsta",
-    "moniker": "ipaltest",
-    "website": "ipaltest.com",
-    "details": "ipal test",
+    "operator_address": "nch13f5tmt88z5lkx8p45hv7a327nc0tpjzlwsq35e",
+    "moniker": "netcloth",
+    "website": "www.netcloth.org",
+    "details": "netcloth official server endpoint",
     "endpoints": [
       {
         "type": "1",
-        "endpoint": "192.168.1.100:1000"
+        "endpoint": "219.22.22.22:8899"
       },
       {
         "type": "2",
-        "endpoint": "192.168.1.200:2000"
+        "endpoint": "221.11.11.11:9999"
       }
     ],
     "bond": {
-      "denom": "unch",
-      "amount": "1400000"
-    }
-  },
-  {
-    "operator_address": "nch1f2h4shfaugqgmryg9wxjyu8ehhddc5yuh0t0fw",
-    "moniker": "sky",
-    "website": "sky.com",
-    "details": "sky test",
-    "endpoints": [
-      {
-        "type": "1",
-        "endpoint": "192.168.2.100:1000"
-      },
-      {
-        "type": "2",
-        "endpoint": "192.168.2.200:2000"
-      }
-    ],
-    "bond": {
-      "denom": "unch",
-      "amount": "1400000"
+      "denom": "pnch",
+      "amount": "100000000000000000"
     }
   }
 ]
@@ -76,30 +54,30 @@ response:
 # usage
 # nchcli query ipal node <node_address>
 
-nchcli query ipal node nch196mwu4e5l86t73rhw690xkfdagx6lkmkrxpsta
+nchcli query ipal node nch13f5tmt88z5lkx8p45hv7a327nc0tpjzlwsq35e
 ```
 
 response:
 
 ```shell
 {
-  "operator_address": "nch196mwu4e5l86t73rhw690xkfdagx6lkmkrxpsta",
-  "moniker": "ipaltest",
-  "website": "ipaltest.com",
-  "details": "ipal test",
+  "operator_address": "nch13f5tmt88z5lkx8p45hv7a327nc0tpjzlwsq35e",
+  "moniker": "netcloth",
+  "website": "www.netcloth.org",
+  "details": "netcloth official server endpoint",
   "endpoints": [
     {
       "type": "1",
-      "endpoint": "192.168.1.100:1000"
+      "endpoint": "219.22.22.22:8899"
     },
     {
       "type": "2",
-      "endpoint": "192.168.1.200:2000"
+      "endpoint": "221.11.11.11:9999"
     }
   ],
   "bond": {
-    "denom": "unch",
-    "amount": "1400000"
+    "denom": "pnch",
+    "amount": "100000000000000000"
   }
 }
 
@@ -113,7 +91,7 @@ response:
 # usage
 # nchcli cipal claim --user=<user key name> --proxy=<proxy address> --service_address=<service address> --service_type=<service type>
 
-nchcli cipal claim --user cipaltest --proxy nch1f2h4shfaugqgmryg9wxjyu8ehhddc5yuh0t0fw --service_type 1 --service_address nch196mwu4e5l86t73rhw690xkfdagx6lkmkrxpsta
+nchcli cipal claim --proxy=$(nchcli keys show -a alice) --service_address="219.22.22.22:8899" --service_type=1 --user=$(nchcli keys show -a jack)
 ```
 
 * 查询

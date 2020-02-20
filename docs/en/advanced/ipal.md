@@ -11,7 +11,7 @@ First, an nchd full node needs to be run. Join the testnet, see [here](../get-st
 # usage :
 # nchcli ipal claim --from=<user key name> --moniker=<name> --website=<website> --endpoints=<endpoints> --details=<details> --bond=<bond>
 
-nchcli ipal claim --from=ipaltest --moniker=ipaltest  --website=ipaltest.com --details="ipal test" --endpoints "1|192.168.1.100:1000,2|192.168.1.200:2000" --bond=1400000unch
+nchcli ipal claim --from=nch13f5tmt88z5lkx8p45hv7a327nc0tpjzlwsq35e --moniker=ipaltest  --website=ipaltest.com --details="ipal test" --endpoints "1|192.168.1.100:1000,2|192.168.1.200:2000" --bond=1400000pnch
 ```
 
 * Querying the IPAL List
@@ -43,7 +43,7 @@ response:
       }
     ],
     "bond": {
-      "denom": "unch",
+      "denom": "pnch",
       "amount": "1400000"
     }
   },
@@ -63,7 +63,7 @@ response:
       }
     ],
     "bond": {
-      "denom": "unch",
+      "denom": "pnch",
       "amount": "1400000"
     }
   }
@@ -99,7 +99,7 @@ response:
     }
   ],
   "bond": {
-    "denom": "unch",
+    "denom": "pnch",
     "amount": "1400000"
   }
 }

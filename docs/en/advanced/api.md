@@ -32,10 +32,10 @@ curl -X POST "http://rpc.netcloth.org/txs" -H "accept: application/json" -H "Con
 nchcli keys add <key name>
 
 # Transfer
-nchcli send --from $(nchcli keys show <key name2> -a) --to $(nchcli keys show <key name> -a) --amount 2000000unch
+nchcli send --from $(nchcli keys show <key name2> -a) --to $(nchcli keys show <key name> -a) --amount 2000000pnch
 
 # Register the service node on the blockchain. For the meaning of each parameter, please execute nchcli aipal cliam -h
-nchcli ipal claim --from=$(nchcli keys show <key name> -a) --moniker=<node name>  --website=<website>--details="nch up" --endpoints "1|192.168.1.100:02" --bond=1000000unch
+nchcli ipal claim --from=$(nchcli keys show <key name> -a) --moniker=<node name>  --website=<website>--details="nch up" --endpoints "1|192.168.1.100:02" --bond=1000000pnch
 ```
 
 * Query service node list
@@ -59,7 +59,7 @@ response:
         }
       ],
       "bond": {
-        "denom": "unch",
+        "denom": "pnch",
         "amount": "1000000"
       }
     }
@@ -89,7 +89,7 @@ curl http://rpc.netcloth.org/ipal/node/nch19uspwrym4wr366teytlu4hre9rs7afsf33dgc
       }
     ],
     "bond": {
-      "denom": "unch",
+      "denom": "pnch",
       "amount": "1400000"
     }
   }

@@ -134,7 +134,7 @@ response:
 # usage: nchcli tx staking delegate <validatorAddress> <amountToBond> --from <delegatorKeyName> 
 
 # 使用alice账号向验证人
-nchcli tx staking delegate nchvaloper133vmttt6n49jac5zn3z0klcpe7m8qluglfu58z 6000000unch --from  $(nchcli keys show alice -a)
+nchcli tx staking delegate nchvaloper133vmttt6n49jac5zn3z0klcpe7m8qluglfu58z 6000000pnch --from  $(nchcli keys show alice -a)
 
 response:
 {
@@ -152,7 +152,7 @@ response:
         "delegator_address": "nch13lmppkumkmf6699q4gpukg8fz5pf2lgzm8mfsm",
         "validator_address": "nchvaloper1l3c8k72wwt5fps9fs7h4tfdz9352m6dlt34lyc",
         "amount": {
-          "denom": "unch",
+          "denom": "pnch",
           "amount": "6000000"
         }
       }
@@ -217,7 +217,7 @@ response:
       "validator_address": "nchvaloper133vmttt6n49jac5zn3z0klcpe7m8qluglfu58z",
       "reward": [
         {
-          "denom": "unch",
+          "denom": "pnch",
           "amount": "3022184400.676553570237000000"
         }
       ]
@@ -225,7 +225,7 @@ response:
   ],
   "total": [
     {
-      "denom": "unch",
+      "denom": "pnch",
       "amount": "3022184400.676553570237000000"
     }
   ]
@@ -235,9 +235,9 @@ response:
 ### 取回委托的nch
 
 ```shell
-# usage: nchcli tx staking unbond <validator_address> 100unch --from <mykey>
+# usage: nchcli tx staking unbond <validator_address> 100pnch --from <mykey>
 # 示例：
-nchcli tx staking unbond nchvaloper133vmttt6n49jac5zn3z0klcpe7m8qluglfu58z 100unch --from alice
+nchcli tx staking unbond nchvaloper133vmttt6n49jac5zn3z0klcpe7m8qluglfu58z 100pnch --from alice
 
 ```
 

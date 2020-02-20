@@ -31,7 +31,7 @@ nchcli keys add <key_name>
 ```shell
 
 nchcli tx staking create-validator \
-  --amount=10000unch \
+  --amount=10000000000pnch \
   --pubkey=$(nchd tendermint show-validator -o text) \
   --moniker=<key_name> \
   --commission-rate="0.10" \
@@ -56,7 +56,7 @@ nchcli query staking validators
     "jailed": false,
     "status": 0,
     "tokens": "10000",
-    "delegator_shares": "10000.000000000000000000",
+    "delegator_shares": "10000000000.000000000000000000",
     "description": {
       "moniker": "lucy",
       "identity": "",
@@ -74,7 +74,7 @@ nchcli query staking validators
       "update_time": "2019-10-30T11:21:01.013731989Z"
     },
     "min_self_delegation": "100",
-    "self_delegation": "10000.000000000000000000"
+    "self_delegation": "10000000000.000000000000000000"
   }
 ]
 
@@ -82,21 +82,21 @@ nchcli query staking validators
 
 ## 7.让刚创建的验证者出块
 
-step5创建了验证人，此时其状态为0，0表示还没有绑定，因为没有抵押足够的unch;
+step5创建了验证人，此时其状态为0，0表示还没有绑定，因为没有抵押足够的pnch;
 
-1000000unch为1个voting power，voting power的最小单位为1，只有它>=1时候才能够变成绑定状态2，才能成为活跃验证者出块，因此至少还需要抵押990000unch
+1000000000000pnch为1个voting power，voting power的最小单位为1，只有它>=1时候才能够变成绑定状态2，才能成为活跃验证者出块，因此至少还需要抵押990000000000pnch
 
 可以用自己的账号给自己抵押，也可以让别的账号给自己的验证者抵押，这里分别展示：
 
 这里需要用到步骤4中lucy账号对应的验证人地址operator_address: nchvaloper18q4pv9qvmqx7dcd2jq3dl3d0755urk8300709e
 
-### 7.1 抵押990000unch
+### 7.1 抵押990000000000pnch
 
 ```shell
-nchcli tx staking delegate <address-validator-operator> 990000unch --from=<key name>
+nchcli tx staking delegate <address-validator-operator> 990000000000pnch --from=<key name>
 
 e.g.:
-nchcli tx staking delegate nchvaloper18q4pv9qvmqx7dcd2jq3dl3d0755urk8300709e 990000unch --from=$(nchcli keys show -a <key name>)
+nchcli tx staking delegate nchvaloper18q4pv9qvmqx7dcd2jq3dl3d0755urk8300709e 990000000000pnch --from=$(nchcli keys show -a <key name>)
 
 ```
 
@@ -112,7 +112,7 @@ nchcli query staking validators
     "jailed": false,
     "status": 2,
     "tokens": "1000000",
-    "delegator_shares": "1000000.000000000000000000",
+    "delegator_shares": "1000000000000.000000000000000000",
     "description": {
       "moniker": "lucy",
       "identity": "",
@@ -130,7 +130,7 @@ nchcli query staking validators
       "update_time": "2019-10-30T11:21:01.013731989Z"
     },
     "min_self_delegation": "100",
-    "self_delegation": "510000.000000000000000000"
+    "self_delegation": "510000000000.000000000000000000"
   },
   {
     "operator_address": "nchvaloper133vmttt6n49jac5zn3z0klcpe7m8qluglfu58z",

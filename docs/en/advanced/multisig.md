@@ -38,13 +38,13 @@ nchcli keys show mm
 # usage
 # generate a transfer tx
 nchcli send --to=$(nchcli keys show alice -a) \
---amount=10unch --gas-prices=1.0unch  \
+--amount=10pnch --gas-prices=1.0pnch  \
 --from=$(nchcli keys show <multisig-key-name> -a) \
 --generate-only
 
 # example
 nchcli send --to=$(nchcli keys show alice -a) \
---amount=10unch --gas-prices=1.0unch  \
+--amount=10pnch --gas-prices=1.0pnch  \
 --from=$(nchcli keys show mm -a) \
 --generate-only > unsigned.json
 ```

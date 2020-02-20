@@ -31,7 +31,7 @@ To get the test token, please refer to [here](./testcoin.md)
 ```shell
 
 nchcli tx staking create-validator \
-  --amount=10000unch \
+  --amount=10000pnch \
   --pubkey=$(nchd tendermint show-validator -o text) \
   --moniker=<key_name> \
   --commission-rate="0.10" \
@@ -82,21 +82,21 @@ nchcli query staking validators
 
 ## 7. Let the validator just create block
 
-Step5 creates a validator, and its status is 0 at this time, 0 means that it has not been bound because there is not enough unch to mortgage;
+Step5 creates a validator, and its status is 0 at this time, 0 means that it has not been bound because there is not enough pnch to mortgage;
 
-1000000unch is a voting power, and the minimum unit of voting power is 1. Only when it is> = 1 can it become the binding state 2 and become an active validator to produce blocks.
+1000000000000pnch is a voting power, and the minimum unit of voting power is 1. Only when it is> = 1 can it become the binding state 2 and become an active validator to produce blocks.
 
-Therefore, at least 990000unch needs to be mortgaged. You can use your own account to collateral yourself, or you can let other accounts collateral to your verifier. Here are shown separately:
+Therefore, at least 990000pnch needs to be mortgaged. You can use your own account to collateral yourself, or you can let other accounts collateral to your verifier. Here are shown separately:
 
 Here you need to use the validator address corresponding to the lucy account in step 4. operator_address: nchvaloper18q4pv9qvmqx7dcd2jq3dl3d0755urk8300709e
 
-### Delegate 990000unch
+### Delegate 990000pnch
 
 ```shell
-nchcli tx staking delegate <address-validator-operator> 990000unch --from=<key name>
+nchcli tx staking delegate <address-validator-operator> 990000pnch --from=<key name>
 
 e.g.:
-nchcli tx staking delegate nchvaloper18q4pv9qvmqx7dcd2jq3dl3d0755urk8300709e 990000unch --from=$(nchcli keys show -a <key name>)
+nchcli tx staking delegate nchvaloper18q4pv9qvmqx7dcd2jq3dl3d0755urk8300709e 990000pnch --from=$(nchcli keys show -a <key name>)
 
 ```
 

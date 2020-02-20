@@ -41,14 +41,14 @@ nchcli keys show mm
 # 用法
 # 创建从多签账户转账到alice账户的离线交易
 nchcli send --to=$(nchcli keys show alice -a) \
---amount=10unch --gas-prices=1.0unch  \
+--amount=10pnch --gas-prices=1.0pnch  \
 --from=$(nchcli keys show <multisig-key-name> -a) \
 --generate-only
 
-# 示例，从mm多签账户转账10unch到alice账户的离线交易，数量10unch，gas价格1.0unch, 
+# 示例，从mm多签账户转账10pnch到alice账户的离线交易，数量10pnch，gas价格1.0pnch, 
 # 交易消息体保存到unsigned.json文件
 nchcli send --to=$(nchcli keys show alice -a) \
---amount=10unch --gas-prices=1.0unch  \
+--amount=10pnch --gas-prices=1.0pnch  \
 --from=$(nchcli keys show mm -a) \
 --generate-only > unsigned.json
 ```

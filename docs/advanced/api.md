@@ -297,7 +297,7 @@ response:
         },
         {
           "key": "amount",
-          "value": "20000000unch"
+          "value": "20000000pnch"
         }
       ]
     }
@@ -362,10 +362,10 @@ curl -X POST "http://127.0.0.1:1317/txs" -H "accept: application/json" -H "Conte
 nchcli keys add ipaltest
 
 # 向aipaltest账号转账，sky也需要创建账号，并申请测试token，申请方法(TODO: url)
-nchcli send --from $(nchcli keys show sky -a) --to $(nchcli keys show ipaltest -a) --amount 2000000unch
+nchcli send --from $(nchcli keys show sky -a) --to $(nchcli keys show ipaltest -a) --amount 2000000pnch
 
 # 在区块链上注册服务节点，各个参数的含义请执行nchcli aipal cliam -h查看
-nchcli ipal claim --from=$(nchcli keys show ipaltest -a) --moniker=ipaltest  --website=sky.com --details="nch up" --endpoints "1|192.168.1.100:02" --bond=1000000unch
+nchcli ipal claim --from=$(nchcli keys show ipaltest -a) --moniker=ipaltest  --website=sky.com --details="nch up" --endpoints "1|192.168.1.100:02" --bond=1000000pnch
 ```
 
 ### 查询服务节点列表
@@ -391,7 +391,7 @@ response:
         }
       ],
       "bond": {
-        "denom": "unch",
+        "denom": "pnch",
         "amount": "1000000"
       }
     }
@@ -422,7 +422,7 @@ curl http://127.0.0.1:1317/ipal/node/nch19uspwrym4wr366teytlu4hre9rs7afsf33dgcy
       }
     ],
     "bond": {
-      "denom": "unch",
+      "denom": "pnch",
       "amount": "1400000"
     }
   }

@@ -26,7 +26,7 @@
       "deposit_params": {
         "min_deposit": [
           {
-            "denom": "unch",
+            "denom": "pnch",
             "amount": "10000000"
           }
         ],
@@ -63,7 +63,7 @@
         "address": "nch17rcndx458acy9eprk53znpne5jdtjhf0f6n3ep",
         "coins": [
           {
-            "denom": "unch",
+            "denom": "pnch",
             "amount": "10000000000000000"
           }
         ],
@@ -83,7 +83,7 @@
         "address": "nch1qnazcenn7v5rdq02grglquc5kd3y4dh985rau4",
         "coins": [
           {
-            "denom": "unch",
+            "denom": "pnch",
             "amount": "1000000000000"
           }
         ],
@@ -106,7 +106,7 @@
         "annual_provisions": "0.000000000000000000"
       },
       "params": {
-        "mint_denom": "unch",
+        "mint_denom": "pnch",
         "inflation_rate_change": "0.130000000000000000",
         "inflation_max": "0.200000000000000000",
         "inflation_min": "0.070000000000000000",
@@ -116,7 +116,7 @@
     },
     "crisis": {
       "constant_fee": {
-        "denom": "unch",
+        "denom": "pnch",
         "amount": "1000"
       }
     },
@@ -169,7 +169,7 @@
                   "validator_address": "nchvaloper17rcndx458acy9eprk53znpne5jdtjhf0jm8r2d",
                   "pubkey": "nchvalconspub1zcjduepqnnex0jl2whugnzmr84kytykykqjd0807ncjqdkqkhkkyr7g0e7fspcfqn6",
                   "value": {
-                    "denom": "unch",
+                    "denom": "pnch",
                     "amount": "1000000"
                   }
                 }
@@ -206,7 +206,7 @@
         "max_validators_extending_speed": 10,
         "next_extending_time": "1604696236",
         "max_entries": 7,
-        "bond_denom": "unch",
+        "bond_denom": "pnch",
         "max_lever": "20.000000000000000000"
       },
       "last_total_power": "0",
@@ -221,7 +221,7 @@
       "params": {
         "unbonding_time": "604800000000000",
         "min_bond": {
-          "denom": "unch",
+          "denom": "pnch",
           "amount": "1000000"
         }
       }

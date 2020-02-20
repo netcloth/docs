@@ -18,7 +18,7 @@ nchcli query staking params
   "unbonding_time": "604800000000000",
   "max_validators": 100,
   "max_entries": 7,
-  "bond_denom": "unch",
+  "bond_denom": "pnch",
   "max_lever": "20.000000000000000000"
 }
 ```
@@ -90,7 +90,7 @@ nchcli query gov proposals
 * 执行
   
 ```shell
-nchcli tx gov deposit 1 10000000unch --from $(nchcli keys show sky -a)
+nchcli tx gov deposit 1 10000000pnch --from $(nchcli keys show sky -a)
 
 # nchcli tx gov deposit 提案号 token数量 --from 抵押者的公钥
 ```
@@ -128,7 +128,7 @@ nchcli query gov proposals
     "deposit_end_time": "2019-10-02T09:28:22.951242Z",
     "total_deposit": [
       {
-        "denom": "unch",
+        "denom": "pnch",
         "amount": "10000000"
       }
     ],
@@ -185,7 +185,7 @@ nchcli query gov proposals
     "deposit_end_time": "2019-10-02T09:28:22.951242Z",
     "total_deposit": [
       {
-        "denom": "unch",
+        "denom": "pnch",
         "amount": "10000000"
       }
     ],
@@ -201,7 +201,7 @@ nchcli query staking params
   "unbonding_time": "604800000000000",
   "max_validators": 101,
   "max_entries": 7,
-  "bond_denom": "unch",
+  "bond_denom": "pnch",
   "max_lever": "20.000000000000000000"
 }
 
