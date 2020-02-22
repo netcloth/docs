@@ -1,5 +1,9 @@
 # NetCloth Instant messaging service deployment environment preparation
 
+## Procedures introduction
+
+The deployment is divided into two parts: deploy a blockchain node and IM server deployment. If you have not deployed a blockchain node, please deploy the blockchain nodes according to the document ([click here](../get-started/how-to-join-testnet.md)) and then continue to build the instant messaging server.
+
 ## 1 OS and user add
 
 ### 1.1 OS requirements
