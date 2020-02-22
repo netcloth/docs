@@ -3,12 +3,12 @@ module.exports = {
         '/en/': {
             lang: 'en-US',
             title: "NetCloth Document",
-            description: "A Blockchain Application Network Based On Privacy Protection and Data Security\n"
+            description: "Make You And Your Network Unique\n"
         },
         '/': {
             lang: 'zh-CN',
             title: 'NetCloth文档',
-            description: 'NetCloth是一个基于隐私保护和数据安全的区块链应用网络'
+            description: '独特的你与你的网络\n'
         }
     },
     head: [
