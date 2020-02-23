@@ -1,6 +1,6 @@
 # 智能合约教程
 
-本教程包含智能合约相关的操作。 由于智能合约模块尚未开放公测，开发者体验智能合约需要在github上checkout 最新的develop分支，源码编译后，本地搭建私有链。
+本教程包含智能合约相关的操作，需要你先在本地跑一个测试网节点或者私链。
 
 配置相关的开发环境和依赖，参考[这里](../software/how-to-install.md)。
 
@@ -8,7 +8,7 @@
 
 ```bash
 git clone https://github.com/NetCloth/netcloth-chain.git
-cd netcloth-chain && git checkout develop
+cd netcloth-chain && git checkout testnet
 
 make install
 ```
