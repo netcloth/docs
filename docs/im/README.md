@@ -1,6 +1,10 @@
 ## NetCloth即时通讯服务部署指南
 
-### 部署步骤
+### 快速部署
+
+* [快速准备](./quick-start.md)
+
+### 源码部署
 
 * [部署环境准备](./prepare-deploy-environment.md)
 * [Go服务编译](./build-go-server.md)
