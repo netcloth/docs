@@ -113,7 +113,7 @@ wget http://47.104.248.183/resource/netcloth-server-latest.tar.gz
 ### 3.2 修改特定配置
 ```
 tar xvzf netcloth-server-latest.tar.gz
-cd netcloth-server-latest.tar.gz
+cd netcloth-server-latest
 ```
 
 修改netcloth-server-latest/install.sh中的如下4个参数
@@ -137,6 +137,8 @@ sh install.sh
 ```
 
 ## 4 服务启动
+**<font color=red>以root权限进行以下步骤的操作</font>**
+
 ### 4.1 对外端口开放
 当前需要以下端口可在外网访问
 
@@ -144,23 +146,25 @@ sh install.sh
 * 80   HTTP服务
 * 1080 gRPC服务
 
-### 4.2 启动基础服务
+### 4.2 基础服务配置更新
 
 #### 4.2.1 nginx加载新配置
 ```
 nginx -s reload
 ```
 
-#### 4.2.2 使用supervisor启动服务
+### 4.3 启动应用服务
+
+#### 4.3.1 使用supervisor启动服务
 * 检查supervisord是否已经正常启动，如果没有，先启动supervisord
 ```
-sudo service supervisor start
+service supervisor start
 ```
 
 启动服务
 
 ```
-sudo supervisorctl
+supervisorctl
 > update
 > status
 ```
@@ -169,7 +173,7 @@ sudo supervisorctl
 * 如果服务有fatal出现，可以执行restart，如 restart offmsg
 
 
-#### 4.2.3 启动gatewa服务
+#### 4.3.2 启动gatewa服务
 
 ```
 cd home/admin/gateway/
