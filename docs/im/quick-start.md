@@ -14,7 +14,7 @@
 ### 1.2 创建admin用户
 使用admin用户部署，需要新建一个admin账号，并且添加sudo执行权限
 
-* 新造admin用户操作，需要sudo用户或root用户，执行以下操作
+* 新建admin用户操作，需要sudo用户或root用户，执行以下操作
 
 ```
 adduser admin
@@ -173,7 +173,7 @@ supervisorctl
 * 如果服务有fatal出现，可以执行restart，如 restart offmsg
 
 
-#### 4.3.2 启动gatewa服务
+#### 4.3.2 启动gateway服务
 
 ```
 cd home/admin/gateway/
