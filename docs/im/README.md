@@ -2,7 +2,7 @@
 
 ### 快速部署
 
-* [快速准备](./quick-start.md)
+* [快速部署](./quick-start.md)
 
 ### 源码部署
 
