@@ -61,7 +61,9 @@ nchd init --moniker=<node_name> --chain-id nch-testnet
 nchd gentx \
   --amount=10000000000000pnch \
   --pubkey $(nchd tendermint show-validator) \
-  --name  <key_name>
+  --ip=<node_public_IP> \
+  --node-id=$(nchd tendermint show-node-id) \
+  --name=<key_name>
 ```
 
 交易的结果存储在 ``` ~/.nchd/config/gentx/``` 目录下。

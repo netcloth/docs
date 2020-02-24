@@ -13,15 +13,15 @@
 nchd init lucy --chain-id nch-testnet
 
 # 拷贝主节点genesis文件,此处从github下载
-wget https://raw.githubusercontent.com/netcloth/docs/master/testnet/genesis.json -O  ~/.nchd/config/genesis.json
-如果wget很慢或失败请尝试手动下载文件,地址:https://github.com/NetCloth/docs/blob/master/testnet/genesis.json
+wget https://raw.githubusercontent.com/netcloth/testnet/master/genesis.json -O  ~/.nchd/config/genesis.json
+如果wget很慢或失败请尝试手动下载文件,地址:https://github.com/netcloth/docs/blob/master/testnet/genesis.json
 
 修改配置文件：~/.nchd/config/config.toml， 添加主节点seed， 如下：
 # Comma separated list of seed nodes to connect to
-seeds = "a3362f3a72860a7379b5f6da288487a7bd78e5ca@18.191.12.61:26656,573d63d4e6cdf16e38a60c918fa4ce0bd99b80ac@47.104.199.106:26656"
+seeds = "32171991bbf4edf2302e61d520f72cb9104e3a53@13.58.188.155:26656,6c13ec780639f5cc2f598432020fe7bffde50c88@13.124.101.63:26656,60fd09e613363325bd21786962265ac2771ed7a9@18.191.12.61:26656,1be76d5483670e3cff8fe190c35da67f40e33e5b@47.56.83.133:26656"
 
 # Comma separated list of nodes to keep persistent connections to
-persistent_peers = "a3362f3a72860a7379b5f6da288487a7bd78e5ca@18.191.12.61:26656,573d63d4e6cdf16e38a60c918fa4ce0bd99b80ac@47.104.199.106:26656"
+persistent_peers = "32171991bbf4edf2302e61d520f72cb9104e3a53@13.58.188.155:26656,6c13ec780639f5cc2f598432020fe7bffde50c88@13.124.101.63:26656,60fd09e613363325bd21786962265ac2771ed7a9@18.191.12.61:26656,1be76d5483670e3cff8fe190c35da67f40e33e5b@47.56.83.133:26656"
 ```
 
 ## 3. 启动节点，同步区块
