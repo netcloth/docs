@@ -38,7 +38,8 @@ nchcli tx staking create-validator \
   --commission-max-rate="0.20" \
   --commission-max-change-rate="0.01" \
   --min-self-delegation="100" \
-  --from=$(nchcli keys show -a <key_name>)
+  --from=$(nchcli keys show -a <key_name>) \
+  --gas=200000
   
 ```
 
