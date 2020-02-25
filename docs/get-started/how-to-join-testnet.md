@@ -6,16 +6,31 @@
 
 ## 2. 节点设置
 
-```shell
-# usage: 
-# nchd init <your_custom_name> --chain-id nch-testnet
-# example:
-nchd init lucy --chain-id nch-testnet
+**初始化节点配置**：
 
+```shell
+# 作法：
+# nchd init <your_custom_name> --chain-id nch-testnet
+# 示例:
+nchd init lucy --chain-id nch-testnet
+```
+
+上述命令会初始化验证人和节点配置文件，默认的home目录为```~/```，如果需要设定home目录，可以带上```--home=<your_custom_path>```
+
+**下载测试网genesis文件**：
+
+```shell
 # 拷贝主节点genesis文件,此处从github下载
 wget https://raw.githubusercontent.com/netcloth/testnet/master/genesis.json -O  ~/.nchd/config/genesis.json
 如果wget很慢或失败请尝试手动下载文件,地址:https://github.com/netcloth/docs/blob/master/testnet/genesis.json
+```
 
+上述命令将测试网genesis文件下载到默认home下的config目录，如果有设定的home，则需要下载到```<your_custom_path>/.nchd/config/genesis.json```,  后面用到home目录的地方均相同。
+
+
+**修改配置文件，增加初始种子节点**：
+
+```
 修改配置文件：~/.nchd/config/config.toml， 添加主节点seed， 如下：
 # Comma separated list of seed nodes to connect to
 seeds = "32171991bbf4edf2302e61d520f72cb9104e3a53@13.58.188.155:26656,6c13ec780639f5cc2f598432020fe7bffde50c88@13.124.101.63:26656,60fd09e613363325bd21786962265ac2771ed7a9@18.191.12.61:26656,1be76d5483670e3cff8fe190c35da67f40e33e5b@47.56.83.133:26656"
@@ -30,6 +45,8 @@ persistent_peers = "32171991bbf4edf2302e61d520f72cb9104e3a53@13.58.188.155:26656
 # 执行下面的命令后，控制台会打印日志，同步区块
 nchd start --log_level "*:debug" --trace
 ```
+
+上述命令会将日志打印到控制台，如果要停止节点程序，按```ctrl +c```即可。如果要后台启动
 
 ## 4. 查看节点同步状态
 
@@ -77,9 +94,12 @@ curl http://127.0.0.1:26657/status
   }
 ```
 
+**检查是否同步完成**
+
 当节点同步到的区块高度和区块浏览器上一致时，表示节点已经同步完成，此时一个全节点就部署完成了。
 
 ## 更多资源
 
 * 测试区块浏览器地址： <https://explorer.netcloth.org>
 * 申请测试token，点击[这里](testcoin.md)
+* 创建测试网验证人，点击[这里](./how-to-become-validator.md)

@@ -2,6 +2,7 @@
 
 ### Blockchain
 
+* [How to install nch](../software/how-to-install.md)
 * [How to join testnet](how-to-join-testnet.md)
 * [How to get test token](testcoin.md)
 * [How to become a validator](how-to-become-validator.md)

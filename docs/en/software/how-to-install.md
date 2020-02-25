@@ -19,11 +19,11 @@ Recommended server configuration:
 
 ### 1. Setting up a development environment
 
-* Install git
+* Install dependence
 
 ```shell
 sudo apt-get update
-sudo apt-get install git
+sudo apt-get install git gcc cmake make golang-statik
 ```
 
 To install and configure go, click [here](../software/go-install.md)

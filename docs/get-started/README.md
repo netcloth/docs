@@ -2,6 +2,7 @@
 
 ### 区块链操作
 
+* [如何安装nch节点程序](../software/how-to-install.md)
 * [如何加入测试网](how-to-join-testnet.md)
 * [申领测试token](testcoin.md)
 * [如何创建验证人](how-to-become-validator.md)
