@@ -146,7 +146,8 @@ function genSidebarConfig (module, title) {
                     'ipal',
                     'ipal-sdk',
                     'multisig',
-                    'keys'
+                    'keys',
+                    'Q&A'
                 ]
             }
         ];
@@ -161,7 +162,8 @@ function genSidebarConfig (module, title) {
                     'prepare-deploy-environment',
                     'build-go-server',
                     'build-cpp-server',
-                    'deploy'
+                    'deploy',
+                    'Q&A'
                 ]
             }
         ];
