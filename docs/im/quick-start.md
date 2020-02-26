@@ -176,6 +176,6 @@ supervisorctl
 #### 4.3.2 启动gateway服务
 
 ```
-cd home/admin/gateway/
+cd /home/admin/gateway/
 ./gateway
 ```

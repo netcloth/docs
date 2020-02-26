@@ -191,6 +191,6 @@ restart offmsg
 #### 4.3.2 Start gateway service
 
 ```
-cd home/admin/gateway/
+cd /home/admin/gateway/
 ./gateway
 ```
