@@ -16,11 +16,10 @@ wget https://raw.githubusercontent.com/netcloth/docs/master/testnet/genesis.json
 
 # Modify the configuration file:~/.nchd/config/config.toml， add seed-nodes as follows:
 # Comma separated list of seed nodes to connect to
-seeds = "a3362f3a72860a7379b5f6da288487a7bd78e5ca@18.191.12.61:26656"
+seeds = "e60b962168d85c5b594cb8238e8f8f536c2d2ae2@13.58.188.155:26656,5bd7dc0cb3872e9e7371e7609342875d547e0195@13.124.101.63:26656,d172e23ea6bd1ecb77f058796689110c8387fe5a@18.191.12.61:26656"
 
 # Comma separated list of nodes to keep persistent connections to
-persistent_peers = "a3362f3a72860a7379b5f6da288487a7bd78e5ca@18.191.12.61:26656"
-```
+persistent_peers = "e60b962168d85c5b594cb8238e8f8f536c2d2ae2@13.58.188.155:26656,5bd7dc0cb3872e9e7371e7609342875d547e0195@13.124.101.63:26656,d172e23ea6bd1ecb77f058796689110c8387fe5a@18.191.12.61:26656"```
 
 ## 3. Start nchd
 

@@ -144,8 +144,7 @@ function genSidebarConfig (module, title) {
                     'api',
                     'ipal',
                     'ipal-sdk',
-                    'multisig',
-                    'contract'
+                    'multisig'
                 ]
             }
         ];
