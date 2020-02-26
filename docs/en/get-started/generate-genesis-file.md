@@ -18,7 +18,7 @@ To install and configure go, click [here](../software/go-install.md)
 ```cassandraql
 # Get nch source code
 git clone https://github.com/NetCloth/netcloth-chain.git
-cd netcloth-chain && git testnet-v1.0.0
+cd netcloth-chain && git checkout  testnet-v1.0.1
 
 # Install statik
 sudo apt-get update

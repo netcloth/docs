@@ -2,7 +2,7 @@
 
 ## The latest version
 
-The latest  testnet version is testnet-v1.0.0
+The latest  testnet version is testnet-v1.0.1
 
 ## Server configuration
 
@@ -33,7 +33,7 @@ To install and configure go, click [here](../software/go-install.md)
 ```shell 
 # Get nch source code
 git clone https://github.com/netcloth/netcloth-chain.git
-cd netcloth-chain && git testnet-v1.0.0
+cd netcloth-chain && git checkout  testnet-v1.0.1
 
 
 # Install statik
