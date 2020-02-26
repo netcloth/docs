@@ -40,15 +40,17 @@ nchcli keys add <key_name>
 nchcli tx staking create-validator \
   --amount=10000000000pnch \
   --pubkey=$(nchd tendermint show-validator -o text) \
-  --moniker=<key_name> \
+  --moniker=<validator_name> \
   --commission-rate="0.10" \
   --commission-max-rate="0.20" \
   --commission-max-change-rate="0.01" \
   --min-self-delegation="100" \
   --from=$(nchcli keys show -a <key_name>) \
+  --ip=<node_public_ip>
   --gas=200000
-  
 ```
+
+上述命令创建验证人，```--moniker``` 指定了验证人节点名称, ```--amount```指定了初始抵押token数量, 其中 ```1 nch = 1000 000 000 000 pnch```， 1 nch为 1个投票权(voting power)，抵押token数量至少需要 1 nch才能参与共识。
 
 ## 6.查询验证人列表
 
