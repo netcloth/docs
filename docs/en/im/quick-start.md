@@ -118,16 +118,14 @@ wget http://47.104.248.183/resource/netcloth-server-latest.tar.gz
 tar xvzf netcloth-server-latest.tar.gz
 cd netcloth-server-latest
 ```
-Modify the following 4 parameters in netcloth-server-latest/install.sh
+Modify the following 3 parameters in netcloth-server-latest/install.sh
 
-*  <font color=red>public_ip </font> The public IP of this instance
-*  <font color=red>local_ip </font> The local IP of this instance
+* <font color=red>public_ip </font> The public IP of this instance
 * <font color=red>keystore </font> The storage path of Keystore
 * <font color=red>keystore_password  </font> Password to decrypted the Keystore
 
 ```
 public_ip=127.0.0.1
-local_ip=127.0.0.1
 keystore="./keystore.txt"
 keystore_password="88888888"
 ```

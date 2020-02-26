@@ -116,16 +116,14 @@ tar xvzf netcloth-server-latest.tar.gz
 cd netcloth-server-latest
 ```
 
-修改netcloth-server-latest/install.sh中的如下4个参数
+修改netcloth-server-latest/install.sh中的如下3个参数
 
 * public_ip 本机公网IP
-* local_ip  本机内网IP
 * keystore  节点keystore文件存储路径
 * keystore_password 读取keystore文件的密码
 
 ```
 public_ip=127.0.0.1
-local_ip=127.0.0.1
 keystore="./keystore.txt"
 keystore_password="88888888"
 ```
