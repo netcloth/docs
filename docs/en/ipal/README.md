@@ -8,7 +8,20 @@
 # usage :
 # nchcli cipal claim  --user=<user key name> --proxy=<proxy key name> --service_address=<service_address> --service_type=<type> 
 
-nchcli cipal claim --from=$(nchcli keys show -a jack) --proxy=$(nchcli keys show -a alice) --service_address="219.22.22.22:8899" --service_type=1 --user=$(nchcli keys show -a jack)```
+#For example
+nchcli cipal claim --from=$(nchcli keys show -a jack) --proxy=$(nchcli keys show -a alice) --service_address="1|http://219.22.22.22:8899" --service_type=1 --user=$(nchcli keys show -a jack)
+```
+
+Monikor:Node's Name
+
+<font color=red>website（Optional）</font> Official website of your node
+
+<font color=red>endpoints：</font> The public IP of IM sever（How to deploy an IM Sever，[Click here](../im/README.md))
+
+<font color=red>details（Optional):</font>Introduction of your node.
+
+<font color=red>bond:</font> The number of NCH as your collateral, the more NCH you bonded, the higher ranking of your node showing on NetCloth APP
+
 
 
 * query
@@ -28,6 +41,8 @@ response:
 }
 
 ```
+
+After the success of IPAL Claim，You can find your node on NetCloth APP. [Click here to Download](http://chat-app.netcloth.org)
 
 ### 2. ServiceNode claim
 

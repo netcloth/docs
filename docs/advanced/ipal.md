@@ -10,8 +10,21 @@ IPAL相关操作，需要 nchcli工具，首先需要跑一个nchd节点。 加�
 # usage :
 nchcli ipal claim --from=<from key> --moniker=<moniker> --website=<website> --endpoints=<endpoints> --details=<details> --bond=<bond coins>
 
-nchcli ipal claim --from=$(nchcli keys show -a alice) --moniker=netcloth --website="www.netcloth.org" --endpoints="1|219.22.22.22:8899,2|221.11.11.11:9999" --details="netcloth official server endpoint" --bond=100000000000000000pnch
+#举例
+nchcli ipal claim --from=$(nchcli keys show -a alice) --moniker=netcloth --website="www.netcloth.org" --endpoints="1|http://219.22.22.22:8899,2|http//221.11.11.11:9999" --details="netcloth official server endpoint" --bond=100000000000000000pnch
 ```
+
+<font color=red>Monikor：</font>海星节点的名称
+
+<font color=red>website（选填）：</font>节点的官网
+
+<font color=red>endpoints：:</font>IM服务端的公网IP（如何搭建IM服务端，详见[这里](../im/README.md))
+
+<font color=red>details（选填）：:</font>节点的介绍
+
+<font color=red>bond：</font>抵押NCH的数量，抵押量越高，在NetCloth APP节点列表检索中排名越靠前
+
+
 
 * 查询IPAL列表
 
@@ -82,6 +95,8 @@ response:
 }
 
 ```
+
+IPAL声明成功后，你可以在NetCloth APP中看到自己的节点了。[点此下载APP](http://chat-app.netcloth.org)
 
 ## 2. CIPAL
 
