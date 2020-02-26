@@ -129,7 +129,8 @@ function genSidebarConfig (module, title) {
                 collapsable: false,
                 children: [
                     'go-install',
-                    'how-to-install'
+                    'how-to-install',
+                    'nchcli'
                 ]
             }
         ];
@@ -144,7 +145,8 @@ function genSidebarConfig (module, title) {
                     'api',
                     'ipal',
                     'ipal-sdk',
-                    'multisig'
+                    'multisig',
+                    'keys'
                 ]
             }
         ];
