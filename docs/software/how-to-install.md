@@ -43,6 +43,7 @@ make install
 ```
 
 编译安装完成后，检查版本号
+
 ```shell
 nchd version
 nchcli version

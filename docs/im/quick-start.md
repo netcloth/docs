@@ -134,6 +134,10 @@ keystore_password="88888888"
 sh install.sh
 ```
 
+**关于keystore**
+
+关于keystore，请参考[这里](../advanced/keys.md)
+
 ## 4 服务启动
 **<font color=red>以root权限进行以下步骤的操作</font>**
 

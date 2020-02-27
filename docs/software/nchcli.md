@@ -56,7 +56,7 @@ Usage:
   nchcli tx staking delegate [validator-addr] [amount] [flags]
 ```
 
-## key管理
+## 钱包key管理
 
 ### 创建新地址
 

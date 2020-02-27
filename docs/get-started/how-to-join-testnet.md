@@ -1,5 +1,7 @@
 # 如何加入测试网
 
+本文档介绍如何部署一个测试网全节点。
+
 ## 1. 安装nch
 
 请按照[教程](../software/how-to-install.md)，安装nch
@@ -26,7 +28,6 @@ wget https://raw.githubusercontent.com/netcloth/testnet/master/genesis.json -O  
 ```
 
 上述命令将测试网genesis文件下载到默认home下的config目录，如果有设定的home，则需要下载到```<your_custom_path>/.nchd/config/genesis.json```,  后面用到home目录的地方均相同。
-
 
 **修改配置文件，增加初始种子节点**：
 
@@ -97,6 +98,26 @@ curl http://127.0.0.1:26657/status
 **检查是否同步完成**
 
 当节点同步到的区块高度和区块浏览器上一致时，表示节点已经同步完成，此时一个全节点就部署完成了。
+
+## 5. 后台运行
+
+```ctrl + c``` 停止```nchd```程序， 执行如下命令，后台运行
+
+```shell
+# 后台运行nchd
+nohup nchd start --trace 1>nchd.out 2>&1 &
+# 后台运行nchcli，开启rest server
+nohup nchcli rest-server 1>cli.out 2>&1 &
+```
+
+**如何停止程序**
+
+停止后台程序，可以执行如下命令:
+
+```shell
+kill -9 $(pgrep nchd)
+kill -9 $(pgrep nchcli)
+```
 
 ## 更多资源
 
