@@ -5,6 +5,15 @@ First, an nchd full node needs to be run. Join the testnet, see [here](../get-st
 
 ## 1. IPAL
 
+### Introductions of IPAL
+ IP Address List is a unique addressing module of NetCloth network. IPAL records such information of starfish nodes as access point IP, node name, and contact information. By searching IPAL list on the chain, users can filter their favorite starfish nodes and enjoy the service.
+
+<p align="center">
+	<img src="https://github.com/netcloth/netcloth/blob/master/images/en/4.png?raw=true" alt="Sample" width = 80% height = 80%>
+</p>
+
+In a word. Starfish nodes must upload their information to NetCloth chain ledger via IPAL Claim. After it, users can find nodes in Communication Address List of NetCloth APP.
+
 * IPAL claim
 
 ```shell
@@ -105,8 +114,32 @@ response:
 }
 
 ```
+Once succeeded, you could find you node on NetCloth APP.
+[Click Here to Download](http://chat-app.netcloth.org)
 
 ## 2. CIPAL
+
+### Introduction of CIPAL
+The Client IP Address List (C-IPAL) protocol is an extension of IPAL, facing for client users. Submitting an address through C-IPAL is required by users with a need of enjoying various services. 
+
+The specific procedures are here:
+
+```
+a) A user send CIPAL Claim to the starfish node he/she connected on NetCloth APP
+
+b) The starfish node receive the CIPAL Claim body from the user.
+
+c) The starfish node add its NCH Address, create a new transaction with its sign.
+
+d) The starfish node broadcast the Tx to other blockchain nodes.
+
+e) Validators validate the CIPAL Claim, then update it to NetCloth chain ledger via a new block.
+```
+
+<p align="center">
+	<img src="https://github.com/netcloth/netcloth/blob/master/images/en/5.png?raw=true" alt="Sample" width = 80% height = 80%>
+</p>
+
 
 * claim
 
