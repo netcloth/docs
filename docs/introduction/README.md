@@ -18,6 +18,7 @@ NetCloth-Chain是一个基于隐私保护和数据安全的区块链应用网络
 * [如何使用nchcli命令行导入/导出私钥](../advanced/keys.md)
 * [多签账户教程](../advanced/multisig.md)
 * [智能合约教程](../advanced/contract.md)
+* [常见问题](../advanced/Q&A.md)
 
 ### IPAL操作
 * [IPAL使用](../advanced/ipal.md)

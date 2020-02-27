@@ -171,3 +171,6 @@ response:
   ]
 }
 ```
+* CIPAL Tx fees
+
+CIPAL is a special tx type. The starfish node will pay the tx fees instead of users. Please ensure you having enough NCH in you balance.
