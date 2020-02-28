@@ -15,3 +15,7 @@ NCH 是NetCloth网络中的token，最小单位为pnch， 换算关系如下：
 ```
 1 NCH = 10^12 pnch
 ```
+
+## 如何备份验证人节点
+
+建议备份<your_custom_path>/.nchd/config目录，其中config目录下的priv_validator_key.json 为验证人节点私钥。
