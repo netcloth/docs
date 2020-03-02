@@ -47,3 +47,5 @@ make install
 nchd version
 nchcli version
 ```
+
+Congratulations! You have installed nchcli successfully. Now you can build a full-node on NetCloth testnet. [Click here](../get-started/how-to-join-testnet.md)

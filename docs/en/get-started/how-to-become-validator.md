@@ -97,7 +97,7 @@ Here you need to use the validator address corresponding to the lucy account in 
 nchcli tx staking delegate <address-validator-operator> 990000pnch --from=<key name>
 
 e.g.:
-nchcli tx staking delegate nchvaloper18q4pv9qvmqx7dcd2jq3dl3d0755urk8300709e 990000pnch --from=$(nchcli keys show -a <key name>)
+nchcli tx staking delegate nchvaloper18q4pv9qvmqx7dcd2jq3dl3d0755urk8300709e 990000pnch --from=$(nchcli keys show -a <key name>) --gas=200000 --gas-prices=1000.0pnch
 
 ```
 

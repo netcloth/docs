@@ -46,11 +46,37 @@ nchcli tx staking create-validator \
   --commission-max-change-rate="0.01" \
   --min-self-delegation="100" \
   --from=$(nchcli keys show -a <key_name>) \
-  --ip=<node_public_ip>
+  --ip=<node_public_ip> \
+  --gas=200000
+
+ e.g
+nchcli tx staking create-validator \
+  --amount=10000000000pnch \
+  --pubkey=$(nchd tendermint show-validator -o text) \
+  --moniker=netcloth \
+  --commission-rate="0.10" \
+  --commission-max-rate="0.20" \
+  --commission-max-change-rate="0.01" \
+  --min-self-delegation="100" \
+  --from=netcloth \
+  --ip=xx.xx.xx.xx \
   --gas=200000
 ```
 
-上述命令创建验证人，```--moniker``` 指定了验证人节点名称, ```--amount```指定了初始抵押token数量, 其中 ```1 nch = 1000 000 000 000 pnch```， 1 nch为 1个投票权(voting power)，抵押token数量至少需要 1 nch才能参与共识。
+```--moniker```：验证人节点名称
+
+```--amount```：初始抵押token数量, 其中 ```1 nch = 1000 000 000 000 pnch```， 1 nch为 1个投票权(voting power)，抵押token数量至少需要 1 nch才能参与共识
+
+```--commission-rate```：佣金提成的百分比，0.1即为10%。当别的用户委托NCH给验证人时，该委托部分所得奖励的10%归验证人所有
+
+```--commission-max-rate```：佣金提成的上限
+
+```commission-max-change-rate```：每次调整佣金百分比时的上限，比如，1%到2%，增长率100%，但反映到commission-rate上只有1个百分点
+
+```--ip ```(选填)：验证人节点的公网IP，如要保证安全和隐私可以不填
+
+
+
 
 ## 6.查询验证人列表
 
@@ -95,19 +121,39 @@ nchcli query staking validators
 step5创建了验证人，此时其状态为0，0表示还没有绑定，因为没有抵押足够的pnch;（p表示pico 1p=10<sup>-12</sup>）
 1000000000000pnch为1个voting power，voting power的最小单位为1，只有它>=1时候才能够变成绑定状态2，才能成为活跃验证者出块，因此至少还需要抵押990000000000pnch
 
-可以用自己的账号给自己抵押，也可以让别的账号给自己的验证者抵押，这里分别展示：
+可以用自己的账号给自己抵押，也可以让别的账号给自己的验证者抵押
+如何用别的账号为自己抵押，[点击这里](../software/nchcli.md)
 
 这里需要用到步骤4中lucy账号对应的验证人地址operator_address: nchvaloper18q4pv9qvmqx7dcd2jq3dl3d0755urk8300709e
 
-### 7.1 抵押990000000000pnch
+### 7.1 如何查看operator_address
+
+#### 方法1：通过区块链浏览器查看
+
+#### 方法2：通过nchcli查看
+
+执行以下命令
+```
+nchcli keys show <key-name> --bech val
+
+e.g
+nchcli keys show netcloth --bech val
+```
+回传的"address"字段即为operator_address。
+
+### 7.2 抵押990000000000pnch
 
 ```shell
-nchcli tx staking delegate <address-validator-operator> 990000000000pnch --from=<key name>
+nchcli tx staking delegate <address-validator-operator> 990000000000pnch --from=<key name> --gas=<gas>
 
 e.g.:
-nchcli tx staking delegate nchvaloper18q4pv9qvmqx7dcd2jq3dl3d0755urk8300709e 990000000000pnch --from=$(nchcli keys show -a <key name>) --gas=200000
+nchcli tx staking delegate nchvaloper18q4pv9qvmqx7dcd2jq3dl3d0755urk8300709e 990000000000pnch --from=netcloth --gas=200000 --gas-prices=1000.0pnch
 
 ```
+
+其中，如果转账不带```--gas-prices```参数，默认的gasprices就为1000.0pnch，如手动指定gasprices，需要带上至少一位小数（最多12位）
+
+了解更多有关手续费的详情，[点击这里](../advanced/Q&A.md)
 
 ## 8.再次确认验证人状态为活跃验证人
 
@@ -171,8 +217,21 @@ nchcli query staking validators
 
 # 可以看到新增加验证人lucy的status变成2，成为活跃验证人，可通过区块浏览器查看出块情况
 ```
+## 9. 如何取回抵押的NCH
+委托给验证的人token, 可以通过```unbond``` 命令可以取回
 
-## 9. 关于验证人出块奖励和离线惩罚
+```
+nchcli tx staking unbond <validator-addr> <amountToUnbond> --from <mykey> --gas <gasPrice> --gas-prices <gasPrice>
+
+e.g.
+nchcli tx staking unbond nchvaloper1gghjut3ccd8ay0zduzj64hwre2fxs9ldmqhffj 10000000000000pnch --from netcloth --gas=200000 --gas-prices=1000.0pnch
+
+```
+
+请注意```validator-addr```是验证人的operator_address.
+
+
+## 10. 关于验证人出块奖励和离线惩罚
 
 验证人长期在线并参与网络共识，会得到对应比例的奖励。出块奖励取决于网络每年的通胀系统和当前验证人总质押toke的比重。
 
@@ -199,16 +258,4 @@ downtime_jail_duration: 2天
 双签的惩罚默认参数:
 ```
 slash_fraction_double_sign:0.5 %
-```
-
-## 10. 取回抵押/解绑
-
-委托给验证的人token, 可以通过```unbond``` 命令可以取回
-
-```shell
-Usage:
-  nchcli tx staking unbond [validator-addr] [amount] [flags]
-
-Example:
-$ nchcli tx staking unbond nchvaloper1gghjut3ccd8ay0zduzj64hwre2fxs9ldmqhffj 100pnch --from mykey
 ```

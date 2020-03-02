@@ -39,8 +39,13 @@ nchcli query ipal list
 ### 转帐
 
 ```shell
-nchcli send --from <key name> --to=<account address> --chain-id=<chain-id> --amount=<amount>pnch
+nchcli send --from <key name> --to=<account address> --chain-id=<chain-id> --amount=<amount>pnch --gas=200000 --gas-prices=1000.0pnch
+
 ```
+
+其中，如果转账不带```--gas-prices```参数，默认的gasprices就为1000.0pnch，如手动指定gasprices，需要带上至少一位小数（最多12位）
+
+了解更多有关手续费的详情，[点击这里](../advanced/Q&A.md)
 
 ### 创建验证人
 
@@ -50,7 +55,7 @@ nchcli send --from <key name> --to=<account address> --chain-id=<chain-id> --amo
 
 ```shell
 Example:
-$ nchcli tx staking delegate nchvaloper1l2rsakp388kuv9k8qzq6lrm9taddae7fpx59wm <amount>pnch --from <mykey>
+$ nchcli tx staking delegate nchvaloper1l2rsakp388kuv9k8qzq6lrm9taddae7fpx59wm <amount>pnch --from <mykey> --gas=200000 --gas-prices=1000.0pnch
 
 Usage:
   nchcli tx staking delegate [validator-addr] [amount] [flags]

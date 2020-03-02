@@ -77,6 +77,8 @@ curl http://127.0.0.1:26657/status
 
 When the height of the block synchronized by the node is the same as that on the block browser，indicates that the nodes have completed synchronization. At this point, a full node is deployed.
 
+Now, you can try to deploy a Validator on NetCloth chain. [Click here](./how-to-become-validator.md)
+
 ## More resources
 
 * Blockchain browser address of the testnet : <https://explorer.netcloth.org>

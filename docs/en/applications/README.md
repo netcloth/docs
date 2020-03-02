@@ -1,14 +1,17 @@
-## IPAL  Guide
+### Blockchain operations
 
-* [IPAL Document](../advanced/ipal.md)
+* [How to join the testnet](../get-started/how-to-join-testnet.md)
+* [How to claim test coins](../get-started/testcoin.md)
+* [How to create a validator](../get-started/how-to-become-validator.md)
+* [How to delegate](../get-started/how-to-delegate.md)
+* [How to create a proposal](../advanced/how-to-create-proposal.md)
+* [API reference](../advanced/api.md)
+* [Multisig account](../advanced/multisig.md)
+* [Smart Contract](../advanced/contract.md)
+
+### IPAL operation
+* [IPAL  Document](../advanced/ipal.md)
 * [IPAL API](../advanced/api.md)
   
-
-## NetCloth Instant Messaging Service Deployment Guide
-
-### Deployment steps
-
-* [Preparation for deployment environment](../im/prepare-deploy-environment.md)
-* [Build go server](../im/build-go-server.md)
-* [Build C++ server](../im/build-cpp-server.md)
-* [Deploy](../im/deploy.md)
+### Instant messaging service deployment
+* [Instant messaging service deployment](../im/README.md)
