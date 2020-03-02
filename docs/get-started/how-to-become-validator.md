@@ -47,6 +47,7 @@ nchcli tx staking create-validator \
   --min-self-delegation="100" \
   --from=$(nchcli keys show -a <key_name>) \
   --ip=<node_public_ip> \
+  --node-id=<node ID> \
   --gas=200000
 
  e.g
@@ -73,7 +74,7 @@ nchcli tx staking create-validator \
 
 ```commission-max-change-rate```：每次调整佣金百分比时的上限，比如，1%到2%，增长率100%，但反映到commission-rate上只有1个百分点
 
-```--ip ```(选填)：验证人节点的公网IP，如要保证安全和隐私可以不填
+其中```--node-id```和```--ip```是可选参数， ip是节点的外网ip地址，node-ids 可以通过命令行```nchd tendermint show-node-id```获得。 此2个参数，可公开一个可用的seed节点。
 
 
 
