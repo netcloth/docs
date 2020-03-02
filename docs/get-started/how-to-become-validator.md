@@ -46,11 +46,14 @@ nchcli tx staking create-validator \
   --commission-max-change-rate="0.01" \
   --min-self-delegation="100" \
   --from=$(nchcli keys show -a <key_name>) \
-  --ip=<node_public_ip>
+  --ip=<node_public_ip> \
+  --node-id=<node ID> \
   --gas=200000
 ```
 
 上述命令创建验证人，```--moniker``` 指定了验证人节点名称, ```--amount```指定了初始抵押token数量, 其中 ```1 nch = 1000 000 000 000 pnch```， 1 nch为 1个投票权(voting power)，抵押token数量至少需要 1 nch才能参与共识。
+
+其中```--node-id```和```--ip```是可选参数， ip是节点的外网ip地址，node-ids 可以通过命令行```nchd tendermint show-node-id```获得。
 
 ## 6.查询验证人列表
 
