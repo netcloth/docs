@@ -14,7 +14,7 @@
 # 作法：
 # nchd init <your_custom_name> --chain-id nch-testnet
 # 示例:
-nchd init lucy --chain-id nch-testnet
+nchd init netcloth --chain-id nch-testnet
 ```
 
 上述命令会初始化验证人和节点配置文件，默认的home目录为```~/```，如果需要设定home目录，可以带上```--home=<your_custom_path>```
@@ -31,8 +31,8 @@ wget https://raw.githubusercontent.com/netcloth/testnet/master/genesis.json -O  
 
 **修改配置文件，增加初始种子节点**：
 
-```
-修改配置文件：~/.nchd/config/config.toml， 添加主节点seed， 如下：
+```shell
+修改配置文件：~/.nchd/config/config.toml， 在[p2p]配置部分，修改seeds和persistent_peers配置项，添加种子节点seed， 如下：
 # Comma separated list of seed nodes to connect to
 seeds = "e60b962168d85c5b594cb8238e8f8f536c2d2ae2@13.58.188.155:26656,5bd7dc0cb3872e9e7371e7609342875d547e0195@13.124.101.63:26656,d172e23ea6bd1ecb77f058796689110c8387fe5a@18.191.12.61:26656"
 
@@ -43,11 +43,20 @@ persistent_peers = "e60b962168d85c5b594cb8238e8f8f536c2d2ae2@13.58.188.155:26656
 ## 3. 启动节点，同步区块
 
 ```shell
-# 执行下面的命令后，控制台会打印日志，同步区块
-nchd start --log_level "*:debug" --trace
+# 后台运行nchd
+nohup nchd start --trace 1>nchd.out 2>&1 &
 ```
 
-上述命令会将日志打印到控制台，如果要停止节点程序，按```ctrl +c```即可。如果要后台启动
+上述命令将nchd进程运行在后台 ，并将控制台输出重定向到nchd.out文件。
+
+如果需要启动rest-server， 执行如下命令：
+
+```shell
+# 后台运行nchcli，开启rest server
+nohup nchcli rest-server 1>cli.out 2>&1 &
+```
+
+关于```nchcli```客户端更多使用方法，参考[这里](../software/nchcli.md)
 
 ## 4. 查看节点同步状态
 
@@ -99,28 +108,10 @@ curl http://127.0.0.1:26657/status
 
 当节点同步到的区块高度和区块浏览器上一致时，表示节点已经同步完成，此时一个全节点就部署完成了。
 
-## 5. 后台运行
-
-```ctrl + c``` 停止```nchd```程序， 执行如下命令，后台运行
-
-```shell
-# 后台运行nchd
-nohup nchd start --trace 1>nchd.out 2>&1 &
-# 后台运行nchcli，开启rest server
-nohup nchcli rest-server 1>cli.out 2>&1 &
-```
-
-**如何停止程序**
-
-停止后台程序，可以执行如下命令:
-
-```shell
-kill -9 $(pgrep nchd)
-kill -9 $(pgrep nchcli)
-```
+测试网全节点部署完成后，你可以尝试创建测试网验证人，点击[这里](./how-to-become-validator.md)
 
 ## 更多资源
 
+* 查看常见问题,点击[这里](../advanced/Q&A.md)
 * 测试区块浏览器地址： <https://explorer.netcloth.org>
 * 申请测试token，点击[这里](testcoin.md)
-* 创建测试网验证人，点击[这里](./how-to-become-validator.md)

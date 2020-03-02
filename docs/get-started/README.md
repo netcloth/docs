@@ -7,7 +7,7 @@
 * [申领测试token](testcoin.md)
 * [如何创建验证人](how-to-become-validator.md)
 * [如何抵押和委托](how-to-delegate.md)
-* [如何发起提案](how-to-create-proposal.md)
+* [如何发起提案](../advanced/how-to-create-proposal.md)
 
 ### IPAL操作
 * [IPAL操作文档](../advanced/ipal.md)

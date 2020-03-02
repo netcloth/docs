@@ -115,8 +115,7 @@ function genSidebarConfig (module, title) {
                     'generate-genesis-file',
                     'how-to-join-testnet',
                     'how-to-become-validator',
-                    'how-to-delegate',
-                    'how-to-create-proposal'
+                    'how-to-delegate'
                 ]
             }
         ]
@@ -147,6 +146,7 @@ function genSidebarConfig (module, title) {
                     'ipal-sdk',
                     'multisig',
                     'keys',
+                    'how-to-create-proposal',
                     'Q&A'
                 ]
             }

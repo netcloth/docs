@@ -105,7 +105,7 @@ step5创建了验证人，此时其状态为0，0表示还没有绑定，因为�
 nchcli tx staking delegate <address-validator-operator> 990000000000pnch --from=<key name>
 
 e.g.:
-nchcli tx staking delegate nchvaloper18q4pv9qvmqx7dcd2jq3dl3d0755urk8300709e 990000000000pnch --from=$(nchcli keys show -a <key name>)
+nchcli tx staking delegate nchvaloper18q4pv9qvmqx7dcd2jq3dl3d0755urk8300709e 990000000000pnch --from=$(nchcli keys show -a <key name>) --gas=200000
 
 ```
 

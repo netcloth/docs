@@ -7,7 +7,7 @@
 * [How to get test token](testcoin.md)
 * [How to become a validator](how-to-become-validator.md)
 * [How to delegate](how-to-delegate.md)
-* [How to create a proposal](how-to-create-proposal.md)
+* [How to create a proposal](../advanced/how-to-create-proposal.md)
 
 ### IPAL
 * [IPAL documents](../advanced/ipal.md)

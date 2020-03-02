@@ -48,3 +48,5 @@ make install
 nchd version
 nchcli version
 ```
+
+到这时，nch节点程序就安装完成了。接下来，你可以尝试加入测试网，点击[这里](../get-started/how-to-join-testnet.md)
