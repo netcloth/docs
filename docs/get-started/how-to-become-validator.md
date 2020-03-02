@@ -200,3 +200,15 @@ downtime_jail_duration: 2天
 ```
 slash_fraction_double_sign:0.5 %
 ```
+
+## 10. 取回抵押/解绑
+
+委托给验证的人token, 可以通过```unbond``` 命令可以取回
+
+```shell
+Usage:
+  nchcli tx staking unbond [validator-addr] [amount] [flags]
+
+Example:
+$ nchcli tx staking unbond nchvaloper1gghjut3ccd8ay0zduzj64hwre2fxs9ldmqhffj 100pnch --from mykey
+```
