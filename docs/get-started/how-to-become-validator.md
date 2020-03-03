@@ -218,7 +218,7 @@ nchcli query staking validators
 
 # 可以看到新增加验证人lucy的status变成2，成为活跃验证人，可通过区块浏览器查看出块情况
 ```
-## 9. 如何取回抵押的NCH
+## 9. 如何解绑
 委托给验证的人token, 可以通过```unbond``` 命令可以取回
 
 ```
@@ -226,10 +226,9 @@ nchcli tx staking unbond <validator-addr> <amountToUnbond> --from <mykey> --gas 
 
 e.g.
 nchcli tx staking unbond nchvaloper1gghjut3ccd8ay0zduzj64hwre2fxs9ldmqhffj 10000000000000pnch --from netcloth --gas=200000 --gas-prices=1000.0pnch
-
 ```
 
-请注意```validator-addr```是验证人的operator_address.
+请注意```validator-addr```是验证人的operator_address.  更多关于验证人解绑、取回奖励和佣金，点击[这里](../software/nchcli.md#解委托)
 
 
 ## 10. 关于验证人出块奖励和离线惩罚

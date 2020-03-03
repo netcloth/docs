@@ -241,3 +241,4 @@ nchcli tx staking unbond nchvaloper133vmttt6n49jac5zn3z0klcpe7m8qluglfu58z 100pn
 
 ```
 
+更多关于验证人解绑、取回奖励和佣金，点击[这里](../software/nchcli.md#解委托)
