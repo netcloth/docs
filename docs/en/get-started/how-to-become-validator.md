@@ -31,17 +31,36 @@ To get the test token, please refer to [here](./testcoin.md)
 ```shell
 
 nchcli tx staking create-validator \
-  --amount=10000pnch \
+  --amount=10000000000pnch \
   --pubkey=$(nchd tendermint show-validator -o text) \
-  --moniker=<key_name> \
+  --moniker=<validator_name> \
   --commission-rate="0.10" \
   --commission-max-rate="0.20" \
   --commission-max-change-rate="0.01" \
   --min-self-delegation="100" \
   --from=$(nchcli keys show -a <key_name>) \
+  --ip=<node_public_ip> \
+  --node-id=<node ID> \
+  --gas=200000
+
+ e.g
+nchcli tx staking create-validator \
+  --amount=10000000000pnch \
+  --pubkey=$(nchd tendermint show-validator -o text) \
+  --moniker=netcloth \
+  --commission-rate="0.10" \
+  --commission-max-rate="0.20" \
+  --commission-max-change-rate="0.01" \
+  --min-self-delegation="100" \
+  --from=netcloth \
+  --ip=xx.xx.xx.xx \
   --gas=200000
   
 ```
+
+
+<font color=red>Tips：</font>```--node-id``` and ```--ip``` are optional.
+```ip``` is the public ip of the node. ```node-ids``` can be acquired via command ```nchd tendermint show-node-id```. If you enter these 2 parameters, you node will be a public seed blockchain node.
 
 ## 6. Query validators
 
@@ -177,3 +196,35 @@ nchcli tx staking unbond nchvaloper1gghjut3ccd8ay0zduzj64hwre2fxs9ldmqhffj 10000
 
  Be carefully,```validator-addr```is ```operator_address``` of the Validator.
  To learn more about unbond, withdraw rewards and commission, [click here](../software/nchcli##Validators).
+
+
+## 10. About validator rewards and punishments
+
+Validators will receive corresponding proportion of reward If they are long-term online and paticipate consensus of network.
+
+The number of rewards is depending on the annual inflation of network and the ratio of Staking on the network.
+
+In response to the abnormal behavior of active validators, the blockchain network will set them to jail states and slash a certain percentage of the bonded NCH. There are two main types of abnormal behavior:
+
+
+#### 1. Long-term offline or not participate the consensus 
+
+If the ratio of missed blocks of a validator during a specific duration of ```signed_blocks_window```. The network will slash a ratio of NCH which the validator staked according to ```slash_fraction_downtime```, then the validator will be jailed. The validator can be unjailed by executing command ``` unjail``` after the duration of ```downtime_jail_duration```.
+
+The following are default parameters:
+
+```
+signed_blocks_window: 10000
+min_signed_per_window: 50%
+slash_fraction_downtime: 0.05%
+downtime_jail_duration: 2days
+```
+
+#### 2. Malacious sign (AKA double sign) 
+
+A validator initiates contradictory vote during the consensus process. That is, the validator signs different blocks in the same round with the same height.
+
+The default parameter of double sign punishment:
+```
+slash_fraction_double_sign:0.5 %
+```
