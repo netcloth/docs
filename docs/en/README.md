@@ -2,7 +2,7 @@
 home: true
 heroImage: /hero.png
 actionText: Get Started →
-actionLink: /introduction/
+actionLink: /en/introduction/
 ---
 
 <div class="features">
