@@ -17,6 +17,7 @@
 ### IPAL操作
 * [IPAL使用](../advanced/ipal.md)
 * [IPAL API](../advanced/api.md)
-  
+* [使用sdk发起IPAL记账](../advanced/ipal-sdk.md)
+
 ### 即时通讯服务部署
 * [NetCloth即时通讯服务部署指南](../im/README.md)

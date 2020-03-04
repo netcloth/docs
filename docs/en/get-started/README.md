@@ -1,17 +1,20 @@
 ## Quick start
 
 ### Blockchain
-
-* [How to install nch](../software/how-to-install.md)
-* [How to join testnet](how-to-join-testnet.md)
-* [How to get test token](testcoin.md)
-* [How to become a validator](how-to-become-validator.md)
-* [How to delegate](how-to-delegate.md)
+* [How to join the testnet](../get-started/how-to-join-testnet.md)
+* [How to claim test coins](../get-started/testcoin.md)
+* [How to create a validator](../get-started/how-to-become-validator.md)
+* [How to delegate](../get-started/how-to-delegate.md)
 * [How to create a proposal](../advanced/how-to-create-proposal.md)
+* [API reference](../advanced/api.md)
+* [Multisig account](../advanced/multisig.md)
+* [Smart Contract](../advanced/contract.md)
 
-### IPAL
-* [IPAL documents](../advanced/ipal.md)
+### IPAL operation
+* [IPAL Document](../advanced/ipal.md)
 * [IPAL API](../advanced/api.md)
+* [How to use nch-sdk](../advanced/ipal-sdk.md)
   
-### Instant messaging service
+### Instant messaging service deployment
 * [Instant messaging service deployment](../im/README.md)
+

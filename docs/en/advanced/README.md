@@ -5,5 +5,6 @@
 * [How to use nch-sdk](./ipal-sdk.md)
 * [Multisig key&wallet](./multisig.md)
 * [How to import/export secret key via nchcli](./keys.md)
+* [How to create a proposal](./how-to-create-proposal.md)
 * [Smart Contract](./contract.md)
 * [FAQ](./Q&A.md)
