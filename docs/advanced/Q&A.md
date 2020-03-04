@@ -10,6 +10,10 @@ NetCloth 网络中发起交易，需要支付一定的交易手续费。
 
 在使用```nchcli```命令行工具发送交易时，可使用```---gas```指定交易的gas limit，如果交易执行实际消耗超过用户指定的gas limit，则交易失败，手续费不返还。  可使用```--gas-prices```指定交易的GasPrice，如果GasPrice低于网络中验证人所能接受的minimus-gas-prices，则交易会被丢弃，不被转发/打包。
 
+请注意：在设定```--gas-prices```时，请至少带一位小数，最多12位小数（如1000.0、1100.0）。输入整数是无效的。
+
+如何发起一笔交易？点击[这里](../software/nchcli.md)
+
 ### 关于NCH token
 
 NCH 是NetCloth网络中的token，最小单位为pnch， 换算关系如下：

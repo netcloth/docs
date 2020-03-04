@@ -502,7 +502,7 @@ response:
 }
 ```
 
-其中from为交易发起的合约地址，to为空, payload为合约代码的十六进制形式，amount为向合约发送的资产。
+其中from为交易发起的合约地址，to为空, payload为合约代码的十六进制形式，amount为向合约发送的资产数量。
 
 可通过```nchcli```构造payload，，如下构造一个创建合约的交易消息，不做签名
 
@@ -545,7 +545,7 @@ response:
 
 #### 调用合约
 
-调用合约的payload要根据调用方法的abi来构造，可参考代码 https://github.com/netcloth/netcloth-chain/blob/develop/modules/vm/client/cli/query.go的GetCmdQueryCallFee函数
+调用合约的payload要根据调用方法的abi来构造，可参考代码 https://github.com/netcloth/netcloth-chain/blob/develop/modules/vm/client/cli/query.go 的GetCmdQueryCallFee函数
 
 
 request:
@@ -577,4 +577,4 @@ response:
 # Res为调用方法的返回值
 ```
 
-其中post_data及payload的生成 ，可以借助nchcli工具，参考[这里](./contract.md#调用智能合约)
+其中post_data及payload的生成 ，可以借助nchcli工具，参考[这里](./contract.md##调用智能合约)

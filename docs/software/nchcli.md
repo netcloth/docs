@@ -46,6 +46,8 @@ nchcli send --from <key name> --to=<account address> --chain-id=<chain-id> --amo
 
 了解更多有关手续费的详情，[点击这里](../advanced/Q&A.md)
 
+## 验证人相关
+
 ### 创建验证人
 
 创建验证人，参考[这里](../get-started/how-to-become-validator.md)
@@ -145,7 +147,3 @@ nchcli keys export <name> [flags]
 ```shell
 nchcli keys import <name> <keyfile> [flags]
 ```
-
-## 验证人相关
-
-##

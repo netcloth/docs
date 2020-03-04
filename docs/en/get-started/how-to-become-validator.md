@@ -163,3 +163,17 @@ nchcli query staking validators
 
 # You can see that the status of the newly added validator lucy becomes 2, an active validator, you can check the block status through the block browser
 ```
+## 9. How to unbond NCH
+To withdraw bonded staking you delegated for a validator by executing the following command ```unband```.
+
+```
+nchcli tx staking unbond <validator-addr> <amountToUnbond> --from <mykey> --gas <gasPrice> --gas-prices <gasPrice>
+
+e.g.
+nchcli tx staking unbond nchvaloper1gghjut3ccd8ay0zduzj64hwre2fxs9ldmqhffj 10000000000000pnch --from netcloth --gas=200000 --gas-prices=1000.0pnch
+```
+
+<font color=red>Warning</font>
+
+ Be carefully,```validator-addr```is ```operator_address``` of the Validator.
+ To learn more about unbond, withdraw rewards and commission, [click here](../software/nchcli##Validators).

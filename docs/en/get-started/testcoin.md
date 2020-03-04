@@ -15,8 +15,8 @@ Enter the wallet password as prompted, and get the following example output:
 ```shell
 - name: lucy
   type: local
-  address: nch1p3fuppcxud5rjsaywuyuguh6achmj5p0r6z6ve  // 地址address
-  pubkey: nchpub1addwnpepqg8mfc6t9eaw9lal0c4tzma5vgmqzkgszwcgljcz3sy8rd2rukgxz9dtmph  // 公钥Public key
+  address: nch1p3fuppcxud5rjsaywuyuguh6achmj5p0r6z6ve
+  pubkey: nchpub1addwnpepqg8mfc6t9eaw9lal0c4tzma5vgmqzkgszwcgljcz3sy8rd2rukgxz9dtmph
   mnemonic: "" 
   threshold: 0
   pubkeys: []
@@ -38,3 +38,16 @@ nchcli keys add <key_name> --recover
 Faucet address: ```https://docs.netcloth.org/nch/get_token?<address>```  
 
 Replace `` `<address>` '' with your wallet address to get the test token
+
+
+## How to check your balance
+
+**Method A:** Query via blockchain explorer
+
+**Method B:** Query via nchcli
+
+You can execute the following command to check your balance.
+
+```shell
+nchcli query account [address]
+```
