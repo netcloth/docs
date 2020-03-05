@@ -147,6 +147,7 @@ function genSidebarConfig (module, title) {
                     'multisig',
                     'keys',
                     'how-to-create-proposal',
+                    'transaction',
                     'Q&A'
                 ]
             }

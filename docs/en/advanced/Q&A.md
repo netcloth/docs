@@ -24,9 +24,10 @@ NCH is a token in the NetCloth network. The minimum unit is pnch. The conversion
 
 ## Node operation and maintenance
 
-### 1.How to stop the node program
+### How to stop the node program
 
 **To stop the background program, you can execute the following command**
+
 ```shell
 # Stop nchd
 kill -9 $(pgrep nchd)
