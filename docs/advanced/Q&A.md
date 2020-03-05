@@ -21,11 +21,13 @@ NetCloth 网络中发起交易，需要支付一定的交易手续费。
 
 交易手续费 = Gas * GasPrice，其中Gas表示交易实际消耗的Gas数量, GasPrice为单位Gas价格。 一笔交易实际需要的Gas数量，代表了网络执行该交易时需要的资源多少，主要指计算、存储操作消耗。 GasPrice由用户指定，并且验证人节点可以自主配置其能接受的minimum-gas-prices(默认为1000.0pnch)。
 
-在使用```nchcli```命令行工具发送交易时，可使用```---gas```指定交易的gas limit，如果交易执行实际消耗超过用户指定的gas limit，则交易失败，手续费不返还。  可使用```--gas-prices```指定交易的GasPrice，如果GasPrice低于网络中验证人所能接受的minimus-gas-prices，则交易会被丢弃，不被转发/打包。
+在使用```nchcli```命令行工具发送交易时，可使用```---gas```指定交易的gas limit，如果交易执行实际消耗超过用户指定的gas limit，则交易失败，手续费不返还； 如果交易执行实际消耗未超过用户指定的gas limit，则剩余的gas会返还。 可使用```--gas-prices```指定交易的GasPrice，如果GasPrice低于网络中验证人所能接受的minimus-gas-prices，则交易会被丢弃，不被转发/打包。
+
+如果不想通过```--gas```指定交易的gas limit，可通过```--gas auto``` 自动指定，nchcli会预估交易gas；通常情况下，交易实际消耗的gas会大于预估，为了避免out of gas，建议同时带上```--gas-adjustment```参数，建议```--gas-adjustment=1.5```。
 
 请注意：在设定```--gas-prices```时，请至少带一位小数，最多12位小数（如1000.0、1100.0）。输入整数是无效的。
 
-如何发起一笔交易？点击[这里](../software/nchcli.md)
+如何发起一笔交易？点击[这里](../software/nchcli.md#交易)
 
 ### 关于NCH token
 
