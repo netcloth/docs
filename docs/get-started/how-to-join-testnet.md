@@ -2,9 +2,11 @@
 
 本文档介绍如何部署一个测试网全节点。
 
-## 1. 安装nch
+## 1. 安装nch节点程序
 
-请按照[教程](../software/how-to-install.md)，安装nch
+如果你还没有安装nch节点程序，请按照[教程](../software/how-to-install.md)安装。
+
+如果你已经安装过nch节点，可以跳过此步骤。
 
 ## 2. 节点设置
 
