@@ -78,7 +78,7 @@ nchd start --log_level "*:debug" --trace
 Solidity can be used for Smart Contracts.
 
 The following contract is an example:
-```js
+```javascript
 pragma solidity ^0.4.16;
 contract token {
     mapping (address => uint256) public balances;
@@ -106,13 +106,13 @@ After online compilation,you can use [remix](http://remix.ethereum.org/) to save
 Assume that the local```./demo/demo.bc ``` is a bytecode file and```./demo/demo.abi ``` is an abi file.
 
 Bytecode:
-```js
+```javascript
 608060405234801561001057600080fd5b506509184e72a0006000803373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002081905550610344806100696000396000f300608060405260043610610057576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff16806327e235e31461005c57806370a08231146100b3578063a9059cbb1461010a575b600080fd5b34801561006857600080fd5b5061009d600480360381019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190505050610162565b6040518082815260200191505060405180910390f35b3480156100bf57600080fd5b506100f4600480360381019080803573ffffffffffffffffffffffffffffffffffffffff16906020019092919050505061017a565b6040518082815260200191505060405180910390f35b610148600480360381019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190803590602001909291905050506101c2565b604051808215151515815260200191505060405180910390f35b60006020528060005260406000206000915090505481565b60008060008373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001908152602001600020549050919050565b6000816000803373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001908152602001600020541015151561021157600080fd5b816000803373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060008282540392505081905550816000808573ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001908152602001600020600082825401925050819055508273ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff167fddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef846040518082815260200191505060405180910390a360019050929150505600a165627a7a7230582015481e18f5439ee76271037928d88d33cc7d7d4bf1e5e801b78db9e902f255560029
 ```
 
 abi:
 
-```js
+```json
 [
 	{
 		"constant": true,
@@ -207,6 +207,7 @@ abi:
 ```
 
 ### Deploying smart contracts
+
 ```bash
 nchcli vm create --code_file=./demo/demo.bc \
 --from $(nchcli keys show -a alice) --amount=0pnch \
@@ -222,7 +223,8 @@ Parameters explanations:
 ```--gas``` Set the gas limit for this transaction. The default value of nchcli is 100,000. The gas consumed in creating a contract is relatively large. You need to set a larger value.
 
 After the transaction is broadcast, the terminal responds as follows:
-```
+
+```json
 {
   "height": "0",
   "txhash": "C991A111B943E8C1D6BCA1F35A93BFC7F268C963F0B286340AF647D228FBCB01",
@@ -238,6 +240,7 @@ After the transaction is broadcast, the terminal responds as follows:
 ```
 
 The ```txhash``` is the transaction hash. You can query whether the transaction was successful and the newly created contract address according to the ```txhash``` returned.
+
 ```bash
 nchcli query tx <txhash>
 ```
@@ -246,7 +249,7 @@ If the returned result contains```"success":true```, the transaction was success
 
 In the transaction details, the events structure contains the newly created contract address:
 
-```bash
+```json
  "events": [
     {
       "type": "message",
@@ -307,12 +310,12 @@ Parameters Explanations:
 ```--from``` Specifies the originating account for this call.
 
 The above example calls the contract's ```transfer``` method, which is declared as follows
-```js
+```javascript
 function transfer(address to, uint256 value) public returns (bool success)
 ```
 
 The ```transfer``` method requires 2 parameters, which are the receiver's address and the number of assets to transfer. In the example, the receiving address is composed of 0 and the number of transfers is 2. The two parameters are converted into hexadecimal and they are filled to 32 bytes. as follows:
-```
+```javascript
 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000002
 ```
 
@@ -326,15 +329,15 @@ nchcli query account nch1vp0pzeyst7zjkck5qk0kvplu3szsdxp04kg5xc
 
 Querying contract status requires the use of abi files. It is assumed that the abi file corresponding to the contract has been saved to ```./demo/demo.abi```
 
-
 In the contract example, ```balanceOf``` is a read-only method. You can query the status of the specified address in the contract according to this method.
-``` bash
+```bash
 # Call the contract's balanceOf method,
 nchcli query vm call $(nchcli keys show -a alice) nch1vp0pzeyst7zjkck5qk0kvplu3szsdxp04kg5xc balanceOf "0000000000000000000000000000000000000000000000000000000000000000" 0pnch ./demo/demo.abi
 ```
 
 Query the status of the alice account in the contract:
-```
+
+```bash
 # Use nchcli to first convert the address of alice to hexadecimal
 nchcli keys parse $(nchcli keys show -a alice)
 
@@ -346,7 +349,6 @@ nchcli query vm call $(nchcli keys show -a alice) nch1vp0pzeyst7zjkck5qk0kvplu3s
 ```
 
 You can call the contract by the ```query``` method on ```nchcli```, and only the status can be queried, It will not create Tx on chain. You can also use this method of nchcli to construct the payload field for contract-related REST APIs.
-
 
 ## Smart contract related API
 

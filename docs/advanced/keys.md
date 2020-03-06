@@ -4,13 +4,13 @@
 
 使用```nchcli``` 工具创建新帐户
 
-```shell
+```bash
 nchcli keys add <key_name>
 ```
 
 根据提示，输入钱包密码，得到示例如下输出：
 
-```shell
+```bash
 - name: lucy
   type: local
   address: nch1p3fuppcxud5rjsaywuyuguh6achmj5p0r6z6ve  // 地址
@@ -27,7 +27,7 @@ connect plug cigar purchase inflict enroll ten limb quantum never supply grid ho
 
 其中助记词可用来恢复账户，恢复账户的命令是：
 
-```shell
+```bash
 nchcli keys add <key_name> --recover
 ```
 
@@ -35,13 +35,13 @@ nchcli keys add <key_name> --recover
 
 ```nchcli export``` 可以导出加密格式的私钥
 
-```shell
+```bash
 nchcli keys export <name> [flags]
 ```
 
 上述命令行导出加密的私钥，类似如下格式：
 
-```
+```javascript
 -----BEGIN TENDERMINT PRIVATE KEY-----
 salt: F49D9D8EB12849AD84405420E518870B
 kdf: bcrypt
@@ -56,12 +56,12 @@ gJDlh038lb1X4LhKjqpnEXa7FvsJtLXGXpX1PIY=
 
 ```nchcli import``` 可以导入加密的私钥文件
 
-```shell
+```bash
 nchcli keys import <name> <keyfile> [flags]
 ```
 
 查看已经导入的key
 
-```shell
+```bash
 nchcli keys list
 ```

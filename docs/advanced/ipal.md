@@ -15,7 +15,7 @@ IP Address List 是NetCloth网络特有的寻址模块，IPAL记录的是海星�
 
 * 声明IPAL
 
-```shell
+```bash
 # usage :
 nchcli ipal claim --from=<from key> --moniker=<moniker> --website=<website> --endpoints=<endpoints> --details=<details> --bond=<bond coins>
 
@@ -23,28 +23,28 @@ nchcli ipal claim --from=<from key> --moniker=<moniker> --website=<website> --en
 nchcli ipal claim --from=$(nchcli keys show -a alice) --moniker=netcloth --website="www.netcloth.org" --endpoints="1|http://219.22.22.22:8899,2|http//221.11.11.11:9999" --details="netcloth official server endpoint" --bond=100000000000000000pnch
 ```
 
-<font color=red>Monikor：</font>海星节点的名称
+其中：
 
-<font color=red>website（选填）：</font>节点的官网
+- <font color=red>Monikor：</font>海星节点的名称
 
-<font color=red>endpoints：:</font>IM服务端的公网IP（如何搭建IM服务端，详见[这里](../im/README.md))
+- font color=red>website（选填）：</font>节点的官网
 
-<font color=red>details（选填）：:</font>节点的介绍
+- <font color=red>endpoints：:</font>IM服务端的公网IP（如何搭建IM服务端，详见[这里](../im/README.md))
 
-<font color=red>bond：</font>抵押NCH的数量，抵押量越高，在NetCloth APP节点列表检索中排名越靠前
+- <font color=red>details（选填）：:</font>节点的介绍
 
-
+- <font color=red>bond：</font>抵押NCH的数量，抵押量越高，在NetCloth APP节点列表检索中排名越靠前
 
 * 查询IPAL列表
 
-```shell
+```bash
 # usage
 # nchcli query ipal list
 ```
 
 response:
 
-```shell
+```json
 [[
   {
     "operator_address": "nch13f5tmt88z5lkx8p45hv7a327nc0tpjzlwsq35e",
@@ -72,7 +72,7 @@ response:
 
 * 查询IPAL
 
-```shell
+```bash
 # usage
 # nchcli query ipal node <node_address>
 
@@ -81,7 +81,7 @@ nchcli query ipal node nch13f5tmt88z5lkx8p45hv7a327nc0tpjzlwsq35e
 
 response:
 
-```shell
+```json
 {
   "operator_address": "nch13f5tmt88z5lkx8p45hv7a327nc0tpjzlwsq35e",
   "moniker": "netcloth",
@@ -102,7 +102,6 @@ response:
     "amount": "100000000000000000"
   }
 }
-
 ```
 
 IPAL声明成功后，你可以在NetCloth APP中看到自己的节点了。[点此下载APP](http://chat-app.netcloth.org)
@@ -110,6 +109,7 @@ IPAL声明成功后，你可以在NetCloth APP中看到自己的节点了。[点
 ## 2. CIPAL
 
 ### CIPAL介绍
+
 C-IPAL（Client IP Address List）协议是IPAL的一种扩展，面向客户端用户。用户使用各类服务均需要通过C-IPAL申明地址。
 
 具体的实现流程为：用户在NetCloth APP端向连接的节点发送CIPAL申明交易-->用户所连的海星节点收到用户的CIPAL消息体-->海星节点将消息体加上自己的地址，并签名构建新的交易-->将CIPAL交易广播至区块链节点-->验证人打包CIPAL交易，上链。
@@ -120,7 +120,7 @@ C-IPAL（Client IP Address List）协议是IPAL的一种扩展，面向客户端
 
 * 声明
 
-```shell
+```bash
 # usage
 # nchcli cipal claim --user=<user key name> --proxy=<proxy address> --service_address=<service address> --service_type=<service type>
 
@@ -129,7 +129,7 @@ nchcli cipal claim --proxy=$(nchcli keys show -a alice) --service_address="219.2
 
 * 查询
 
-```shell
+```bash
 # usage
 # nchcli query cipal query_cipal <user-address>
 nchcli query cipal query_cipal nch1g3wacwwjl89apn2yplgjtalz8ss05adx4vg2q4
@@ -137,7 +137,7 @@ nchcli query cipal query_cipal nch1g3wacwwjl89apn2yplgjtalz8ss05adx4vg2q4
 
 response:
 
-```shell
+```json
 {
   "user_address": "nch1g3wacwwjl89apn2yplgjtalz8ss05adx4vg2q4",
   "service_infos": [
@@ -148,6 +148,9 @@ response:
   ]
 }
 ```
+
 * CIPAL手续费
 
-CIPAL是一类特殊的交易，需要海星节点为用户支付交易手续费，请保证账户有足够的余额用于支付手续费。
+CIPAL是一类特殊的交易，需要海星节点为用户支付交易手续费，请保证账户有足够的余额用于支付手续费。 
+
+关于手续费，点击[这里](../advanced/Q&A.md#交易手续费)

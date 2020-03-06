@@ -21,7 +21,7 @@ Recommended server configuration:
 
 * Install dependence
 
-```shell
+```bash
 sudo apt-get update
 sudo apt-get install git gcc cmake make golang-statik
 ```
@@ -30,7 +30,7 @@ To install and configure go, click [here](../software/go-install.md)
 
 ### 2. Build nch from source code
 
-```shell 
+```bash 
 # Get nch source code
 git clone https://github.com/netcloth/netcloth-chain.git
 cd netcloth-chain && git checkout  testnet-v1.0.1

@@ -15,7 +15,7 @@ To install and configure go, click [here](../software/go-install.md)
 
 #### Build nch from source code
 
-```cassandraql
+```bash
 # Get nch source code
 git clone https://github.com/NetCloth/netcloth-chain.git
 cd netcloth-chain && git checkout  testnet-v1.0.1
@@ -34,13 +34,13 @@ nchcli version
 
 ### 1. Create an account
 
-```cassandraql
+```bash
 nchcli keys add <key_name>
 ```
 
 ### 2. Initialize your node
 
-```cassandraql
+```bash
 nchd init --moniker=<node_name> --chain-id nch-testnet
 ```
 
@@ -48,7 +48,7 @@ This command will create the genesis& config files in the home directory(~/.nchd
 
 ### 3. Execute gentx command
 
-```cassandraql
+```bash
 nchd gentx \
   --amount=10000000000000pnch \
   --pubkey $(nchd tendermint show-validator) \
@@ -59,7 +59,7 @@ This commond will generate the transaction in the directory ``` ~/.nchd/config/g
 
 The default commission data is：
 
-```cassandraql
+```bash
 delegation amount: 10000000000000pnch
 commission rate: 0.1
 commission max rate: 0.2

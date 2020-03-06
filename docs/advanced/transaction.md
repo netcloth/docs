@@ -6,7 +6,7 @@ NetCloth链交易结构，主要包含type, msg, fee, signatures和memo，其中
 
 转帐交易的结构：
 
-```sql
+```json
 {
 	"type": "nch/StdTx", // 交易type，固定为nch/StdTx
 	"value": {
@@ -42,7 +42,7 @@ NetCloth链交易结构，主要包含type, msg, fee, signatures和memo，其中
 
 IPAL交易的结构：
 
-```sql
+```json
 {
 	"type": "nch/StdTx", // 交易type，固定为nch/StdTx
 	"value": {

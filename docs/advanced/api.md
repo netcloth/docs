@@ -3,7 +3,7 @@
 
 ```nchcli``` 开启rest-server后，浏览器访问 ```http://127.0.0.1:1317/swagger-ui/``` 可以看到所有的REST APIs
 
-```shell
+```bash
 # 开启 rest-server
 nchcli rest-server --node=http://127.0.0.1:26657
 ```
@@ -14,13 +14,13 @@ nchcli rest-server --node=http://127.0.0.1:26657
 
 request：
 
-```shell
+```bash
 curl http://127.0.0.1:1317/node_info
 ```
 
 response：
 
-```shell
+```json
 {
   "node_info": {
     "protocol_version": {
@@ -55,13 +55,13 @@ response：
 
 request:
 
-```shell
+```bash
 curl http://127.0.0.1:1317/syncing
 ```
 
 response:
 
-```shell
+```json
 {
   "syncing": false   // true表示节点正在追赶最新区块，false表示节点已经处于最新区块状态
 }
@@ -71,13 +71,13 @@ response:
 
 request:
 
-```shell
+```bash
 curl http://rpc.netcloth.org/blocks/latest
 ```
 
 response:
 
-```shell
+```json
 {
   "block_meta": {
     "block_id": {
@@ -189,7 +189,7 @@ response:
 
 request:
 
-```shell
+```bash
 curl http://rpc.netcloth.org/blocks/{height}
 ```
 
@@ -199,13 +199,13 @@ response 同上
 
 request:
 
-```shell
+```bash
 curl http://127.0.0.1:1317/validatorsets/latest
 ```
 
 response:
 
-```shell
+```json
 {
   "height": "0",
   "result": {
@@ -250,13 +250,13 @@ response:
 
 request:
 
-```shell
-http://127.0.0.1:1317/txs/{txhash}
+```bash
+curl http://127.0.0.1:1317/txs/{txhash}
 ```
 
 response:
 
-```shell
+```json
 {
   "height": "959150",
   "txhash": "5E53D158DF0B117B2ED07211F8ADA27369A47C3341EF34B1F96070E0F681BF78",
@@ -347,7 +347,7 @@ response:
 
 ### 广播交易
   
-```shell
+```bash
 curl -X POST "http://127.0.0.1:1317/txs" -H "accept: application/json" -H "Content-Type: application/json" -d "{transaction msg}"
 ```
 
@@ -357,7 +357,7 @@ curl -X POST "http://127.0.0.1:1317/txs" -H "accept: application/json" -H "Conte
 
 目前不提供api，通过命令行完成
 
-``` shell
+``` bash
 # 该命令以交互的方式创建账号aipaltest并关联相应的公钥账号，需要输入两次密码来创建账号，私钥通过密码加密，相当于生成keystore，同时会输出24个单词的助记词
 nchcli keys add ipaltest
 
@@ -372,10 +372,13 @@ nchcli ipal claim --from=$(nchcli keys show ipaltest -a) --moniker=ipaltest  --w
 
 rest接口查询
 
- ``` shell
+ ```bash
 curl http://127.0.0.1:1317/ipal/list
+```
 
 response:
+
+```json
 {
   "height": "66",
   "result": [
@@ -402,12 +405,16 @@ response:
 ### 根据地址查询IPAL
 rest接口查询
 
-``` shell
+```bash
 curl http://127.0.0.1:1317/ipal/node/{addr}
 
 e.g.
 curl http://127.0.0.1:1317/ipal/node/nch19uspwrym4wr366teytlu4hre9rs7afsf33dgcy
+```
 
+response:
+
+```json
 {
   "height": "10005",
   "result": {
@@ -435,12 +442,16 @@ curl http://127.0.0.1:1317/ipal/node/nch19uspwrym4wr366teytlu4hre9rs7afsf33dgcy
 
 rest接口查询
 
-``` shell
+```bash
 curl http://127.0.0.1:1317/cipal/query/{addr}
 
 e.g. 已经注册
 curl http://127.0.0.1:1317/cipal/query/nch12zsau56la368qs23f6nmn2kfe6er6d5gue7u7g
+```
 
+response:
+
+```json
 {
   "height": "480",
   "result": {
@@ -455,7 +466,7 @@ curl http://127.0.0.1:1317/cipal/query/nch12zsau56la368qs23f6nmn2kfe6er6d5gue7u7
 }
 
 e.g. 没有注册
-http://127.0.0.1:1317/cipal/query/nch1a6hy8k6hscffcjgpggjs9dru4x4g58znj6pn0z
+curl http://127.0.0.1:1317/cipal/query/nch1a6hy8k6hscffcjgpggjs9dru4x4g58znj6pn0z
 
 {
   "height": "446",
@@ -475,7 +486,7 @@ curl http://localhost:1317/vm/code/nch19lhydp6k59c66x2vp3h4ua8r8535uh6dlmex6y
 
 response:
 
-```js
+```json
 {
   "height": "1460",
   "result": "608060405234801561001057600080fd5b50600436106100a95760003560e01c80636b520757116100715780636b5207571461016e5780639cc7f7081461018c578063a17a9e66146101ce578063aef52a2c14610210578063cc445d4e1461022e578063dac0eb071461025c576100a9565b80631e1ed70b146100ae578063300308ba146100e65780633033413b146100f05780634903b0d11461010e5780635d33a27f14610150575b600080fd5b6100e4600480360360408110156100c457600080fd5b81019080803590602001909291908035906020019092919050505061028a565b005b6100ee6102a6565b005b6100f86102b0565b6040518082815260200191505060405180910390f35b61013a6004803603602081101561012457600080fd5b81019080803590602001909291905050506102b6565b6040518082815260200191505060405180910390f35b6101586102ce565b6040518082815260200191505060405180910390f35b6101766102d4565b6040518082815260200191505060405180910390f35b6101b8600480360360208110156101a257600080fd5b81019080803590602001909291905050506102dd565b6040518082815260200191505060405180910390f35b6101fa600480360360208110156101e457600080fd5b81019080803590602001909291905050506102fa565b6040518082815260200191505060405180910390f35b610218610315565b6040518082815260200191505060405180910390f35b61025a6004803603602081101561024457600080fd5b810190808035906020019092919050505061031b565b005b6102886004803603602081101561027257600080fd5b8101908080359060200190929190505050610329565b005b8060036000848152602001908152602001600020819055505050565b6064600081905550565b60005481565b60036020528060005260406000206000915090505481565b60015481565b60008054905090565b600060036000838152602001908152602001600020549050919050565b60008160008082825401925050819055506000549050919050565b60025481565b806001540160008190555050565b60016002540160028190555061033e816102fa565b6001600082825401925050819055505056fea26469706673582212207339ae9e785d6abe064a41bdebda6eb72d116c63a4382c77d452d75c3a7f4fa664736f6c63430006000033"
@@ -490,7 +501,7 @@ response:
 
 预估创建合约交易的gas，需要向接口post一个如下的结构体：
 
-```js
+```json
 {
 	"from": "nch13f5tmt88z5lkx8p45hv7a327nc0tpjzlwsq35e",
 	"to": "",
@@ -547,8 +558,8 @@ response:
 
 调用合约的payload要根据调用方法的abi来构造，可参考代码 https://github.com/netcloth/netcloth-chain/blob/develop/modules/vm/client/cli/query.go 的GetCmdQueryCallFee函数
 
-
 request:
+
 ```bash
 curl -X POST localhost:1317/vm/estimate_gas -d '
 {
@@ -564,7 +575,7 @@ curl -X POST localhost:1317/vm/estimate_gas -d '
 
 response:
 
-```
+```json
 {
   "height": "298",
   "result": {

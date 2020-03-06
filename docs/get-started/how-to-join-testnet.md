@@ -12,7 +12,7 @@
 
 **初始化节点配置**：
 
-```shell
+```bash
 # 作法：
 # nchd init <your_custom_name> --chain-id nch-testnet
 # 示例:
@@ -23,7 +23,7 @@ nchd init netcloth --chain-id nch-testnet
 
 **下载测试网genesis文件**：
 
-```shell
+```bash
 # 拷贝主节点genesis文件,此处从github下载
 wget https://raw.githubusercontent.com/netcloth/testnet/master/genesis.json -O  ~/.nchd/config/genesis.json
 如果wget很慢或失败请尝试手动下载文件,地址:https://github.com/netcloth/docs/blob/master/testnet/genesis.json
@@ -33,7 +33,7 @@ wget https://raw.githubusercontent.com/netcloth/testnet/master/genesis.json -O  
 
 **修改配置文件，增加初始种子节点**：
 
-```shell
+```bash
 修改配置文件：~/.nchd/config/config.toml， 在[p2p]配置部分，修改seeds和persistent_peers配置项，添加种子节点seed， 如下：
 # Comma separated list of seed nodes to connect to
 seeds = "e60b962168d85c5b594cb8238e8f8f536c2d2ae2@13.58.188.155:26656,5bd7dc0cb3872e9e7371e7609342875d547e0195@13.124.101.63:26656,d172e23ea6bd1ecb77f058796689110c8387fe5a@18.191.12.61:26656"
@@ -44,7 +44,7 @@ persistent_peers = "e60b962168d85c5b594cb8238e8f8f536c2d2ae2@13.58.188.155:26656
 
 ## 3. 启动节点，同步区块
 
-```shell
+```bash
 # 后台运行nchd
 nohup nchd start --trace 1>nchd.out 2>&1 &
 ```
@@ -53,7 +53,7 @@ nohup nchd start --trace 1>nchd.out 2>&1 &
 
 如果需要启动rest-server， 执行如下命令：
 
-```shell
+```bash
 # 后台运行nchcli，开启rest server
 nohup nchcli rest-server 1>cli.out 2>&1 &
 ```
@@ -62,7 +62,7 @@ nohup nchcli rest-server 1>cli.out 2>&1 &
 
 ## 4. 查看节点同步状态
 
-```shell
+```bash
 # 打开一个新的终端
 curl http://127.0.0.1:26657/status
 

@@ -8,7 +8,7 @@ How to join the testnet, click [here](how-to-join-testnet.md)。
 
 If you already have a wallet, you can skip this step
 
-```shell
+```bash
 nchcli keys add lucy
 
 override the existing name lucy [y/N]: y
@@ -31,7 +31,7 @@ Obtain test Token, refer to [here](./testcoin.md)
 
 ### Query validator list
 
-```shell
+```bash
 nchcli query staking validators
 
 response:
@@ -93,7 +93,7 @@ response:
 
 * You can also check the validator based on the address of the validator
 
-```shell
+```bash
 # Query corresponding validator information according to operator_address(The address queried in this example is nchvaloper133vmttt6n49jac5zn3z0klcpe7m8qluglfu58z)
 # usage: nchcli query staking validator  <validatorAddress>
 nchcli query staking validator nchvaloper133vmttt6n49jac5zn3z0klcpe7m8qluglfu58z
@@ -129,7 +129,7 @@ response:
 
 ### Delegate to validator
 
-```shell
+```bash
 # There are 2 types of commission: self-delegation and user delegation
 # usage: nchcli tx staking delegate <validatorAddress> <amountToBond> --from <delegatorKeyName> 
 
@@ -179,7 +179,7 @@ Password to sign with 'alice':
 
 ### query delegation
 
-```shell
+```bash
 # Check all delegations for account alice
 usage: nchcli query staking delegations <delegatorAddress>
 nchcli query staking delegations $(nchcli keys show alice -a) 
@@ -234,7 +234,7 @@ response:
 
 ### Unbond delegation
 
-```shell
+```bash
 # usage: nchcli tx staking unbond <validator_address> 100pnch --from <mykey>
 # Example:
 nchcli tx staking unbond nchvaloper133vmttt6n49jac5zn3z0klcpe7m8qluglfu58z 100pnch --from alice

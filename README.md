@@ -1,6 +1,6 @@
 ## Getting Started
 
-```
+```bash
 npm install vuepress -g
 git clone https://github.com/NetCloth/docs.git
 cd docs

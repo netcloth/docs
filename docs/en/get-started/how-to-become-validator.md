@@ -6,7 +6,7 @@ Please follow the [tutorial](./how-to-join-testnet.md) to deploy the full node o
 
 ## 2. Set the environment
 
-``` bash
+```bash
 nchcli config chain-id nch-testnet
 nchcli config output json
 nchcli config indent true
@@ -15,7 +15,7 @@ nchcli config trust-node true
 
 ## 3.Create an account
 
-```shell
+```bash
 # The content in the example <> needs to be replaced according to the situation.
 
 nchcli keys add <key_name>
@@ -28,8 +28,7 @@ To get the test token, please refer to [here](./testcoin.md)
 
 ## 5. Create a validator
 
-```shell
-
+```bash
 nchcli tx staking create-validator \
   --amount=10000000000pnch \
   --pubkey=$(nchd tendermint show-validator -o text) \
@@ -64,7 +63,7 @@ nchcli tx staking create-validator \
 
 ## 6. Query validators
 
-```shell
+```bash
 nchcli query staking validators
 
 # You can find the newly added validator lucy in the list
@@ -112,17 +111,16 @@ Here you need to use the validator address corresponding to the lucy account in 
 
 ### Delegate 990000pnch
 
-```shell
+```bash
 nchcli tx staking delegate <address-validator-operator> 990000pnch --from=<key name>
 
 e.g.:
 nchcli tx staking delegate nchvaloper18q4pv9qvmqx7dcd2jq3dl3d0755urk8300709e 990000pnch --from=$(nchcli keys show -a <key name>) --gas=200000 --gas-prices=1000.0pnch
-
 ```
 
 ## 8. Confirm the validator status
 
-```shell
+```bash
 nchcli query staking validators
 
 [
@@ -185,7 +183,7 @@ nchcli query staking validators
 ## 9. How to unbond NCH
 To withdraw bonded staking you delegated for a validator by executing the following command ```unband```.
 
-```
+```bash
 nchcli tx staking unbond <validator-addr> <amountToUnbond> --from <mykey> --gas <gasPrice> --gas-prices <gasPrice>
 
 e.g.
@@ -213,7 +211,7 @@ If the ratio of missed blocks of a validator during a specific duration of ```si
 
 The following are default parameters:
 
-```
+```javascript
 signed_blocks_window: 10000
 min_signed_per_window: 50%
 slash_fraction_downtime: 0.05%
@@ -225,6 +223,7 @@ downtime_jail_duration: 2days
 A validator initiates contradictory vote during the consensus process. That is, the validator signs different blocks in the same round with the same height.
 
 The default parameter of double sign punishment:
-```
+
+```javascript
 slash_fraction_double_sign:0.5 %
 ```

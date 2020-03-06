@@ -16,7 +16,7 @@ In a word. Starfish nodes must upload their information to NetCloth chain ledger
 
 * IPAL claim
 
-```shell
+```bash
 # usage :
 # nchcli ipal claim --from=<user key name> --moniker=<name> --website=<website> --endpoints=<endpoints> --details=<details> --bond=<bond>
 
@@ -25,7 +25,7 @@ nchcli ipal claim --from=nch13f5tmt88z5lkx8p45hv7a327nc0tpjzlwsq35e --moniker=ip
 
 * Querying the IPAL List
 
-```shell
+```bash
 # usage
 # nchcli query ipal list
 
@@ -34,7 +34,7 @@ nchcli query ipal ipal
 
 response:
 
-```shell
+```bash
 [
   {
     "operator_address": "nch196mwu4e5l86t73rhw690xkfdagx6lkmkrxpsta",
@@ -82,7 +82,7 @@ response:
 
 * Query IPAL
 
-```shell
+```bash
 # usage
 # nchcli query ipal node <node_address>
 
@@ -91,7 +91,7 @@ nchcli query ipal node nch196mwu4e5l86t73rhw690xkfdagx6lkmkrxpsta
 
 response:
 
-```shell
+```bash
 {
   "operator_address": "nch196mwu4e5l86t73rhw690xkfdagx6lkmkrxpsta",
   "moniker": "ipaltest",
@@ -112,8 +112,8 @@ response:
     "amount": "1400000"
   }
 }
-
 ```
+
 Once succeeded, you could find you node on NetCloth APP.
 [Click Here to Download](http://chat-app.netcloth.org)
 
@@ -124,7 +124,7 @@ The Client IP Address List (C-IPAL) protocol is an extension of IPAL, facing for
 
 The specific procedures are here:
 
-```
+```javascript
 a) A user send CIPAL Claim to the starfish node he/she connected on NetCloth APP
 
 b) The starfish node receive the CIPAL Claim body from the user.
@@ -140,10 +140,9 @@ e) Validators validate the CIPAL Claim, then update it to NetCloth chain ledger 
 	<img src="https://github.com/netcloth/netcloth/blob/master/images/en/5.png?raw=true" alt="Sample" width = 80% height = 80%>
 </p>
 
-
 * claim
 
-```shell
+```bash
 # usage
 # nchcli cipal claim --user=<user key name> --proxy=<proxy address> --service_address=<service address> --service_type=<service type>
 
@@ -152,7 +151,7 @@ nchcli cipal claim --user cipaltest --proxy nch1f2h4shfaugqgmryg9wxjyu8ehhddc5yu
 
 * query
 
-```shell
+```bash
 # usage
 # nchcli query cipal query_cipal <user-address>
 nchcli query cipal query_cipal nch1g3wacwwjl89apn2yplgjtalz8ss05adx4vg2q4
@@ -160,7 +159,7 @@ nchcli query cipal query_cipal nch1g3wacwwjl89apn2yplgjtalz8ss05adx4vg2q4
 
 response:
 
-```shell
+```bash
 {
   "user_address": "nch1g3wacwwjl89apn2yplgjtalz8ss05adx4vg2q4",
   "service_infos": [
@@ -171,6 +170,7 @@ response:
   ]
 }
 ```
+
 * CIPAL Tx fees
 
 CIPAL is a special tx type. The starfish node will pay the tx fees instead of users. Please ensure you having enough NCH in you balance.

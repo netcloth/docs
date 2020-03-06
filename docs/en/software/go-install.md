@@ -2,7 +2,7 @@
 Require golang version number>=1.13.5
 
 ## Check golang installation
-```shell
+```bash
 go version
 
 Results on ubuntu are as follows:
@@ -18,7 +18,7 @@ If go version number is lower than 1.13.5, please uninstall golang completely, a
 
 ## Download and install go
 
-```shell
+```bash
 # for macOS
 wget https://dl.google.com/go/go1.13.5.darwin-amd64.tar.gz
 tar -xvf go1.13.5.darwin-amd64.tar.gz
@@ -32,7 +32,7 @@ sudo mv go /usr/local
 
 ## Setting environment variables
 
-```shell
+```bash
 # ：Modify ~/.bashrc and add the following:
 export GOROOT=/usr/local/go
 export GOPATH=$HOME/go
@@ -42,6 +42,6 @@ export GO111MODULE=on
 
 After the modification , execute the following command:
 
-```shell
+```bash
 source ~/.bashrc
 ```

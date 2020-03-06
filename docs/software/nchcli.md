@@ -1,36 +1,38 @@
 # nchcli命令行工具
 
-nchcli命令行工具，主要用来做key管理，向区块链网络发送交易和查询数据。
+```nchcli```命令行工具，主要用来做key管理，向区块链网络发送交易和查询数据。
+
+本文档只列出了一些常用的命令行，更多命令行使用，请通过```nchcli -h```查阅。
 
 ## 查询
 
 ### 查询节点状态
 
-```shell
+```bash
 nchcli status
 ```
 
 ### 查询余额
 
-```shell
+```bash
 nchcli query account [address]
 ```
 
 ### 根据txHash查询交易
 
-```shell
+```bash
 nchcli query tx [hash]
 ```
 
 ### 查询验证人列表
 
-```shell
+```bash
 nchcli query staking validators
 ```
 
 ### 查询IPAL列表
 
-```shell
+```bash
 nchcli query ipal list
 ```
 
@@ -38,7 +40,7 @@ nchcli query ipal list
 
 ### 转帐
 
-```shell
+```bash
 nchcli send --from <key name> --to=<account address> --chain-id=<chain-id> --amount=<amount>pnch --gas=200000 --gas-prices=1000.0pnch
 ```
 
@@ -72,7 +74,7 @@ nchcli tx staking edit-validator \
 
 ### 向验证人委托
 
-```shell
+```bash
 Usage:
 nchcli tx staking delegate [validator-addr] [amount] [flags]
 
@@ -84,7 +86,7 @@ $ nchcli tx staking delegate nchvaloper1l2rsakp388kuv9k8qzq6lrm9taddae7fpx59wm <
 
 即取回委托，从验证人中解委托一定数量的shares
 
-```shell
+```bash
 Usage:
 nchcli tx staking unbond [validator-addr] [amount] [flags]
 
@@ -97,7 +99,7 @@ $ nchcli tx staking unbond nchvaloper1gghjut3ccd8ay0zduzj64hwre2fxs9ldmqhffj 100
 
 从指定验证人中取回奖励，如果是验证人本身，可同时取回佣金
 
-```shell
+```bash
 Example:
 $ nchcli tx distr withdraw-rewards nchvaloper1gghjut3ccd8ay0zduzj64hwre2fxs9ldmqhffj --from mykey
 
@@ -108,7 +110,7 @@ $ nchcli tx distr withdraw-rewards nchvaloper1gghjut3ccd8ay0zduzj64hwre2fxs9ldmq
 
 ### 取回所有奖励
 
-```shell
+```bash
 Usage:
   nchcli tx distribution withdraw-all-rewards [flags]
 
@@ -120,7 +122,7 @@ $ nchcli tx distr withdraw-all-rewards --from mykey
 
 验证人离线被禁闭后，可通过```unjail```命令解禁，重新上线
 
-```shell
+```bash
 Usage:
 nchcli tx slashing unjail [flags]
 
@@ -132,18 +134,18 @@ $ <appcli> tx slashing unjail --from mykey
 
 ### 创建新地址
 
-```shell
+```bash
 nchcli keys add <name> [flags]
 ```
 
 ### key导出
 
-```shell
+```bash
 nchcli keys export <name> [flags]
 ```
 
 ### key导入
 
-```shell
+```bash
 nchcli keys import <name> <keyfile> [flags]
 ```

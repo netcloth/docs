@@ -7,19 +7,19 @@
 
 * Get the latest block
 
-```shell
+```bash
 curl http://rpc.netcloth.org/blocks/latest
 ```
 
 * Get block by height
 
-```shell
+```bash
 curl http://rpc.netcloth.org/blocks/{height}
 ```
 
 * Broadcast transaction
   
-```shell
+```bash
 curl -X POST "http://rpc.netcloth.org/txs" -H "accept: application/json" -H "Content-Type: application/json" -d "{transaction msg}"
 ```
 
@@ -27,7 +27,7 @@ curl -X POST "http://rpc.netcloth.org/txs" -H "accept: application/json" -H "Con
 
 * Register ipal node with command line
 
-``` shell
+```bash
 # This command creates an account interactively. The private key is encrypted with a password.
 nchcli keys add <key name>
 
@@ -40,7 +40,7 @@ nchcli ipal claim --from=$(nchcli keys show <key name> -a) --moniker=<node name>
 
 * Query service node list
 
- ``` shell
+ ```bash
 curl http://rpc.netcloth.org/ipal/list
 
 response:
@@ -69,7 +69,7 @@ response:
 
 * Querying IPAL by Address
 
-``` shell
+```bash
 curl http://rpc.netcloth.org/ipal/node/{addr}
 
 e.g.
@@ -100,8 +100,7 @@ curl http://rpc.netcloth.org/ipal/node/nch19uspwrym4wr366teytlu4hre9rs7afsf33dgc
 
 * Querying CIPAL by Address
 
-
-``` shell
+```bash
 curl http://rpc.netcloth.org/cipal/query/{addr}
 
 e.g. Already registered
@@ -131,7 +130,7 @@ http://rpc.netcloth.org/cipal/query/nch1a6hy8k6hscffcjgpggjs9dru4x4g58znj6pn0z
 
 ### Query transaction by transaction hash
 
-``` shell
+```bash
 curl http://rpc.netcloth.org/txs/{tx_hash}
 
 e.g.
@@ -209,6 +208,7 @@ curl http://rpc.netcloth.org/txs/779C97E3882E14FD13407E78C49C2BA343FC5F55BAA2C91
   "timestamp": "2019-11-05T03:33:47Z"
 }
 ```
+
 ## Smart Contract API
 
 ### Query Contract code
@@ -221,7 +221,7 @@ curl http://localhost:1317/vm/code/nch19lhydp6k59c66x2vp3h4ua8r8535uh6dlmex6y
 
 response:
 
-```js
+```json
 {
   "height": "1460",
   "result": "608060405234801561001057600080fd5b50600436106100a95760003560e01c80636b520757116100715780636b5207571461016e5780639cc7f7081461018c578063a17a9e66146101ce578063aef52a2c14610210578063cc445d4e1461022e578063dac0eb071461025c576100a9565b80631e1ed70b146100ae578063300308ba146100e65780633033413b146100f05780634903b0d11461010e5780635d33a27f14610150575b600080fd5b6100e4600480360360408110156100c457600080fd5b81019080803590602001909291908035906020019092919050505061028a565b005b6100ee6102a6565b005b6100f86102b0565b6040518082815260200191505060405180910390f35b61013a6004803603602081101561012457600080fd5b81019080803590602001909291905050506102b6565b6040518082815260200191505060405180910390f35b6101586102ce565b6040518082815260200191505060405180910390f35b6101766102d4565b6040518082815260200191505060405180910390f35b6101b8600480360360208110156101a257600080fd5b81019080803590602001909291905050506102dd565b6040518082815260200191505060405180910390f35b6101fa600480360360208110156101e457600080fd5b81019080803590602001909291905050506102fa565b6040518082815260200191505060405180910390f35b610218610315565b6040518082815260200191505060405180910390f35b61025a6004803603602081101561024457600080fd5b810190808035906020019092919050505061031b565b005b6102886004803603602081101561027257600080fd5b8101908080359060200190929190505050610329565b005b8060036000848152602001908152602001600020819055505050565b6064600081905550565b60005481565b60036020528060005260406000206000915090505481565b60015481565b60008054905090565b600060036000838152602001908152602001600020549050919050565b60008160008082825401925050819055506000549050919050565b60025481565b806001540160008190555050565b60016002540160028190555061033e816102fa565b6001600082825401925050819055505056fea26469706673582212207339ae9e785d6abe064a41bdebda6eb72d116c63a4382c77d452d75c3a7f4fa664736f6c63430006000033"
@@ -236,7 +236,7 @@ To acquire gas cost of executing contracts and the call method of contract by ``
 
 To estimate the gas cost, you need to post a sturcture messages as following:
 
-```js
+```json
 {
 	"from": "nch13f5tmt88z5lkx8p45hv7a327nc0tpjzlwsq35e",
 	"to": "",
@@ -247,6 +247,7 @@ To estimate the gas cost, you need to post a sturcture messages as following:
 	}
 }
 ```
+
 ```from``` is the contract address which sent a Transaction.
 ```to``` is empty.
 ```Payload``` is contract codes converted to Hexadecimal form.
@@ -278,7 +279,7 @@ curl -X POST localhost:1317/vm/estimate_gas -d '
 
 response:
 
-```bash
+```json
 {
   "height": "473",
   "result": {
@@ -294,7 +295,6 @@ response:
 #### Call contracts
 
 You need to create payload according to the abi of call methods. You can refer to function of GetCmdQueryCallFee in https://github.com/netcloth/netcloth-chain/blob/develop/modules/vm/client/cli/query.go 
-
 
 request:
 ```bash
@@ -312,7 +312,7 @@ curl -X POST localhost:1317/vm/estimate_gas -d '
 
 response:
 
-```
+```json
 {
   "height": "298",
   "result": {
@@ -325,4 +325,3 @@ response:
 # Res is return of call methods.
 ```
 You can create ```post_data``` and ```payload``` via nchcli. Click [here](./contract.md#How-to-call-smart-contract).
-

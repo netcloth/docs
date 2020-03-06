@@ -17,14 +17,14 @@
 
 安装依赖
 
-```shell
+```bash
 sudo apt-get update
 sudo apt-get install git gcc cmake make golang-statik
 ```
 
 安装testnet版本的软件, 执行如下命令
 
-```cassandraql
+```bash
 # 获取nch 源码
 git clone https://github.com/NetCloth/netcloth-chain.git
 cd netcloth-chain && git checkout testnet
@@ -43,14 +43,14 @@ nchcli version
 ### 1. 创建账户
 执行如下命令，创建一个验证人账户
 
-```cassandraql
+```bash
 nchcli keys add <key_name>
 ```
 
 ### 2. 初始化节点
 执行如下命令，初始化节点
 
-```cassandraql
+```bash
 # moniker字段为节点名，可自定义
 nchd init --moniker=<node_name> --chain-id nch-testnet
 ```
@@ -61,7 +61,7 @@ nchd init --moniker=<node_name> --chain-id nch-testnet
 
 使用步骤1创建的验证人账户，执行gentx交易
 
-```cassandraql
+```bash
 nchd gentx \
   --amount=10000000000000pnch \
   --pubkey $(nchd tendermint show-validator) \
@@ -73,7 +73,7 @@ nchd gentx \
 交易的结果存储在 ``` ~/.nchd/config/gentx/``` 目录下。
 
 上述命令设置的验证人参数为：
-```cassandraql
+```javascript
 delegation amount: 10000000000000pnch
 commission rate: 0.1
 commission max rate: 0.2

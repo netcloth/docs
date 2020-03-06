@@ -11,7 +11,7 @@ This article describes how to operate proposals with the nchcli client. This art
 
 Take modifying the maximum number of validators as an example, first check the current value max_validators = 100:
 
-```shell
+```bash
 nchcli query staking params
 
 {
@@ -27,7 +27,7 @@ nchcli query staking params
 
 * submit a proposal
   
-```shell
+```bash
 nchcli tx gov submit-proposal param-change ./prososal.json --from $(nchcli keys show sky -a)
 
 # The content of the file is to change the maximum number of validators max_validators to 101:
@@ -47,7 +47,7 @@ nchcli tx gov submit-proposal param-change ./prososal.json --from $(nchcli keys 
 
 * query proposal
   
-```shell
+```bash
 nchcli query gov proposals
 
 [
@@ -89,14 +89,14 @@ At this point the proposal is in the delegate phase. Only proposals with a certa
 
 * delegate a proposal
   
-```shell
+```bash
 nchcli tx gov deposit 1 10000000pnch --from $(nchcli keys show sky -a)
 
 ```
 
 * query proposal
 
-```shell
+```bash
 nchcli query gov proposals
 
 [
@@ -145,13 +145,13 @@ The proposal will be approved only if the number of votes in the proposal exceed
 
 * vote a proposal
   
-```shell
+```bash
 nchcli tx gov vote 1 yes --from $(nchcli keys show sky -a)
 ```
 
 * query a proposal
 
-```shell
+```bash
 # In this example, the query status of the proposal after 10 minutes is as follows:
 nchcli query gov proposals
 [
@@ -201,7 +201,6 @@ nchcli query staking params
   "bond_denom": "pnch",
   "max_lever": "20.000000000000000000"
 }
-
 ```
 
 The above final maximum number of validators was changed from 100 to 101

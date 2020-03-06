@@ -6,13 +6,13 @@ If you already have an account, you can skip this step.
 
 If you don't have an account, you can use `nchcli` to create a new account as follows:
 
-```shell
+```bash
 nchcli keys add <key_name>
 ```
 
 Enter the wallet password as prompted, and get the following example output:
 
-```shell
+```bash
 - name: lucy
   type: local
   address: nch1p3fuppcxud5rjsaywuyuguh6achmj5p0r6z6ve
@@ -29,7 +29,7 @@ connect plug cigar purchase inflict enroll ten limb quantum never supply grid ho
 
 The mnemonic can be used to restore the account. The command to restore the account is:
 
-```shell
+```bash
 nchcli keys add <key_name> --recover
 ```
 
@@ -48,6 +48,6 @@ Replace `` `<address>` '' with your wallet address to get the test token
 
 You can execute the following command to check your balance.
 
-```shell
+```bash
 nchcli query account [address]
 ```

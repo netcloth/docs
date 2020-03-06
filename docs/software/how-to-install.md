@@ -21,7 +21,7 @@
 
 安装依赖
 
-```shell
+```bash
 sudo apt-get update
 sudo apt-get install git gcc cmake make golang-statik
 ```
@@ -30,7 +30,7 @@ sudo apt-get install git gcc cmake make golang-statik
 
 ### 2. 源码编译nch节点程序
 
-```shell
+```bash
 # 获取nch 源码
 git clone https://github.com/netcloth/netcloth-chain.git
 cd netcloth-chain && git checkout testnet-v1.0.1
@@ -44,7 +44,7 @@ make install
 
 编译安装完成后，检查版本号
 
-```shell
+```bash
 nchd version
 nchcli version
 ```

@@ -4,7 +4,7 @@
 
 * claim
 
-```cassandraql
+```bash
 # usage :
 # nchcli cipal claim  --user=<user key name> --proxy=<proxy key name> --service_address=<service_address> --service_type=<type> 
 
@@ -26,7 +26,7 @@ Monikor:Node's Name
 
 * query
 
-```cassandraql
+```bash
 # usage
 # nchcli query ipal ipal <user-address>
 
@@ -48,7 +48,7 @@ After the success of IPAL Claim，You can find your node on NetCloth APP. [Click
 
 * claim
 
-```cassandraql
+```bash
 # usage
 # nchcli aipal claim--from=<user key name> --moniker=<name> --website=<website> --server=<server_endpoint> --details=<details> --service_type=<uint64> --bond=<bond tokens>
 
@@ -58,12 +58,12 @@ nchcli aipal claim  --from=nch13lmppkumkmf6699q4gpukg8fz5pf2lgzm8mfsm --moniker=
 * query
 
 query all the servicenodes
-```cassandraql
+```bash
 nchcli query aipal servicenodes
 ```
 
 response:
-```cassandraql
+```json
 [
   {
     "operator_address": "nch13lmppkumkmf6699q4gpukg8fz5pf2lgzm8mfsm",

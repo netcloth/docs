@@ -5,34 +5,34 @@ The nchcli command line tool is mainly used for key management, sending transact
 ## Query
 
 ### Query node status
-```shell
+```bash
 nchcli status
 ```
 
 ### Query balances
-```shell
+```bash
 nchcli query account [address]
 ```
 
 ### Query transactions by txHash
-```shell
+```bash
 nchcli query tx [hash]
 ```
 
 ### Query validator lists
-```shell
+```bash
 nchcli query staking validators
 ```
 
 ### Query IPAL Lists
-```shell
+```bash
 nchcli query ipal list
 ```
 
 ## Transactions
 
 ### Transfer
-```shell
+```bash
 nchcli send --from <key name> --to=<account address> --chain-id=<chain-id> --amount=<amount>pnch --gas=200000 --gas-prices=1000.0pnch
 
 ```
@@ -66,7 +66,7 @@ nchcli tx staking edit-validator \
 ```
 
 ### Delegate to validators
-```shell
+```bash
 Example:
 $ nchcli tx staking delegate nchvaloper1l2rsakp388kuv9k8qzq6lrm9taddae7fpx59wm <amount>pnch --from <mykey> --gas=200000 --gas-prices=1000.0pnch
 
@@ -77,7 +77,7 @@ Usage:
 
 Withdraw a part of shares you delegated to validators
 
-```shell
+```bash
 Usage:
 nchcli tx staking unbond [validator-addr] [amount] [flags]
 
@@ -90,7 +90,7 @@ $ nchcli tx staking unbond nchvaloper1gghjut3ccd8ay0zduzj64hwre2fxs9ldmqhffj 100
 
 Withdraw your rewards from a specific validator. If you are a validator,you can withdraw both rewards and commissions.
 
-```shell
+```bash
 Example:
 $ nchcli tx distr withdraw-rewards nchvaloper1gghjut3ccd8ay0zduzj64hwre2fxs9ldmqhffj --from mykey
 
@@ -101,7 +101,7 @@ $ nchcli tx distr withdraw-rewards nchvaloper1gghjut3ccd8ay0zduzj64hwre2fxs9ldmq
 
 ### Withdraw all rewards
 
-```shell
+```bash
 Usage:
   nchcli tx distribution withdraw-all-rewards [flags]
 
@@ -113,7 +113,7 @@ $ nchcli tx distr withdraw-all-rewards --from mykey
 
 You can unjail a validator with the command ``` unjail``` after the validator is jailed.
 
-```shell
+```bash
 Usage:
 nchcli tx slashing unjail [flags]
 
@@ -124,16 +124,16 @@ $ <appcli> tx slashing unjail --from mykey
 ## Wallet key management
 
 ### Create a new address
-```shell
+```bash
 nchcli keys add <name> [flags]
 ```
 
 ### Export keys
-```shell
+```bash
 nchcli keys export <name> [flags]
 ```
 
 ### Import keys
-```shell
+```bash
 nchcli keys import <name> <keyfile> [flags]
 ```

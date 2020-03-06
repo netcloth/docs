@@ -8,7 +8,7 @@
 
 如果你已经拥有钱包，可跳过此步骤
 
-```shell
+```bash
 nchcli keys add lucy
 
 override the existing name lucy [y/N]: y
@@ -31,7 +31,7 @@ Repeat the passphrase:
 
 ### 查询验证人列表
 
-```shell
+```bash
 nchcli query staking validators
 
 response:
@@ -93,7 +93,7 @@ response:
 
 * 也可以根据验证人的地址查询验证人
 
-```shell
+```bash
 # 根据operator_address查询对应的验证人信息(本例中查询的地址为nchvaloper133vmttt6n49jac5zn3z0klcpe7m8qluglfu58z)
 # usage: nchcli query staking validator  <validatorAddress>
 nchcli query staking validator nchvaloper133vmttt6n49jac5zn3z0klcpe7m8qluglfu58z
@@ -129,7 +129,7 @@ response:
 
 ### 向验证人委托nch
 
-```shell
+```bash
 #委托分2种：验证人自委托 和 用户委托
 # usage: nchcli tx staking delegate <validatorAddress> <amountToBond> --from <delegatorKeyName> 
 
@@ -179,7 +179,7 @@ Password to sign with 'alice':
 
 ### 查询委托信息
 
-```shell
+```bash
 # 查询账户alice的所有委托
 usage: nchcli query staking delegations <delegatorAddress>
 nchcli query staking delegations $(nchcli keys show alice -a) 
@@ -234,7 +234,7 @@ response:
 
 ### 取回委托的nch
 
-```shell
+```bash
 # usage: nchcli tx staking unbond <validator_address> 100pnch --from <mykey>
 # 示例：
 nchcli tx staking unbond nchvaloper133vmttt6n49jac5zn3z0klcpe7m8qluglfu58z 100pnch --from alice

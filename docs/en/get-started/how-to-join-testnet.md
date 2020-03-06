@@ -5,7 +5,7 @@ Please follow the [tutorial](../software/how-to-install.md) to install nch
 
 ## 2. Settings
 
-```shell
+```bash
 # usage: 
 # nchd init <your_custom_name> --chain-id nch-testnet
 # example:
@@ -24,14 +24,14 @@ persistent_peers = "e60b962168d85c5b594cb8238e8f8f536c2d2ae2@13.58.188.155:26656
 
 ## 3. Start nchd
 
-```shell
+```bash
 # After executing the following command, the console will print the log
 nchd start --log_level "*:debug" --trace
 ```
 
 ## 4. View node synchronization status
 
-```shell
+```bash
 # Open a new terminal
 curl http://127.0.0.1:26657/status
 

@@ -33,8 +33,8 @@ NetCloth 网络中发起交易，需要支付一定的交易手续费。
 
 NCH 是NetCloth网络中的token，最小单位为pnch， 换算关系如下：
 
-```
-1 NCH = 10^12 pnch
+```javascript
+    1 NCH = 10^12 pnch
 ```
 
 ## 节点运维
@@ -43,7 +43,7 @@ NCH 是NetCloth网络中的token，最小单位为pnch， 换算关系如下：
 
 **停止后台程序，可以执行如下命令**
 
-```shell
+```bash
 # 停止nchd
 kill -9 $(pgrep nchd)
 
@@ -54,5 +54,3 @@ kill -9 $(pgrep nchcli)
 ### 如何备份验证人节点
 
 建议备份<your_custom_path>/.nchd/config目录，其中config目录下的priv_validator_key.json 为验证人节点私钥。
-
-

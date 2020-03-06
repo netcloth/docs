@@ -18,7 +18,8 @@ How to send a Tx? [Click here](../software/nchcli.md)
 ### About NCH token
 
 NCH is a token in the NetCloth network. The minimum unit is pnch. The conversion relationship is as follows:
-```
+
+```javascript
 1 NCH = 10^12 pnch
 ```
 
@@ -28,7 +29,7 @@ NCH is a token in the NetCloth network. The minimum unit is pnch. The conversion
 
 **To stop the background program, you can execute the following command**
 
-```shell
+```bash
 # Stop nchd
 kill -9 $(pgrep nchd)
 

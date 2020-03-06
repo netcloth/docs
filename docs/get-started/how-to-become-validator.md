@@ -22,7 +22,7 @@ nchcli config trust-node true
 
 ## 3.创建账号
 
-```shell
+```bash
 # 示例 <> 中的内容需要根据情况替换，后面不再提示
 
 nchcli keys add <key_name>
@@ -35,7 +35,7 @@ nchcli keys add <key_name>
 
 ## 5.创建验证人
 
-```shell
+```bash
 
 nchcli tx staking create-validator \
   --amount=10000000000pnch \
@@ -81,7 +81,7 @@ nchcli tx staking create-validator \
 
 ## 6.查询验证人列表
 
-```shell
+```bash
 nchcli query staking validators
 
 可以发现列表中新增加的验证人lucy
@@ -144,7 +144,7 @@ nchcli keys show netcloth --bech val
 
 ### 7.2 抵押990000000000pnch
 
-```shell
+```bash
 nchcli tx staking delegate <address-validator-operator> 990000000000pnch --from=<key name> --gas=<gas>
 
 e.g.:
@@ -158,7 +158,7 @@ nchcli tx staking delegate nchvaloper18q4pv9qvmqx7dcd2jq3dl3d0755urk8300709e 990
 
 ## 8.再次确认验证人状态为活跃验证人
 
-```shell
+```bash
 nchcli query staking validators
 
 [

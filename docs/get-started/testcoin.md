@@ -19,6 +19,6 @@
 
 使用下列命令进行查看，address为你的nch地址
 
-```shell
+```bash
 nchcli query account [address]
 ```

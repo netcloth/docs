@@ -88,7 +88,7 @@ nchd start --log_level "*:debug" --trace
 智能合约支持solidity语言。
 以下面的合约为示例：
 
-```js
+```javascript
 pragma solidity ^0.4.16;
 contract token {
     mapping (address => uint256) public balances;
@@ -118,13 +118,13 @@ contract token {
 
 字节码:
 
-```js
+```javascript
 608060405234801561001057600080fd5b506509184e72a0006000803373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002081905550610344806100696000396000f300608060405260043610610057576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff16806327e235e31461005c57806370a08231146100b3578063a9059cbb1461010a575b600080fd5b34801561006857600080fd5b5061009d600480360381019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190505050610162565b6040518082815260200191505060405180910390f35b3480156100bf57600080fd5b506100f4600480360381019080803573ffffffffffffffffffffffffffffffffffffffff16906020019092919050505061017a565b6040518082815260200191505060405180910390f35b610148600480360381019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190803590602001909291905050506101c2565b604051808215151515815260200191505060405180910390f35b60006020528060005260406000206000915090505481565b60008060008373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001908152602001600020549050919050565b6000816000803373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001908152602001600020541015151561021157600080fd5b816000803373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060008282540392505081905550816000808573ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001908152602001600020600082825401925050819055508273ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff167fddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef846040518082815260200191505060405180910390a360019050929150505600a165627a7a7230582015481e18f5439ee76271037928d88d33cc7d7d4bf1e5e801b78db9e902f255560029
 ```
 
 abi:
 
-```js
+```javascript
 [
 	{
 		"constant": true,
@@ -233,7 +233,8 @@ nchcli vm create --code_file=./demo/demo.bc \
  ```--gas``` 指定本次交易的gas上限，nchcli默认为10万; 创建合约消耗的gas比较多，需要指定一个比较大的值
 
 交易发出后，终端响应如下：
-```
+
+```json
 {
   "height": "0",
   "txhash": "C991A111B943E8C1D6BCA1F35A93BFC7F268C963F0B286340AF647D228FBCB01",
@@ -258,7 +259,7 @@ nchcli query tx <txhash>
 
 交易详情中，其中的events结构中包含新创建的合约地址：
 
-```bash
+```json
  "events": [
     {
       "type": "message",
@@ -311,13 +312,14 @@ nchcli vm call --from $(nchcli keys show -a alice) \
 ```--contract_addr ``` 指定要调用的合约地址， ```--abi_file```指定了合约对应的abi文件路径, ```--method``` 指定合约的方法名, ```--args ```指定合约方法对应的参数, ```--amount```指定向合约发送的资产数量, ```--from```指定本次调用的发起账户
 
 上述示例调用了合约的```transfer```方法，该方法的声明如下
-```js
+
+```javascript
 function transfer(address to, uint256 value) public returns (bool success)
 ```
 
 ```transfer``` 方法需要2个参数，分别为接收方地址和转账数量。示例中接收地址为全0， 转帐数量为2， 分别将这2个参数转成16进制，并补齐为32个字节。如下：
 
-```
+```javascript
 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000002
 ```
 
@@ -331,7 +333,6 @@ nchcli query account nch1vp0pzeyst7zjkck5qk0kvplu3szsdxp04kg5xc
 
 查询合约状态需要使用abi文件。假设合约对应的abi文件已经保存至```./demo/demo.abi```
 
-
 合约示例中，```balanceOf```为只读方法，可以根据该方法查询指定地址在合约中的状态。 
 
 ``` bash
@@ -340,7 +341,8 @@ nchcli query vm call $(nchcli keys show -a alice) nch1vp0pzeyst7zjkck5qk0kvplu3s
 ```
 
 查询alice帐户在合约中的状态：
-```
+
+```bash
 # 使用```nchcli```先将alice的地址转成16进制
 nchcli keys parse $(nchcli keys show -a alice)
 
@@ -351,7 +353,6 @@ nchcli query vm call $(nchcli keys show -a alice) nch1vp0pzeyst7zjkck5qk0kvplu3s
 ```
 
 通过```nchcli```的```query```方式调用合约，只能够查询状态，不会在链上记账。 也可以使用nchcli的这种方式，构造payload字段，用于合约相关的REST API。
-
 
 ## 智能合约相关API
 
