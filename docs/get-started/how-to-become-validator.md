@@ -83,7 +83,7 @@ nchcli tx staking create-validator \
 
 ```--details``` ：验证人详情描述(可选)
 
-其中```--node-id```和```--ip```是可选参数， ip是节点的外网ip地址，node-ids 可以通过命令行```nchd tendermint show-node-id```获得。 此2个参数，可公开一个可用的seed节点。
+其中```--node-id```和```--ip```是可选参数， ```ip```是节点的外网ip地址，```node-id``` 可以通过命令行```nchd tendermint show-node-id```获得。 此2个参数，可公开一个可用的seed节点。
 
 ## 6.查询验证人列表
 
