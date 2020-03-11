@@ -148,6 +148,7 @@ function genSidebarConfig (module, title) {
                     'keys',
                     'how-to-create-proposal',
                     'transaction',
+                    'contract',
                     'Q&A'
                 ]
             }
