@@ -33,19 +33,21 @@ nchcli keys show <multisig-key-name>
 nchcli keys show mm
 ```
 
-## 用多签账户创建离线交易
+## 用多签账户构造离线交易
+
+刚创建好的多签帐户mm是一个离线的账户，在构造离线交易之前，需要先往mm帐户转帐。
 
 从多签账户，创建一个离线的转账交易
 
 ```bash
 # 用法
-# 创建从多签账户转账到alice账户的离线交易
+# 构造从多签账户转账到alice账户的离线交易
 nchcli send --to=$(nchcli keys show alice -a) \
 --amount=10pnch --gas-prices=1000.0pnch  \
 --from=$(nchcli keys show <multisig-key-name> -a) \
 --generate-only
 
-# 示例，从mm多签账户转账10pnch到alice账户的离线交易，数量10pnch，gas价格1.0pnch, 
+# 示例，从mm多签账户转账10pnch到alice账户的离线交易，数量10pnch，gas价格1000.0pnch, 
 # 交易消息体保存到unsigned.json文件
 nchcli send --to=$(nchcli keys show alice -a) \
 --amount=10pnch --gas-prices=1000.0pnch  \

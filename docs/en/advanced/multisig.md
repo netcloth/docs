@@ -32,7 +32,9 @@ nchcli keys show <multisig-key-name>
 nchcli keys show mm
 ```
 
-## Generate an offline tx by multisig key
+## Construct an offline tx by multisig key
+
+The newly created multi-signature account mm is an offline account. Before constructing offline transactions, you need to transfer some tokens to the mm account.
 
 ```bash
 # usage
@@ -52,7 +54,6 @@ nchcli send --to=$(nchcli keys show alice -a) \
 ## Sign tx offline 
 
 Assume the multisig-threshold is 2, here we sign the unsigned.json by 2 of the signers.
-
 
 Sign tx from sub-key alice
 
