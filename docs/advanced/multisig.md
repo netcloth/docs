@@ -37,11 +37,12 @@ nchcli keys show mm
 
 刚创建好的多签帐户mm是一个离线的账户，在构造离线交易之前，需要先往mm帐户转帐。
 
-从多签账户，创建一个离线的转账交易
+通过追回```--generate-only```的方式， 从多签账户构造一个离线的转账交易。
 
 ```bash
 # 用法
 # 构造从多签账户转账到alice账户的离线交易
+# --generate-only 表示构造一个未签名的交易并输出到stdout
 nchcli send --to=$(nchcli keys show alice -a) \
 --amount=10pnch --gas-prices=1000.0pnch  \
 --from=$(nchcli keys show <multisig-key-name> -a) \
