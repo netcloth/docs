@@ -3,12 +3,12 @@ module.exports = {
         '/en/': {
             lang: 'en-US',
             title: "NetCloth Document",
-            description: "Make You And Your Network Unique\n"
+            description: "Make You and Your Personal Network Unique\n"
         },
         '/': {
             lang: 'zh-CN',
             title: 'NetCloth文档',
-            description: '独特的你与你的网络\n'
+            description: '独特的你和你的个人网络\n'
         }
     },
     head: [
