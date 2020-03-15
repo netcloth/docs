@@ -1,10 +1,8 @@
+# NetCloth简介
 
+NetCloth个人网络项目致力于让每个人都能打造属于自己的网络，从建立联系到形成复杂的网络生产关系，NetCloth将为所有人提供开放的基础设施和公开的区块链账本。
 
-## NetCloth简介
-
-NetCloth-Chain是一个基于隐私保护和数据安全的区块链应用网络。
-
-### 快速开始
+## 快速开始
 
 ### 区块链操作
 
@@ -17,13 +15,16 @@ NetCloth-Chain是一个基于隐私保护和数据安全的区块链应用网络
 * [API参考手册](../advanced/api.md)
 * [如何使用nchcli命令行导入/导出私钥](../advanced/keys.md)
 * [多签账户教程](../advanced/multisig.md)
+* [交易费用代付](../advanced/fee-payment.md)
 * [智能合约教程](../advanced/contract.md)
 * [常见问题](../advanced/Q&A.md)
 
 ### IPAL操作
+
 * [IPAL使用](../advanced/ipal.md)
 * [IPAL API](../advanced/api.md)
 * [使用sdk发起IPAL记账](../advanced/ipal-sdk.md)
   
 ### 即时通讯服务部署
+
 * [NetCloth即时通讯服务部署指南](../im/README.md)
