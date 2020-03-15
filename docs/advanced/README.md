@@ -8,4 +8,5 @@
 * [如何发起提案](how-to-create-proposal.md)
 * [智能合约教程](contract.md)
 * [交易结构](transaction.md)
+* [交易费用代付](fee-payment.md)
 * [常见问题](Q&A.md)
