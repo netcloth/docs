@@ -1,12 +1,10 @@
 # NetCloth即时通讯服务部署环境准备
 
 ## 部署流程简介
-<p align="center">
-	<img src="https://github.com/netcloth/docs/blob/master/docs/images/procedure%20of%20IM%20deploy%20cn.png" alt="Sample" width = 80% height = 80%>
-</p>
+
+![流程图](../images/procedure_IM_deploy.png)
 
 部署分为区块链及服务端部署两部分，如您尚未部署区块链节点及程序，请先按照文档部署区块链节点（[点击这里查看](../get-started/how-to-join-testnet.md)），再继续进行即时通讯服务端的搭建。
-
 
 ## 1 操作系统和用户添加
 ### 1.1 操作系统要求

@@ -1,9 +1,8 @@
 # NetCloth Instant messaging service deployment environment preparation
 
 ## Procedures introduction
-<p align="center">
-	<img src="https://github.com/netcloth/docs/blob/master/docs/en/images/procedure%20of%20deploying%20IM%20server.png" alt="Sample" width = 80% height = 80%>
-</p>
+
+![](../../images/procedure_IM_deploy.png)
 
 The deployment is divided into two parts: deploy a blockchain node and IM server deployment. If you have not deployed a blockchain node, please deploy the blockchain nodes according to the document ([click here](../get-started/how-to-join-testnet.md)) and then continue to build the instant messaging server.
 
