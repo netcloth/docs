@@ -4,7 +4,6 @@
 
 部署分为区块链及服务端部署两部分，如您尚未部署区块链节点及程序，请先按照文档部署区块链节点（[点击这里查看](../get-started/how-to-join-testnet.md)），再继续进行即时通讯服务端的搭建。
 
-
 ## 1 操作系统和用户添加
 ### 1.1 操作系统要求
 软件的开发和运维都是基于**<font color=red>Ubuntu 18.04 server版本</font>**操作系统。
@@ -16,7 +15,7 @@
 
 * 新建admin用户操作，需要sudo用户或root用户，执行以下操作
 
-```
+```bash
 adduser admin
 usermod -aG sudo admin
 ```
@@ -26,12 +25,15 @@ usermod -aG sudo admin
 ### 2.1 nginx安装和配置
 #### 2.1.1 安装版本nginx
 * 创建 /etc/apt/sources.list.d/nginx.list 文件，添加如下内容到该文件
-```
+  
+```bash
 deb http://nginx.org/packages/mainline/ubuntu/ bionic nginx
 deb-src http://nginx.org/packages/mainline/ubuntu/ bionic nginx
 ```
+
 * 配置完nginx源以后，执行如下命令
-```
+  
+```bash
 wget http://nginx.org/keys/nginx_signing.key
 apt-key add nginx_signing.key
 apt-get update
@@ -89,7 +91,7 @@ sudo apt install redis-server
 
 ### 2.4 consul下载和安装
 
-```
+```bash
 wget https://releases.hashicorp.com/consul/1.6.1/consul_1.6.1_linux_amd64.zip
 
 unzip consul_1.6.1_linux_amd64.zip
@@ -98,7 +100,7 @@ sudo mv consul /usr/local/bin
 
 ### 2.5 supervisor安装
 
-```
+```bash
 sudo apt install supervisor
 ```
 
@@ -106,12 +108,12 @@ sudo apt install supervisor
 
 ### 3.1 程序下载
 
-```
+```bash
 wget http://47.104.248.183/resource/netcloth-server-latest.tar.gz
 ```
 
 ### 3.2 修改特定配置
-```
+```bash
 tar xvzf netcloth-server-latest.tar.gz
 cd netcloth-server-latest
 ```
@@ -130,7 +132,7 @@ keystore_password="88888888"
 
 修改完成后，安装服务(root权限）
 
-```
+```bash
 sh install.sh
 ```
 
@@ -159,7 +161,7 @@ nginx -s reload
 
 #### 4.3.1 使用supervisor启动服务
 * 检查supervisord是否已经正常启动，如果没有，先启动supervisord
-```
+```bash
 service supervisor start
 ```
 
@@ -177,7 +179,12 @@ supervisorctl
 
 #### 4.3.2 启动gateway服务
 
-```
+```bash
 cd /home/admin/gateway/
 ./gateway
 ```
+
+
+至此，NetCloth即时通讯服务就部署完成了。
+
+接下来，你需要在NetCloth区块链上申明一个服务节点，点击[这里](../advanced/ipal.md#IPAL介绍)。

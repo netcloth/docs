@@ -13,14 +13,14 @@ IP Address List 是NetCloth网络特有的寻址模块，IPAL记录的是海星�
 	<img src="https://github.com/netcloth/netcloth/blob/master/images/4.png?raw=true" alt="Sample" width = 80% height = 80%>
 </p>
 
-* 声明IPAL
+### 声明IPAL
 
 ```bash
 # usage :
 nchcli ipal claim --from=<from key> --moniker=<moniker> --website=<website> --endpoints=<endpoints> --details=<details> --bond=<bond coins>
 
 #举例
-nchcli ipal claim --from=$(nchcli keys show -a alice) --moniker=netcloth --website="www.netcloth.org" --endpoints="1|http://219.22.22.22:8899,2|http//221.11.11.11:9999" --details="netcloth official server endpoint" --bond=100000000000000000pnch
+nchcli ipal claim --from=$(nchcli keys show -a alice) --moniker=netcloth --website="www.netcloth.org" --endpoints="1|http://219.22.22.22" --details="netcloth official server endpoint" --bond=100000000000000000pnch
 ```
 
 其中：
@@ -39,7 +39,7 @@ nchcli ipal claim --from=$(nchcli keys show -a alice) --moniker=netcloth --websi
 
 ```bash
 # usage
-# nchcli query ipal list
+nchcli query ipal list
 ```
 
 response:
@@ -118,7 +118,7 @@ C-IPAL（Client IP Address List）协议是IPAL的一种扩展，面向客户端
 	<img src="https://github.com/netcloth/netcloth/blob/master/images/5.png?raw=true" alt="Sample" width = 80% height = 80%>
 </p>
 
-* 声明
+### CIPAL声明
 
 ```bash
 # usage
@@ -127,7 +127,7 @@ C-IPAL（Client IP Address List）协议是IPAL的一种扩展，面向客户端
 nchcli cipal claim --proxy=$(nchcli keys show -a alice) --service_address="219.22.22.22:8899" --service_type=1 --user=$(nchcli keys show -a jack)
 ```
 
-* 查询
+* 查询CIPAL
 
 ```bash
 # usage
