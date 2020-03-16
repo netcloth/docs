@@ -1,6 +1,6 @@
 # 交易结构
 
-NetCloth链交易结构，主要包含type, msg, fee, signatures和memo，其中type, fee, signatures和memo为不同的交易类型所共有，不同的在于msg的内容。
+NetCloth链上一笔交易主要包含type, msg, fee, signatures和memo，其中type, fee, signatures和memo为不同的交易类型所共有，不同的在于msg的内容。
 
 ```json
 {
@@ -13,6 +13,8 @@ NetCloth链交易结构，主要包含type, msg, fee, signatures和memo，其中
   }
 }
 ```
+
+关于交易费用，参考[这里](./Q&A.md#交易手续费)。
 
 以转帐和IPAL两种交易作为对比，交易结构如下：
 
