@@ -46,12 +46,27 @@ persistent_peers = "e60b962168d85c5b594cb8238e8f8f536c2d2ae2@13.58.188.155:26656
 
 ```bash
 # 后台运行nchd
-nohup nchd start --trace 1>nchd.out 2>&1 &
+nohup nchd start 1>nchd.out 2>&1 &
 ```
+
+::: warning 提示
+nchd start 默认日志级别是info， 如果需要查看debug日志，可以带上--log_level "*:debug"执行：
+
+nohup nchd start --log_level "*:debug" 1>nchd.out 2>&1 &
+:::
 
 上述命令将nchd进程运行在后台 ，并将控制台输出重定向到nchd.out文件。
 
 如果需要启动rest-server， 执行如下命令：
+
+先设置一下nchcli环境
+
+```bash
+nchcli config chain-id nch-testnet
+nchcli config output json
+nchcli config indent true
+nchcli config trust-node true
+```
 
 ```bash
 # 后台运行nchcli，开启rest server
