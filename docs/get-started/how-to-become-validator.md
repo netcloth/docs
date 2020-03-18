@@ -33,10 +33,20 @@ nchcli keys add <key_name>
 
 获得测试token， 请参照[这里](./testcoin.md)
 
-## 5.创建验证人
+## 5. 检查节点同步情况
+
+只有当节点同步到最新区块后，才可能执行下一步操作，创建验证人。
+
+执行如下命令，查看节点同步情况：
+```bash
+nchcli status | grep catching_up
+```
+
+如果返回```"catching_up": false```，表明已经同步到最新。
+
+## 6.创建验证人
 
 ```bash
-
 nchcli tx staking create-validator \
   --amount=10000000000pnch \
   --pubkey=$(nchd tendermint show-validator -o text) \
