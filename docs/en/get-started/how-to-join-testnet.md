@@ -26,7 +26,7 @@ persistent_peers = "e60b962168d85c5b594cb8238e8f8f536c2d2ae2@13.58.188.155:26656
 
 ```bash
 # After executing the following command, the console will print the log
-nchd start --log_level "*:debug" --trace
+nchd start
 ```
 
 ## 4. View node synchronization status
