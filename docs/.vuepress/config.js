@@ -162,10 +162,9 @@ function genSidebarConfig (module, title) {
                 title,
                 collapsable: false,
                 children: [
-                    'prepare-deploy-environment',
-                    'build-go-server',
-                    'build-cpp-server',
-                    'deploy',
+                    "im-prerequisite",
+                    "quick-start",
+                    "deploy-from-source",
                     'Q&A'
                 ]
             }
