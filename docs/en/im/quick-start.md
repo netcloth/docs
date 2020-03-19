@@ -177,10 +177,10 @@ supervisorctl
 ```
 status 
 ```
-* If the service is fatal, you can execute command restart, for example
+* If the service is fatal, you can execute command start, for example
 
 ```
-restart offmsg
+start offmsg
 ```
 
 

@@ -1,6 +1,7 @@
 ## NetCloth Instant Messaging Service Deployment Guide
 
 ### Quick Deploy (Recommend)
+* [IM service pre-check](./im-prerequisite.md)
 * [Quick Start](./quick-start.md)
 
 ### Source Code Deploy

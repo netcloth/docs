@@ -24,6 +24,7 @@ NetCloth个人网络项目致力于让每个人都能打造属于自己的网络
 * [IPAL使用](../advanced/ipal.md)
 * [IPAL API](../advanced/api.md)
 * [使用sdk发起IPAL记账](../advanced/ipal-sdk.md)
+* [IPAL Service Type介绍](../advanced/ipal-service-type.md)
   
 ### NetCloth个人网络海星节点搭建
 * [NetCloth个人网络小应用区配置](../advanced/how-to-config-app-portal.md)

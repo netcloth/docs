@@ -36,4 +36,4 @@ nchcli ipal claim --from=$(nchcli keys show -a alice) \
 
 IPAL声明成功后，你的海星节点就注册成功了。现在只需要在NetCloth的“设置”-->"客户端服务设置"-->"应用地址"-->找到你的节点，选择连接。你就可以在NetCloth APP上看到你的小应用区啦。
 
-![样图](../images/mini-app-cn.jpg)
+![](../images/mini-app-cn.jpg)
