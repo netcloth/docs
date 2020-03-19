@@ -33,8 +33,11 @@ Repeat the passphrase:
 
 ```bash
 nchcli query staking validators
+```
 
 response:
+
+```json
 [
   {
     "operator_address": "nchvaloper18q4pv9qvmqx7dcd2jq3dl3d0755urk8300709e",
@@ -91,14 +94,25 @@ response:
 ]
 ```
 
+上述返回结果中，```operator_address```即验证人地址。
+
+如果是自己创建的验证人，可以通过```nchcli```查询自己的验证人地址：
+
+```bash
+nchcli keys show <key-name> --bech va
+```
+
 * 也可以根据验证人的地址查询验证人
 
 ```bash
 # 根据operator_address查询对应的验证人信息(本例中查询的地址为nchvaloper133vmttt6n49jac5zn3z0klcpe7m8qluglfu58z)
 # usage: nchcli query staking validator  <validatorAddress>
 nchcli query staking validator nchvaloper133vmttt6n49jac5zn3z0klcpe7m8qluglfu58z
+```
 
 response:
+
+```json
 {
   "operator_address": "nchvaloper133vmttt6n49jac5zn3z0klcpe7m8qluglfu58z",
   "consensus_pubkey": "nchvalconspub1zcjduepq3zr5cyenfyz8qprts7344nl8gclm3st669hyrhgy9gae7l8ajuus5uttte",
@@ -129,14 +143,21 @@ response:
 
 ### 向验证人委托nch
 
+向验证人委托，需要你的账户里持有一定数量的nch。
+
 ```bash
 #委托分2种：验证人自委托 和 用户委托
 # usage: nchcli tx staking delegate <validatorAddress> <amountToBond> --from <delegatorKeyName> 
 
 # 使用alice账号向验证人
-nchcli tx staking delegate nchvaloper133vmttt6n49jac5zn3z0klcpe7m8qluglfu58z 6000000pnch --from  $(nchcli keys show alice -a)
+nchcli tx staking delegate nchvaloper133vmttt6n49jac5zn3z0klcpe7m8qluglfu58z 6000000pnch \
+--from  $(nchcli keys show alice -a) \
+--gas 200000
+```
 
 response:
+
+```json
 {
   "chain_id": "nch-devnet",
   "account_number": "1",
@@ -179,12 +200,16 @@ Password to sign with 'alice':
 
 ### 查询委托信息
 
+* 查询账户alice的所有委托
+
 ```bash
-# 查询账户alice的所有委托
-usage: nchcli query staking delegations <delegatorAddress>
-nchcli query staking delegations $(nchcli keys show alice -a) 
+# usage: nchcli query staking delegations <delegatorAddress>
+nchcli query staking delegations $(nchcli keys show alice -a)
+```
 
 response:
+
+```json
 [
   {
     "delegator_address": "nch133vmttt6n49jac5zn3z0klcpe7m8qlugyggx5w",
@@ -193,24 +218,37 @@ response:
     "balance": "13000000"
   }
 ]
+```
 
-# 查询特定账户和验证人之间的委托（参数为委托者地址和验证人地址）
+* 查询特定账户和验证人之间的委托
+  
+```bash
+# 参数为委托者地址和验证人地址
 # usage: nchcli query staking delegation  <delegatorAddress> <validatorAddress>
 nchcli query staking delegation  $(nchcli keys show alice -a) nchvaloper133vmttt6n49jac5zn3z0klcpe7m8qluglfu58z
+```
 
 response:
+
+```json
 {
   "delegator_address": "nch133vmttt6n49jac5zn3z0klcpe7m8qlugyggx5w",
   "validator_address": "nchvaloper133vmttt6n49jac5zn3z0klcpe7m8qluglfu58z",
   "shares": "13000000.000000000000000000",
   "balance": "13000000"
 }
+```
 
-# 查询账户的委托收益
+* 查询账户的委托收益
+
+```bash
 # usage: nchcli query distribution rewards <delegatorAddress> 
 nchcli query distribution rewards nch133vmttt6n49jac5zn3z0klcpe7m8qlugyggx5w
+```
 
 response:
+
+```json
 {
   "rewards": [
     {
@@ -237,8 +275,9 @@ response:
 ```bash
 # usage: nchcli tx staking unbond <validator_address> 100pnch --from <mykey>
 # 示例：
-nchcli tx staking unbond nchvaloper133vmttt6n49jac5zn3z0klcpe7m8qluglfu58z 100pnch --from alice
-
+nchcli tx staking unbond nchvaloper133vmttt6n49jac5zn3z0klcpe7m8qluglfu58z 100pnch \
+--from  $(nchcli keys show alice -a) \
+--gas 200000
 ```
 
 更多关于验证人解绑、取回奖励和佣金，点击[这里](../software/nchcli.md#解委托)
