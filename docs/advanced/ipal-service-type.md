@@ -14,16 +14,16 @@ IPAL中，我们通过制定一个Service Type的编号表来定义各类型的�
 
 * Service Type使用示例：
 
-**声明一个单聊的IPAL**:
+**声明一个提供聊天服务的IPAL**:
 
 ```bash
  nchcli ipal claim --from=$(nchcli keys show -a alice) --moniker=netcloth --website="www.netcloth.org" --endpoints="1|http://219.22.22.22" --details="netcloth official server endpoint" --bond=100000000000000000pnch
 ```
 
-**声明一个带单聊和群聊的IPAL**:
+**声明一个带聊天和小应用主页入口的IPAL**:
 
 ```bash
- nchcli ipal claim --from=$(nchcli keys show -a alice) --moniker=netcloth --website="www.netcloth.org" --endpoints="1|http://219.22.22.22,2|http://219.22.22.23" --details="netcloth official server endpoint" --bond=100000000000000000pnch
+ nchcli ipal claim --from=$(nchcli keys show -a alice) --moniker=netcloth --website="www.netcloth.org" --endpoints="1|http://219.22.22.22,3|http://xx.xx.xx.xx" --details="netcloth official server endpoint" --bond=100000000000000000pnch
 ```
 
 关于IPAL的更多介绍，[点击这里](./ipal.md)

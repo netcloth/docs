@@ -14,6 +14,7 @@
 ### IPAL操作
 * [IPAL使用](../advanced/ipal.md)
 * [IPAL API](../advanced/api.md)
-  
-### 即时通讯服务部署
-* [NetCloth即时通讯服务部署指南](../im/README.md)
+
+### NetCloth个人网络海星节点搭建
+* [NetCloth个人网络小应用区配置](../advanced/how-to-config-app-portal.md)
+* [NetCloth个人网络即时通讯服务部署指南](../im/README.md)
