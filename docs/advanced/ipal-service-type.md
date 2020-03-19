@@ -32,12 +32,12 @@ nchcli ipal claim --from=$(nchcli keys show -a alice) \
 nchcli ipal claim --from=$(nchcli keys show -a alice) \
 --moniker=netcloth \
 --website="www.netcloth.org" \
---endpoints="1|http://219.22.22.22,2|http://219.22.22.23" \
+--endpoints="1|http://219.22.22.22,3|http://219.22.22.23" \
 --details="netcloth official server endpoint" \
 --bond=100000000000000000pnch
 ```
 
-**声明一个带单聊、群聊和小应用的IPAL**:
+**声明一个带聊天、小应用区和小应用内容的IPAL**:
 
 ```bash
 nchcli ipal claim --from=$(nchcli keys show -a alice) \
