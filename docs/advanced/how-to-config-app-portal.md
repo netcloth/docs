@@ -19,9 +19,14 @@ NetCloth APP(版本1.1.7及以上)已支持分布式应用平台的展示。各�
 ### 2.2 注册海星节点，发送IPAL声明
 
 Example（以NetCloth Official节点为例）
-```
-nchcli ipal claim --from=$(nchcli keys show -a alice) --moniker=netcloth --website="www.netcloth.org" --endpoints="1|http://219.22.22.22,3|http://<Your Mini Apps Portal IP or domain>" --details="netcloth official server endpoint" --bond=100000000000000000pnch``
 
+```bash
+nchcli ipal claim --from=$(nchcli keys show -a alice) \
+--moniker=netcloth \
+--website="www.netcloth.org" \
+--endpoints="1|http://219.22.22.22,3|http://<Your Mini Apps Portal IP or domain>" --details="netcloth official server endpoint" \
+--bond=100000000000000000pnch \
+--gas 200000
 ```
 其中，endpoints字段由数组组成，数字部分表示Service Type，后面跟随的域名或IP为该服务的地址。其中1表示的是海星节点IM服务端的入口地址，3表示你的H5前端地址。
 

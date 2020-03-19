@@ -25,16 +25,16 @@ nchcli ipal claim --from=$(nchcli keys show -a alice) --moniker=netcloth --websi
 
 其中：
 
-- <font color=red>Monikor：</font>海星节点的名称
+- <font color=red>Monikor:</font>海星节点的名称
 
-- <font color=red>website（选填）：</font>节点的官网
+- <font color=red>website（选填）:</font>节点的官网
 
-- <font color=red>endpoints：:</font>IM服务端的公网IP（如何搭建IM服务端，详见[这里](../im/README.md))，endpoints由数组组成，分别为Service Type编号+对应服务的IP或域名。
+- <font color=red>endpoints:</font>IM服务端的公网IP（如何搭建IM服务端，详见[这里](../im/README.md))，endpoints由数组组成，分别为Service Type编号+对应服务的IP或域名。
 想详细了解IPAL Service Type，点击[这里](./ipal-service-type.md)
 
-- <font color=red>details（选填）：:</font>节点的介绍
+- <font color=red>details（选填）:</font>节点的介绍
 
-- <font color=red>bond：</font>抵押NCH的数量，抵押量越高，在NetCloth APP节点列表检索中排名越靠前
+- <font color=red>bond:</font>抵押NCH的数量，抵押量越高，在NetCloth APP节点列表检索中排名越靠前
 
 * 查询IPAL列表
 
