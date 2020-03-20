@@ -2,6 +2,7 @@
 This tutorial contains operations related to smart contracts. You need to run a test network node or private chain locally first.
 Configure development environment and dependencies, refer to [here](../software/how-to-install.md)
 ## Source code compilation
+
 ```bash
 git clone https://github.com/NetCloth/netcloth-chain.git
 
@@ -13,19 +14,20 @@ make install
 ## Initialize local private chain
 
 ### Initialization
+
 ```bash
 # usage:
 nchd init <local-node-name> --chain-id <chain-id>
-
 ```
 
-<font color=red>warning</font>
+::: warning <font color=red>WARNING</font>
 
 If errors happen when you execute the `nchd init`, it means that you have run the nchd program before. You can back up the previous data and then re-initialize the local private chain.
 ```mv ~/.nchd ~/.nchd.bakup```
-
+:::
 
 ### Create wallet address
+
 ```bash
 # Copy the `Address` output here and save it for later use 
 nchcli keys add jack
@@ -35,6 +37,7 @@ nchcli keys add alice
 ```
 
 ### Add wallet address to genesis file and initialize balance
+
 ```bash
 # Add both accounts, with coins to the genesis file
 nchd add-genesis-account $(nchcli keys show jack -a) 100000000000000000000pnch
@@ -42,6 +45,7 @@ nchd add-genesis-account $(nchcli keys show alice -a) 100000000000000000000pnch
 ```
 
 ### Create a validator
+
 ```bash
 # create validator
 nchd gentx \
@@ -58,6 +62,7 @@ nchd collect-gentxs
 ```
 
 ### Configure wallet on nchcli
+
 ```bash
 # Configure your CLI to eliminate need for chain-id flag
 nchcli config chain-id <chain-id>
@@ -68,6 +73,7 @@ nchcli config trust-node true
 
 ### Startup local private chain
 After completing the above configuration, execute the following command to start the local private chain.
+
 ```bash
 nchd start --log_level "*:debug" --trace
 ```
@@ -75,9 +81,11 @@ nchd start --log_level "*:debug" --trace
 ## Create Smart Contract
 
 ### Writing smart contracts
+
 Solidity can be used for Smart Contracts.
 
 The following contract is an example:
+
 ```javascript
 pragma solidity ^0.4.16;
 contract token {
@@ -106,6 +114,7 @@ After online compilation,you can use [remix](http://remix.ethereum.org/) to save
 Assume that the local```./demo/demo.bc ``` is a bytecode file and```./demo/demo.abi ``` is an abi file.
 
 Bytecode:
+
 ```javascript
 608060405234801561001057600080fd5b506509184e72a0006000803373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002081905550610344806100696000396000f300608060405260043610610057576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff16806327e235e31461005c57806370a08231146100b3578063a9059cbb1461010a575b600080fd5b34801561006857600080fd5b5061009d600480360381019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190505050610162565b6040518082815260200191505060405180910390f35b3480156100bf57600080fd5b506100f4600480360381019080803573ffffffffffffffffffffffffffffffffffffffff16906020019092919050505061017a565b6040518082815260200191505060405180910390f35b610148600480360381019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190803590602001909291905050506101c2565b604051808215151515815260200191505060405180910390f35b60006020528060005260406000206000915090505481565b60008060008373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001908152602001600020549050919050565b6000816000803373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001908152602001600020541015151561021157600080fd5b816000803373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060008282540392505081905550816000808573ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001908152602001600020600082825401925050819055508273ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff167fddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef846040518082815260200191505060405180910390a360019050929150505600a165627a7a7230582015481e18f5439ee76271037928d88d33cc7d7d4bf1e5e801b78db9e902f255560029
 ```
@@ -275,6 +284,7 @@ In the transaction details, the events structure contains the newly created cont
     }
   ],
 ```
+
 As it mentioned above,```nch1vp0pzeyst7zjkck5qk0kvplu3szsdxp04kg5xc``` is the newly deployed contract address.
 
 According to the above-mentioned contract address, the contract code on the blockchain can be queried.
@@ -286,6 +296,7 @@ nchcli query vm code nch1vp0pzeyst7zjkck5qk0kvplu3szsdxp04kg5xc
 ## How to call smart contract
 
 To call a smart contract, you need to use an abi file. It is assumed that the abi file corresponding to the contract has been saved to ```./demo/demo.abi```
+
 ```bash
 nchcli vm call --from $(nchcli keys show -a alice) \
 --contract_addr nch1vp0pzeyst7zjkck5qk0kvplu3szsdxp04kg5xc \
