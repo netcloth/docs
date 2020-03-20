@@ -67,23 +67,22 @@ nchcli tx staking edit-validator \
 
 ### Delegate to validators
 ```bash
-Example:
-$ nchcli tx staking delegate nchvaloper1l2rsakp388kuv9k8qzq6lrm9taddae7fpx59wm <amount>pnch --from <mykey> --gas=200000 --gas-prices=1000.0pnch
+#Example:
+nchcli tx staking delegate nchvaloper1l2rsakp388kuv9k8qzq6lrm9taddae7fpx59wm <amount>pnch --from <mykey> --gas=200000 --gas-prices=1000.0pnch
 
-Usage:
-  nchcli tx staking delegate [validator-addr] [amount] [flags]
+#Usage:
+nchcli tx staking delegate [validator-addr] [amount] [flags]
 ```
 ### Withdraw your staking
 
 Withdraw a part of shares you delegated to validators
 
 ```bash
-Usage:
+#Usage:
 nchcli tx staking unbond [validator-addr] [amount] [flags]
 
-Example:
-$ nchcli tx staking unbond nchvaloper1gghjut3ccd8ay0zduzj64hwre2fxs9ldmqhffj 100pnch --from mykey
-
+#Example:
+nchcli tx staking unbond nchvaloper1gghjut3ccd8ay0zduzj64hwre2fxs9ldmqhffj 100pnch --from mykey
 ```
 
 ### WIthdraw your rewards
@@ -91,22 +90,22 @@ $ nchcli tx staking unbond nchvaloper1gghjut3ccd8ay0zduzj64hwre2fxs9ldmqhffj 100
 Withdraw your rewards from a specific validator. If you are a validator,you can withdraw both rewards and commissions.
 
 ```bash
-Example:
-$ nchcli tx distr withdraw-rewards nchvaloper1gghjut3ccd8ay0zduzj64hwre2fxs9ldmqhffj --from mykey
+#Example:
+nchcli tx distr withdraw-rewards nchvaloper1gghjut3ccd8ay0zduzj64hwre2fxs9ldmqhffj --from mykey
 
 
 # Withdraw rewards and commissions If you are a validator
-$ nchcli tx distr withdraw-rewards nchvaloper1gghjut3ccd8ay0zduzj64hwre2fxs9ldmqhffj --from mykey --commission
+nchcli tx distr withdraw-rewards nchvaloper1gghjut3ccd8ay0zduzj64hwre2fxs9ldmqhffj --from mykey --commission
 ```
 
 ### Withdraw all rewards
 
 ```bash
-Usage:
-  nchcli tx distribution withdraw-all-rewards [flags]
+#Usage:
+nchcli tx distribution withdraw-all-rewards [flags]
 
-Example:
-$ nchcli tx distr withdraw-all-rewards --from mykey
+#Example:
+nchcli tx distr withdraw-all-rewards --from mykey
 ```
 
 ### Unjail the validator
@@ -114,11 +113,11 @@ $ nchcli tx distr withdraw-all-rewards --from mykey
 You can unjail a validator with the command ``` unjail``` after the validator is jailed.
 
 ```bash
-Usage:
+#Usage:
 nchcli tx slashing unjail [flags]
 
-Example:
-$ <appcli> tx slashing unjail --from mykey
+#Example:
+nchcli tx slashing unjail --from mykey
 ```
 
 ## Wallet key management
