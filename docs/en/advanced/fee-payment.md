@@ -4,6 +4,8 @@ NetCloth natively supports third-party transaction fee payment on the bottom lay
 
 ## Process
 
+![Process of Meta Tx](../images/meta-tx-en.png)
+
 The principle of Meta Transaction is mainly based on the following: When a transaction message contains multiple signatures, the NetCloth blockchain network will select the transaction fee in the first order according to the transaction signature order. For transaction structure, refer to [here](./transaction.md).
 
 Take ```alice```and``` bob``` for examples. ```Bob``` generates an Tx on NetCloth chain, and ```Alice``` will pay the Tx fee. ```alice``` and ``` bob``` can generate a transaction together, and ```alice``` puts her own msg and signature at the first of signature lists. Several interactions of ```alice``` and``` bob``` will be involved in the process.

@@ -29,4 +29,4 @@ To learn more about the types of IPAL Service Type, please click [here](./ipal-s
 
 After the IPAL declaration is successful, your starfish node is registered successfully. Now you just need to find your node in NetCloth's "Settings"-> "Client Service Settings"-> "Application Address"-> and choose your starfish node to connect. You can see your Mini APPs Portal on the NetCloth APP.
 
-![](../images/mini-app-en.jpg)
+![](../images/mini-app-en.png)
