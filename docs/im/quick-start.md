@@ -45,25 +45,11 @@ wget http://nginx.org/keys/nginx_signing.key
 apt-key add nginx_signing.key
 apt-get update
 apt-get install -y nginx
-/etc/init.d/nginx start
 ```
 
 * 执行nginx -v检查，使用nginx 1.16以上版本
 
-#### 2.1.2 修改nginx参数
-修改文件： /etc/nginx/nginx.conf
-
-```
-worker_processes  auto;
-```
-
-在http选项里面新增一行，设置POST请求Body大小限制
-
-```
-client_max_body_size 20m;
-```
-
-#### 2.1.3 启动nginx服务
+#### 2.1.2 启动nginx服务
 
 ```
 nginx
@@ -135,33 +121,31 @@ sudo apt install supervisor
 
 ```bash
 wget http://47.104.248.183/resource/netcloth-server-latest.tar.gz
+tar xvzf netcloth-server-latest.tar.gz
 ```
 
-### 3.2 修改特定配置
+### 3.2 修改节点参数设置
 
 ```bash
-tar xvzf netcloth-server-latest.tar.gz
 cd netcloth-server-latest
 ```
 
-修改netcloth-server-latest/install.sh中的如下4个参数
+修改netcloth-server-latest/netcloth.conf中的如下3个参数
 
 * public_ip 本机公网IP
 * keystore  节点keystore文件存储路径
 * keystore_password 读取keystore文件的密码
-* install_dir 为应用安装目录，默认安装在/home/admin目录
 
 ```
 public_ip=127.0.0.1
 keystore="./keystore.txt"
-keystore_password="88888888"
-install_dir=/home/admin
+keystore_password=""
 ```
 
-install_dir默认不需要修改，除非有特殊的安装需要；另外三个参数必须要根据自己节点的参数做修改。修改完成后，安装服务(root权限）
+必须根据自己节点的情况对这三个做修改。修改完成后，安装服务(root权限）
 
 ```bash
-sh install.sh
+./install.sh
 ```
 
 **关于keystore**
@@ -180,40 +164,27 @@ sh install.sh
 * 80   HTTP服务
 * 1080 gRPC服务
 
-### 4.2 基础服务配置更新
+### 4.2 启动服务
 
-#### 4.2.1 nginx加载新配置
-
-```
-nginx -s reload
-```
-
-### 4.3 启动应用服务
-
-#### 4.3.1 使用supervisor启动服务
-
-* 检查supervisord是否已经正常启动，如果没有，先启动supervisord
+执行如下命令启动netcloth im服务
 
 ```bash
-service supervisor start
+./appctl.sh start
 ```
 
-启动服务
-
-```
-supervisorctl
-> update
-> status
-```
-
-* 通过status命令检查服务，确保服务都处于running状态
+* 通过supervisorctl status命令检查服务，确保服务都处于running状态
 * 如果服务有fatal出现，可以执行start，如 start offmsg
 
-#### 4.3.2 启动gateway服务
+### 4.3 检查服务
+
+执行如下命令检查netcloth im服务部署情况
 
 ```bash
-cd /home/admin/gateway/
-./gateway
+./appctl.sh check
 ```
 
-至此，NetCloth即时通讯服务就部署完成了。打开NetCloth App，连接你的服务节点进行IM手法消息的测试。
+如果部署正常，则会输出"sanity check ok"
+
+### 4.4 测试服务节点
+
+打开NetCloth App，连接你的服务节点进行IM功能测试。
