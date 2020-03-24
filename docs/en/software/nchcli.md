@@ -127,6 +127,18 @@ nchcli tx slashing unjail --from mykey
 nchcli keys add <name> [flags]
 ```
 
+### List Keys
+
+```bash
+nchcli keys list
+```
+
+### Show key info
+
+```bash
+nchcli keys show <name> [flags]
+```
+
 ### Export keys
 ```bash
 nchcli keys export <name> [flags]

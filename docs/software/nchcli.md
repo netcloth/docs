@@ -12,7 +12,7 @@
 nchcli status
 ```
 
-### 查询余额
+### 查询账户地址余额
 
 ```bash
 nchcli query account [address]
@@ -134,8 +134,24 @@ $ <appcli> tx slashing unjail --from mykey
 
 ### 创建新地址
 
+本地创建一个新地址，其中私钥加密保存
+
 ```bash
 nchcli keys add <name> [flags]
+```
+
+### 查看本地key
+
+查看本地所有的key
+
+```bash
+nchcli keys list
+```
+
+### 查看单个key信息
+
+```bash
+nchcli keys show <name> [flags]
 ```
 
 ### key导出
