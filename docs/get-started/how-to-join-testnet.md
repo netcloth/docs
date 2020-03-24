@@ -26,7 +26,7 @@ nchd init netcloth --chain-id nch-testnet
 ```bash
 # 拷贝主节点genesis文件,此处从github下载
 wget https://raw.githubusercontent.com/netcloth/testnet/master/genesis.json -O  ~/.nchd/config/genesis.json
-如果wget很慢或失败请尝试手动下载文件,地址:https://github.com/netcloth/docs/blob/master/testnet/genesis.json
+如果wget很慢或失败请阿里云下载地址:http://nch.oss-cn-hangzhou.aliyuncs.com/pkgs/genesis.json
 ```
 
 上述命令将测试网genesis文件下载到默认home下的config目录，如果有设定的home，则需要下载到```<your_custom_path>/.nchd/config/genesis.json```,  后面用到home目录的地方均相同。
