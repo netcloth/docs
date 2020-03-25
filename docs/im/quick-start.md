@@ -89,7 +89,9 @@ sudo apt install redis-server
 
 /usr/bin/redis-server /etc/redis/redis.conf
 
-如果redis启动失败，检查是否是网络不支持IP V6，通过修改redis配置（/etc/redis/redis.conf）,
+如果redis启动失败，检查是否是网络不支持IP V6，查看日志文件/var/log/redis/redis-server.log
+
+通过修改redis配置（/etc/redis/redis.conf）,
  
  ```
  bind 127.0.0.1 ::1
@@ -184,6 +186,16 @@ keystore_password=""
 ```
 
 如果部署正常，则会输出"sanity check ok"
+
+### 4.4 日志收集
+
+如果需要NetCloth开发人员协助判断，请先收集日志
+
+```bash
+./appctl.sh trace
+```
+
+将收集到的tracelog.tar.gz日志发送给NetCloth开发人员
 
 ### 4.4 测试服务节点
 
