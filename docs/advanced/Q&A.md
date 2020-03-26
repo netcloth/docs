@@ -54,3 +54,13 @@ kill -9 $(pgrep nchcli)
 ### 如何备份验证人节点
 
 建议备份<your_custom_path>/.nchd/config目录，其中config目录下的priv_validator_key.json 为验证人节点私钥。
+
+### 私链启动失败
+
+本地搭建私有链，执行```nchd start```失败，控制台显示
+
+```javascript
+ERROR: error during handshake: error on replay: validator set is nil in genesis and still empty after InitChain
+```
+
+解决方法：确保创建初始验证人时，保证抵押 >= 1 NCH (即10^12 pnch)
