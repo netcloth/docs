@@ -41,7 +41,7 @@ NCH 是NetCloth网络中的token，最小单位为pnch， 换算关系如下：
 
 ### 如何停止节点程序
 
-**停止后台程序，可以执行如下命令**
+停止后台程序，可执行如下命令：
 
 ```bash
 # 停止nchd
@@ -51,9 +51,21 @@ kill -9 $(pgrep nchd)
 kill -9 $(pgrep nchcli)
 ```
 
+### 如何重启节点程序
+
+重启节点，可执行如下命令：
+
+```bash
+kill -9 $(pgrep nchd)
+kill -9 $(pgrep nchcli)
+
+nohup nchd start 1>nchd.out 2>&1 &
+nohup nchcli rest-server 1>cli.out 2>&1 &
+```
+
 ### 如何备份验证人节点
 
-建议备份<your_custom_path>/.nchd/config目录，其中config目录下的priv_validator_key.json 为验证人节点私钥。
+建议备份<your_custom_path>/.nchd/config目录，其中config目录下的priv_validator_key.json 为验证人节点私钥。 请妥善保安验证人节点私钥，丢失后将无法恢复。
 
 ### 私链启动失败
 

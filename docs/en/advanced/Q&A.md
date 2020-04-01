@@ -37,6 +37,16 @@ kill -9 $(pgrep nchd)
 kill -9 $(pgrep nchcli)
 ```
 
+### How to restart the node program
+
+```bash
+kill -9 $(pgrep nchd)
+kill -9 $(pgrep nchcli)
+
+nohup nchd start 1>nchd.out 2>&1 &
+nohup nchcli rest-server 1>cli.out 2>&1 &
+```
+
 ### How to backup validator nodes
 
 It is recommended to backup the```<your_custom_path>/.nchd/config``` directory, where ```priv_validator_key.json``` in the ```config``` directory is the private key of the validator node.

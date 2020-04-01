@@ -129,7 +129,8 @@ function genSidebarConfig (module, title) {
                 children: [
                     'go-install',
                     'how-to-install',
-                    'nchcli'
+                    'nchcli',
+                    'monitor'
                 ]
             }
         ];
