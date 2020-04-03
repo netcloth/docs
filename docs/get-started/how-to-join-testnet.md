@@ -4,34 +4,52 @@
 
 ## 1. 安装nch节点程序
 
-如果你还没有安装nch节点程序，请按照[教程](../software/how-to-install.md)安装。
+当前最新测试版本为: **testnet-v1.1.0**
 
-如果你已经安装过nch节点，可以跳过此步骤。
+* 如果你还没有安装nch节点程序，请点击[这里](../software/how-to-install.md)安装最新测试版本程序。
+
+* 如果你已经安装过nch节点，确认程序已升级为[最新测试版本](./../software/how-to-install.md#最新版本)。执行如下命令，查看你的程序版本:
+
+```bash
+nchd version
+nchcli version
+```
 
 ## 2. 节点设置
 
-**初始化节点配置**：
+初次部署节点程序，需要先初始化配置：
+
+* **初始化节点配置**：
 
 ```bash
 # 作法：
 # nchd init <your_custom_name> --chain-id nch-testnet
 # 示例:
-nchd init netcloth --chain-id nch-testnet
+nchd init mynode --chain-id nch-testnet
 ```
 
 上述命令会初始化验证人和节点配置文件，默认的home目录为```~/```，如果需要设定home目录，可以带上```--home=<your_custom_path>```
 
-**下载测试网genesis文件**：
+::: warning 提示
+如果之前有同步过测试网的区块数据，则不需要再次初始化。需要重置本地节点，执行如下命令：
+
+```bash
+nchd unsafe-reset-all
+```
+
+上述命令，会重置区块链数据库。
+:::
+
+* **下载测试网genesis文件**：
 
 ```bash
 # 拷贝主节点genesis文件,此处从github下载
-wget https://raw.githubusercontent.com/netcloth/testnet/master/genesis.json -O  ~/.nchd/config/genesis.json
-如果wget很慢或失败请阿里云下载地址:http://nch.oss-cn-hangzhou.aliyuncs.com/pkgs/genesis.json
+wget http://nch.oss-cn-hangzhou.aliyuncs.com/pkgs/genesis.json -O  ~/.nchd/config/genesis.json
 ```
 
 上述命令将测试网genesis文件下载到默认home下的config目录，如果有设定的home，则需要下载到```<your_custom_path>/.nchd/config/genesis.json```,  后面用到home目录的地方均相同。
 
-**修改配置文件，增加初始种子节点**：
+* **修改配置文件，增加初始种子节点**：
 
 ```bash
 修改配置文件：~/.nchd/config/config.toml， 在[p2p]配置部分，修改seeds和persistent_peers配置项，添加种子节点seed， 如下：
@@ -57,7 +75,7 @@ nohup nchd start --log_level "*:debug" 1>nchd.out 2>&1 &
 
 上述命令将nchd进程运行在后台 ，并将控制台输出重定向到nchd.out文件。
 
-如果需要启动rest-server， 执行如下命令：
+* 如果需要启动rest-server， 执行如下命令：
 
 先设置一下nchcli环境
 
@@ -68,8 +86,9 @@ nchcli config indent true
 nchcli config trust-node true
 ```
 
+后台运行nchcli，开启rest server
+
 ```bash
-# 后台运行nchcli，开启rest server
 nohup nchcli rest-server 1>cli.out 2>&1 &
 ```
 
@@ -77,11 +96,15 @@ nohup nchcli rest-server 1>cli.out 2>&1 &
 
 ## 4. 查看节点同步状态
 
-```bash
-# 打开一个新的终端
-curl http://127.0.0.1:26657/status
+打开一个新的终端，查看节点状态：
 
-# 输出如下：
+```bash
+curl http://127.0.0.1:26657/status
+```
+
+输出如下：
+
+```json
 {
   "jsonrpc": "2.0",
   "id": "",
@@ -127,10 +150,11 @@ curl http://127.0.0.1:26657/status
 
 之后你可以使用nchcli的各项指令，点击[这里](../software/nchcli.md)
 
-测试网全节点部署完成后，你可以尝试创建测试网验证人，点击[这里](./how-to-become-validator.md)
+**测试网全节点同步到最新区块高度后**，你可以尝试创建测试网验证人，点击[这里](./how-to-become-validator.md)
 
 ## 更多资源
 
-* 查看常见问题,点击[这里](../advanced/Q&A.md)
+* 部署节点监控工具，点击[这里](../software/monitor.md)
+* 查看常见问题，点击[这里](../advanced/Q&A.md)
 * 测试区块浏览器地址： <https://explorer.netcloth.org>
 * 申请测试token，点击[这里](testcoin.md)

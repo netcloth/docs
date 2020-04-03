@@ -272,6 +272,14 @@ downtime_jail_duration: 2天
 共识过程中发起相互矛盾的投票, 即验证人对同一高度同一Round区块进行不同签名。
 
 双签的惩罚默认参数:
+
 ```
 slash_fraction_double_sign:0.5 %
 ```
+
+## 更多资源
+
+* 部署节点监控工具，点击[这里](../software/monitor.md)
+* 查看常见问题，点击[这里](../advanced/Q&A.md)
+* 测试区块浏览器地址： <https://explorer.netcloth.org>
+* 申请测试token，点击[这里](testcoin.md)

@@ -18,7 +18,7 @@ To install and configure go, click [here](../software/go-install.md)
 ```bash
 # Get nch source code
 git clone https://github.com/NetCloth/netcloth-chain.git
-cd netcloth-chain && git checkout  testnet-v1.0.1
+cd netcloth-chain && git checkout testnet-v1.1.0
 
 # Install statik
 sudo apt-get update
