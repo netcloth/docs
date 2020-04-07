@@ -54,10 +54,10 @@ wget http://nch.oss-cn-hangzhou.aliyuncs.com/pkgs/genesis.json -O  ~/.nchd/confi
 ```bash
 修改配置文件：~/.nchd/config/config.toml， 在[p2p]配置部分，修改seeds和persistent_peers配置项，添加种子节点seed， 如下：
 # Comma separated list of seed nodes to connect to
-seeds = "e60b962168d85c5b594cb8238e8f8f536c2d2ae2@13.58.188.155:26656,5bd7dc0cb3872e9e7371e7609342875d547e0195@13.124.101.63:26656,d172e23ea6bd1ecb77f058796689110c8387fe5a@18.191.12.61:26656"
+seeds = "8ba581e85a00337147ffbf22bc13da78640568b3@13.58.188.155:26656,c57df7491a235753439fa3ea7d908f0ec42e8670@18.191.12.61:26656,b726519a738239378dbb15520f493d1a9a355593@13.124.101.63:26656"
 
 # Comma separated list of nodes to keep persistent connections to
-persistent_peers = "e60b962168d85c5b594cb8238e8f8f536c2d2ae2@13.58.188.155:26656,5bd7dc0cb3872e9e7371e7609342875d547e0195@13.124.101.63:26656,d172e23ea6bd1ecb77f058796689110c8387fe5a@18.191.12.61:26656"
+persistent_peers = "8ba581e85a00337147ffbf22bc13da78640568b3@13.58.188.155:26656,c57df7491a235753439fa3ea7d908f0ec42e8670@18.191.12.61:26656,b726519a738239378dbb15520f493d1a9a355593@13.124.101.63:26656"
 ```
 
 ## 3. 启动节点，同步区块
@@ -70,7 +70,10 @@ nohup nchd start 1>nchd.out 2>&1 &
 ::: warning 提示
 nchd start 默认日志级别是info， 如果需要查看debug日志，可以带上--log_level "*:debug"执行：
 
+```bash
 nohup nchd start --log_level "*:debug" 1>nchd.out 2>&1 &
+```
+
 :::
 
 上述命令将nchd进程运行在后台 ，并将控制台输出重定向到nchd.out文件。

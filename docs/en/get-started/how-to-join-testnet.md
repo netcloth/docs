@@ -1,32 +1,76 @@
 # How to join the tesetnet
+
 ## 1. Install nch
- 
-Please follow the [tutorial](../software/how-to-install.md) to install nch
+
+The current latest test version is: **testnet-v1.1.0**
+
+* If you have not installed the nch node program, please click [here](../software/how-to-install.md) to install the latest test version program.
+
+* If you have installed the nch node, confirm that the program has been upgraded to [latest test version](../software/how-to-install.md#the-latest-version). Run the following command to check your program version:
+
+```bash
+nchd version
+nchcli version
+```
 
 ## 2. Settings
+
+* init node for initial configuration:
 
 ```bash
 # usage: 
 # nchd init <your_custom_name> --chain-id nch-testnet
 # example:
-nchd init lucy --chain-id nch-testnet
+nchd init mynode --chain-id nch-testnet
+```
 
+::: warning notice
+If the test network has been synchronized before, there is no need to initialize again. Need to reset the local node, execute the following command:
+
+```bash
+nchd unsafe-reset-all
+```
+
+:::
+
+* download genesis file
+
+```bash
 # Download genesis file  from github
 wget https://raw.githubusercontent.com/netcloth/docs/master/testnet/genesis.json -O  ~/.nchd/config/genesis.json
 
 # Modify the configuration file:~/.nchd/config/config.toml， add seed-nodes as follows:
 # Comma separated list of seed nodes to connect to
-seeds = "e60b962168d85c5b594cb8238e8f8f536c2d2ae2@13.58.188.155:26656,5bd7dc0cb3872e9e7371e7609342875d547e0195@13.124.101.63:26656,d172e23ea6bd1ecb77f058796689110c8387fe5a@18.191.12.61:26656"
+seeds = "8ba581e85a00337147ffbf22bc13da78640568b3@13.58.188.155:26656,c57df7491a235753439fa3ea7d908f0ec42e8670@18.191.12.61:26656,b726519a738239378dbb15520f493d1a9a355593@13.124.101.63:26656"
 
 # Comma separated list of nodes to keep persistent connections to
-persistent_peers = "e60b962168d85c5b594cb8238e8f8f536c2d2ae2@13.58.188.155:26656,5bd7dc0cb3872e9e7371e7609342875d547e0195@13.124.101.63:26656,d172e23ea6bd1ecb77f058796689110c8387fe5a@18.191.12.61:26656"
+persistent_peers = "8ba581e85a00337147ffbf22bc13da78640568b3@13.58.188.155:26656,c57df7491a235753439fa3ea7d908f0ec42e8670@18.191.12.61:26656,b726519a738239378dbb15520f493d1a9a355593@13.124.101.63:26656"
 ```
 
 ## 3. Start nchd
 
+* start nchd
+  
 ```bash
 # After executing the following command, the console will print the log
-nchd start
+nohup nchd start 1>nchd.out 2>&1 &
+```
+
+* start CLI rest-server：
+
+init CLI first
+
+```bash
+nchcli config chain-id nch-testnet
+nchcli config output json
+nchcli config indent true
+nchcli config trust-node true
+```
+
+start CLI rest server
+
+```bash
+nohup nchcli rest-server 1>cli.out 2>&1 &
 ```
 
 ## 4. View node synchronization status
