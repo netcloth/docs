@@ -60,3 +60,10 @@ When executing the command ```nchcli q account <address>```， it returns  ```ER
 1. The newly created account locally with balance 0, it is an offline account, and does not exist on the chain。
 
 2. The newly created account locally with balance not 0, it may be that the local node has not been synchronized to the latest block. Your can query it after synchronizing to the latest block.
+
+
+
+### Scan QR code to join NetCloth Dev Community
+<p align="center">
+	<img src="http://nch.oss-cn-hangzhou.aliyuncs.com/img/dev_group.jpg?raw=true" alt="Sample" width = 40% height = 40%>
+</p>

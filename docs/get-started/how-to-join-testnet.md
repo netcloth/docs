@@ -161,3 +161,7 @@ curl http://127.0.0.1:26657/status
 * 查看常见问题，点击[这里](../advanced/Q&A.md)
 * 测试区块浏览器地址： <https://explorer.netcloth.org>
 * 申请测试token，点击[这里](testcoin.md)
+* 加入NetCloth Dev Community, 扫描下方二维码
+<p align="center">
+	<img src="http://nch.oss-cn-hangzhou.aliyuncs.com/img/dev_group.jpg?raw=true" alt="Sample" width = 40% height = 40%>
+</p>

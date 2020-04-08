@@ -88,3 +88,8 @@ ERROR: error during handshake: error on replay: validator set is nil in genesis 
 1. 本地新创建的账户并且余额为0，是离线账户，不存在于世界状态中，链上不存在。
 
 2. 本地新创建的账户并且有余额，查询时提示不存在，可能是本地节点尚未同步到最新区块，待同步到最新区块后查询即可。
+
+### 加入NetCloth Dev Community, 扫描下方二维码
+<p align="center">
+	<img src="http://nch.oss-cn-hangzhou.aliyuncs.com/img/dev_group.jpg?raw=true" alt="Sample" width = 40% height = 40%>
+</p>
