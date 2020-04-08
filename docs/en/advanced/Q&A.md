@@ -51,3 +51,12 @@ nohup nchcli rest-server 1>cli.out 2>&1 &
 
 It is recommended to backup the```<your_custom_path>/.nchd/config``` directory, where ```priv_validator_key.json``` in the ```config``` directory is the private key of the validator node.
 
+### Query account does not exist
+
+When executing the command ```nchcli q account <address>```， it returns  ```ERROR: account xxx does not exist```
+
+**reason：**
+
+1. The newly created account locally with balance 0, it is an offline account, and does not exist on the chain。
+
+2. The newly created account locally with balance not 0, it may be that the local node has not been synchronized to the latest block. Your can query it after synchronizing to the latest block.

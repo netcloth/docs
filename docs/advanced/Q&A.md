@@ -76,3 +76,15 @@ ERROR: error during handshake: error on replay: validator set is nil in genesis 
 ```
 
 解决方法：确保创建初始验证人时，保证抵押 >= 1 NCH (即10^12 pnch)
+
+## 其它
+
+### 查询账户不存在
+
+执行命令```nchcli q account <address>```查询账户时，返回 ```ERROR: account xxx does not exist```
+
+**原因：**
+
+1. 本地新创建的账户并且余额为0，是离线账户，不存在于世界状态中，链上不存在。
+
+2. 本地新创建的账户并且有余额，查询时提示不存在，可能是本地节点尚未同步到最新区块，待同步到最新区块后查询即可。
