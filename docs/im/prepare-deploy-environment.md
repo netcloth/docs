@@ -34,7 +34,7 @@ usermod -aG sudo admin
 
 #### 1.3.2 获取源代码和相关依赖生成
 
-```
+```bash
 mkdir -p /home/admin/code
 cd /home/admin/code
 git clone https://gitee.com/hangzhouzengxinxinxi/netcloth-server.git
@@ -44,76 +44,93 @@ git clone https://gitee.com/hangzhouzengxinxinxi/netcloth-server.git
 
 ## 2 基础服务部署
 
+## 2 基础服务部署和启动
+
 ### 2.1 nginx安装和配置
-#### 2.1.1 安装新本部nginx
+
+#### 2.1.1 安装版本nginx
+
 * 创建 /etc/apt/sources.list.d/nginx.list 文件，添加如下内容到该文件
-```
+  
+```bash
 deb http://nginx.org/packages/mainline/ubuntu/ bionic nginx
 deb-src http://nginx.org/packages/mainline/ubuntu/ bionic nginx
 ```
+
 * 配置完nginx源以后，执行如下命令
-```
+  
+```bash
 wget http://nginx.org/keys/nginx_signing.key
 apt-key add nginx_signing.key
 apt-get update
 apt-get install -y nginx
-/etc/init.d/nginx start
 ```
+
 * 执行nginx -v检查，使用nginx 1.16以上版本
 
-#### 2.1.2 修改nginx参数
-修改文件： /etc/nginx/nginx.conf
+#### 2.1.2 启动nginx服务
 
 ```
-worker_processes  auto;
+nginx
 ```
 
-在http选项里面新增一行，设置POST请求Body大小限制
+### 2.2 mongodb安装和启动
 
-```
-client_max_body_size 20m;
-```
-#### 2.1.3 设置反向代理
+### 2.2.1 安装
 
-* 执行如下命令
-```
-sudo cp /home/admin/code/netcloth-server/script/nginx/* /etc/nginx/conf.d/
-```
-* 修改/etc/nginx/conf.d/grpc.conf配置，将里面的IP 172.31.199.154 替换成本机的局域网IP，例如网卡eth0的IP
-
-修改完成后执行如下命令检测和重新加载配置
-
-```
-nginx -t
-nginx -s reload
-```
-
-### 2.2 mongodb安装
 * 参考[Install MongoDB Community Edition on Ubuntu](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/#install-mongodb-community-edition-using-deb-packages)文档 安装4.2.X版本 mongodb 
+
+``` shell
+wget https://repo.mongodb.org/apt/ubuntu/dists/bionic/mongodb-org/4.2/multiverse/binary-amd64/mongodb-org-server_4.2.5_amd64.deb
+dpkg -i mongodb-org-server_4.2.5_amd64.deb
+```
+
+### 2.2.2 启动mongodb
+
 * 通过如下命令，以默认配置启动mongodb
+
 ```
 systemctl start mongod
 ```
+
 * 用户名账号设置(可选)：如果出于安全考虑，可以增加权限控制，参考mongodb相关文档设置
 
 ### 2.3 部署redis-server
+
+#### 2.3.1 安装redis server
 
 ```
 sudo apt install redis-server
 ```
 
+#### 2.3.2 启动redis server
+
+/usr/bin/redis-server /etc/redis/redis.conf
+
+如果redis启动失败，检查是否是网络不支持IP V6，查看日志文件/var/log/redis/redis-server.log
+
+通过修改redis配置（/etc/redis/redis.conf）,
+ 
+ ```
+ bind 127.0.0.1 ::1
+ ```
+ 去除IP V6地址监听，修改成如下：
+ 
+ ```
+ bind 127.0.0.1
+ ```
+
 ### 2.4 consul下载和安装
 
-```
-wget https://releases.hashicorp.com/consul/1.6.1/consul_1.6.1_linux_amd64.zip
-
-unzip consul_1.6.1_linux_amd64.zip
-sudo mv consul /usr/local/bin
+```bash
+wget https://releases.hashicorp.com/consul/1.7.2/consul_1.7.2_linux_amd64.zip
+unzip consul_1.7.2_linux_amd64.zip
+mv consul /usr/local/bin
 ```
 
 ### 2.5 supervisor安装
 
-```
+```bash
 sudo apt install supervisor
 ```
 
