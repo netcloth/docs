@@ -151,6 +151,7 @@ function genSidebarConfig (module, title) {
                     'transaction',
                     'fee-payment',
                     'contract',
+                    'contract-repertory',
                     'Q&A'
                 ]
             }
