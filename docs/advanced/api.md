@@ -195,6 +195,46 @@ curl http://rpc.netcloth.org/blocks/{height}
 
 response 同上
 
+### 查询帐户信息及余额
+
+参数说明：
+| 参数名称 | 类型 | 说明 |
+| ------- | --- | --- |
+| address | string | 帐户地址 |
+
+request:
+
+```bash
+curl http://rpc.netcloth.org/auth/accounts/{address}
+```
+
+response:
+
+```json
+{
+  "height": "141896",
+  "result": {
+    "type": "nch/Account",
+    "value": {
+      "address": "nch17kfmq49p6vth0y83t4dwlpurdy70wgampcevhx",
+      "coins": [
+        {
+          "denom": "pnch",
+          "amount": "2326727347579935"
+        }
+      ],
+      "public_key": {
+        "type": "tendermint/PubKeySecp256k1",
+        "value": "Ap5sCPzuGm2nWmfFdm+9vTpcIj7u7ReNo4yQpvlVSlYm"
+      },
+      "account_number": "15",
+      "sequence": "19",
+      "code_hash": ""
+    }
+  }
+}
+```
+
 ### 获取最新的验证人集合
 
 request:

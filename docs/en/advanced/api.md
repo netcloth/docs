@@ -23,6 +23,43 @@ curl http://rpc.netcloth.org/blocks/{height}
 curl -X POST "http://rpc.netcloth.org/txs" -H "accept: application/json" -H "Content-Type: application/json" -d "{transaction msg}"
 ```
 
+* Get account info and balance
+
+request:
+
+```bash
+curl http://rpc.netcloth.org/auth/accounts/{address}
+```
+
+response:
+
+```json
+{
+  "height": "141896",
+  "result": {
+    "type": "nch/Account",
+    "value": {
+      "address": "nch17kfmq49p6vth0y83t4dwlpurdy70wgampcevhx",
+      "coins": [
+        {
+          "denom": "pnch",
+          "amount": "2326727347579935"
+        }
+      ],
+      "public_key": {
+        "type": "tendermint/PubKeySecp256k1",
+        "value": "Ap5sCPzuGm2nWmfFdm+9vTpcIj7u7ReNo4yQpvlVSlYm"
+      },
+      "account_number": "15",
+      "sequence": "19",
+      "code_hash": ""
+    }
+  }
+}
+```
+
+
+
 ### IPAL API
 
 * Register ipal node with command line
