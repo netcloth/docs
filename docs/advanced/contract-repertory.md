@@ -501,4 +501,53 @@ nchcli keys parse $(echo $addr | sed 's/^0*//g') | sed -n 3p
 ## 数据上链合约
 
 ## 消息撤回合约
+
+* 合约源码，参考[这里](https://github.com/netcloth/contracts/blob/master/recall.sol)
+* 测试网示例合约地址：```nch1dhyh4fuadxft003wth2x9j053e7ey8njuw3f6h```
+  
+### 创建合约
+
+创建合约，指定1个参数：```_initFee```: 
+
+```text
+_initFee: 1000000000000
+```
+
+```bash
+nchcli vm create2 --code_file=./recall_payable.bc \
+--from $(nchcli keys show -a alice) \
+--amount=0pnch \
+--args="1000000000000" \
+--abi_file=./recall_payable.abi \
+--gas 10000000
+```
+
+创建合约将消耗比较多的gas， 上述命令指定了gas数量为10000000 (nchcli命令行默认为200000)
+::: warning notice
+关于如何将构造函数参数转成二进制并传给命令行，开发者可参考nch sdk[示例](https://github.com/netcloth/go-sdk/blob/master/util/contract_util_test.go)
+:::
+
+合约创建成功后，根据txHash反查交易信息，其中new_contract部分对应新创建的合约地址，此处生成的合约地址为```nch1dhyh4fuadxft003wth2x9j053e7ey8njuw3f6h```
+
+### 调用合约
+
+调用合约的recall接口
+TODO
+
+### 查询fee
+
+调用合约的fee方法，可查询fee
+
+```bash
+# nch1dhyh4fuadxft003wth2x9j053e7ey8njuw3f6h 为新创建的合约地址
+
+nchcli q vm call $(nchcli keys show -a alice) nch1dhyh4fuadxft003wth2x9j053e7ey8njuw3f6h fee --args="" 0pnch ./recall_payable.abi
+```
+
+结果：
+
+```json
+{"Gas":1093,"Result":[1000000000000]}
+```
+
 ## DEX
