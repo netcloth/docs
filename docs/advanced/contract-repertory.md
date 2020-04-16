@@ -5,6 +5,7 @@
 ## NRC-20
 
 * NRC-20规范，参考[这里](https://github.com/netcloth/contracts/blob/master/token/nrc20/readme.md)
+* 合约ABI，参考[这里](https://github.com/netcloth/contracts/blob/master/token/nrc20/nrc20.abi)
 * 测试网示例合约地址：```nch1q8j4n4dn26lcnx8yhjl65jeqhutn8cjmureyt4```
   
 ### 创建合约
@@ -71,7 +72,6 @@ nch1q8j4n4dn26lcnx8yhjl65jeqhutn8cjmureyt4 name ./nrc20.abi
 
 ```bash
 # nch1q8j4n4dn26lcnx8yhjl65jeqhutn8cjmureyt4 为新创建的合约地址
-
 nchcli q vm call $(nchcli keys show -a alice) \
 nch1q8j4n4dn26lcnx8yhjl65jeqhutn8cjmureyt4 totalSupply ./nrc20.abi
 ```
@@ -88,7 +88,6 @@ nch1q8j4n4dn26lcnx8yhjl65jeqhutn8cjmureyt4 totalSupply ./nrc20.abi
 
 ```bash
 # nch1q8j4n4dn26lcnx8yhjl65jeqhutn8cjmureyt4 为新创建的合约地址
-
 nchcli q vm call $(nchcli keys show -a alice) \
 nch1q8j4n4dn26lcnx8yhjl65jeqhutn8cjmureyt4 decimals ./nrc20.abi
 ```
@@ -133,7 +132,8 @@ nchcli vm call --from=$(nchcli keys show -a alice) \
 查询```nch13dwwe6pv92ve9uy8k2u7006a9fd9jwc6gzqx0e```在合约中的TOKEN余额
 
 ```bash
-nchcli q vm call $(nchcli keys show -a alice) nch1q8j4n4dn26lcnx8yhjl65jeqhutn8cjmureyt4 balanceOf ./nrc20.abi --args="nch13dwwe6pv92ve9uy8k2u7006a9fd9jwc6gzqx0e"
+nchcli q vm call $(nchcli keys show -a alice) nch1q8j4n4dn26lcnx8yhjl65jeqhutn8cjmureyt4 \
+balanceOf ./nrc20.abi --args="nch13dwwe6pv92ve9uy8k2u7006a9fd9jwc6gzqx0e"
 ```
 
 结果：
@@ -145,7 +145,8 @@ nchcli q vm call $(nchcli keys show -a alice) nch1q8j4n4dn26lcnx8yhjl65jeqhutn8c
 查询 alice 账户在合约中的TOKEN余额
 
 ```bash
-nchcli q vm call $(nchcli keys show -a alice) nch1q8j4n4dn26lcnx8yhjl65jeqhutn8cjmureyt4 balanceOf ./nrc20.abi --args=$(nchcli keys show -a alice)
+nchcli q vm call $(nchcli keys show -a alice) nch1q8j4n4dn26lcnx8yhjl65jeqhutn8cjmureyt4 \
+balanceOf ./nrc20.abi --args=$(nchcli keys show -a alice)
 ```
 
 结果：
@@ -157,6 +158,7 @@ nchcli q vm call $(nchcli keys show -a alice) nch1q8j4n4dn26lcnx8yhjl65jeqhutn8c
 ## NRC-721
 
 * NRC-721规范，参考[这里](https://github.com/netcloth/contracts/blob/master/token/nrc721/readme.md)
+* 合约ABI，参考[这里](https://github.com/netcloth/contracts/blob/master/token/nrc721/nrc721.abi)
 * 测试网示例合约地址：```nch1zypvh2q606ztw4elfgla0p6x4eruz3md6euv2t```
   
 ### 创建合约
@@ -190,8 +192,8 @@ nchcli vm create \
 
 ```bash
 # nch1zypvh2q606ztw4elfgla0p6x4eruz3md6euv2t 为新创建的合约地址
-
-nchcli q vm call $(nchcli keys show -a alice) nch1zypvh2q606ztw4elfgla0p6x4eruz3md6euv2t symbol ./nrc721.abi
+nchcli q vm call $(nchcli keys show -a alice) nch1zypvh2q606ztw4elfgla0p6x4eruz3md6euv2t \
+symbol ./nrc721.abi
 ```
 
 结果：
@@ -205,7 +207,8 @@ nchcli q vm call $(nchcli keys show -a alice) nch1zypvh2q606ztw4elfgla0p6x4eruz3
 调用合约的name方法，查询token名称
 
 ```bash
-nchcli q vm call $(nchcli keys show -a alice) nch1zypvh2q606ztw4elfgla0p6x4eruz3md6euv2t name ./nrc721.abi
+nchcli q vm call $(nchcli keys show -a alice) nch1zypvh2q606ztw4elfgla0p6x4eruz3md6euv2t \
+name ./nrc721.abi
 ```
 
 结果：
@@ -228,11 +231,10 @@ nchcli q vm call $(nchcli keys show -a alice) nch1zypvh2q606ztw4elfgla0p6x4eruz3
 nchcli vm call \
 --from=$(nchcli keys show -a alice) \
 --contract_addr=nch1zypvh2q606ztw4elfgla0p6x4eruz3md6euv2t \
---abi_file=./nrc721.abi \
 --method=MyMint \
+--abi_file=./nrc721.abi \
 --args="$(nchcli keys show -a alice) 1" \
 --gas 300000
-
 ```
 
 上述命令指定了```--gas 300000```, 是因为此次合约调用将消耗比较多的gas。
@@ -243,7 +245,8 @@ nchcli vm call \
 
 ```bash
 # nch1zypvh2q606ztw4elfgla0p6x4eruz3md6euv2t 为新创建的合约地址
-nchcli q vm call $(nchcli keys show -a alice) nch1zypvh2q606ztw4elfgla0p6x4eruz3md6euv2t balanceOf ./nrc721.abi --args=$(nchcli keys show -a alice)
+nchcli q vm call $(nchcli keys show -a alice) nch1zypvh2q606ztw4elfgla0p6x4eruz3md6euv2t \
+balanceOf ./nrc721.abi --args=$(nchcli keys show -a alice)
 ```
 
 查询结果如下：
@@ -259,15 +262,14 @@ nchcli q vm call $(nchcli keys show -a alice) nch1zypvh2q606ztw4elfgla0p6x4eruz3
 查询tokenId为1的NFT token所属owner地址：
 
 ```bash
-nchcli q vm call $(nchcli keys show -a alice) nch1zypvh2q606ztw4elfgla0p6x4eruz3md6euv2t ownerOf ./nrc721.abi --args="1"
+nchcli q vm call $(nchcli keys show -a alice) nch1zypvh2q606ztw4elfgla0p6x4eruz3md6euv2t \
+ownerOf ./nrc721.abi --args="1"
 ```
 
 结果：
+
 ```json
-{
-  "Gas": "3180",
-  "Res": "0000000000000000000000005376329591cde25497d29de88ec553229ad10a61"
-}
+{"Gas":3180,"Result":["nch12dmr99v3eh39f97jnh5ga32ny2ddzznppumf2h"]}
 ```
 
 ### 查询token总量
@@ -278,19 +280,14 @@ nchcli q vm call $(nchcli keys show -a alice) nch1zypvh2q606ztw4elfgla0p6x4eruz3
 
 ```bash
 # nch1zypvh2q606ztw4elfgla0p6x4eruz3md6euv2t 为新创建的合约地址
-
-nchcli q vm call $(nchcli keys show -a alice) nch1zypvh2q606ztw4elfgla0p6x4eruz3md6euv2t totalSupply ./nrc721.abi
+nchcli q vm call $(nchcli keys show -a alice) nch1zypvh2q606ztw4elfgla0p6x4eruz3md6euv2t \
+totalSupply ./nrc721.abi
 ```
 
 结果：
 
 ```json
-{
-  "Gas": "1142",
-  "Res": "0000000000000000000000000000000000000000000000000000000000000001"
-}
-
-# 即token总量为1
+{"Gas":1142,"Result":[1]}
 ```
 
 ### 转账
@@ -298,88 +295,56 @@ nchcli q vm call $(nchcli keys show -a alice) nch1zypvh2q606ztw4elfgla0p6x4eruz3
 * 调用合约的transferFrom方法，从alice账户向```nch13dwwe6pv92ve9uy8k2u7006a9fd9jwc6gzqx0e``` 转账tokenId为1的NFT token
 
 ```bash
-# 将alice地址转成16进制
-# 最前面添加24个0， 补齐为32个字节, 例如: 0000000000000000000000009bfaf060dfa1b249b3f5a913505993444c0dea35
-bytes=$(nchcli keys parse $(nchcli keys show -a alice) | grep bytes | sed 's/"bytes"://;s/"//g;s/[[:space:]]//g' | tr A-Z a-z)
-echo $bytes | awk '{printf("%064s",$0)}'
-
-# 将nch13dwwe6pv92ve9uy8k2u7006a9fd9jwc6gzqx0e地址转成16进制
-# 最前面添加24个0， 补齐为32个字节, 例如: 0000000000000000000000008b5cece82c2a9992f087b2b9e7bf5d2a5a593b1a
-bytes=$(nchcli keys parse nch13dwwe6pv92ve9uy8k2u7006a9fd9jwc6gzqx0e | grep bytes | sed 's/"bytes"://;s/"//g;s/[[:space:]]//g' | tr A-Z a-z)
-echo $bytes | awk '{printf("%064s",$0)}'
-
-# 将转账数量1转成16进制，并被齐为32个字节，即 0000000000000000000000000000000000000000000000000000000000000001
-printf %064x 10000
-
-# 将上述3个参数拼接起来，即调用转账需要传入的参数： 0000000000000000000000005376329591cde25497d29de88ec553229ad10a610000000000000000000000008b5cece82c2a9992f087b2b9e7bf5d2a5a593b1a0000000000000000000000000000000000000000000000000000000000000001
-
 # 用nchcli命令行调用合约的 transferFrom 方法
+# transferFrom有三个参数：from, to, tokenId
 nchcli vm call \
 --from=$(nchcli keys show -a alice) \
 --contract_addr=nch1zypvh2q606ztw4elfgla0p6x4eruz3md6euv2t \
---abi_file=./nrc721.abi \
 --method=transferFrom \
---args="0000000000000000000000005376329591cde25497d29de88ec553229ad10a610000000000000000000000008b5cece82c2a9992f087b2b9e7bf5d2a5a593b1a0000000000000000000000000000000000000000000000000000000000000001"
+--abi_file=./nrc721.abi \
+--args="$(nchcli keys show -a alice) nch13dwwe6pv92ve9uy8k2u7006a9fd9jwc6gzqx0e 1"
 ```
   
 * 查询```nch13dwwe6pv92ve9uy8k2u7006a9fd9jwc6gzqx0e```在合约中的TOKEN余额
 
 ```bash
-nchcli q vm call $(nchcli keys show -a alice) nch1zypvh2q606ztw4elfgla0p6x4eruz3md6euv2t balanceOf 0000000000000000000000008b5cece82c2a9992f087b2b9e7bf5d2a5a593b1a ./nrc721.abi
+nchcli q vm call $(nchcli keys show -a alice) nch1zypvh2q606ztw4elfgla0p6x4eruz3md6euv2t \
+balanceOf ./nrc721.abi \
+--args="nch13dwwe6pv92ve9uy8k2u7006a9fd9jwc6gzqx0e"
 ```
 
 结果：
 
 ```json
-{
-  "Gas": "1407",
-  "Res": "0000000000000000000000000000000000000000000000000000000000000001"
-}
-
-# 转成10进制： 1
-res=0000000000000000000000000000000000000000000000000000000000000001
-echo $((16#${res}))
+{"Gas":1407,"Result":[1]}
 ```
 
 * 查询 alice 账户在合约中的TOKEN余额
 
 ```bash
-nchcli q vm call $(nchcli keys show -a alice) nch1zypvh2q606ztw4elfgla0p6x4eruz3md6euv2t balanceOf 0000000000000000000000009bfaf060dfa1b249b3f5a913505993444c0dea35 ./nrc721.abi
+nchcli q vm call $(nchcli keys show -a alice) nch1zypvh2q606ztw4elfgla0p6x4eruz3md6euv2t \
+balanceOf ./nrc721.abi \
+--args="$(nchcli keys show -a alice)"
 ```
 
 结果：
 
 ```json
-{
-  "Gas": "1407",
-  "Res": "0000000000000000000000000000000000000000000000000000000000000000"
-}
-
-# 转成10进制： 0
-res=0000000000000000000000000000000000000000000000000000000000000000
-echo $((16#${res}))
+{"Gas":1407,"Result":[0]}
 ```
 
 * 查看 tokenId为1的NFT token所属owner
 
 ```bash
-nchcli q vm call $(nchcli keys show -a alice) nch1zypvh2q606ztw4elfgla0p6x4eruz3md6euv2t ownerOf 0000000000000000000000000000000000000000000000000000000000000001 ./nrc721.abi
+nchcli q vm call $(nchcli keys show -a alice) nch1zypvh2q606ztw4elfgla0p6x4eruz3md6euv2t \
+ownerOf ./nrc721.abi \
+--args="1"
 ```
 
 结果：
 
 ```json
-{
-  "Gas": "3180",
-  "Res": "0000000000000000000000008b5cece82c2a9992f087b2b9e7bf5d2a5a593b1a"
-}
-```
-
-其中```0000000000000000000000008b5cece82c2a9992f087b2b9e7bf5d2a5a593b1a```即对应地址```nch13dwwe6pv92ve9uy8k2u7006a9fd9jwc6gzqx0e```
-
-```bash
-addr=0000000000000000000000008b5cece82c2a9992f087b2b9e7bf5d2a5a593b1a
-nchcli keys parse $(echo $addr | sed 's/^0*//g') | sed -n 3p
+{"Gas":3180,"Result":["nch13dwwe6pv92ve9uy8k2u7006a9fd9jwc6gzqx0e"]}
 ```
 
 ## 红包合约
@@ -390,12 +355,13 @@ nchcli keys parse $(echo $addr | sed 's/^0*//g') | sed -n 3p
 
 ## 消息撤回合约
 
-* 合约源码，参考[这里](https://github.com/netcloth/contracts/blob/master/recall.sol)
+* 合约源码，参考[这里](https://github.com/netcloth/contracts/blob/master/recall/recall_payable.sol)
+* 合约ABI，参考[这里](https://github.com/netcloth/contracts/blob/master/recall/recall_payable.abi)
 * 测试网示例合约地址：```nch1dhyh4fuadxft003wth2x9j053e7ey8njuw3f6h```
   
 ### 创建合约
 
-创建合约，指定1个参数：```_initFee```: 
+创建合约，指定1个参数：```_initFee```:
 
 ```text
 _initFee: 1000000000000
