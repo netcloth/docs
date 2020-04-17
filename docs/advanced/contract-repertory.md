@@ -351,7 +351,7 @@ ownerOf ./nrc721.abi \
 
 ## 锁仓合约
 
-* 合约源码，参考[这里](https://github.com/netcloth/contracts/blob/master/vesting/rlinear-vesting.sol)
+* 合约源码，参考[这里](https://github.com/netcloth/contracts/blob/master/vesting/linear-vesting.sol)
 * 合约ABI，参考[这里](https://github.com/netcloth/contracts/blob/master/vesting/linear-vesting.abi)
 * 测试网示例合约地址：```nch1qq3t449wyy0a3s3rafzrxjzj6ne6vhndpaf2t2```
 
