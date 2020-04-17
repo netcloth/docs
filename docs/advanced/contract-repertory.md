@@ -351,6 +351,104 @@ ownerOf ./nrc721.abi \
 
 ## 锁仓合约
 
+* 合约源码，参考[这里](https://github.com/netcloth/contracts/blob/master/vesting/rlinear-vesting.sol)
+* 合约ABI，参考[这里](https://github.com/netcloth/contracts/blob/master/vesting/linear-vesting.abi)
+* 测试网示例合约地址：```nch1qq3t449wyy0a3s3rafzrxjzj6ne6vhndpaf2t2```
+
+### 创建合约
+
+示例合约为线性释放合约。
+
+```bash
+nchcli vm create --code_file=./linear-vesting.bc \
+--from $(nchcli keys show -a vesting) \
+--gas 10000000
+```
+
+得到新合约地址：```nch1qq3t449wyy0a3s3rafzrxjzj6ne6vhndpaf2t2```
+
+### 创建一笔锁仓资产
+
+调用合约的create接口， 创建一笔锁仓资产，其中create有3个参数，分别为:
+
+```text
+_to: 收款地址
+_vestingStartTime: 锁仓开始时间，时间戳
+_vestingEndTime: 锁仓结束时间，时间戳
+```
+
+调用create接口, 向```nch13f5tmt88z5lkx8p45hv7a327nc0tpjzlwsq35e```提供一笔锁仓资产：
+
+::: warning 提示
+生成当前时间对应的时间戳, shell命令行:```date +%s```
+
+生成1天后的时间戳，linux shell命令行: ```date --date="+1 day" +%s```, 
+                mac OS shell命令行: ```date -v+1d +%s```
+:::
+
+```bash
+nchcli vm call \
+--from=$(nchcli keys show -a vesting) \
+--contract_addr=nch1qq3t449wyy0a3s3rafzrxjzj6ne6vhndpaf2t2 \
+--method=create \
+--abi_file=./linear-vesting.abi \
+--args="nch13f5tmt88z5lkx8p45hv7a327nc0tpjzlwsq35e 1587107450 1587107950" \
+--amount=100000000000000pnch \
+--gas=300000
+```
+
+其中 ```--amount``` 指定了向合约中锁仓的NCH资产数量。 ``` 1 NCH = 10 ^ 12 pnch```
+### 查询合约
+
+* 查询地址```nch13f5tmt88z5lkx8p45hv7a327nc0tpjzlwsq35e```的锁仓信息：
+  
+```bash
+nchcli q vm call $(nchcli keys show -a alice) nch1qq3t449wyy0a3s3rafzrxjzj6ne6vhndpaf2t2 \
+vestingInfo ./linear-vesting.abi --args="nch13f5tmt88z5lkx8p45hv7a327nc0tpjzlwsq35e"
+```
+
+* 查询合约中余额
+
+```bash
+nchcli q account nch1qq3t449wyy0a3s3rafzrxjzj6ne6vhndpaf2t2
+```
+
+结果:
+
+```json
+{
+  "type": "nch/Account",
+  "value": {
+    "address": "nch1qq3t449wyy0a3s3rafzrxjzj6ne6vhndpaf2t2",
+    "coins": [
+      {
+        "denom": "pnch",
+        "amount": "1000000000000000"
+      }
+    ],
+    "public_key": null,
+    "account_number": "10",
+    "sequence": "0",
+    "code_hash": "7b7ba65442305d9879c1bfc54c741773c7d030e726532edd041c7fe84e29eb75"
+  }
+}
+```
+
+### 申领锁仓资产
+
+使用```nch13f5tmt88z5lkx8p45hv7a327nc0tpjzlwsq35e```地址，从合约中申领锁仓资产：
+
+```bash
+nchcli vm call \
+--from=nch13f5tmt88z5lkx8p45hv7a327nc0tpjzlwsq35e \
+--contract_addr=nch1qq3t449wyy0a3s3rafzrxjzj6ne6vhndpaf2t2 \
+--method=claim \
+--abi_file=./linear-vesting.abi \
+--gas=300000
+```
+
+示例合约会根据锁仓库数量、_vestingStartTime和_vestingStartTime计算线性释放的数量。
+
 ## 数据上链合约
 
 ## 消息撤回合约
