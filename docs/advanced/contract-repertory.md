@@ -2,6 +2,8 @@
 
 本文档介绍NetCloth链上常用智能合约模板。
 
+合约模板仅用于演示，如果有任何问题或建议，欢迎在[github上](https://github.com/netcloth/contracts)交流反馈。
+
 ## NRC-20
 
 * NRC-20规范，参考[这里](https://github.com/netcloth/contracts/blob/master/token/nrc20/readme.md)
@@ -528,3 +530,8 @@ nchcli q vm call $(nchcli keys show -a recall) nch1ylj55r9c5u027cdggrsz7e72etf2v
 :::
 
 ## DEX
+
+## 更多资源
+
+* 合约仓库github地址，点击[这里](https://github.com/netcloth/contracts)
+* NIPs github地址，点击[这里](https://github.com/netcloth/NIPs)
