@@ -453,6 +453,51 @@ nchcli vm call \
 
 ## 数据上链合约
 
+* 合约源码，参考[这里](https://github.com/netcloth/contracts/blob/master/storage/data_storage.sol)
+* 测试网示例合约地址：```nch1ylj55r9c5u027cdggrsz7e72etf2vtuc0aek43```
+
+### 创建合约
+
+```bash
+nchcli vm create --code_file=./data_storage.bc \
+--from $(nchcli keys show -a alice) \
+--gas 10000000
+```
+
+创建合约将消耗比较多的gas， 上述命令指定了gas数量为10000000 (nchcli命令行默认为200000)
+
+合约创建成功后，根据txHash反查交易信息，其中new_contract部分对应新创建的合约地址，此处生成的合约地址为```nch1yw28p8hve4lspwfcaysswu82f80pvpse79w5a8```
+
+### 调用合约
+
+调用合约的store接口将数据存储上链， 2个参数分别为```key, value```，参数类型均为字符串，可根据具体业务类型自定义key, value，比如key定义为数据的hash值，value有具体数据的base64编码等。
+
+```bash
+nchcli vm call \
+--from=$(nchcli keys show -a alice) \
+--contract_addr=nch1yw28p8hve4lspwfcaysswu82f80pvpse79w5a8 \
+--method=store \
+--abi_file=./data_storage.abi \
+--args="04b9d3c148e8e91b8870774ce6c2f59d  MDRiOWQzYzE0OGU4ZTkxYjg4NzA3NzRjZTZjMmY1OWQK" \
+--gas=300000
+```
+
+### 查询数据
+
+根据key向合约查询存储的数据
+
+```bash
+# nch1yw28p8hve4lspwfcaysswu82f80pvpse79w5a8 为新创建的合约地址
+
+nchcli q vm call $(nchcli keys show -a alice) nch1yw28p8hve4lspwfcaysswu82f80pvpse79w5a8 queryStore ./data_storage.abi --args="04b9d3c148e8e91b8870774ce6c2f59d"
+```
+
+结果：
+
+```json
+{"Gas":5024,"Result":["MDRiOWQzYzE0OGU4ZTkxYjg4NzA3NzRjZTZjMmY1OWQK"]}
+```
+
 ## 消息撤回合约
 
 * 合约源码，参考[这里](https://github.com/netcloth/contracts/blob/master/recall/recall_payable.sol)
