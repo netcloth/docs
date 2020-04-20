@@ -455,7 +455,7 @@ nchcli vm call \
 
 * 合约源码，参考[这里](https://github.com/netcloth/contracts/blob/master/recall/recall_payable.sol)
 * 合约ABI，参考[这里](https://github.com/netcloth/contracts/blob/master/recall/recall_payable.abi)
-* 测试网示例合约地址：```nch1dhyh4fuadxft003wth2x9j053e7ey8njuw3f6h```
+* 测试网示例合约地址：```nch1ylj55r9c5u027cdggrsz7e72etf2vtuc0aek43```
   
 ### 创建合约
 
@@ -467,7 +467,7 @@ _initFee: 1000000000000
 
 ```bash
 nchcli vm create --code_file=./recall_payable.bc \
---from $(nchcli keys show -a alice) \
+--from $(nchcli keys show -a recall) \
 --args="1000000000000" \
 --abi_file=./recall_payable.abi \
 --gas 10000000
@@ -478,21 +478,31 @@ nchcli vm create --code_file=./recall_payable.bc \
 关于如何将构造函数参数转成二进制并传给命令行，开发者可参考nch sdk[示例](https://github.com/netcloth/go-sdk/blob/master/util/contract_util_test.go)
 :::
 
-合约创建成功后，根据txHash反查交易信息，其中new_contract部分对应新创建的合约地址，此处生成的合约地址为```nch1dhyh4fuadxft003wth2x9j053e7ey8njuw3f6h```
+合约创建成功后，根据txHash反查交易信息，其中new_contract部分对应新创建的合约地址，此处生成的合约地址为```nch1ylj55r9c5u027cdggrsz7e72etf2vtuc0aek43```
 
 ### 调用合约
 
-调用合约的recall接口
-TODO
+调用合约的recall接口， 三个参数分别为```fromPubKey, toPubKey, recallType, timestamp```
+
+```bash
+nchcli vm call \
+--from=$(nchcli keys show -a recall) \
+--contract_addr=nch1ylj55r9c5u027cdggrsz7e72etf2vtuc0aek43 \
+--method=recall \
+--abi_file=./recall_payable.abi \
+--args="04b9d3c18fb7609153f60afb31c9077440aeeed9ce932729a89f0f056a6422acd301f89062175973e7bbdfcff1cec42951f68e046748e8e91b8870774ce6c2f59d  14b9d3c18fb7609153f60afb31c9077440aeeed9ce932729a89f0f056a6422acd301f89062175973e7bbdfcff1cec42951f68e046748e8e91b8870774ce6c2f59e 1 1587354403" \
+--amount=1000000000000pnch \
+--gas=300000
+```
 
 ### 查询fee
 
 调用合约的fee方法，可查询fee
 
 ```bash
-# nch1dhyh4fuadxft003wth2x9j053e7ey8njuw3f6h 为新创建的合约地址
+# nch1ylj55r9c5u027cdggrsz7e72etf2vtuc0aek43 为新创建的合约地址
 
-nchcli q vm call $(nchcli keys show -a alice) nch1dhyh4fuadxft003wth2x9j053e7ey8njuw3f6h fee ./recall_payable.abi
+nchcli q vm call $(nchcli keys show -a recall) nch1ylj55r9c5u027cdggrsz7e72etf2vtuc0aek43 fee ./recall_payable.abi
 ```
 
 结果：
@@ -500,5 +510,21 @@ nchcli q vm call $(nchcli keys show -a alice) nch1dhyh4fuadxft003wth2x9j053e7ey8
 ```json
 {"Gas":1093,"Result":[1000000000000]}
 ```
+
+### 查询消息撤回记录
+
+```bash
+nchcli q vm call $(nchcli keys show -a recall) nch1ylj55r9c5u027cdggrsz7e72etf2vtuc0aek43 queryRecall ./recall_payable.abi --args="04b9d3c18fb7609153f60afb31c9077440aeeed9ce932729a89f0f056a6422acd301f89062175973e7bbdfcff1cec42951f68e046748e8e91b8870774ce6c2f59d  14b9d3c18fb7609153f60afb31c9077440aeeed9ce932729a89f0f056a6422acd301f89062175973e7bbdfcff1cec42951f68e046748e8e91b8870774ce6c2f59e 1"
+```
+
+结果：
+
+```json
+{"Gas":5724,"Result":[1587354403,"nch1q0yd85ypys5pwyujk8r6u9seglyxyzgfj4g0se"]}
+```
+
+::: warning 提示
+关于如何查询合约事件，开发者可参考nch sdk[示例](https://github.com/netcloth/go-sdk/blob/master/client/test/contract_call_test/contract_call_test.go)
+:::
 
 ## DEX
