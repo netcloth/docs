@@ -391,6 +391,44 @@ response:
 curl -X POST "http://127.0.0.1:1317/txs" -H "accept: application/json" -H "Content-Type: application/json" -d "{transaction msg}"
 ```
 
+示例：
+```bash
+curl -X POST "http://127.0.0.1:1317/txs" \
+         -H "accept: application/json" \
+         -H "Content-Type: application/json" \
+         -d \
+'{
+	"tx": {
+		"msg": [{
+			"type": "nch/MsgSend",
+			"value": {
+				"from_address": "nch12dmr99v3eh39f97jnh5ga32ny2ddzznppumf2h",
+				"to_address": "nch12vgxe8qgdnuqlvnvyskua2rssxpqg4yyldrqep",
+				"amount": [{
+					"denom": "pnch",
+					"amount": "1"
+				}]
+			}
+		}],
+		"fee": {
+			"amount": [{
+				"denom": "pnch",
+				"amount": "200000000"
+			}],
+			"gas": "200000"
+		},
+		"memo": "",
+		"signatures": [{
+			"pub_key": {
+				"type": "tendermint/PubKeySecp256k1",
+				"value": "ArvclYKGJIYgkp4qSpyE/gOE9QK/vBpXOPd84DGaE0TQ"
+			},
+			"signature": "LICy6QaeQ5Sb2LWyyT8ZzSI0NaVBjgHBlmJv10kGeygJLyYNKvA/yPpk/RwmK9cnQ1kmr/H4qa1lJRpxqeGhEw=="
+		}]
+	},
+	"mode": "block"
+}'
+```
 ## ipal相关 API
 
 ### 注册ipal节点

@@ -359,8 +359,8 @@ ownerOf ./nrc721.abi \
 
 ```bash
 nchcli vm create --code_file=./nch_red_packet.bc \
---from $(nchcli keys show -a redpacket) \
---gas 10000000
+--from=$(nchcli keys show -a redpacket) \
+--gas=10000000
 ```
 
 创建合约将消耗比较多的gas， 上述命令指定了gas数量为10000000 (nchcli命令行默认为200000)
