@@ -349,7 +349,100 @@ ownerOf ./nrc721.abi \
 {"Gas":3180,"Result":["nch13dwwe6pv92ve9uy8k2u7006a9fd9jwc6gzqx0e"]}
 ```
 
-## 红包合约
+## NCH口令红包合约
+
+* 合约源码，参考[这里](https://github.com/netcloth/contracts/blob/master/redpacket/nch_red_packet.sol)
+* 合约ABI，参考[这里](https://github.com/netcloth/contracts/blob/master/redpacket/lnch_red_packet.abi)
+* 测试网示例合约地址：```nch1qq3t449wyy0a3s3rafzrxjzj6ne6vhndpaf2t2```
+
+### 创建合约
+
+```bash
+nchcli vm create --code_file=./nch_red_packet.bc \
+--from $(nchcli keys show -a redpacket) \
+--gas 10000000
+```
+
+创建合约将消耗比较多的gas， 上述命令指定了gas数量为10000000 (nchcli命令行默认为200000)
+
+合约创建成功后，根据txHash反查交易信息，其中new_contract部分对应新创建的合约地址，此处生成的合约地址为```nch10zw6tps30qqy809a9e9rch5nzvfq3sdcgrg3r7```
+
+### 发行红包
+
+本示例合约为口令红包，发行红包需要指定一个bytes32的字符串。
+
+发行红包需要指定4个参数```word, equalDivision, size, expireHeight``` 分别为
+
+```text
+word: 口令，bytes32类型
+equalDivision: 红包是否均分，true为均分，false为拼手气
+size: 红包个数 
+expireHeight: 红包在多少个区块高度后过期，NetCloth链区块间隔约为5秒
+```
+
+调用 create方法发行一个红包，口令为```0x1234567812345678123456781234567812345678123456781234567812345678```， 红包大小为2， 在10个区块高度后过期，红包类型为均分，金额为100NCH
+
+```bash
+nchcli vm call \
+--from=$(nchcli keys show -a redpacket) \
+--contract_addr=nch10zw6tps30qqy809a9e9rch5nzvfq3sdcgrg3r7 \
+--method=create \
+--abi_file=./nch_red_packet.abi \
+--args="0x1234567812345678123456781234567812345678123456781234567812345678 true 2 10" \
+--amount=100000000000000pnch \
+--gas=1000000 
+```
+
+### 查看红包
+
+红包发行后，可以调用getRecord查看红包信息，查看红包需要带上口令。
+
+```bash
+nchcli q vm call $(nchcli keys show -a redpacket) nch10zw6tps30qqy809a9e9rch5nzvfq3sdcgrg3r7 \
+getRecord ./nch_red_packet.abi \
+--args="0x1234567812345678123456781234567812345678123456781234567812345678"
+```
+
+结果：
+
+```json
+{"Gas":8506,"Result":["nch1s260x9plzxxxp6c0g2zs2pfc9q65947kj0a5lq",true,100000000000000,100000000000000,2,2,254378,254388]}
+```
+
+### 抢红包
+
+调用open方法，可以抢红包。抢红包时，需要带上口令参数。
+
+抢到的红包会在一个区块确认后到账。
+
+```bash
+nchcli vm call \
+--from=$(nchcli keys show -a redpacket) \
+--contract_addr=nch10zw6tps30qqy809a9e9rch5nzvfq3sdcgrg3r7 \
+--method=open \
+--abi_file=./nch_red_packet.abi \
+--args="0x1234567812345678123456781234567812345678123456781234567812345678" \
+--gas=1000000
+```
+
+::: warning 提示
+红包为智能合约实现，一旦上链，将会消耗Gas手续费。
+所以如果调用合约成功但红包过期、红包已被抢光、重复抢红包或者口令不存在，也会消耗一定量的Gas手续费。
+:::
+
+### 撤回红包
+
+发行红包的人，在红包过期之后，可以撤回红包。
+
+```bash
+nchcli vm call \
+--from=$(nchcli keys show -a alice) \
+--contract_addr=nch10zw6tps30qqy809a9e9rch5nzvfq3sdcgrg3r7 \
+--method=revoke \
+--abi_file=./nch_red_packet.abi \
+--args="0x1234567812345678123456781234567812345678123456781234567812345678" \
+--gas=1000000000
+```
 
 ## 锁仓合约
 
