@@ -352,7 +352,7 @@ ownerOf ./nrc721.abi \
 ## NCH口令红包合约
 
 * 合约源码，参考[这里](https://github.com/netcloth/contracts/blob/master/redpacket/nch_red_packet.sol)
-* 合约ABI，参考[这里](https://github.com/netcloth/contracts/blob/master/redpacket/lnch_red_packet.abi)
+* 合约ABI，参考[这里](https://github.com/netcloth/contracts/blob/master/redpacket/nch_red_packet.abi)
 * 测试网示例合约地址：```nch1qq3t449wyy0a3s3rafzrxjzj6ne6vhndpaf2t2```
 
 ### 创建合约
@@ -376,11 +376,11 @@ nchcli vm create --code_file=./nch_red_packet.bc \
 ```text
 word: 口令，bytes32类型
 equalDivision: 红包是否均分，true为均分，false为拼手气
-size: 红包个数 
+size: 红包个数
 expireHeight: 红包在多少个区块高度后过期，NetCloth链区块间隔约为5秒
 ```
 
-调用 create方法发行一个红包，口令为```0x1234567812345678123456781234567812345678123456781234567812345678```， 红包大小为2， 在10个区块高度后过期，红包类型为均分，金额为100NCH
+调用 create方法发行一个红包，口令为```0x1234567812345678123456781234567812345678123456781234567812345678```， 红包大小为2， 在10个区块高度后过期，红包类型为普通红包(红包金额均分)，金额为100NCH
 
 ```bash
 nchcli vm call \
@@ -390,8 +390,10 @@ nchcli vm call \
 --abi_file=./nch_red_packet.abi \
 --args="0x1234567812345678123456781234567812345678123456781234567812345678 true 2 10" \
 --amount=100000000000000pnch \
---gas=1000000 
+--gas=1000000
 ```
+
+其中 ```--amount``` 指定了向合约中锁仓的NCH资产数量, 也即发行红包的总金额。 ```1 NCH = 10 ^ 12 pnch```
 
 ### 查看红包
 
@@ -492,7 +494,6 @@ nchcli vm call \
 --gas=300000
 ```
 
-其中 ```--amount``` 指定了向合约中锁仓的NCH资产数量。 ``` 1 NCH = 10 ^ 12 pnch```
 ### 查询合约
 
 * 查询地址```nch13f5tmt88z5lkx8p45hv7a327nc0tpjzlwsq35e```的锁仓信息：
