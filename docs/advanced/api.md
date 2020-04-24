@@ -1,5 +1,5 @@
 
-# API 参考
+# API 参考手册
 
 ```nchcli``` 开启rest-server后，浏览器访问 ```http://127.0.0.1:1317/swagger-ui/``` 可以看到所有的REST APIs
 
@@ -180,7 +180,7 @@ response:
 }
 ```
 
-### 获取指定高度的区块
+### 查询指定高度的区块
 
 参数说明：
 | 参数名称 | 类型 | 说明 |
@@ -237,10 +237,15 @@ response:
 
 ### 查询账户余额
 
+参数说明：
+| 参数名称 | 类型 | 说明 |
+| ------- | --- | --- |
+| address | string | 帐户地址 |
+
 request:
 
 ```bash
-curl http://127.0.0.1:1317/bank/balances/nch17kfmq49p6vth0y83t4dwlpurdy70wgampcevhx
+curl http://127.0.0.1:1317/bank/balances/{address}
 ```
 
 response:
@@ -257,7 +262,9 @@ response:
 }
 ```
 
-### 获取最新的活跃验证人集合
+### 查询最新的活跃验证人集合
+
+查询当前参与共识的前100名验证人集合：
 
 request:
 
@@ -333,6 +340,11 @@ response:
 其中 ```1 NCH = 10 ^ 12 pnch```
 
 ### 通过交易hash查询交易
+
+参数说明：
+| 参数名称 | 类型 | 说明 |
+| ------- | --- | --- |
+| txhash | string | 交易hash |
 
 request:
 
@@ -477,6 +489,12 @@ curl -X POST "http://127.0.0.1:1317/txs" \
 
 ```
 
+其中mode有三种：
+
+* **block**: 交易被确认后返回,平均需等待2.5秒
+* **sync**: 交易在当前节点通过后返回
+* **async**: 立即返回,不对交易进行任何处理
+  
 ## staking 相关
 
 ### 查询staking全局参数
@@ -521,11 +539,18 @@ response:
 }
 ```
 
-### 查询指定地址的委托信息
+### 查询委托信息
+
+参数说明：
+| 参数名称 | 类型 | 说明 |
+| ------- | --- | --- |
+| address | string | 账户地址 |
 
 以地址```nch13dwwe6pv92ve9uy8k2u7006a9fd9jwc6gzqx0e``` 为例
 
 ```bash
+# curl http://127.0.0.1:1317/staking/delegators/{address}/delegations
+
 curl http://127.0.0.1:1317/staking/delegators/nch13dwwe6pv92ve9uy8k2u7006a9fd9jwc6gzqx0e/delegations
 ```
 
@@ -555,9 +580,15 @@ response:
 
 ### 查询正在解除委托的信息
 
+参数说明：
+| 参数名称 | 类型 | 说明 |
+| ------- | --- | --- |
+| address | string | 账户地址 |
+
 以地址```nch13dwwe6pv92ve9uy8k2u7006a9fd9jwc6gzqx0e``` 为例
 
 ```bash
+# curl http://127.0.0.1:1317/staking/delegators/{address}/unbonding_delegations
 curl http://127.0.0.1:1317/staking/delegators/nch13dwwe6pv92ve9uy8k2u7006a9fd9jwc6gzqx0e/unbonding_delegations
 ```
 
@@ -591,7 +622,17 @@ response:
 
 ### 查询指定地址相关的staking交易
 
+参数说明：
+| 参数名称 | 类型 | 说明 |
+| ------- | --- | --- |
+| address | string | 账户地址 |
+
+
+request:
+
 ```bash
+# curl http://127.0.0.1:1317/staking/delegators/{address}/txs
+
 curl http://127.0.0.1:1317/staking/delegators/nch13dwwe6pv92ve9uy8k2u7006a9fd9jwc6gzqx0e/txs
 ```
 
@@ -956,7 +997,17 @@ response:
 
 ### 查询指定地址绑定(委托)的所有验证人
 
+参数说明：
+| 参数名称 | 类型 | 说明 |
+| ------- | --- | --- |
+| address | string | 账户地址 |
+
+request:
+
 ```bash
+#curl http://127.0.0.1:1317/staking/delegators/{address}/validators
+
+
 curl http://127.0.0.1:1317/staking/delegators/nch13dwwe6pv92ve9uy8k2u7006a9fd9jwc6gzqx0e/validators
 ```
 
@@ -1024,7 +1075,17 @@ response:
 
 ### 查询指定地址和指定验证的人委托信息
 
+参数说明：
+| 参数名称 | 类型 | 说明 |
+| ------- | --- | --- |
+| address | string | 账户地址 |
+| ValidatorAddress | string | 验证人地址 |
+
+request:
+
 ```bash
+# curl http://127.0.0.1:1317/staking/delegators/{address}/delegations/{ValidatorAddress}
+
 curl http://127.0.0.1:1317/staking/delegators/nch13dwwe6pv92ve9uy8k2u7006a9fd9jwc6gzqx0e/delegations/nchvaloper1ngm3k874204rwz23m46wqhlv8w9vyjtd9yqm7x 
 ```
 
@@ -1294,7 +1355,14 @@ response:
 
 ### 根据验证人地址，获取验证人信息
 
+参数说明：
+| 参数名称 | 类型 | 说明 |
+| ------- | --- | --- |
+| ValidatorAddress | string | 验证人地址 |
+
 ```bash
+# curl http://127.0.0.1:1317/staking/validators/{ValidatorAddress}
+
 curl http://127.0.0.1:1317/staking/validators/nchvaloper17kfmq49p6vth0y83t4dwlpurdy70wgam6ed7y2
 ```
 
@@ -1333,22 +1401,119 @@ response:
 
 ```
 
-## ipal相关 API
+## distribution
+
+### 查询模块参数
+
+```bash
+curl http://127.0.0.1:1317/distribution/parameters
+```
+
+response:
+
+```json
+{
+  "height": "0",
+  "result": {
+    "community_tax": "0.020000000000000000",
+    "base_proposer_reward": "0.010000000000000000",
+    "bonus_proposer_reward": "0.040000000000000000",
+    "withdraw_addr_enabled": true
+  }
+}
+```
+
+### 查询指定地址的所有委托收益
+
+参数说明：
+| 参数名称 | 类型 | 说明 |
+| ------- | --- | --- |
+| address | string | 账户地址 |
+
+```bash
+# curl http://127.0.0.1:1317/distribution/delegators/{address}/rewards
+
+curl http://127.0.0.1:1317/distribution/delegators/nch13dwwe6pv92ve9uy8k2u7006a9fd9jwc6gzqx0e/rewards
+```
+
+response:
+
+```json
+{
+  "height": "0",
+  "result": {
+    "rewards": [
+      {
+        "validator_address": "nchvaloper13dwwe6pv92ve9uy8k2u7006a9fd9jwc6nr55u4",
+        "reward": [
+          {
+            "denom": "pnch",
+            "amount": "3514187551895590.134393692914846600"
+          }
+        ]
+      },
+      {
+        "validator_address": "nchvaloper1ngm3k874204rwz23m46wqhlv8w9vyjtd9yqm7x",
+        "reward": null
+      }
+    ],
+    "total": [
+      {
+        "denom": "pnch",
+        "amount": "3514187551895590.134393692914846600"
+      }
+    ]
+  }
+}
+```
+
+### 指定地址和验证人地址，查询委托收益
+
+参数说明：
+| 参数名称 | 类型 | 说明 |
+| ------- | --- | --- |
+| address | string | 账户地址 |
+| ValidatorAddress | string | 验证人地址 |
+
+request: 
+
+```bash
+# curl http://127.0.0.1:1317/distribution/delegators/{address}/rewards/{ValidatorAddress}
+
+curl http://127.0.0.1:1317/distribution/delegators/nch13dwwe6pv92ve9uy8k2u7006a9fd9jwc6gzqx0e/rewards/nchvaloper13dwwe6pv92ve9uy8k2u7006a9fd9jwc6nr55u4
+```
+
+response:
+
+```json
+{
+  "height": "0",
+  "result": [
+    {
+      "denom": "pnch",
+      "amount": "3623265033622849.014408463014861700"
+    }
+  ]
+}
+```
+
+## IPAL相关 API
 
 ### 注册ipal节点
 
 目前不提供api，通过命令行完成
 
 ``` bash
-# 该命令以交互的方式创建账号aipaltest并关联相应的公钥账号，需要输入两次密码来创建账号，私钥通过密码加密，相当于生成keystore，同时会输出24个单词的助记词
-nchcli keys add ipaltest
-
-# 向aipaltest账号转账，sky也需要创建账号，并申请测试token，申请方法(TODO: url)
-nchcli send --from $(nchcli keys show sky -a) --to $(nchcli keys show ipaltest -a) --amount 2000000pnch
-
-# 在区块链上注册服务节点，各个参数的含义请执行nchcli aipal cliam -h查看
-nchcli ipal claim --from=$(nchcli keys show ipaltest -a) --moniker=ipaltest  --website=sky.com --details="nch up" --endpoints "1|192.168.1.100:02" --bond=1000000pnch
+# 注册服务节点，各个参数的含义请执行nchcli ipal cliam -h查看
+nchcli ipal claim --from=$(nchcli keys show alice -a) \
+--moniker=ipaltest  \
+--website=sky.com \
+--details="nch up" \
+--endpoints "1|http://192.168.1.100:02" \
+--bond=1000000000000000pnch
 ```
+
+IPAL 声明详细参数，可点击[这里](./ipal.md)
 
 ### 查询服务节点列表
 
@@ -1385,10 +1550,16 @@ response:
 ```
 
 ### 根据地址查询IPAL
+
+参数说明：
+| 参数名称 | 类型 | 说明 |
+| ------- | --- | --- |
+| address | string | 账户地址 |
+
 rest接口查询
 
 ```bash
-curl http://127.0.0.1:1317/ipal/node/{addr}
+curl http://127.0.0.1:1317/ipal/node/{address}
 
 e.g.
 curl http://127.0.0.1:1317/ipal/node/nch19uspwrym4wr366teytlu4hre9rs7afsf33dgcy
@@ -1418,14 +1589,19 @@ response:
 }
 ```
 
-### cipal API
+### CIPAL API
 
 ### 根据地址查询CIPAL
+
+参数说明：
+| 参数名称 | 类型 | 说明 |
+| ------- | --- | --- |
+| address | string | 账户地址 |
 
 rest接口查询
 
 ```bash
-curl http://127.0.0.1:1317/cipal/query/{addr}
+curl http://127.0.0.1:1317/cipal/query/{address}
 
 e.g. 已经注册
 curl http://127.0.0.1:1317/cipal/query/nch12zsau56la368qs23f6nmn2kfe6er6d5gue7u7g
@@ -1460,9 +1636,16 @@ curl http://127.0.0.1:1317/cipal/query/nch1a6hy8k6hscffcjgpggjs9dru4x4g58znj6pn0
 
 ### 查询合约代码
 
+参数说明：
+| 参数名称 | 类型 | 说明 |
+| ------- | --- | --- |
+| address | string | 合约账户地址 |
+
 request:
 
 ```bash
+# curl http://localhost:1317/vm/code/{address}
+
 curl http://localhost:1317/vm/code/nch19lhydp6k59c66x2vp3h4ua8r8535uh6dlmex6y
 ```
 
@@ -1504,7 +1687,6 @@ nchcli vm create --code_file=./demo/demo.bc \
 --from $(nchcli keys show -a alice) --amount=0pnch \
 --gas=1000000 --generate-only
 ```
-
 
 request:
 
