@@ -143,6 +143,7 @@ function genSidebarConfig (module, title) {
                 collapsable: false,
                 children: [
                     'api',
+                    'node-rpc',
                     'ipal',
                     'ipal-sdk',
                     'multisig',
