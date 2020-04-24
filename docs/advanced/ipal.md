@@ -46,7 +46,7 @@ nchcli query ipal list
 response:
 
 ```json
-[[
+[
   {
     "operator_address": "nch13f5tmt88z5lkx8p45hv7a327nc0tpjzlwsq35e",
     "moniker": "netcloth",
@@ -65,6 +65,27 @@ response:
     "bond": {
       "denom": "pnch",
       "amount": "100000000000000000"
+    }
+  },
+  {
+    "operator_address": "nch17kfmq49p6vth0y83t4dwlpurdy70wgampcevhx",
+    "moniker": "come and play",
+    "website": "",
+    "details": "come and play 2048",
+    "extension": "",
+    "endpoints": [
+      {
+        "type": "1",
+        "endpoint": "http://111.229.26.17"
+      },
+      {
+        "type": "3",
+        "endpoint": "http://111.229.26.17"
+      }
+    ],
+    "bond": {
+      "denom": "pnch",
+      "amount": "0"
     }
   }
 ]

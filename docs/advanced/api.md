@@ -235,7 +235,29 @@ response:
 }
 ```
 
-### 获取最新的验证人集合
+### 查询账户余额
+
+request:
+
+```bash
+curl http://127.0.0.1:1317/bank/balances/nch17kfmq49p6vth0y83t4dwlpurdy70wgampcevhx
+```
+
+response:
+
+```json
+{
+  "height": "298106",
+  "result": [
+    {
+      "denom": "pnch",
+      "amount": "4326724505525934"
+    }
+  ]
+}
+```
+
+### 获取最新的活跃验证人集合
 
 request:
 
@@ -285,6 +307,30 @@ response:
   }
 }
 ```
+
+### 查询token供应量
+
+查询NCH供应量
+
+```bash
+curl http://127.0.0.1:1317/supply/total
+```
+
+response:
+
+```json
+{
+  "height": "298035",
+  "result": [
+    {
+      "denom": "pnch",
+      "amount": "53305160738079199885"
+    }
+  ]
+}
+```
+
+其中 ```1 NCH = 10 ^ 12 pnch```
 
 ### 通过交易hash查询交易
 
@@ -431,7 +477,7 @@ curl -X POST "http://127.0.0.1:1317/txs" \
 
 ```
 
-## staking
+## staking 相关
 
 ### 查询staking全局参数
 
