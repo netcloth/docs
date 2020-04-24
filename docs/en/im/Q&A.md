@@ -41,7 +41,8 @@ For example, to check the configuration of the nchtest02 node through the comman
 ```
 
 Find the endpoint as http://47.104.199.106, and then execute the following command to check if it can be accessed
-```
+
+```bash
 curl http://47.104.199.106/v1/ping
 ```
 

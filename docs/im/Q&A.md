@@ -23,7 +23,7 @@
 
 例如，通过命令查看nchtest02节点的配置如下所示：
 
-```
+```json
 {
     "operator_address": "nch1mzj5jhaevmh0780jrztvkaw5m4ylm4c63psgpu",
     "moniker": "nchtest02",

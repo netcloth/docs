@@ -20,7 +20,7 @@ To deploy using the admin user, you need to create a new admin account and add s
 
 * To create a new admin user, you need the sudo or root user to perform the following operations:
 
-```
+```bash
 adduser admin
 usermod -aG sudo admin
 ```
@@ -28,7 +28,7 @@ usermod -aG sudo admin
 
 ### 2.1 nginx install and configuration
 #### 2.1.1 Install nginx
-```
+```bash
 sudo apt install nginx-full
 ```
 Perform nginx -v check after installation, use nginx 1.14 or later
@@ -38,7 +38,7 @@ Modify the file: /etc/nginx/nginx.conf
 
 Add a new line in the http option to set the body size limit of the POST request
 
-```
+```bash
 client_max_body_size 20m;
 ```
 #### 2.1.3 Setting up a reverse proxy
@@ -47,7 +47,7 @@ Modify / etc / nginx / sites-available / default (Ubutu nginx 1.14) or /etc/ngin
 
 Add the following options in the server configuration
 
-```
+```properties
 	location ~* ^/v1/(image|video|file|contacts) {
 		proxy_next_upstream error timeout invalid_header http_500 http_503;
 		proxy_pass  http://127.0.0.1:8001;
@@ -105,7 +105,7 @@ Add the following options in the server configuration
 
 After the modification is completed, execute the following command to detect and start nginx
 
-```
+```bash
 nginx -t
 nginx
 ```
@@ -118,13 +118,13 @@ Related configuration files
 
 ### 2.2 deploy redis-server
 
-```
+```bash
 sudo apt install redis-server
 ```
 
 ### 2.3 Download and install consul
 
-```
+```bash
 wget https://releases.hashicorp.com/consul/1.6.1/consul_1.6.1_linux_amd64.zip
 
 unzip consul_1.6.1_linux_amd64.zip
@@ -133,14 +133,14 @@ sudo mv consul /usr/local/bin
 
 ### 2.4 Install supervisor
 
-```
+```bash
 sudo apt install supervisor
 ```
 
 ## 3 Environment variable settings
  Add the following configuration to the .bashrc or .bash_profile. The GOPROXY variable depends on the network status to determine whether to configure. After the configuration, execute source .bashrc
 
-```
+```bash
 export PATH=$PATH:/usr/local/bin:/usr/local/go/bin:/home/admin/go/bin
 
 export GOPATH=/home/admin/go

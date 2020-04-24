@@ -34,7 +34,7 @@ nchcli query ipal ipal nch13850ev9txukgjk5v42dsaey3ww7sjudtujsu6f
 ```
 
 response:
-```
+```json
 {
   "user_address": "nch13850ev9txukgjk5v42dsaey3ww7sjudtujsu6f",
   "server_ip": "192.168.1.110"

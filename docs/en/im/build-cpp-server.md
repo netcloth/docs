@@ -3,16 +3,15 @@
 
 ### 1.1 Install cmake
 
-```
+```bash
 sudo apt install cmake
 ```
-
 
 ## 2 nstall C ++ compilation dependencies
 
 ### 2.1 Install spdlog
 
-```
+```bash
 cd /home/admin/code
 git cone https://github.com/gabime/spdlog.git
 cd spdlog
@@ -24,7 +23,8 @@ sudo make install
 ```
 
 ### 2.2 Install json library
-```
+
+```bash
 cd /home/admin/code
 git cone https://github.com/nlohmann/json.git
 cd json
@@ -37,13 +37,13 @@ sudo make install
 
 ### 2.3 Install libcurl
 
-```
+```bash
 sudo apt install libcurl4-openssl-dev
 ```
 
 ### 2.4  Install hiredis
 
-```
+```bash
 cd /home/admin/code
 git clone https://github.com/redis/hiredis.git
 cd hiredis
@@ -52,9 +52,10 @@ sudo make install
 ```
 
 ## 3  Compile C ++ services
+
 *Use code of *<font color=red>master</font> branch
 
-```
+```bash
 cd /home/admin/code
 git clone https://gitee.com/hangzhouzengxinxinxi/chat-server.git
 cd chat-server
@@ -76,7 +77,7 @@ make
 
 ## Deploying C ++ services
 
-```
+```bash
 cd /home/admin/code/chat-server/server
 
 mkdir -p /home/admin/chatserver/conf
@@ -93,7 +94,7 @@ Replace server.local_ip and router.addr with your local IP
 
 Start service
 
-```
+```bash
 cd home/admin/chatserver/
 ./chatserver
 ```

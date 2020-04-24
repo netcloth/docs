@@ -34,13 +34,13 @@ cd netcloth-server-latest
 
 通过修改redis配置/etc/redis/redis.conf,
  
- ```
+ ```properties
  bind 127.0.0.1 ::1
  ```
  
 去除IP V6地址监听，修改成如下：
  
- ```
+ ```properties
  bind 127.0.0.1
  ```
 
@@ -60,7 +60,7 @@ cd netcloth-server-latest
 * keystore  节点keystore文件存储路径
 * keystore_password 读取keystore文件的密码
 
-```
+```properties
 public_ip=127.0.0.1
 keystore="./keystore.txt"
 keystore_password=""

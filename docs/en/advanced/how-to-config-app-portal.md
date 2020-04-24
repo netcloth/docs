@@ -17,10 +17,12 @@ If you have already set up a blockchain node, please skip this step.
 ### 2.2 Register a starfish node and send IPAL statement
 
 Example (take the NetCloth Official node as an example)
-```
+
+```bash
 nchcli ipal claim --from=$(nchcli keys show -a alice) --moniker=netcloth --website="www.netcloth.org" --endpoints="1|http://219.22.22.22,3|http://<Your Mini Apps Portal IP or domain>" --details="netcloth official server endpoint" --bond=100000000000000000pnch``
 
 ```
+
 Among them, the endpointsis composed of an array, and the numeric part indicates the Service Type, and the domain name or IP followed by it is the address of the service. Among them, 1 represents the entrance address of the IM server of the starfish node, and 3 represents your H5 front-end address.
 
 To learn more about IPAL, please click [here](./ipal.md).

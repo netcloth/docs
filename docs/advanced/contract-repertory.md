@@ -14,7 +14,7 @@
 
 创建合约，指定4个参数：```_initialSupply, _name, _decimals, _symbol```，此处指定的4个参数值分别为: 
 
-```text
+```ini
 _initialSupply: 1000000000
 _name: token
 _decimals: 18
@@ -167,7 +167,7 @@ balanceOf ./nrc20.abi --args=$(nchcli keys show -a alice)
 
 创建合约，指定2个参数：```_name, _symbol```， 此处指定的2个参数值分别为: 
 
-```text
+```ini
 _name: nftToken
 _symbol: NFT
 ```
@@ -373,7 +373,7 @@ nchcli vm create --code_file=./nch_red_packet.bc \
 
 发行红包需要指定4个参数```word, equalDivision, size, expireHeight``` 分别为
 
-```text
+```ini
 word: 口令，bytes32类型
 equalDivision: 红包是否均分，true为均分，false为拼手气
 size: 红包个数
@@ -468,7 +468,7 @@ nchcli vm create --code_file=./linear-vesting.bc \
 
 调用合约的create接口， 创建一笔锁仓资产，其中create有3个参数，分别为:
 
-```text
+```ini
 _to: 收款地址
 _vestingStartTime: 锁仓开始时间，时间戳
 _vestingEndTime: 锁仓结束时间，时间戳

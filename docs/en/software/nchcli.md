@@ -51,7 +51,7 @@ How to Create a validator, refer to [here](../get-started/how-to-become-validato
 
 To change parameters of the validator. (e.g. Commission,moniker,website,detail,etc.)
 
-```
+```bash
 Usage:
 nchcli tx staking edit-validator [flags]
 

@@ -58,7 +58,7 @@ nchcli send --from <key name> --to=<account address> --chain-id=<chain-id> --amo
 
 修改验证人参数，包括佣金比率、验证人节点名称、网站和描述信息等。
 
-```
+```bash
 Usage:
 nchcli tx staking edit-validator [flags]
 

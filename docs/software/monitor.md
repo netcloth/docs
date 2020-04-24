@@ -6,7 +6,7 @@
 
 修改```~/.nchd/config/config.toml```， 开启Prometheus metrics。
 
-```text
+```properties
 prometheus = true
 
 prometheus_listen_addr = ":26660"
@@ -44,7 +44,7 @@ sudo apt-get install grafana
   
 修改配置文件```/etc/prometheus/prometheus.yml```， 添加如下配置：
   
-```text
+```properties
   - job_name: 'netcloth'
     static_configs:
     - targets: ['your_ip:26660']

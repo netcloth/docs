@@ -17,7 +17,7 @@
 
 * 新造admin用户操作，需要sudo用户或root用户，执行以下操作
 
-```
+```bash
 adduser admin
 usermod -aG sudo admin
 ```
@@ -27,7 +27,7 @@ usermod -aG sudo admin
 
 #### 1.3.1 代码权限
 
-```
+```bash
 账号：netcloth_guest
 密码：diei12@31kl#$ed
 ```
@@ -70,7 +70,7 @@ apt-get install -y nginx
 
 #### 2.1.2 启动nginx服务
 
-```
+```bash
 nginx
 ```
 
@@ -80,7 +80,7 @@ nginx
 
 * 参考[Install MongoDB Community Edition on Ubuntu](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/#install-mongodb-community-edition-using-deb-packages)文档 安装4.2.X版本 mongodb 
 
-``` shell
+```bash
 wget https://repo.mongodb.org/apt/ubuntu/dists/bionic/mongodb-org/4.2/multiverse/binary-amd64/mongodb-org-server_4.2.5_amd64.deb
 dpkg -i mongodb-org-server_4.2.5_amd64.deb
 ```
@@ -89,7 +89,7 @@ dpkg -i mongodb-org-server_4.2.5_amd64.deb
 
 * 通过如下命令，以默认配置启动mongodb
 
-```
+```bash
 systemctl start mongod
 ```
 
@@ -99,7 +99,7 @@ systemctl start mongod
 
 #### 2.3.1 安装redis server
 
-```
+```bash
 sudo apt install redis-server
 ```
 
@@ -111,12 +111,12 @@ sudo apt install redis-server
 
 通过修改redis配置（/etc/redis/redis.conf）,
  
- ```
+ ```text
  bind 127.0.0.1 ::1
  ```
  去除IP V6地址监听，修改成如下：
  
- ```
+ ```text
  bind 127.0.0.1
  ```
 
@@ -137,7 +137,7 @@ sudo apt install supervisor
 ## 3 环境变量设置
 在.bashrc或.bash_profile中添加如下配置，GOPROXY变量看网络状况决定是否配置,配置完后执行source .bashrc
 
-```
+```bash
 export PATH=$PATH:/usr/local/bin:/usr/local/go/bin:/home/admin/go/bin
 
 export GOPATH=/home/admin/go

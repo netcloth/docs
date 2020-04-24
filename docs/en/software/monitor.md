@@ -6,7 +6,7 @@ This article describes how to build NetCloth node monitoring based on Prometheus
 
 update config file ```~/.nchd/config/config.toml```， to enable Prometheus metrics。
 
-```text
+```ini
 prometheus = true
 
 prometheus_listen_addr = ":26660"
@@ -44,7 +44,7 @@ sudo apt-get install grafana
   
 update config file```/etc/prometheus/prometheus.yml```， and append content：
   
-```text
+```ini
   - job_name: 'netcloth'
     static_configs:
     - targets: ['your_ip:26660']

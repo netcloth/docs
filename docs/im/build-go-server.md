@@ -8,7 +8,7 @@
 
 ### 2.1 clone gRPC代码
 
-```
+```bash
 mkdir /home/admin/code
 cd /home/admin/code
 git clone https://github.com/grpc/grpc.git
@@ -19,7 +19,7 @@ git submodule update --init --recursive
 备注：国内网络可能需要较长时间
 
 ### 2.2 编译Protobuf
-```
+```bash
 cd /home/admin/code/grpc/third_party/protobuf
 ./autogen.sh
 ./configure
@@ -27,11 +27,11 @@ make
 sudo make install
 ```
 如果执行autogen.sh失败，清安装automake
-```
+```bash
 sudo apt install automake autoconf libtool
 ```
 ### 2.3 编译gRPC
-```
+```bash
 cd /home/admin/code/grpc/
 make
 sudo make install
@@ -39,21 +39,21 @@ sudo make install
 
 ### 2.4 安装gRPC-go
 执行
-```
+```bash
 go get -u github.com/golang/protobuf/protoc-gen-go
 ```
 
 ## 3 编译Go服务
 
 ##### 3.1 生成协议文件
-```
+```bash
 cd /home/admin/code/netcloth-server/chat_proto
 ./gen.sh
 ```
 
 #### 3.3.2 服务编译
 
-```
+```bash
 cd /home/admin/code/netcloth-server/go
 make
 make install
@@ -63,7 +63,7 @@ make install
 
 * 修改 /home/admin/servicehub/conf/app.yaml
 
-```
+```ini
 gateway:
   endpoint: "47.104.248.183:4455"
 ```

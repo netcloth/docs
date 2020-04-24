@@ -150,12 +150,13 @@ step5创建了验证人，此时其状态为0，0表示还没有绑定，因为�
 #### 方法2：通过nchcli查看
 
 执行以下命令
-```
-nchcli keys show <key-name> --bech val
+```bash
+# nchcli keys show <key-name> --bech val
 
 e.g
 nchcli keys show netcloth --bech val
 ```
+
 回传的"address"字段即为operator_address。
 
 ### 7.2 抵押990000000000pnch
@@ -176,7 +177,11 @@ nchcli tx staking delegate nchvaloper18q4pv9qvmqx7dcd2jq3dl3d0755urk8300709e 990
 
 ```bash
 nchcli query staking validators
+```
 
+response:
+
+```json
 [
   {
     "operator_address": "nchvaloper18q4pv9qvmqx7dcd2jq3dl3d0755urk8300709e",
@@ -234,10 +239,11 @@ nchcli query staking validators
 
 # 可以看到新增加验证人lucy的status变成2，成为活跃验证人，可通过区块浏览器查看出块情况
 ```
+
 ## 9. 如何解绑
 委托给验证的人token, 可以通过```unbond``` 命令可以取回
 
-```
+```bash
 nchcli tx staking unbond <validator-addr> <amountToUnbond> --from <mykey> --gas <gasPrice> --gas-prices <gasPrice>
 
 e.g.
@@ -260,7 +266,7 @@ nchcli tx staking unbond nchvaloper1gghjut3ccd8ay0zduzj64hwre2fxs9ldmqhffj 10000
 
 默认参数如下:
 
-```
+```ini
 signed_blocks_window: 10000
 min_signed_per_window: 50%
 slash_fraction_downtime: 0.05%
@@ -273,7 +279,7 @@ downtime_jail_duration: 2天
 
 双签的惩罚默认参数:
 
-```
+```ini
 slash_fraction_double_sign:0.5 %
 ```
 
