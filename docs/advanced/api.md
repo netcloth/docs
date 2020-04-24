@@ -450,6 +450,7 @@ curl -X POST "http://127.0.0.1:1317/txs" -H "accept: application/json" -H "Conte
 ```
 
 示例：
+
 ```bash
 curl -X POST "http://127.0.0.1:1317/txs" \
          -H "accept: application/json" \
@@ -626,7 +627,6 @@ response:
 | 参数名称 | 类型 | 说明 |
 | ------- | --- | --- |
 | address | string | 账户地址 |
-
 
 request:
 
@@ -1401,7 +1401,7 @@ response:
 
 ```
 
-## distribution
+## distribution API
 
 ### 查询模块参数
 
@@ -1492,6 +1492,98 @@ response:
     {
       "denom": "pnch",
       "amount": "3623265033622849.014408463014861700"
+    }
+  ]
+}
+```
+
+### 查询收益的取现地址
+
+参数说明：
+| 参数名称 | 类型 | 说明 |
+| ------- | --- | --- |
+| delegatorAddr | string | 委托人的账户地址 |
+
+request:
+
+```bash
+# curl http://127.0.0.1:1317/distribution/delegators/{delegatorAddr}/withdraw_address
+
+
+curl http://127.0.0.1:1317/distribution/delegators/nch13dwwe6pv92ve9uy8k2u7006a9fd9jwc6gzqx0e/withdraw_address
+```
+
+response:
+
+```json
+{
+  "height": "301608",
+  "result": "nch13dwwe6pv92ve9uy8k2u7006a9fd9jwc6gzqx0e"
+}
+```
+
+### 查询验证人收益
+
+参数说明：
+| 参数名称 | 类型 | 说明 |
+| ------- | --- | --- |
+| validatorAddr | string | 验证人地址 |
+
+request:
+
+```bash
+# curl http://127.0.0.1:1317/distribution/validators/{validatorAddr}
+
+curl http://127.0.0.1:1317/distribution/validators/nchvaloper13dwwe6pv92ve9uy8k2u7006a9fd9jwc6nr55u4
+```
+
+response:
+
+```json
+{
+  "height": "0",
+  "result": {
+    "operator_address": "nch13dwwe6pv92ve9uy8k2u7006a9fd9jwc6gzqx0e",
+    "self_bond_rewards": [
+      {
+        "denom": "pnch",
+        "amount": "24600830777753870.939086144470712200"
+      }
+    ],
+    "val_commission": [
+      {
+        "denom": "pnch",
+        "amount": "207906177334510092.043971528899436676"
+      }
+    ]
+  }
+}
+```
+
+### 查询验证人自委托的金收益
+
+参数说明：
+| 参数名称 | 类型 | 说明 |
+| ------- | --- | --- |
+| validatorAddr | string | 验证人地址 |
+
+request:
+
+```bash
+# curl http://127.0.0.1:1317/distribution/validators/{validatorAddr}/rewards
+
+curl http://127.0.0.1:1317/distribution/validators/nchvaloper13dwwe6pv92ve9uy8k2u7006a9fd9jwc6nr55u4/rewards
+```
+
+response:
+
+```json
+{
+  "height": "0",
+  "result": [
+    {
+      "denom": "pnch",
+      "amount": "24751495467847722.773354985367475000"
     }
   ]
 }
@@ -1630,6 +1722,14 @@ curl http://127.0.0.1:1317/cipal/query/nch1a6hy8k6hscffcjgpggjs9dru4x4g58znj6pn0
   "height": "446",
   "result": null
 }
+```
+
+## 提案相关API
+
+### 查询所有提案
+
+```bash
+curl http://127.0.0.1:1317/gov/proposals
 ```
 
 ## 合约相关API
