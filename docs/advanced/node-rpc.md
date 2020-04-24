@@ -2,6 +2,8 @@
 
 Node RPC默认端口26657， 可通过```--rpc.laddr=tcp://127.0.0.1:26657``` 启动参数 或者修改配置文件更改。
 
+RPC是基于Tendermint中自带的RPC库构建的, 具体细节和更多API可参考Tendermint文档。
+
 ## Info
 
 ### 获取指定高度的区块
