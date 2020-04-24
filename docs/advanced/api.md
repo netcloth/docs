@@ -428,7 +428,865 @@ curl -X POST "http://127.0.0.1:1317/txs" \
 	},
 	"mode": "block"
 }'
+
 ```
+
+## staking
+
+### 查询staking全局参数
+
+```bash
+curl http://127.0.0.1:1317/staking/parameters
+```
+
+response:
+
+```json
+{
+  "height": "297709",
+  "result": {
+    "unbonding_time": "1209600000000000",
+    "max_validators": 100,
+    "max_validators_extending": 300,
+    "max_validators_extending_speed": 10,
+    "next_extending_time": "1617657186",
+    "max_entries": 7,
+    "bond_denom": "pnch",
+    "max_lever": "20.000000000000000000"
+  }
+}
+```
+
+### 查询staking pool
+
+```bash
+curl http://127.0.0.1:1317/staking/pool
+```
+
+response:
+
+```json
+{
+  "height": "33",
+  "result": {
+    "not_bonded_tokens": "0",
+    "bonded_tokens": "1000000000000"
+  }
+}
+```
+
+### 查询指定地址的委托信息
+
+以地址```nch13dwwe6pv92ve9uy8k2u7006a9fd9jwc6gzqx0e``` 为例
+
+```bash
+curl http://127.0.0.1:1317/staking/delegators/nch13dwwe6pv92ve9uy8k2u7006a9fd9jwc6gzqx0e/delegations
+```
+
+response:
+
+```json
+{
+  "height": "297516",
+  "result": [
+    {
+      "delegator_address": "nch13dwwe6pv92ve9uy8k2u7006a9fd9jwc6gzqx0e",
+      "validator_address": "nchvaloper13dwwe6pv92ve9uy8k2u7006a9fd9jwc6nr55u4",
+      "shares": "1000000000000000000.000000000000000000",
+      "balance": "1000000000000000000"
+    },
+    {
+      "delegator_address": "nch13dwwe6pv92ve9uy8k2u7006a9fd9jwc6gzqx0e",
+      "validator_address": "nchvaloper1ngm3k874204rwz23m46wqhlv8w9vyjtd9yqm7x",
+      "shares": "200000000000.000000000000000000",
+      "balance": "200000000000"
+    }
+  ]
+}
+```
+
+其中```balance ```字段即委托的pnch资产数量。
+
+### 查询正在解除委托的信息
+
+以地址```nch13dwwe6pv92ve9uy8k2u7006a9fd9jwc6gzqx0e``` 为例
+
+```bash
+curl http://127.0.0.1:1317/staking/delegators/nch13dwwe6pv92ve9uy8k2u7006a9fd9jwc6gzqx0e/unbonding_delegations
+```
+
+response:
+
+```json
+{
+  "height": "297565",
+  "result": [
+    {
+      "delegator_address": "nch13dwwe6pv92ve9uy8k2u7006a9fd9jwc6gzqx0e",
+      "validator_address": "nchvaloper13dwwe6pv92ve9uy8k2u7006a9fd9jwc6nr55u4",
+      "entries": [
+        {
+          "creation_height": "297562",
+          "completion_time": "2020-05-08T02:21:26.09861357Z",
+          "initial_balance": "100",
+          "balance": "100"
+        },
+        {
+          "creation_height": "297565",
+          "completion_time": "2020-05-08T02:21:42.274943985Z",
+          "initial_balance": "1000",
+          "balance": "1000"
+        }
+      ]
+    }
+  ]
+}
+```
+
+### 查询指定地址相关的staking交易
+
+```bash
+curl http://127.0.0.1:1317/staking/delegators/nch13dwwe6pv92ve9uy8k2u7006a9fd9jwc6gzqx0e/txs
+```
+
+response:
+
+```json
+{
+  "height": "0",
+  "result": [
+    {
+      "total_count": "1",
+      "count": "1",
+      "page_number": "1",
+      "page_total": "1",
+      "limit": "100",
+      "txs": [
+        {
+          "height": "59510",
+          "txhash": "A083C40A4FCB147AA980C657352AB438C556F0819BBDDB92C4CA3FE2004C5E03",
+          "raw_log": "[{\"msg_index\":0,\"success\":true,\"log\":\"\",\"events\":null}]",
+          "logs": [
+            {
+              "msg_index": 0,
+              "success": true,
+              "log": "",
+              "events": null
+            }
+          ],
+          "gas_wanted": "200000",
+          "gas_used": "121812",
+          "events": [
+            {
+              "type": "delegate",
+              "attributes": [
+                {
+                  "key": "validator",
+                  "value": "nchvaloper1ngm3k874204rwz23m46wqhlv8w9vyjtd9yqm7x"
+                },
+                {
+                  "key": "amount",
+                  "value": "200000000000"
+                }
+              ]
+            },
+            {
+              "type": "message",
+              "attributes": [
+                {
+                  "key": "action",
+                  "value": "delegate"
+                },
+                {
+                  "key": "module",
+                  "value": "staking"
+                },
+                {
+                  "key": "sender",
+                  "value": "nch13dwwe6pv92ve9uy8k2u7006a9fd9jwc6gzqx0e"
+                }
+              ]
+            }
+          ],
+          "tx": {
+            "type": "nch/StdTx",
+            "value": {
+              "msg": [
+                {
+                  "type": "nch/MsgDelegate",
+                  "value": {
+                    "delegator_address": "nch13dwwe6pv92ve9uy8k2u7006a9fd9jwc6gzqx0e",
+                    "validator_address": "nchvaloper1ngm3k874204rwz23m46wqhlv8w9vyjtd9yqm7x",
+                    "amount": {
+                      "denom": "pnch",
+                      "amount": "200000000000"
+                    }
+                  }
+                }
+              ],
+              "fee": {
+                "amount": [
+                  {
+                    "denom": "pnch",
+                    "amount": "200000000"
+                  }
+                ],
+                "gas": "200000"
+              },
+              "signatures": [
+                {
+                  "pub_key": {
+                    "type": "tendermint/PubKeySecp256k1",
+                    "value": "Awr8DyzH0jUKExpjigPJHgbBI37yX6opS/GPav9kGEfg"
+                  },
+                  "signature": "+MUQb82PPhXTJZC+6mnvjviWygmw/IDfrtI7cM1MR7tiKby2Qlxwb5KOfXu/bOaZp3eZp3J/+fZdqdzWETyaRA=="
+                }
+              ],
+              "memo": ""
+            }
+          },
+          "timestamp": "2020-04-09T06:56:47Z"
+        }
+      ]
+    },
+    {
+      "total_count": "2",
+      "count": "2",
+      "page_number": "1",
+      "page_total": "1",
+      "limit": "100",
+      "txs": [
+        {
+          "height": "297562",
+          "txhash": "CF307F6AE1965362B14CE6DCDD5F32C60F32DFB2E4F7EC9CCD9206455A0F8D24",
+          "data": "0B08A684D3F50510C2F2822F",
+          "raw_log": "[{\"msg_index\":0,\"success\":true,\"log\":\"\",\"events\":null}]",
+          "logs": [
+            {
+              "msg_index": 0,
+              "success": true,
+              "log": "",
+              "events": null
+            }
+          ],
+          "gas_wanted": "200000",
+          "gas_used": "178987",
+          "events": [
+            {
+              "type": "message",
+              "attributes": [
+                {
+                  "key": "action",
+                  "value": "begin_unbonding"
+                },
+                {
+                  "key": "sender",
+                  "value": "nch1jv65s3grqf6v6jl3dp4t6c9t9rk99cd82tew25"
+                },
+                {
+                  "key": "sender",
+                  "value": "nch1fl48vsnmsdzcv85q5d2q4z5ajdha8yu3c05a6u"
+                },
+                {
+                  "key": "module",
+                  "value": "staking"
+                },
+                {
+                  "key": "sender",
+                  "value": "nch13dwwe6pv92ve9uy8k2u7006a9fd9jwc6gzqx0e"
+                }
+              ]
+            },
+            {
+              "type": "transfer",
+              "attributes": [
+                {
+                  "key": "recipient",
+                  "value": "nch13dwwe6pv92ve9uy8k2u7006a9fd9jwc6gzqx0e"
+                },
+                {
+                  "key": "amount",
+                  "value": "1846536647819945615pnch"
+                },
+                {
+                  "key": "recipient",
+                  "value": "nch1tygms3xhhs3yv487phx3dw4a95jn7t7lv0gvvg"
+                },
+                {
+                  "key": "amount",
+                  "value": "100pnch"
+                }
+              ]
+            },
+            {
+              "type": "unbond",
+              "attributes": [
+                {
+                  "key": "validator",
+                  "value": "nchvaloper13dwwe6pv92ve9uy8k2u7006a9fd9jwc6nr55u4"
+                },
+                {
+                  "key": "amount",
+                  "value": "100"
+                },
+                {
+                  "key": "completion_time",
+                  "value": "2020-05-08T02:21:26Z"
+                }
+              ]
+            }
+          ],
+          "tx": {
+            "type": "nch/StdTx",
+            "value": {
+              "msg": [
+                {
+                  "type": "nch/MsgUndelegate",
+                  "value": {
+                    "delegator_address": "nch13dwwe6pv92ve9uy8k2u7006a9fd9jwc6gzqx0e",
+                    "validator_address": "nchvaloper13dwwe6pv92ve9uy8k2u7006a9fd9jwc6nr55u4",
+                    "amount": {
+                      "denom": "pnch",
+                      "amount": "100"
+                    }
+                  }
+                }
+              ],
+              "fee": {
+                "amount": [
+                  {
+                    "denom": "pnch",
+                    "amount": "200000000"
+                  }
+                ],
+                "gas": "200000"
+              },
+              "signatures": [
+                {
+                  "pub_key": {
+                    "type": "tendermint/PubKeySecp256k1",
+                    "value": "Awr8DyzH0jUKExpjigPJHgbBI37yX6opS/GPav9kGEfg"
+                  },
+                  "signature": "Jaqz7Wp9z9ZIiEpfFVF5pAwgPQy8IxozS6TFtGJgtWhHVqiQQ4hkV8P47hlM3ssczE6FeMiB4wgxQVp7ahE3tA=="
+                }
+              ],
+              "memo": ""
+            }
+          },
+          "timestamp": "2020-04-24T02:21:26Z"
+        },
+        {
+          "height": "297565",
+          "txhash": "AB56091DAADAAAB0117B6845851B1EF1D825CA020E108496E35A1B08DF669912",
+          "data": "0C08B684D3F50510F19F8D8301",
+          "raw_log": "[{\"msg_index\":0,\"success\":true,\"log\":\"\",\"events\":null}]",
+          "logs": [
+            {
+              "msg_index": 0,
+              "success": true,
+              "log": "",
+              "events": null
+            }
+          ],
+          "gas_wanted": "200000",
+          "gas_used": "182568",
+          "events": [
+            {
+              "type": "message",
+              "attributes": [
+                {
+                  "key": "action",
+                  "value": "begin_unbonding"
+                },
+                {
+                  "key": "sender",
+                  "value": "nch1jv65s3grqf6v6jl3dp4t6c9t9rk99cd82tew25"
+                },
+                {
+                  "key": "sender",
+                  "value": "nch1fl48vsnmsdzcv85q5d2q4z5ajdha8yu3c05a6u"
+                },
+                {
+                  "key": "module",
+                  "value": "staking"
+                },
+                {
+                  "key": "sender",
+                  "value": "nch13dwwe6pv92ve9uy8k2u7006a9fd9jwc6gzqx0e"
+                }
+              ]
+            },
+            {
+              "type": "transfer",
+              "attributes": [
+                {
+                  "key": "recipient",
+                  "value": "nch13dwwe6pv92ve9uy8k2u7006a9fd9jwc6gzqx0e"
+                },
+                {
+                  "key": "amount",
+                  "value": "18117412891340pnch"
+                },
+                {
+                  "key": "recipient",
+                  "value": "nch1tygms3xhhs3yv487phx3dw4a95jn7t7lv0gvvg"
+                },
+                {
+                  "key": "amount",
+                  "value": "1000pnch"
+                }
+              ]
+            },
+            {
+              "type": "unbond",
+              "attributes": [
+                {
+                  "key": "validator",
+                  "value": "nchvaloper13dwwe6pv92ve9uy8k2u7006a9fd9jwc6nr55u4"
+                },
+                {
+                  "key": "amount",
+                  "value": "1000"
+                },
+                {
+                  "key": "completion_time",
+                  "value": "2020-05-08T02:21:42Z"
+                }
+              ]
+            }
+          ],
+          "tx": {
+            "type": "nch/StdTx",
+            "value": {
+              "msg": [
+                {
+                  "type": "nch/MsgUndelegate",
+                  "value": {
+                    "delegator_address": "nch13dwwe6pv92ve9uy8k2u7006a9fd9jwc6gzqx0e",
+                    "validator_address": "nchvaloper13dwwe6pv92ve9uy8k2u7006a9fd9jwc6nr55u4",
+                    "amount": {
+                      "denom": "pnch",
+                      "amount": "1000"
+                    }
+                  }
+                }
+              ],
+              "fee": {
+                "amount": [
+                  {
+                    "denom": "pnch",
+                    "amount": "200000000"
+                  }
+                ],
+                "gas": "200000"
+              },
+              "signatures": [
+                {
+                  "pub_key": {
+                    "type": "tendermint/PubKeySecp256k1",
+                    "value": "Awr8DyzH0jUKExpjigPJHgbBI37yX6opS/GPav9kGEfg"
+                  },
+                  "signature": "sfP13jY6tktUhi7jxsDcI0DhbEJj6s1eL2ihsWvX0pgXw2erM8tX/bKWdBaINZ6+QDJbiwdUUOAKPnZ0OA311Q=="
+                }
+              ],
+              "memo": ""
+            }
+          },
+          "timestamp": "2020-04-24T02:21:42Z"
+        }
+      ]
+    },
+    {
+      "total_count": "0",
+      "count": "0",
+      "page_number": "1",
+      "page_total": "0",
+      "limit": "100",
+      "txs": []
+    }
+  ]
+}
+```
+
+### 查询指定地址绑定(委托)的所有验证人
+
+```bash
+curl http://127.0.0.1:1317/staking/delegators/nch13dwwe6pv92ve9uy8k2u7006a9fd9jwc6gzqx0e/validators
+```
+
+response:
+
+```json
+{
+  "height": "297604",
+  "result": [
+    {
+      "operator_address": "nchvaloper13dwwe6pv92ve9uy8k2u7006a9fd9jwc6nr55u4",
+      "consensus_pubkey": "nchvalconspub1zcjduepqvskj36yf5cfp9rajuze30yexvejvtthkq6za3zpqkc84m0h93lvqvjv4uu",
+      "jailed": false,
+      "status": 2,
+      "tokens": "999999999999998900",
+      "delegator_shares": "999999999999998900.000000000000000000",
+      "description": {
+        "moniker": "netcloth",
+        "identity": "47CB8FD16ABA8CA6",
+        "website": "https://www.netcloth.org",
+        "details": "Make You and Your Network Unique"
+      },
+      "unbonding_height": "0",
+      "unbonding_time": "1970-01-01T00:00:00Z",
+      "commission": {
+        "commission_rates": {
+          "rate": "0.100000000000000000",
+          "max_rate": "0.200000000000000000",
+          "max_change_rate": "0.100000000000000000"
+        },
+        "update_time": "2020-04-05T15:13:06.386573523Z"
+      },
+      "min_self_delegation": "1",
+      "self_delegation": "999999999999998900.000000000000000000"
+    },
+    {
+      "operator_address": "nchvaloper1ngm3k874204rwz23m46wqhlv8w9vyjtd9yqm7x",
+      "consensus_pubkey": "nchvalconspub1zcjduepq6fd5l7nj7j7hqw7latmgmcqkertxsc45et90lam3js49832tzausf866r2",
+      "jailed": false,
+      "status": 0,
+      "tokens": "210000000000",
+      "delegator_shares": "210000000000.000000000000000000",
+      "description": {
+        "moniker": "nova",
+        "identity": "",
+        "website": "http://111.229.68.141",
+        "details": "validator details nova"
+      },
+      "unbonding_height": "0",
+      "unbonding_time": "1970-01-01T00:00:00Z",
+      "commission": {
+        "commission_rates": {
+          "rate": "0.100000000000000000",
+          "max_rate": "0.200000000000000000",
+          "max_change_rate": "0.010000000000000000"
+        },
+        "update_time": "2020-04-08T08:10:55.971059518Z"
+      },
+      "min_self_delegation": "100",
+      "self_delegation": "10000000000.000000000000000000"
+    }
+  ]
+}
+```
+
+### 查询指定地址和指定验证的人委托信息
+
+```bash
+curl http://127.0.0.1:1317/staking/delegators/nch13dwwe6pv92ve9uy8k2u7006a9fd9jwc6gzqx0e/delegations/nchvaloper1ngm3k874204rwz23m46wqhlv8w9vyjtd9yqm7x 
+```
+
+response:
+
+```json
+{
+  "height": "297650",
+  "result": {
+    "delegator_address": "nch13dwwe6pv92ve9uy8k2u7006a9fd9jwc6gzqx0e",
+    "validator_address": "nchvaloper1ngm3k874204rwz23m46wqhlv8w9vyjtd9yqm7x",
+    "shares": "200000000000.000000000000000000",
+    "balance": "200000000000"
+  }
+}
+```
+
+### 查询所有的验证人
+
+```bash
+curl http://127.0.0.1:1317/staking/validators
+```
+
+response:
+
+```json
+{
+  "height": "297671",
+  "result": [
+    {
+      "operator_address": "nchvaloper1zvweukts45nt3x032jr0ay2yqnlqatu4pmecxv",
+      "consensus_pubkey": "nchvalconspub1zcjduepqdcpd5n6gze7hdnmmqnazhu9cdppvv0zgemnup54mhc3wwh5fdesq9lwrns",
+      "jailed": false,
+      "status": 2,
+      "tokens": "504000002202717023",
+      "delegator_shares": "504000002202717023.000000000000000000",
+      "description": {
+        "moniker": "skr",
+        "identity": "",
+        "website": "",
+        "details": "skr"
+      },
+      "unbonding_height": "0",
+      "unbonding_time": "1970-01-01T00:00:00Z",
+      "commission": {
+        "commission_rates": {
+          "rate": "0.100000000000000000",
+          "max_rate": "0.200000000000000000",
+          "max_change_rate": "0.010000000000000000"
+        },
+        "update_time": "2020-04-05T16:24:40.150790125Z"
+      },
+      "min_self_delegation": "100",
+      "self_delegation": "504000002202717023.000000000000000000"
+    },
+    {
+      "operator_address": "nchvaloper1ra02wuvm5jxmkv4tk24mtt25ue3c3rkqzv4n94",
+      "consensus_pubkey": "nchvalconspub1zcjduepq696d6v90ragj98p5tdjfgq8nfc7g3tet5v63l0vzq88nkkk274jst0lk2u",
+      "jailed": false,
+      "status": 2,
+      "tokens": "99989999840399000",
+      "delegator_shares": "99989999840399000.000000000000000000",
+      "description": {
+        "moniker": "node",
+        "identity": "",
+        "website": "",
+        "details": "node validator"
+      },
+      "unbonding_height": "0",
+      "unbonding_time": "1970-01-01T00:00:00Z",
+      "commission": {
+        "commission_rates": {
+          "rate": "0.100000000000000000",
+          "max_rate": "0.200000000000000000",
+          "max_change_rate": "0.010000000000000000"
+        },
+        "update_time": "2020-04-05T16:27:17.345540582Z"
+      },
+      "min_self_delegation": "100",
+      "self_delegation": "99989999840399000.000000000000000000"
+    },
+    {
+      "operator_address": "nchvaloper1fj4x6w7495vw2wfqegs8kqs2347c0vqck5cqve",
+      "consensus_pubkey": "nchvalconspub1zcjduepq8mujsxceqjhvagaz2ncsvc26v7z60qz5dm209ac7w3zg2utx8rrq2cjdpz",
+      "jailed": false,
+      "status": 2,
+      "tokens": "5000000000000",
+      "delegator_shares": "5000000000000.000000000000000000",
+      "description": {
+        "moniker": "秋月夜",
+        "identity": "",
+        "website": "",
+        "details": ""
+      },
+      "unbonding_height": "0",
+      "unbonding_time": "1970-01-01T00:00:00Z",
+      "commission": {
+        "commission_rates": {
+          "rate": "0.100000000000000000",
+          "max_rate": "0.200000000000000000",
+          "max_change_rate": "0.010000000000000000"
+        },
+        "update_time": "2020-04-14T01:37:16.214981939Z"
+      },
+      "min_self_delegation": "100",
+      "self_delegation": "5000000000000.000000000000000000"
+    },
+    {
+      "operator_address": "nchvaloper1sdh9efnf2tjcatcytcrllexsrmwze4ac4knwv0",
+      "consensus_pubkey": "nchvalconspub1zcjduepq7furf7y824vpxlu6jhd4d9u35hwax70pef99d8kleuutn662htlsrfw0rg",
+      "jailed": false,
+      "status": 2,
+      "tokens": "10000000000000000",
+      "delegator_shares": "10000000000000000.000000000000000000",
+      "description": {
+        "moniker": "lucy",
+        "identity": "",
+        "website": "",
+        "details": ""
+      },
+      "unbonding_height": "0",
+      "unbonding_time": "1970-01-01T00:00:00Z",
+      "commission": {
+        "commission_rates": {
+          "rate": "0.100000000000000000",
+          "max_rate": "0.200000000000000000",
+          "max_change_rate": "0.010000000000000000"
+        },
+        "update_time": "2020-04-05T16:06:28.409617672Z"
+      },
+      "min_self_delegation": "100",
+      "self_delegation": "10000000000000000.000000000000000000"
+    },
+    {
+      "operator_address": "nchvaloper13dwwe6pv92ve9uy8k2u7006a9fd9jwc6nr55u4",
+      "consensus_pubkey": "nchvalconspub1zcjduepqvskj36yf5cfp9rajuze30yexvejvtthkq6za3zpqkc84m0h93lvqvjv4uu",
+      "jailed": false,
+      "status": 2,
+      "tokens": "999999999999998900",
+      "delegator_shares": "999999999999998900.000000000000000000",
+      "description": {
+        "moniker": "netcloth",
+        "identity": "47CB8FD16ABA8CA6",
+        "website": "https://www.netcloth.org",
+        "details": "Make You and Your Network Unique"
+      },
+      "unbonding_height": "0",
+      "unbonding_time": "1970-01-01T00:00:00Z",
+      "commission": {
+        "commission_rates": {
+          "rate": "0.100000000000000000",
+          "max_rate": "0.200000000000000000",
+          "max_change_rate": "0.100000000000000000"
+        },
+        "update_time": "2020-04-05T15:13:06.386573523Z"
+      },
+      "min_self_delegation": "1",
+      "self_delegation": "999999999999998900.000000000000000000"
+    },
+    {
+      "operator_address": "nchvaloper1nkw4wxj6wttwm3uergymmr8c2fvspuk9smxuk0",
+      "consensus_pubkey": "nchvalconspub1zcjduepqdzcgr896jaxnzwwjppcvl8ufyvrsvz5m8u6cszur73fsw7y7h6xqxmt6q3",
+      "jailed": false,
+      "status": 2,
+      "tokens": "5900000000000000",
+      "delegator_shares": "5900000000000000.000000000000000000",
+      "description": {
+        "moniker": "super",
+        "identity": "",
+        "website": "",
+        "details": ""
+      },
+      "unbonding_height": "0",
+      "unbonding_time": "1970-01-01T00:00:00Z",
+      "commission": {
+        "commission_rates": {
+          "rate": "0.100000000000000000",
+          "max_rate": "0.200000000000000000",
+          "max_change_rate": "0.010000000000000000"
+        },
+        "update_time": "2020-04-07T07:13:33.305704177Z"
+      },
+      "min_self_delegation": "100",
+      "self_delegation": "5900000000000000.000000000000000000"
+    },
+    {
+      "operator_address": "nchvaloper14mqkzeh7l5nwyyf4nddmm63j2hyk39uaa646pp",
+      "consensus_pubkey": "nchvalconspub1zcjduepqs8vyhlj4ydyyanlhr3twy2zrc3gyv3p65x0wxy3vccdga0st5eusvaee4m",
+      "jailed": false,
+      "status": 2,
+      "tokens": "1000000000000000",
+      "delegator_shares": "1000000000000000.000000000000000000",
+      "description": {
+        "moniker": "ston",
+        "identity": "",
+        "website": "",
+        "details": "ston"
+      },
+      "unbonding_height": "0",
+      "unbonding_time": "1970-01-01T00:00:00Z",
+      "commission": {
+        "commission_rates": {
+          "rate": "0.100000000000000000",
+          "max_rate": "0.200000000000000000",
+          "max_change_rate": "0.010000000000000000"
+        },
+        "update_time": "2020-04-08T12:14:35.918437806Z"
+      },
+      "min_self_delegation": "100",
+      "self_delegation": "1000000000000000.000000000000000000"
+    },
+    {
+      "operator_address": "nchvaloper1c0fvrqdfsgdefqkftdrjh2nvk02cakdywnagna",
+      "consensus_pubkey": "nchvalconspub1zcjduepqaum6ege3uv3h5dn3pxdvn3gt8shwqgg9p9jv4j779s9fmfju4p3q70fps0",
+      "jailed": false,
+      "status": 2,
+      "tokens": "1890010000000000",
+      "delegator_shares": "1890010000000000.000000000000000000",
+      "description": {
+        "moniker": "uranus",
+        "identity": "",
+        "website": "",
+        "details": ""
+      },
+      "unbonding_height": "0",
+      "unbonding_time": "1970-01-01T00:00:00Z",
+      "commission": {
+        "commission_rates": {
+          "rate": "0.050000000000000000",
+          "max_rate": "0.200000000000000000",
+          "max_change_rate": "0.010000000000000000"
+        },
+        "update_time": "2020-04-06T07:54:41.17571637Z"
+      },
+      "min_self_delegation": "100",
+      "self_delegation": "1890010000000000.000000000000000000"
+    },
+    {
+      "operator_address": "nchvaloper17kfmq49p6vth0y83t4dwlpurdy70wgam6ed7y2",
+      "consensus_pubkey": "nchvalconspub1zcjduepq85kevn2e489ce2c4yu5rrh92a7nwyrukh5dgjtlmg8gvv5cpaglsvks3fw",
+      "jailed": false,
+      "status": 2,
+      "tokens": "4000099304191000",
+      "delegator_shares": "4000099304191000.000000000000000000",
+      "description": {
+        "moniker": "iavl 🚀",
+        "identity": "",
+        "website": "",
+        "details": "play 2048"
+      },
+      "unbonding_height": "0",
+      "unbonding_time": "1970-01-01T00:00:00Z",
+      "commission": {
+        "commission_rates": {
+          "rate": "0.100000000000000000",
+          "max_rate": "0.200000000000000000",
+          "max_change_rate": "0.010000000000000000"
+        },
+        "update_time": "2020-04-05T16:44:28.06067581Z"
+      },
+      "min_self_delegation": "100",
+      "self_delegation": "4000099304191000.000000000000000000"
+    }
+  ]
+}
+```
+
+### 根据验证人地址，获取验证人信息
+
+```bash
+curl http://127.0.0.1:1317/staking/validators/nchvaloper17kfmq49p6vth0y83t4dwlpurdy70wgam6ed7y2
+```
+
+response:
+
+```json
+{
+  "height": "297689",
+  "result": {
+    "operator_address": "nchvaloper17kfmq49p6vth0y83t4dwlpurdy70wgam6ed7y2",
+    "consensus_pubkey": "nchvalconspub1zcjduepq85kevn2e489ce2c4yu5rrh92a7nwyrukh5dgjtlmg8gvv5cpaglsvks3fw",
+    "jailed": false,
+    "status": 2,
+    "tokens": "4000099304191000",
+    "delegator_shares": "4000099304191000.000000000000000000",
+    "description": {
+      "moniker": "iavl 🚀",
+      "identity": "",
+      "website": "",
+      "details": "play 2048"
+    },
+    "unbonding_height": "0",
+    "unbonding_time": "1970-01-01T00:00:00Z",
+    "commission": {
+      "commission_rates": {
+        "rate": "0.100000000000000000",
+        "max_rate": "0.200000000000000000",
+        "max_change_rate": "0.010000000000000000"
+      },
+      "update_time": "2020-04-05T16:44:28.06067581Z"
+    },
+    "min_self_delegation": "100",
+    "self_delegation": "4000099304191000.000000000000000000"
+  }
+}
+
+```
+
 ## ipal相关 API
 
 ### 注册ipal节点
