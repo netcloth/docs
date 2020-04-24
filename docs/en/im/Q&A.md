@@ -65,7 +65,7 @@ Client login is to connect to the gateway service. If the client shows that it i
 * Check if the gateway service starts normally
 * According to the returned endpoint, execute the following command to check whether the returned gateway login address can be connected
 
-```
+```bash
 curl ${endpoint}/v1/service/gateway?pub_key=0453a31024548b41d8f4cd54806289948774ea7b303543035dc88efd70217efed243609e8883b4acd75fe68a22e6a322c71275a6a35173538a60896d10a1d0ae80
 
 E.g

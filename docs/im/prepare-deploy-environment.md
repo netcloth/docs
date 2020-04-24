@@ -111,12 +111,12 @@ sudo apt install redis-server
 
 通过修改redis配置（/etc/redis/redis.conf）,
  
- ```text
+ ```properties
  bind 127.0.0.1 ::1
  ```
  去除IP V6地址监听，修改成如下：
  
- ```text
+ ```properties
  bind 127.0.0.1
  ```
 

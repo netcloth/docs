@@ -3,7 +3,7 @@
 
 ### 1.1 安装autotool
 
-```
+```bash
 sudo apt install automake autoconf libtool
 ```
 
@@ -12,7 +12,7 @@ sudo apt install automake autoconf libtool
 
 ### 2.1 安装spdlog
 
-```
+```bash
 cd /home/admin/code
 git clone https://github.com/gabime/spdlog.git
 cd spdlog
@@ -24,7 +24,7 @@ sudo make install
 ```
 
 ### 2.2 安装json库
-```
+```bash
 cd /home/admin/code
 git cone https://github.com/nlohmann/json.git
 cd json
@@ -37,13 +37,13 @@ sudo make install
 
 ### 2.3 安装libcurl
 
-```
+```bash
 sudo apt install libcurl4-openssl-dev
 ```
 
 ### 2.4 安装hiredis
 
-```
+```bash
 cd /home/admin/code
 git clone https://github.com/redis/hiredis.git
 cd hiredis
@@ -53,7 +53,7 @@ sudo make install
 
 ### 2.5 安装boost
 
-```
+```bash
 wget https://dl.bintray.com/boostorg/release/1.69.0/source/boost_1_69_0.tar.gz
 tar xvzf boost_1_69_0.tar.gz
 cd boost_1_69_0
@@ -64,7 +64,7 @@ sudo ./b2 install
 ## 3 编译C++服务
 使用代码的*<font color=red>master</font>分支
 
-```
+```bash
 cd /home/admin/code/netcloth-server
 ./autogen.sh
 mkdir build
@@ -75,7 +75,7 @@ make
 
 ## 部署C++服务
 
-```
+```bash
 mkdir -p /home/admin/gateway/conf
 mkdir -p /home/admin/gateway/logs
 mkdir -p /home/admin/gateway/run

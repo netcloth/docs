@@ -12,7 +12,7 @@ The following ports are currently required to be accessible on the Internet
 
 The nginx service has been started in the basic environment preparation. Here you need to start the redis-server and consul services.
 
-```
+```bash
 sudo cp /home/admin/code/netcloth-server/script/supervisor/consul.conf /etc/supervisor/conf.d/
 sudo cp /home/admin/code/netcloth-server/script/supervisor/redis.conf /etc/supervisor/conf.d/
 
@@ -25,13 +25,13 @@ sudo supervisorctl
 
 If the supervisor daemon is not started, start the supervisor daemon first
 
-```
+```bash
 sudo service supervisor start
 ```
 
 ## 3 Start Go service
 
-```
+```bash
 sudo cp /home/admin/code/netcloth-server/script/supervisor/filestore.conf /etc/supervisor/conf.d/
 sudo cp /home/admin/code/netcloth-server/script/supervisor/router.conf /etc/supervisor/conf.d/
 sudo cp /home/admin/code/netcloth-server/script/supervisor/servicehub.conf /etc/supervisor/conf.d/
@@ -48,7 +48,7 @@ View the service startup status through the status command of the supervisorctl 
 
 ## 4 Start C ++ service
 
-```
+```bash
 cd /home/admin/chatserver
 ./chatserver
 ```

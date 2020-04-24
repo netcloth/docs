@@ -15,7 +15,7 @@
 
 注意：如果redis-server已启动，则不需要执行redis相关操作
 
-```
+```bash
 sudo cp /home/admin/code/netcloth-server/script/supervisor/consul.conf /etc/supervisor/conf.d/
 sudo cp /home/admin/code/netcloth-server/script/supervisor/redis.conf /etc/supervisor/conf.d/
 
@@ -28,13 +28,13 @@ sudo supervisorctl
 
 如果supervisor守护进程未启动，先启动supervisor守护进程
 
-```
+```bash
 sudo service supervisor start
 ```
 
 ## 3 启动Go服务
 
-```
+```bash
 sudo cp /home/admin/code/netcloth-server/script/supervisor/filestore.conf /etc/supervisor/conf.d/
 sudo cp /home/admin/code/netcloth-server/script/supervisor/router.conf /etc/supervisor/conf.d/
 sudo cp /home/admin/code/netcloth-server/script/supervisor/servicehub.conf /etc/supervisor/conf.d/
@@ -55,7 +55,7 @@ sudo supervisorctl
 ## 4 启动C++服务
 启动服务
 
-```
+```bash
 cd home/admin/gateway/
 ./gateway
 ```

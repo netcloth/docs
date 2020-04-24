@@ -48,7 +48,7 @@
 
 找到endpoint为 http://47.104.199.106， 然后执行如下命令，检查是否可以访问
 
-```
+```bash
 curl http://47.104.199.106/v1/ping
 ```
 
@@ -73,7 +73,7 @@ curl http://47.104.199.106/v1/ping
 * 检查gateway服务是否正常启动
 * 根据返回的endpoint，执行如下命令检查返回的gateway登录地址是否可以连接
 
-```
+```bash
 curl ${endpoint}/v1/service/gateway?pub_key=0453a31024548b41d8f4cd54806289948774ea7b303543035dc88efd70217efed243609e8883b4acd75fe68a22e6a322c71275a6a35173538a60896d10a1d0ae80
 
 例如

@@ -601,7 +601,7 @@ nchcli q vm call $(nchcli keys show -a alice) nch17wdu5efc5dr7xw3nv53qxtlr2rdp6h
 
 创建合约，指定1个参数：```_initFee```:
 
-```text
+```ini
 _initFee: 1000000000000
 ```
 
