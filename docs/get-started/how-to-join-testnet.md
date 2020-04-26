@@ -33,10 +33,12 @@ nchd init mynode --chain-id nch-testnet
 上述命令会初始化验证人和节点配置文件，默认的home目录为```~/```，如果需要设定home目录，可以带上```--home=<your_custom_path>```
 
 ::: warning 提示
-如果之前有同步过测试网的区块数据，则不需要再次初始化。需要重置本地节点，执行如下命令：
+如果之前有同步过测试网的区块数据，需要先删除本地数据，再重新初始化：
 
 ```bash
-nchd unsafe-reset-all
+rm -rf ~/.nchd
+
+nchd init mynode --chain-id nch-testnet
 ```
 
 上述命令，会重置区块链数据库。

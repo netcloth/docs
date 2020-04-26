@@ -18,20 +18,12 @@ nchcli version
 * init node for initial configuration:
 
 ```bash
-# usage: 
-# nchd init <your_custom_name> --chain-id nch-testnet
-# example:
-nchd init mynode --chain-id nch-testnet
+# remove old data
+rm -rf ~/.nchd
+
+# init node
+nchd init <your_custom_name> --chain-id nch-testnet
 ```
-
-::: warning notice
-If the test network has been synchronized before, there is no need to initialize again. Need to reset the local node, execute the following command:
-
-```bash
-nchd unsafe-reset-all
-```
-
-:::
 
 * download genesis file
 
