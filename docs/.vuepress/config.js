@@ -64,6 +64,7 @@ module.exports = {
                     '/en/software/': genSidebarConfig ('software', 'Software'),
                     '/en/applications/': genSidebarConfig ('applications', 'Applications'),
                     '/en/im/': genSidebarConfig ('im', 'IM Server Deploy'),
+                    '/en/contracts/': genSidebarConfig ('contracts', 'Smart Contracts'),
                     '/en/advanced/': genSidebarConfig('advanced', 'Advanced')
                 }
             },
@@ -105,6 +106,7 @@ module.exports = {
                     '/software/': genSidebarConfig ('software', '软件'),
                     '/applications/': genSidebarConfig ('applications', '应用'),
                     '/im/': genSidebarConfig ('im', '即时通讯服务器部署'),
+                    '/contracts/': genSidebarConfig ('contracts', '智能合约'),
                     '/advanced/': genSidebarConfig('advanced', '高级教程')
                 }
             }
@@ -160,9 +162,20 @@ function genSidebarConfig (module, title) {
                     'transaction',
                     'messages',
                     'fee-payment',
-                    'contract',
-                    'contract-repertory',
                     'Q&A'
+                ]
+            }
+        ];
+    }
+
+    if (module === 'contracts') {
+        return [
+            {
+                title,
+                collapsable: false,
+                children: [
+                    'contract',
+                    'contract-repertory'
                 ]
             }
         ];
