@@ -51,6 +51,10 @@ module.exports = {
                         link: '/en/applications/'
                     },
                     {
+                        text: 'SmartContracts',
+                        link: '/en/contracts/'
+                    },
+                    {
                         text: 'Advanced',
                         link: '/en/advanced/',
                     }
@@ -86,6 +90,10 @@ module.exports = {
                     {
                         text: '应用',
                         link: '/applications/'
+                    },
+                    {
+                        text: '智能合约',
+                        link: '/contracts/'
                     },
                     {
                         text: '高级教程',
