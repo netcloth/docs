@@ -2,7 +2,7 @@
 
 ## 交易结构
 
-NetCloth链上一笔交易主要包含```msg, fee, signatures```和```memo```：
+```NetCloth```链上一笔交易主要包含```msg, fee, signatures```和```memo```：
 
 ```json
 {
@@ -101,7 +101,7 @@ IPAL交易的结构：
 }
 ```
 
-NetCloth链包含多种msg类型，具体可参考github源码，各种msg结构的定义位于modules目录各个msg.go文件。
+```NetCloth```链包含多种msg类型，具体可参考github源码，各种msg结构的定义位于modules目录各个msg.go文件。
 
 ## 签名构造
 
@@ -117,8 +117,12 @@ go语言版本的交易构造和广播，参考[go-sdk](https://github.com/netcl
 ```
 
 示例公钥：
+
 ```ini
 02BBDC958286248620929E2A4A9C84FE0384F502BFBC1A5738F77CE0319A1344D0
+
+# base64编码为
+ArvclYKGJIYgkp4qSpyE/gOE9QK/vBpXOPd84DGaE0TQ
 ```
 
 ### 构造签名结构体
@@ -165,7 +169,11 @@ type StdSignMsg struct {
 }
 ```
 
-其中account_number和sequence可通过 [account API接口](./api.md#查询帐户信息及余额) 获得， account_number是固定的，sequence表示当前帐户的交易数，发起交易时需加1 。
+其中```account_number```和```sequence```可通过 [account API接口](./api.md#查询帐户信息及余额) 获得， ```account_number```是固定的，```sequence```表示当前帐户的交易数，发起交易时需加1 。
+
+```chain_id```表示链id，不同的链有不同的id
+
+转帐的```msg type```为```"nch/MsgSend"```，更多msg type参考[这里](./messages.md) 。
 
 ### 序列化
 
@@ -188,6 +196,21 @@ faae9f8c864576c51aef8e52adcca4096ded8fa392c305612df31ef918850d1e
 ```properties
 2c80b2e9069e43949bd8b5b2c93f19cd223435a5418e01c196626fd749067b28092f260d2af03fc8fa64fd1c262bd727435926aff1f8a9ad65251a71a9e1a113
 ```
+
+最终构造出签名:
+
+```json
+{
+	"pub_key": {
+		"type": "tendermint/PubKeySecp256k1",
+		"value": "ArvclYKGJIYgkp4qSpyE/gOE9QK/vBpXOPd84DGaE0TQ"
+	},
+	"signature": "LICy6QaeQ5Sb2LWyyT8ZzSI0NaVBjgHBlmJv10kGeygJLyYNKvA/yPpk/RwmK9cnQ1kmr/H4qa1lJRpxqeGhEw=="
+}
+```
+
+其中```tendermint/PubKeySecp256k1```固定为公钥类型， ```value```为公钥的```base64```编码
+```signature```的值为```signature```的```base64```编码。
 
 ### 调用RPC接口发起交易
 
