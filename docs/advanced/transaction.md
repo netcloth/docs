@@ -169,9 +169,9 @@ type StdSignMsg struct {
 }
 ```
 
-其中```account_number```和```sequence```可通过 [account API接口](./api.md#查询帐户信息及余额) 获得， ```account_number```是固定的，```sequence```表示当前帐户的交易数，发起交易时需加1 。
+其中```account_number```和```sequence```可通过 [account API接口](./api.md#查询帐户信息及余额) 获得， ```account_number```是固定的，```sequence```表示当前帐户的交易数 。
 
-```chain_id```表示链id，不同的链有不同的id
+```chain_id```表示链id，不同的链有不同的id。公测网的链id为```nch-testnet```
 
 转帐的```msg type```为```"nch/MsgSend"```，更多msg type参考[这里](./messages.md) 。
 
