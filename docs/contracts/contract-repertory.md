@@ -667,6 +667,146 @@ nchcli q vm call $(nchcli keys show -a recall) nch1ylj55r9c5u027cdggrsz7e72etf2v
 关于如何查询合约事件，开发者可参考nch sdk[示例](https://github.com/netcloth/go-sdk/blob/master/client/test/contract_call_test/contract_call_test.go)
 :::
 
+## 三方托管合约
+
+* 合约源码和说明，参考[这里](https://github.com/netcloth/contracts/tree/master/escrow)
+* 合约ABI，参考[这里](https://github.com/netcloth/contracts/blob/master/escrow/RefundEscrow.abi)
+
+### 创建合约
+
+创建合约时，指定合约的收益人(beneficiary)地址为bob
+
+```bash
+nchcli vm create --code_file=./RefundEscrow.bc \
+--from=$(nchcli keys show -a alice) \
+--abi_file=./RefundEscrow.abi \
+--args="$(nchcli keys show -a bob)" \
+--gas=10000000
+```
+
+### 查询合约收益人
+
+```bash
+nchcli q vm call $(nchcli keys show -a alice) nch1yw28p8hve4lspwfcaysswu82f80pvpse79w5a8 \
+beneficiary ./RefundEscrow.abi
+```
+
+结果
+
+```json
+{"Gas":1134,"Result":["nch12vgxe8qgdnuqlvnvyskua2rssxpqg4yyldrqep"]}
+```
+
+### 查询合约状态
+
+```bash
+nchcli q vm call $(nchcli keys show -a alice) nch1yw28p8hve4lspwfcaysswu82f80pvpse79w5a8 \
+state ./RefundEscrow.abi
+```
+
+结果
+
+```json
+{"Gas":1147,"Result":[0]}
+```
+
+### 调用合约的deposit方法
+
+bob调用合约的deposit方法，向jack账户存款，数量为100000000000000pnch
+
+```bash
+nchcli vm call \
+--from=$(nchcli keys show -a bob) \
+--contract_addr=nch1yw28p8hve4lspwfcaysswu82f80pvpse79w5a8 \
+--method=deposit \
+--abi_file=./RefundEscrow.abi \
+--args="$(nchcli keys show -a jack)" \
+--amount=100000000000000pnch \
+--gas=1000000
+```
+
+dan调用合约的deposit方法，向jack账户存款，数量为100000000000000pnch
+
+```bash
+nchcli vm call \
+--from=$(nchcli keys show -a dan) \
+--contract_addr=nch1yw28p8hve4lspwfcaysswu82f80pvpse79w5a8 \
+--method=deposit \
+--abi_file=./RefundEscrow.abi \
+--args="$(nchcli keys show -a jack)" \
+--amount=100000000000000pnch \
+--gas=1000000 -y
+```
+
+### 查询合约余额
+
+```bash
+nchcli q account nch1yw28p8hve4lspwfcaysswu82f80pvpse79w5a8
+```
+
+结果
+
+```json
+{
+  "type": "nch/Account",
+  "value": {
+    "address": "nch1yw28p8hve4lspwfcaysswu82f80pvpse79w5a8",
+    "coins": [
+      {
+        "denom": "pnch",
+        "amount": "200000000000000"
+      }
+    ],
+    "public_key": null,
+    "account_number": "11",
+    "sequence": "0",
+    "code_hash": "016b66d7e91061dce5f7fe489549d871764fd4fbd2f44e8cd8a44b635ec8ebed"
+  }
+}
+```
+
+### 查询jack账户在合约中的存款
+
+调用 depositOf方法，查询jack在合约中的存款
+
+```bash
+nchcli q vm call $(nchcli keys show -a alice) nch1yw28p8hve4lspwfcaysswu82f80pvpse79w5a8 \
+depositOf ./RefundEscrow.abi --args="$(nchcli keys show -a jack)"
+```
+
+结果
+
+```json
+{"Gas":1197,"Result":[200000000000000]}
+```
+
+### 设置Refunding
+
+合约创建者alice，即合约owner，设置合约为Refunding状态，允许收款人取现
+
+```bash
+nchcli vm call \
+--from=$(nchcli keys show -a alice) \
+--contract_addr=nch1yw28p8hve4lspwfcaysswu82f80pvpse79w5a8 \
+--method=enableRefunds \
+--abi_file=./RefundEscrow.abi \
+--gas=1000000 -y
+```
+
+### 调用withdraw方法
+
+合约owner调用withdraw方法，为收款人jack取现
+
+```bash
+nchcli vm call \
+--from=$(nchcli keys show -a alice) \
+--contract_addr=nch1yw28p8hve4lspwfcaysswu82f80pvpse79w5a8 \
+--method=withdraw \
+--abi_file=./RefundEscrow.abi \
+--args="$(nchcli keys show -a jack)" \
+--gas=1000000 -y
+```
+
 ## DEX
 
 ## 更多资源
