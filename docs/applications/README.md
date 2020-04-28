@@ -8,7 +8,6 @@
 * [API参考手册](../advanced/api.md)
 * [如何使用nchcli命令行导入/导出私钥](../advanced/keys.md)
 * [多签账户教程](../advanced/multisig.md)
-* [智能合约教程](../advanced/contract.md)
 * [常见问题](../advanced/Q&A.md)
 
 ### IPAL操作

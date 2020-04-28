@@ -2,7 +2,7 @@
 
 本文档介绍NetCloth链上常用智能合约模板。
 
-合约模板仅用于演示，如果有任何问题或建议，欢迎在[github上](https://github.com/netcloth/contracts)交流反馈。
+合约模板仅用于演示，如有发现bug或建议，欢迎在[github上](https://github.com/netcloth/contracts)交流反馈。
 
 ## NRC-20
 
@@ -806,8 +806,6 @@ nchcli vm call \
 --args="$(nchcli keys show -a jack)" \
 --gas=1000000 -y
 ```
-
-## DEX
 
 ## 更多资源
 
