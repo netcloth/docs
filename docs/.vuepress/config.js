@@ -33,40 +33,73 @@ module.exports = {
                 lastUpdated: 'Last Updated',
                 serviceWorker: {
                 },
-                nav: [
+                sidebar: [
                     {
-                        text: 'Introduction',
-                        link: '/en/introduction/',
+                        title: 'Getting Started',
+                        path: '/en/get-started/',   
+                        collapsable: false, // 可选的, 默认值是 true,
+                        // sidebarDepth: 1,    // 可选的, 默认值是 1
+                        children: [
+                            '/en/get-started/how-to-join-testnet',
+                            '/en/get-started/generate-genesis-file',
+                            '/en/get-started/how-to-become-validator',
+                            '/en/get-started/how-to-delegate'
+                        ]
                     },
                     {
-                        text: 'Getting Started',
-                        link: '/en/get-started/',
+                        title: 'Software',
+                        path: '/en/software/',   
+                        collapsable: false, // 可选的, 默认值是 true,
+                        // sidebarDepth: 1,    // 可选的, 默认值是 1
+                        children: [
+                            '/en/software/go-install',
+                            '/en/software/how-to-install',
+                            '/en/software/nchcli',
+                            '/en/software/monitor'
+                        ]
                     },
                     {
-                        text: 'Software',
-                        link: '/en/software/how-to-install'
+                        title: 'im',
+                        path: '/en/im/',   
+                        // collapsable: false, // 可选的, 默认值是 true,
+                        // sidebarDepth: 1,    // 可选的, 默认值是 1
+                        children: [
+                            "/en/im/im-prerequisite",
+                            "/en/im/quick-start",
+                            "/en/im/deploy-from-source",
+                            '/en/im/Q&A'
+                        ]
                     },
                     {
-                        text: 'Applications',
-                        link: '/en/applications/'
+                        title: 'Smart Contracts',
+                        path: '/en/contracts/',   
+                        // collapsable: false, // 可选的, 默认值是 true,
+                        // sidebarDepth: 1,    // 可选的, 默认值是 1
+                        children: [
+                            '/en/contracts/contract',
+                            '/en/contracts/contract-repertory'
+                        ]
                     },
                     {
-                        text: 'SmartContracts',
-                        link: '/en/contracts/'
+                        title: 'Advanced',
+                        path: '/en/advanced/',   
+                        // collapsable: false, // 可选的, 默认值是 true,
+                        // sidebarDepth: 1,    // 可选的, 默认值是 1
+                        children: [
+                            '/en/advanced/api',
+                            '/en/advanced/node-rpc',
+                            '/en/advanced/ipal',
+                            '/en/advanced/ipal-sdk',
+                            '/en/advanced/multisig',
+                            '/en/advanced/keys',
+                            '/en/advanced/how-to-create-proposal',
+                            '/en/advanced/transaction',
+                            '/en/advanced/messages',
+                            '/en/advanced/fee-payment',
+                            '/en/advanced/Q&A'
+                        ]
                     },
-                    {
-                        text: 'Advanced',
-                        link: '/en/advanced/',
-                    }
-                ],
-                sidebar: {
-                    '/en/get-started/': genSidebarConfig ('get-started', 'Getting Started'),
-                    '/en/software/': genSidebarConfig ('software', 'Software'),
-                    '/en/applications/': genSidebarConfig ('applications', 'Applications'),
-                    '/en/im/': genSidebarConfig ('im', 'IM Server Deploy'),
-                    '/en/contracts/': genSidebarConfig ('contracts', 'Smart Contracts'),
-                    '/en/advanced/': genSidebarConfig('advanced', 'Advanced')
-                }
+                ]
             },
             '/': {
                 label: '简体中文',
@@ -75,124 +108,74 @@ module.exports = {
                 lastUpdated: '上次更新',
                 serviceWorker: {
                 },
-                nav: [
+                sidebar: [
                     {
-                        text: '简介',
-                        link: '/introduction/',
+                        title: '开始',
+                        path: '/get-started/',   
+                        collapsable: false, // 可选的, 默认值是 true,
+                        // sidebarDepth: 1,    // 可选的, 默认值是 1
+                        children: [
+                            '/get-started/how-to-join-testnet',
+                            '/get-started/generate-genesis-file',
+                            '/get-started/how-to-become-validator',
+                            '/get-started/how-to-delegate'
+                        ]
                     },
                     {
-                        text: '开始',
-                        link: '/get-started/',
+                        title: '软件',
+                        path: '/software/',   
+                        collapsable: false, // 可选的, 默认值是 true,
+                        // sidebarDepth: 1,    // 可选的, 默认值是 1
+                        children: [
+                            '/software/go-install',
+                            '/software/how-to-install',
+                            '/software/nchcli',
+                            '/software/monitor'
+                        ]
                     },
                     {
-                        text: '软件',
-                        link: '/software/how-to-install'
+                        title: 'IM',
+                        path: '/im/',   
+                        // collapsable: false, // 可选的, 默认值是 true,
+                        // sidebarDepth: 1,    // 可选的, 默认值是 1
+                        children: [
+                            "/im/im-prerequisite",
+                            "/im/quick-start",
+                            "/im/deploy-from-source",
+                            '/im/Q&A'
+                        ]
                     },
                     {
-                        text: '应用',
-                        link: '/applications/'
+                        title: '智能合约',
+                        path: '/contracts/',   
+                        // collapsable: false, // 可选的, 默认值是 true,
+                        // sidebarDepth: 1,    // 可选的, 默认值是 1
+                        children: [
+                            '/contracts/contract',
+                            '/contracts/contract-repertory'
+                        ]
                     },
                     {
-                        text: '智能合约',
-                        link: '/contracts/'
+                        title: '高级教程',
+                        path: '/advanced/',   
+                        // collapsable: false, // 可选的, 默认值是 true,
+                        // sidebarDepth: 1,    // 可选的, 默认值是 1
+                        children: [
+                            '/advanced/api',
+                            '/advanced/node-rpc',
+                            '/advanced/ipal',
+                            '/advanced/ipal-sdk',
+                            '/advanced/multisig',
+                            '/advanced/keys',
+                            '/advanced/how-to-create-proposal',
+                            '/advanced/transaction',
+                            '/advanced/messages',
+                            '/advanced/fee-payment',
+                            '/advanced/Q&A'
+                        ]
                     },
-                    {
-                        text: '高级教程',
-                        link: '/advanced/'
-                    }
-                ],
-                sidebar: {
-                    '/get-started/': genSidebarConfig ('get-started', '快速开始'),
-                    '/software/': genSidebarConfig ('software', '软件'),
-                    '/applications/': genSidebarConfig ('applications', '应用'),
-                    '/im/': genSidebarConfig ('im', '即时通讯服务器部署'),
-                    '/contracts/': genSidebarConfig ('contracts', '智能合约'),
-                    '/advanced/': genSidebarConfig('advanced', '高级教程')
-                }
+                ]
             }
         }
     }
 };
-
-function genSidebarConfig (module, title) {
-    if (module == 'get-started') {
-        return [
-            {
-                title,
-                collapsable: false,
-                children: [
-                    '',
-                    'generate-genesis-file',
-                    'how-to-join-testnet',
-                    'how-to-become-validator',
-                    'how-to-delegate'
-                ]
-            }
-        ]
-    }
-
-    if (module === 'software') {
-        return [
-            {
-                title,
-                collapsable: false,
-                children: [
-                    'go-install',
-                    'how-to-install',
-                    'nchcli',
-                    'monitor'
-                ]
-            }
-        ];
-    }
-
-    if (module === 'advanced') {
-        return [
-            {
-                title,
-                collapsable: false,
-                children: [
-                    'api',
-                    'node-rpc',
-                    'ipal',
-                    'ipal-sdk',
-                    'multisig',
-                    'keys',
-                    'how-to-create-proposal',
-                    'transaction',
-                    'messages',
-                    'fee-payment',
-                    'Q&A'
-                ]
-            }
-        ];
-    }
-
-    if (module === 'contracts') {
-        return [
-            {
-                title,
-                collapsable: false,
-                children: [
-                    'contract',
-                    'contract-repertory'
-                ]
-            }
-        ];
-    }
-
-    if (module === 'im') {
-        return [
-            {
-                title,
-                collapsable: false,
-                children: [
-                    "im-prerequisite",
-                    "quick-start",
-                    "deploy-from-source",
-                    'Q&A'
-                ]
-            }
-        ];
-    }
-}
