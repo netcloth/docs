@@ -1,5 +1,5 @@
 
-# REST API 参考手册
+# REST API
 
 ```nchcli``` 开启rest-server后，浏览器访问 ```http://127.0.0.1:1317/swagger-ui/``` 可以看到所有的REST APIs
 

@@ -33,72 +33,83 @@ module.exports = {
                 lastUpdated: 'Last Updated',
                 serviceWorker: {
                 },
+                nav: [{
+                    text: 'NetCloth Website',
+                    link: 'https://www.netcloth.org'
+                }],
                 sidebar: [
                     {
                         title: 'Getting Started',
-                        path: '/en/get-started/',   
                         collapsable: false, // 可选的, 默认值是 true,
-                        // sidebarDepth: 1,    // 可选的, 默认值是 1
+                        sidebarDepth: 3,    // 可选的, 默认值是 1
                         children: [
-                            '/en/get-started/how-to-join-testnet',
-                            '/en/get-started/generate-genesis-file',
-                            '/en/get-started/how-to-become-validator',
-                            '/en/get-started/how-to-delegate'
+                            '/software/how-to-install',
+                            '/get-started/how-to-join-testnet',
+                            '/get-started/testcoin',
+                            '/get-started/how-to-become-validator',
+                            '/get-started/how-to-delegate'
                         ]
                     },
                     {
                         title: 'Software',
-                        path: '/en/software/',   
-                        collapsable: false, // 可选的, 默认值是 true,
-                        // sidebarDepth: 1,    // 可选的, 默认值是 1
                         children: [
-                            '/en/software/go-install',
-                            '/en/software/how-to-install',
-                            '/en/software/nchcli',
-                            '/en/software/monitor'
+                            '/software/go-install',
+                            '/software/nchcli',
+                            '/software/monitor'
                         ]
                     },
                     {
-                        title: 'im',
-                        path: '/en/im/',   
-                        // collapsable: false, // 可选的, 默认值是 true,
-                        // sidebarDepth: 1,    // 可选的, 默认值是 1
+                        title: 'API',
                         children: [
-                            "/en/im/im-prerequisite",
-                            "/en/im/quick-start",
-                            "/en/im/deploy-from-source",
-                            '/en/im/Q&A'
+                            '/advanced/api',
+                            '/advanced/node-rpc',
                         ]
                     },
                     {
-                        title: 'Smart Contracts',
-                        path: '/en/contracts/',   
-                        // collapsable: false, // 可选的, 默认值是 true,
-                        // sidebarDepth: 1,    // 可选的, 默认值是 1
+                        title: 'IM',
                         children: [
-                            '/en/contracts/contract',
-                            '/en/contracts/contract-repertory'
+                            "/im/im-prerequisite",
+                            "/im/quick-start",
+                            "/im/deploy-from-source",
+                            '/im/Q&A'
+                        ]
+                    },
+                    {
+                        title: 'IPAL',
+                        children: [
+                            "/advanced/ipal",
+                            "/advanced/ipal-sdk",
+                            "/advanced/ipal-service-type"
+                        ]
+                    },
+                    {
+                        title: 'Smart Contract',
+                        children: [
+                            '/contracts/contract',
+                            '/contracts/contract-repertory'
                         ]
                     },
                     {
                         title: 'Advanced',
-                        path: '/en/advanced/',   
-                        // collapsable: false, // 可选的, 默认值是 true,
-                        // sidebarDepth: 1,    // 可选的, 默认值是 1
                         children: [
-                            '/en/advanced/api',
-                            '/en/advanced/node-rpc',
-                            '/en/advanced/ipal',
-                            '/en/advanced/ipal-sdk',
-                            '/en/advanced/multisig',
-                            '/en/advanced/keys',
-                            '/en/advanced/how-to-create-proposal',
-                            '/en/advanced/transaction',
-                            '/en/advanced/messages',
-                            '/en/advanced/fee-payment',
-                            '/en/advanced/Q&A'
+                            '/advanced/ipal',
+                            '/advanced/ipal-sdk',
+                            '/advanced/multisig',
+                            '/advanced/keys',
+                            '/advanced/how-to-create-proposal',
+                            '/advanced/transaction',
+                            '/advanced/messages',
+                            '/advanced/fee-payment',
                         ]
                     },
+                    {
+                        title: 'Q&A',
+                        sidebarDepth: 1,
+                        children: [
+                            '/advanced/Q&A',
+                            '/im/Q&A',
+                        ]
+                    }
                 ]
             },
             '/': {
@@ -108,36 +119,40 @@ module.exports = {
                 lastUpdated: '上次更新',
                 serviceWorker: {
                 },
+                nav: [{
+                    text: 'NetCloth 官网',
+                    link: 'https://www.netcloth.org'
+                }],
                 sidebar: [
                     {
                         title: '开始',
-                        path: '/get-started/',   
                         collapsable: false, // 可选的, 默认值是 true,
-                        // sidebarDepth: 1,    // 可选的, 默认值是 1
+                        sidebarDepth: 3,    // 可选的, 默认值是 1
                         children: [
+                            '/software/how-to-install',
                             '/get-started/how-to-join-testnet',
-                            '/get-started/generate-genesis-file',
+                            '/get-started/testcoin',
                             '/get-started/how-to-become-validator',
                             '/get-started/how-to-delegate'
                         ]
                     },
                     {
                         title: '软件',
-                        path: '/software/',   
-                        collapsable: false, // 可选的, 默认值是 true,
-                        // sidebarDepth: 1,    // 可选的, 默认值是 1
                         children: [
                             '/software/go-install',
-                            '/software/how-to-install',
                             '/software/nchcli',
                             '/software/monitor'
                         ]
                     },
                     {
+                        title: 'API',
+                        children: [
+                            '/advanced/api',
+                            '/advanced/node-rpc',
+                        ]
+                    },
+                    {
                         title: 'IM',
-                        path: '/im/',   
-                        // collapsable: false, // 可选的, 默认值是 true,
-                        // sidebarDepth: 1,    // 可选的, 默认值是 1
                         children: [
                             "/im/im-prerequisite",
                             "/im/quick-start",
@@ -146,10 +161,15 @@ module.exports = {
                         ]
                     },
                     {
+                        title: 'IPAL',
+                        children: [
+                            "/advanced/ipal",
+                            "/advanced/ipal-sdk",
+                            "/advanced/ipal-service-type"
+                        ]
+                    },
+                    {
                         title: '智能合约',
-                        path: '/contracts/',   
-                        // collapsable: false, // 可选的, 默认值是 true,
-                        // sidebarDepth: 1,    // 可选的, 默认值是 1
                         children: [
                             '/contracts/contract',
                             '/contracts/contract-repertory'
@@ -157,12 +177,7 @@ module.exports = {
                     },
                     {
                         title: '高级教程',
-                        path: '/advanced/',   
-                        // collapsable: false, // 可选的, 默认值是 true,
-                        // sidebarDepth: 1,    // 可选的, 默认值是 1
                         children: [
-                            '/advanced/api',
-                            '/advanced/node-rpc',
                             '/advanced/ipal',
                             '/advanced/ipal-sdk',
                             '/advanced/multisig',
@@ -171,9 +186,16 @@ module.exports = {
                             '/advanced/transaction',
                             '/advanced/messages',
                             '/advanced/fee-payment',
-                            '/advanced/Q&A'
                         ]
                     },
+                    {
+                        title: '常见问题',
+                        sidebarDepth: 1,
+                        children: [
+                            '/advanced/Q&A',
+                            '/im/Q&A',
+                        ]
+                    }
                 ]
             }
         }
