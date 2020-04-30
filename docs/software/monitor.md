@@ -12,7 +12,7 @@ prometheus = true
 prometheus_listen_addr = ":26660"
 ```
 
-修改配置文件后，重启```nchd```即生效。 如何重启节点，点击[这里](../advanced/Q&A.md#如何重启节点程序)。
+修改配置文件后，重启```nchd```即生效。 如何重启节点，点击[这里](../Q&A.md#如何重启节点程序)。
 
 ## 2. 安装 Prometheus 和 Grafana
 

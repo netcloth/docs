@@ -12,7 +12,7 @@ prometheus = true
 prometheus_listen_addr = ":26660"
 ```
 
-and then restart ```nchd```.  Click [here](../advanced/Q&A.md#how-to-restart-the-node-program)。
+and then restart ```nchd```.  Click [here](../Q&A.md#how-to-restart-the-node-program)。
 
 ## 2. Install Prometheus and Grafana
 

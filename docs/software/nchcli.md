@@ -46,7 +46,7 @@ nchcli send --from <key name> --to=<account address> --chain-id=<chain-id> --amo
 
 其中，如果转账不带```--gas-prices```参数，默认的gasprices就为1000.0pnch，如手动指定gasprices，需要带上至少一位小数（最多12位）
 
-了解更多有关手续费的详情，[点击这里](../advanced/Q&A.md#交易手续费)
+了解更多有关手续费的详情，[点击这里](../Q&A.md#交易手续费)
 
 ## 验证人相关
 

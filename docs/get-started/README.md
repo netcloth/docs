@@ -12,7 +12,7 @@
 * [如何使用nchcli命令行导入/导出私钥](../advanced/keys.md)
 * [多签账户教程](../advanced/multisig.md)
 * [交易费用代付](../advanced/fee-payment.md)
-* [常见问题](../advanced/Q&A.md)
+* [常见问题](../Q&A.md)
 
 ### IPAL操作
 * [IPAL使用](../advanced/ipal.md)

@@ -43,71 +43,69 @@ module.exports = {
                         collapsable: false, // 可选的, 默认值是 true,
                         sidebarDepth: 3,    // 可选的, 默认值是 1
                         children: [
-                            '/software/how-to-install',
-                            '/get-started/how-to-join-testnet',
-                            '/get-started/testcoin',
-                            '/get-started/how-to-become-validator',
-                            '/get-started/how-to-delegate'
+                            '/en/software/how-to-install',
+                            '/en/get-started/how-to-join-testnet',
+                            '/en/get-started/testcoin',
+                            '/en/get-started/how-to-become-validator',
+                            '/en/get-started/how-to-delegate'
                         ]
                     },
                     {
                         title: 'Software',
                         children: [
-                            '/software/go-install',
-                            '/software/nchcli',
-                            '/software/monitor'
+                            '/en/software/go-install',
+                            '/en/software/nchcli',
+                            '/en/software/monitor'
                         ]
                     },
                     {
                         title: 'API',
                         children: [
-                            '/advanced/api',
-                            '/advanced/node-rpc',
+                            '/en/advanced/api',
+                            '/en/advanced/node-rpc',
                         ]
                     },
                     {
                         title: 'IM',
                         children: [
-                            "/im/im-prerequisite",
-                            "/im/quick-start",
-                            "/im/deploy-from-source",
-                            '/im/Q&A'
+                            "/en/im/im-prerequisite",
+                            "/en/im/quick-start",
+                            "/en/im/deploy-from-source",
+                            '/en/im/Q&A'
                         ]
                     },
                     {
                         title: 'IPAL',
                         children: [
-                            "/advanced/ipal",
-                            "/advanced/ipal-sdk",
-                            "/advanced/ipal-service-type"
+                            "/en/advanced/ipal",
+                            "/en/advanced/ipal-sdk",
+                            "/en/advanced/ipal-service-type"
                         ]
                     },
                     {
                         title: 'Smart Contract',
                         children: [
-                            '/contracts/contract',
-                            '/contracts/contract-repertory'
+                            '/en/contracts/contract',
+                            '/en/contracts/contract-repertory'
                         ]
                     },
                     {
                         title: 'Advanced',
                         children: [
-                            '/advanced/ipal',
-                            '/advanced/ipal-sdk',
-                            '/advanced/multisig',
-                            '/advanced/keys',
-                            '/advanced/how-to-create-proposal',
-                            '/advanced/transaction',
-                            '/advanced/messages',
-                            '/advanced/fee-payment',
+                            '/en/advanced/multisig',
+                            '/en/advanced/keys',
+                            '/en/advanced/how-to-create-proposal',
+                            '/en/advanced/transaction',
+                            '/en/advanced/messages',
+                            '/en/advanced/fee-payment',
                         ]
                     },
                     {
                         title: 'Q&A',
                         sidebarDepth: 1,
                         children: [
-                            '/advanced/Q&A',
-                            '/im/Q&A',
+                            '/en/Q&A',
+                            '/en/im/Q&A',
                         ]
                     }
                 ]
@@ -134,6 +132,11 @@ module.exports = {
                             '/get-started/testcoin',
                             '/get-started/how-to-become-validator',
                             '/get-started/how-to-delegate'
+                        ]
+                    },
+                    {
+                        title: '概念',
+                        children: [
                         ]
                     },
                     {
@@ -178,8 +181,6 @@ module.exports = {
                     {
                         title: '高级教程',
                         children: [
-                            '/advanced/ipal',
-                            '/advanced/ipal-sdk',
                             '/advanced/multisig',
                             '/advanced/keys',
                             '/advanced/how-to-create-proposal',
@@ -192,8 +193,15 @@ module.exports = {
                         title: '常见问题',
                         sidebarDepth: 1,
                         children: [
-                            '/advanced/Q&A',
+                            '/Q&A',
                             '/im/Q&A',
+                        ]
+                    },
+                    {
+                        title: '相关链接',
+                        path: '/link',
+                        sidebarDepth: 1,
+                        children: [
                         ]
                     }
                 ]

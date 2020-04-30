@@ -15,7 +15,7 @@ nchd version
 nchcli version
 ```
 
-如果之前有运行过nch程序，则需要先停止程序。如何停止程序，点击[这里](../advanced/Q&A.md#如何重启节点程序)
+如果之前有运行过nch程序，则需要先停止程序。如何停止程序，点击[这里](../Q&A.md#如何重启节点程序)
 
 ## 2. 节点设置
 
@@ -162,7 +162,7 @@ curl http://127.0.0.1:26657/status
 ## 更多资源
 
 * 部署节点监控工具，点击[这里](../software/monitor.md)
-* 查看常见问题，点击[这里](../advanced/Q&A.md)
+* 查看常见问题，点击[这里](../Q&A.md)
 * 测试区块浏览器地址： <https://explorer.netcloth.org>
 * 申请测试token，点击[这里](testcoin.md)
 * 加入NetCloth Dev Community, 扫描下方二维码

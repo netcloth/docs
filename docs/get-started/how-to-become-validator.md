@@ -172,7 +172,7 @@ nchcli tx staking delegate nchvaloper18q4pv9qvmqx7dcd2jq3dl3d0755urk8300709e 990
 
 其中，如果转账不带```--gas-prices```参数，默认的gasprices就为1000.0pnch，如手动指定gasprices，需要带上至少一位小数（最多12位）
 
-了解更多有关手续费的详情，[点击这里](../advanced/Q&A.md)
+了解更多有关手续费的详情，[点击这里](../Q&A.md)
 
 ## 8.再次确认验证人状态为活跃验证人
 
@@ -287,6 +287,6 @@ slash_fraction_double_sign:0.5 %
 ## 更多资源
 
 * 部署节点监控工具，点击[这里](../software/monitor.md)
-* 查看常见问题，点击[这里](../advanced/Q&A.md)
+* 查看常见问题，点击[这里](../Q&A.md)
 * 测试区块浏览器地址： <https://explorer.netcloth.org>
 * 申请测试token，点击[这里](testcoin.md)

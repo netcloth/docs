@@ -39,7 +39,7 @@ nchcli send --from <key name> --to=<account address> --chain-id=<chain-id> --amo
 
 Tips: If the transfer does not include the `--gas-prices` parameter, the default gasprices is 1000.0pnch. If you manually specify the gasprices, you need to bring at least one decimal (up to 12 digits)
 
-For more details on Tx fees, [click here](../advanced/Q&A.md)
+For more details on Tx fees, [click here](../Q&A.md)
 
 
 ## Validators
