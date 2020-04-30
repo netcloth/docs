@@ -46,16 +46,22 @@ module.exports = {
                             '/en/software/how-to-install',
                             '/en/get-started/how-to-join-testnet',
                             '/en/get-started/testcoin',
-                            '/en/get-started/how-to-become-validator',
-                            '/en/get-started/how-to-delegate'
+                           
                         ]
                     },
                     {
-                        title: 'Software',
+                        title: 'Client Instructions',
                         children: [
                             '/en/software/go-install',
                             '/en/software/nchcli',
                             '/en/software/monitor'
+                        ]
+                    },
+                    {
+                        title: 'Validator',
+                        children: [
+                            '/en/get-started/how-to-become-validator',
+                            '/en/get-started/how-to-delegate'
                         ]
                     },
                     {
@@ -66,7 +72,7 @@ module.exports = {
                         ]
                     },
                     {
-                        title: 'IM',
+                        title: 'Personal Network IM service deployment',
                         children: [
                             "/en/im/im-prerequisite",
                             "/en/im/quick-start",
@@ -75,11 +81,17 @@ module.exports = {
                         ]
                     },
                     {
-                        title: 'IPAL',
+                        title: 'Personal Network Mini APPs Portal',
                         children: [
-                            "/en/advanced/ipal",
-                            "/en/advanced/ipal-sdk",
-                            "/en/advanced/ipal-service-type"
+                            '/en/advanced/how-to-config-app-portal'
+                        ]
+                    },
+                    {
+                        title: 'IPAL Modules',
+                        children: [
+                            "/en/ipal/ipal",
+                            "/en/ipal/ipal-sdk",
+                            "/en/ipal/ipal-service-type"
                         ]
                     },
                     {
@@ -93,6 +105,7 @@ module.exports = {
                         title: 'Advanced',
                         children: [
                             '/en/advanced/multisig',
+                            '/en/advanced/nips',
                             '/en/advanced/keys',
                             '/en/advanced/how-to-create-proposal',
                             '/en/advanced/transaction',
@@ -123,28 +136,28 @@ module.exports = {
                 }],
                 sidebar: [
                     {
-                        title: '开始',
+                        title: '安装&加入网络',
                         collapsable: false, // 可选的, 默认值是 true,
                         sidebarDepth: 3,    // 可选的, 默认值是 1
                         children: [
                             '/software/how-to-install',
                             '/get-started/how-to-join-testnet',
-                            '/get-started/testcoin',
-                            '/get-started/how-to-become-validator',
-                            '/get-started/how-to-delegate'
+                            '/get-started/testcoin'
                         ]
                     },
                     {
-                        title: '概念',
-                        children: [
-                        ]
-                    },
-                    {
-                        title: '软件',
+                        title: '客户端说明',
                         children: [
                             '/software/go-install',
                             '/software/nchcli',
                             '/software/monitor'
+                        ]
+                    },
+                    {
+                        title: '验证人',
+                        children: [
+                            '/get-started/how-to-become-validator',
+                            '/get-started/how-to-delegate'
                         ]
                     },
                     {
@@ -155,7 +168,7 @@ module.exports = {
                         ]
                     },
                     {
-                        title: 'IM',
+                        title: '个人网络海星节点-IM服务端配置',
                         children: [
                             "/im/im-prerequisite",
                             "/im/quick-start",
@@ -164,11 +177,17 @@ module.exports = {
                         ]
                     },
                     {
-                        title: 'IPAL',
+                        title: '个人网络海星节点-小应用区配置',
                         children: [
-                            "/advanced/ipal",
-                            "/advanced/ipal-sdk",
-                            "/advanced/ipal-service-type"
+                            "/advanced/how-to-config-app-portal"
+                        ]
+                    },
+                    {
+                        title: 'IPAL模块',
+                        children: [
+                            "/ipal/ipal",
+                            "/ipal/ipal-sdk",
+                            "/ipal/ipal-service-type"
                         ]
                     },
                     {
@@ -182,11 +201,12 @@ module.exports = {
                         title: '高级教程',
                         children: [
                             '/advanced/multisig',
+                            '/advanced/nips',
                             '/advanced/keys',
                             '/advanced/how-to-create-proposal',
                             '/advanced/transaction',
                             '/advanced/messages',
-                            '/advanced/fee-payment',
+                            '/advanced/fee-payment'
                         ]
                     },
                     {

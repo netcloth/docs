@@ -11,7 +11,7 @@
   * 27017 mongodb service port
 
 ## 2.NetCloth APP cannot find the deployed IM service node
-The starfish node displayed in the communication address list of the NetCloth client must complete the IPAL claim. Please check whether the [IPAL declaration](../advanced/ipal.md) is completed.
+The starfish node displayed in the communication address list of the NetCloth client must complete the IPAL claim. Please check whether the [IPAL declaration](../ipal/ipal.md) is completed.
 
 ## 3 NetCloth client can see my starfish node, but it shows that it cannot connect
 Executing the **nchcli q ipal list** command on the server, find your starfish node, and check the endpoints array with type 1.
