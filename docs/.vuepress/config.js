@@ -120,6 +120,14 @@ module.exports = {
                             '/en/Q&A',
                             '/en/im/Q&A',
                         ]
+                    },
+                    ,
+                    {
+                        title: 'Links',
+                        path: '/link',
+                        sidebarDepth: 1,
+                        children: [
+                        ]
                     }
                 ]
             },
