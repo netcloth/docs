@@ -651,6 +651,23 @@ nchcli q vm call $(nchcli keys show -a recall) nch1ylj55r9c5u027cdggrsz7e72etf2v
 {"Gas":1093,"Result":[1000000000000]}
 ```
 
+### 合约owner设置fee
+
+示例合约中，创建者即合约的owner， 调用setFee方法，可设置调用recall接口撤回消息的费用
+
+```bash
+# nch1ylj55r9c5u027cdggrsz7e72etf2vtuc0aek43 为新创建的合约地址
+
+nchcli vm call \
+--from=$(nchcli keys show -a recall) \
+--contract_addr=nch1ylj55r9c5u027cdggrsz7e72etf2vtuc0aek43 \
+--method=setFee \
+--abi_file=./recall_payable.abi \
+--args="2000000000000" \
+--gas=300000
+```
+
+
 ### 查询消息撤回记录
 
 ```bash
