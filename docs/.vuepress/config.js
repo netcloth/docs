@@ -45,7 +45,7 @@ module.exports = {
                         children: [
                             '/en/software/how-to-install',
                             '/en/get-started/how-to-join-testnet',
-                            '/en/get-started/testcoin',
+                            '/en/get-started/testcoin'
                            
                         ]
                     },
@@ -68,7 +68,7 @@ module.exports = {
                         title: 'API',
                         children: [
                             '/en/advanced/api',
-                            '/en/advanced/node-rpc',
+                            '/en/advanced/node-rpc'
                         ]
                     },
                     {
@@ -110,7 +110,7 @@ module.exports = {
                             '/en/advanced/how-to-create-proposal',
                             '/en/advanced/transaction',
                             '/en/advanced/messages',
-                            '/en/advanced/fee-payment',
+                            '/en/advanced/fee-payment'
                         ]
                     },
                     {
@@ -118,16 +118,15 @@ module.exports = {
                         sidebarDepth: 1,
                         children: [
                             '/en/Q&A',
-                            '/en/im/Q&A',
+                            '/en/im/Q&A'
                         ]
                     },
-                    ,
                     {
                         title: 'Links',
                         path: '/link',
                         sidebarDepth: 1,
-                        children: [
-                        ]
+                        // children: [
+                        // ]
                     }
                 ]
             },
@@ -172,7 +171,7 @@ module.exports = {
                         title: 'API',
                         children: [
                             '/advanced/api',
-                            '/advanced/node-rpc',
+                            '/advanced/node-rpc'
                         ]
                     },
                     {
@@ -222,15 +221,15 @@ module.exports = {
                         sidebarDepth: 1,
                         children: [
                             '/Q&A',
-                            '/im/Q&A',
+                            '/im/Q&A'
                         ]
                     },
                     {
                         title: '相关链接',
                         path: '/link',
                         sidebarDepth: 1,
-                        children: [
-                        ]
+                        // children: [
+                        // ]
                     }
                 ]
             }
