@@ -315,6 +315,11 @@ nchcli vm call --from=$(nchcli keys show -a alice) \
 function transfer(address to, uint256 value) public returns (bool success)
 ```
 
+:::warning 建议
+如果只想本地构造交易消息体，而不需要签名和广播，可以在nchcli命令行末尾带上```--generate-only```参数
+:::
+
+
  查询合约账户余额：
 
 ```bash
