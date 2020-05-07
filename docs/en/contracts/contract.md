@@ -365,4 +365,4 @@ You can call the contract by the ```query``` method on ```nchcli```, and only th
 
 Smart contract-related APIs include querying contract codes, estimating transaction gas, and calling contract methods.
 
-Refer to [here](./api.md#Smart-Contract-API)
+Refer to [here](../advanced/api.md#Smart-Contract-API)

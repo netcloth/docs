@@ -361,4 +361,5 @@ response:
 # Gas is estimated gas cost,not real cost.
 # Res is return of call methods.
 ```
-You can create ```post_data``` and ```payload``` via nchcli. Click [here](./contract.md#How-to-call-smart-contract).
+
+You can create ```post_data``` and ```payload``` via nchcli. Click [here](../contracts/contract.md#How-to-call-smart-contract).

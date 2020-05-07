@@ -339,4 +339,4 @@ nchcli query vm call $(nchcli keys show -a alice) nch1vp0pzeyst7zjkck5qk0kvplu3s
 
 智能合约相关的API，主要包括查询合约代码、预估交易gas和调用合约的方法。
 
-参考[这里](./api.md#合约相关api)
+参考[这里](../advanced/api.md#合约相关api)

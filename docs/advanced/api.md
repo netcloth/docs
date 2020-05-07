@@ -1852,4 +1852,4 @@ response:
 # Res为调用方法的返回值
 ```
 
-其中post_data及payload的生成 ，可以借助nchcli工具，参考[这里](./contract.md##调用智能合约)
+其中post_data及payload的生成 ，可以借助nchcli工具，参考[这里](../contracts/contract.md##调用智能合约)
