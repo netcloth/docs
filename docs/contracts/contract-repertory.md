@@ -182,9 +182,6 @@ nchcli vm create \
 ```
 
 创建合约将消耗比较多的gas， 上述命令指定了gas数量为10000000 (nchcli命令行默认为200000)
-::: warning notice
-关于如何将构造函数参数转成二进制并传给命令行，开发者可参考nch sdk[示例](https://github.com/netcloth/go-sdk/blob/master/util/contract_util_test.go)
-:::
 
 合约创建成功后，根据txHash反查交易信息，其中new_contract部分对应新创建的合约地址，此处生成的合约地址为```nch1zypvh2q606ztw4elfgla0p6x4eruz3md6euv2t```
 
