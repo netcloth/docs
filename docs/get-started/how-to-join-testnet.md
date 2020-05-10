@@ -4,7 +4,7 @@
 
 ## 1. 安装nch节点程序
 
-当前最新测试版本为: **testnet-v1.1.0**
+当前最新测试版本为: **testnet-v1.2.0**
 
 * 如果你还没有安装nch节点程序，请点击[这里](../software/how-to-install.md)安装最新测试版本程序。
 
@@ -58,10 +58,10 @@ wget http://nch.oss-cn-hangzhou.aliyuncs.com/pkgs/genesis.json -O  ~/.nchd/confi
 ```bash
 修改配置文件：~/.nchd/config/config.toml， 在[p2p]配置部分，修改seeds和persistent_peers配置项，添加种子节点seed， 如下：
 # Comma separated list of seed nodes to connect to
-seeds = "8ba581e85a00337147ffbf22bc13da78640568b3@13.58.188.155:26656,c57df7491a235753439fa3ea7d908f0ec42e8670@18.191.12.61:26656,b726519a738239378dbb15520f493d1a9a355593@13.124.101.63:26656"
+seeds = "958618444c05ca7f302128f5855a203120d1b097@13.124.101.63:26656,9a6f6284dda861246a97ac2b3e2b4d4e7a8f7d68@13.58.188.155:26656,da767a7a735500331ab70ddec95b88664fc637f7@18.191.12.61:26656"
 
 # Comma separated list of nodes to keep persistent connections to
-persistent_peers = "8ba581e85a00337147ffbf22bc13da78640568b3@13.58.188.155:26656,c57df7491a235753439fa3ea7d908f0ec42e8670@18.191.12.61:26656,b726519a738239378dbb15520f493d1a9a355593@13.124.101.63:26656"
+persistent_peers = "958618444c05ca7f302128f5855a203120d1b097@13.124.101.63:26656,9a6f6284dda861246a97ac2b3e2b4d4e7a8f7d68@13.58.188.155:26656,da767a7a735500331ab70ddec95b88664fc637f7@18.191.12.61:26656"
 ```
 
 ## 3. 启动节点，同步区块

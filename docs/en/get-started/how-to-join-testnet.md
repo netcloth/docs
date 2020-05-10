@@ -2,7 +2,7 @@
 
 ## 1. Install nch
 
-The current latest test version is: **testnet-v1.1.0**
+The current latest test version is: **testnet-v1.2.0**
 
 * If you have not installed the nch node program, please click [here](../software/how-to-install.md) to install the latest test version program.
 
@@ -33,10 +33,10 @@ wget https://raw.githubusercontent.com/netcloth/docs/master/testnet/genesis.json
 
 # Modify the configuration file:~/.nchd/config/config.toml， add seed-nodes as follows:
 # Comma separated list of seed nodes to connect to
-seeds = "8ba581e85a00337147ffbf22bc13da78640568b3@13.58.188.155:26656,c57df7491a235753439fa3ea7d908f0ec42e8670@18.191.12.61:26656,b726519a738239378dbb15520f493d1a9a355593@13.124.101.63:26656"
+seeds = "958618444c05ca7f302128f5855a203120d1b097@13.124.101.63:26656,9a6f6284dda861246a97ac2b3e2b4d4e7a8f7d68@13.58.188.155:26656,da767a7a735500331ab70ddec95b88664fc637f7@18.191.12.61:26656"
 
 # Comma separated list of nodes to keep persistent connections to
-persistent_peers = "8ba581e85a00337147ffbf22bc13da78640568b3@13.58.188.155:26656,c57df7491a235753439fa3ea7d908f0ec42e8670@18.191.12.61:26656,b726519a738239378dbb15520f493d1a9a355593@13.124.101.63:26656"
+persistent_peers = "958618444c05ca7f302128f5855a203120d1b097@13.124.101.63:26656,9a6f6284dda861246a97ac2b3e2b4d4e7a8f7d68@13.58.188.155:26656,da767a7a735500331ab70ddec95b88664fc637f7@18.191.12.61:26656"
 ```
 
 ## 3. Start nchd
