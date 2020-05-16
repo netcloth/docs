@@ -29,7 +29,7 @@ nchd init <your_custom_name> --chain-id nch-testnet
 
 ```bash
 # Download genesis file  from github
-wget https://raw.githubusercontent.com/netcloth/docs/master/testnet/genesis.json -O  ~/.nchd/config/genesis.json
+wget https://raw.githubusercontent.com/netcloth/testnet/master/genesis.json -O  ~/.nchd/config/genesis.json
 
 # Modify the configuration file:~/.nchd/config/config.toml， add seed-nodes as follows:
 # Comma separated list of seed nodes to connect to
