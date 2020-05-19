@@ -15,6 +15,8 @@ make install
 
 ## 初始化本地私链
 
+[点击这里加入测试网](../get-started/how-to-join-testnet.md)，同步测试网区块需要花费一定的时间。此处将以私链为例。
+
 ### 初始化
 
 ```bash
