@@ -157,7 +157,7 @@ type MsgSend struct {
 
 ```
 
-### 抵押
+### 抵押/委托
 
 ```json
         {
@@ -173,7 +173,7 @@ type MsgSend struct {
         }
 ```
 
-### 解除抵押
+### 解除抵押/解除委托
 
 ```json
                 {
@@ -187,6 +187,29 @@ type MsgSend struct {
                     }
                   }
                 }
+```
+
+### 取回收益
+
+```json
+    {
+      "type": "nch/MsgWithdrawDelegationReward",
+      "value": {
+        "delegator_address": "nch17kfmq49p6vth0y83t4dwlpurdy70wgampcevhx",
+        "validator_address": "nchvaloper17kfmq49p6vth0y83t4dwlpurdy70wgam6ed7y2"
+      }
+    }
+```
+
+### 验证人取回佣金
+
+```json
+    {
+      "type": "nch/MsgWithdrawValidatorCommission",
+      "value": {
+        "validator_address": "nchvaloper17kfmq49p6vth0y83t4dwlpurdy70wgam6ed7y2"
+      }
+    }
 ```
 
 ### 发起提案

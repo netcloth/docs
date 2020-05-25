@@ -30,10 +30,10 @@ response：
     },
     "id": "32d9a41f23c27d7e7b51b6ab7f6d30ba53319e31",
     "listen_addr": "tcp://0.0.0.0:26656",
-    "network": "nch-chain",
+    "network": "nch-chain", // chain id
     "version": "0.32.8",
     "channels": "4020212223303800",
-    "moniker": "local-nch",
+    "moniker": "local-nch", 
     "other": {
       "tx_index": "on",
       "rpc_address": "tcp://127.0.0.1:26657"
@@ -92,9 +92,9 @@ response:
         "block": "10",
         "app": "0"
       },
-      "chain_id": "nch-chain",
-      "height": "964",
-      "time": "2020-01-08T06:48:04.491292Z",
+      "chain_id": "nch-chain", // chain id
+      "height": "964",  // 区块高度
+      "time": "2020-01-08T06:48:04.491292Z", // 区块时间
       "num_txs": "0",
       "total_txs": "6",
       "last_block_id": {
@@ -255,8 +255,8 @@ response:
   "height": "298106",
   "result": [
     {
-      "denom": "pnch",
-      "amount": "4326724505525934"
+      "denom": "pnch", // 资产名字
+      "amount": "4326724505525934" // 资产数量 1 nch = 10 ^12 pnch
     }
   ]
 }
@@ -281,10 +281,10 @@ response:
     "block_height": "959100",
     "validators": [
       {
-        "address": "nchvalcons1zu8m6mmt53n4pr5twwlmw2c5lasv9w5yqx3vvr",
-        "pub_key": "nchvalconspub1zcjduepqdkjkn8kt4wtwd3j6mtl4rxxjp0al353hdrfne66rsmcpd2q837xq5nnfjp",
+        "address": "nchvalcons1zu8m6mmt53n4pr5twwlmw2c5lasv9w5yqx3vvr", // 验证人地址
+        "pub_key": "nchvalconspub1zcjduepqdkjkn8kt4wtwd3j6mtl4rxxjp0al353hdrfne66rsmcpd2q837xq5nnfjp", // 验证人公钥
         "proposer_priority": "13325070",
-        "voting_power": "10000000"
+        "voting_power": "10000000" // 投票权
       },
       {
         "address": "nchvalcons1t5gu4fg6jm3zxr2ytw5k6azj3rflx399eztgv3",
@@ -496,6 +496,60 @@ curl -X POST "http://127.0.0.1:1317/txs" \
 * **sync**: 交易在当前节点通过后返回
 * **async**: 立即返回,不对交易进行任何处理
   
+## mint API
+
+### 查询模块参数
+
+```bash
+curl http://127.0.0.1:1317/minting/parameters
+```
+
+response:
+
+```json
+{
+  "height": "220423",
+  "result": {
+    "mint_denom": "pnch", 
+    "inflation_rate_change": "0.100000000000000000", // 通胀率变量
+    "inflation_max": "0.200000000000000000", // 通胀率上限
+    "inflation_min": "0.100000000000000000", // 通胀率下限
+    "goal_bonded": "0.670000000000000000",  // 目标质押率
+    "blocks_per_year": "6311520" // 每年产生的区块数量
+  }
+}
+```
+
+### 查询通胀率
+
+```bash
+curl http://127.0.0.1:1317/minting/inflation
+```
+
+response:
+
+```json
+{
+  "height": "220447",
+  "result": "0.133387934377043585"  // 通胀率13.3%
+}
+```
+
+### 查询年供应量
+
+```bash
+curl http://127.0.0.1:1317/minting/annual-provisions
+```
+
+response:
+
+```json
+{
+  "height": "220468",
+  "result": "13400328832956503440.019644248096678283" // nch年供应总量 1 nch = 10 ^ 12 pnch
+}
+```
+
 ## staking 相关
 
 ### 查询staking全局参数
@@ -510,14 +564,14 @@ response:
 {
   "height": "297709",
   "result": {
-    "unbonding_time": "1209600000000000",
-    "max_validators": 100,
-    "max_validators_extending": 300,
-    "max_validators_extending_speed": 10,
-    "next_extending_time": "1617657186",
+    "unbonding_time": "1209600000000000", // 解除绑定需要的时间，单位为秒
+    "max_validators": 100,  // 当前验证人最大数量
+    "max_validators_extending": 300, // 验证人数量上限
+    "max_validators_extending_speed": 10, // 每年增加的验证人数量
+    "next_extending_time": "1617657186", //  下一次增加验证人的时间
     "max_entries": 7,
     "bond_denom": "pnch",
-    "max_lever": "20.000000000000000000"
+    "max_lever": "20.000000000000000000" // 验证人质押最大杠杆率
   }
 }
 ```
@@ -532,10 +586,10 @@ response:
 
 ```json
 {
-  "height": "33",
+  "height": "220583",
   "result": {
-    "not_bonded_tokens": "0",
-    "bonded_tokens": "1000000000000"
+    "not_bonded_tokens": "999900000000000", // staking pool中未质押的token数量
+    "bonded_tokens": "2076999996642029000" // staking pool中总质押的token数量
   }
 }
 ```
@@ -562,10 +616,10 @@ response:
   "height": "297516",
   "result": [
     {
-      "delegator_address": "nch13dwwe6pv92ve9uy8k2u7006a9fd9jwc6gzqx0e",
-      "validator_address": "nchvaloper13dwwe6pv92ve9uy8k2u7006a9fd9jwc6nr55u4",
-      "shares": "1000000000000000000.000000000000000000",
-      "balance": "1000000000000000000"
+      "delegator_address": "nch13dwwe6pv92ve9uy8k2u7006a9fd9jwc6gzqx0e",// 质押者地址
+      "validator_address": "nchvaloper13dwwe6pv92ve9uy8k2u7006a9fd9jwc6nr55u4",// 验证人地址
+      "shares": "1000000000000000000.000000000000000000",// 质押所得的股份
+      "balance": "1000000000000000000" // 余额
     },
     {
       "delegator_address": "nch13dwwe6pv92ve9uy8k2u7006a9fd9jwc6gzqx0e",
@@ -577,7 +631,7 @@ response:
 }
 ```
 
-其中```balance ```字段即委托的pnch资产数量。
+其中```balance```字段即委托的pnch资产数量。
 
 ### 查询正在解除委托的信息
 
@@ -600,12 +654,12 @@ response:
   "height": "297565",
   "result": [
     {
-      "delegator_address": "nch13dwwe6pv92ve9uy8k2u7006a9fd9jwc6gzqx0e",
-      "validator_address": "nchvaloper13dwwe6pv92ve9uy8k2u7006a9fd9jwc6nr55u4",
+      "delegator_address": "nch13dwwe6pv92ve9uy8k2u7006a9fd9jwc6gzqx0e",// 质押者地址
+      "validator_address": "nchvaloper13dwwe6pv92ve9uy8k2u7006a9fd9jwc6nr55u4",// 验证人地址
       "entries": [
         {
-          "creation_height": "297562",
-          "completion_time": "2020-05-08T02:21:26.09861357Z",
+          "creation_height": "297562",// 质押所在高度
+          "completion_time": "2020-05-08T02:21:26.09861357Z",// 质押在该时间后可到账
           "initial_balance": "100",
           "balance": "100"
         },
@@ -1022,8 +1076,8 @@ response:
       "consensus_pubkey": "nchvalconspub1zcjduepqvskj36yf5cfp9rajuze30yexvejvtthkq6za3zpqkc84m0h93lvqvjv4uu",
       "jailed": false,
       "status": 2,
-      "tokens": "999999999999998900",
-      "delegator_shares": "999999999999998900.000000000000000000",
+      "tokens": "999999999999998900",// 总token数量
+      "delegator_shares": "999999999999998900.000000000000000000", // 总抵押股份数量
       "description": {
         "moniker": "netcloth",
         "identity": "47CB8FD16ABA8CA6",
@@ -1041,7 +1095,7 @@ response:
         "update_time": "2020-04-05T15:13:06.386573523Z"
       },
       "min_self_delegation": "1",
-      "self_delegation": "999999999999998900.000000000000000000"
+      "self_delegation": "999999999999998900.000000000000000000" // 验证人自抵押数量
     },
     {
       "operator_address": "nchvaloper1ngm3k874204rwz23m46wqhlv8w9vyjtd9yqm7x",
@@ -1097,8 +1151,8 @@ response:
   "result": {
     "delegator_address": "nch13dwwe6pv92ve9uy8k2u7006a9fd9jwc6gzqx0e",
     "validator_address": "nchvaloper1ngm3k874204rwz23m46wqhlv8w9vyjtd9yqm7x",
-    "shares": "200000000000.000000000000000000",
-    "balance": "200000000000"
+    "shares": "200000000000.000000000000000000", // 股份数量
+    "balance": "200000000000" // 余额
   }
 }
 ```
@@ -1376,8 +1430,8 @@ response:
     "consensus_pubkey": "nchvalconspub1zcjduepq85kevn2e489ce2c4yu5rrh92a7nwyrukh5dgjtlmg8gvv5cpaglsvks3fw",
     "jailed": false,
     "status": 2,
-    "tokens": "4000099304191000",
-    "delegator_shares": "4000099304191000.000000000000000000",
+    "tokens": "4000099304191000", // 总token数量
+    "delegator_shares": "4000099304191000.000000000000000000", // 总股份数量
     "description": {
       "moniker": "iavl 🚀",
       "identity": "",
@@ -1395,7 +1449,7 @@ response:
       "update_time": "2020-04-05T16:44:28.06067581Z"
     },
     "min_self_delegation": "100",
-    "self_delegation": "4000099304191000.000000000000000000"
+    "self_delegation": "4000099304191000.000000000000000000" // 自抵押数量
   }
 }
 
