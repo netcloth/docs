@@ -511,7 +511,7 @@ response:
   "height": "220423",
   "result": {
     "mint_denom": "pnch", 
-    "inflation_rate_change": "0.100000000000000000", // 通胀率变量
+    "inflation_rate_change": "0.100000000000000000", // 通胀变化率
     "inflation_max": "0.200000000000000000", // 通胀率上限
     "inflation_min": "0.100000000000000000", // 通胀率下限
     "goal_bonded": "0.670000000000000000",  // 目标质押率
