@@ -520,6 +520,8 @@ response:
 }
 ```
 
+其中```inflation_min``` 和```inflation_rate_change```之和为staking预期收益率。
+
 ### 查询通胀率
 
 ```bash
