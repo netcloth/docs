@@ -838,6 +838,82 @@ nchcli vm call \
 --gas=1000000 -y
 ```
 
+## HTLC合约
+
+* 合约源码和说明，参考[这里](https://github.com/netcloth/contracts/tree/master/HTLC)
+* 合约ABI，参考[这里](https://github.com/netcloth/contracts/blob/master/HTLC/HashedTimeLock.abi)
+
+### 创建合约
+
+执行如下命令，创建合约：
+
+```bash
+nchcli vm create --code_file=./HashedTimeLock.bc \
+--from $(nchcli keys show -a alice) \
+--gas 10000000
+```
+
+### 创建HTLC
+
+创建HTLC时，指定收款人、hash值和过期时间。
+
+```bash
+nchcli vm call \
+--from=$(nchcli keys show -a alice) \
+--contract_addr=nch1yw28p8hve4lspwfcaysswu82f80pvpse79w5a8 \
+--method=CreateHTLC \
+--abi_file=./HashedTimeLock.abi \
+--args="$(nchcli keys show -a bob) 0x06bcbf53e05cd44da1c9dc7a0737f08eceef318eeab6f4c6743dea34038b62ce $(date -v+1H +%s)" \
+--amount=100000000000000pnch \
+--gas=300000
+```
+
+### 查询HTLC
+
+创建HTLC完成后，根据txHash查询合约的event， 获取新创建HTLC的id
+
+```bash
+nchcli q vm logs 0D54C3C4D8C53375435687DEF34629E431464AF8D7E4162F96E828FFD4C65730
+```
+
+根据合约代码中定义的HTLCNew vent结构，返回结果中，第二个topic为新创建的HTLC contractID
+
+根据contractID查询HTLC：
+
+```bash
+nchcli q vm call $(nchcli keys show -a alice) nch1yw28p8hve4lspwfcaysswu82f80pvpse79w5a8 getContract ./HashedTimeLock.abi --args="768c22feacb1a83088947c0996198b57789cd05cd4b0e949bef91992b8f8af37"
+```
+
+### 认领HTLC
+
+认领HTLC，指定HTLC对应的contractID和hash原像
+
+```bash
+nchcli vm call \
+--from=$(nchcli keys show -a bob) \
+--contract_addr=nch1yw28p8hve4lspwfcaysswu82f80pvpse79w5a8 \
+--method=ClaimHTLC \
+--abi_file=./HashedTimeLock.abi \
+--args="768c22feacb1a83088947c0996198b57789cd05cd4b0e949bef91992b8f8af37 0xpreimagexxxxx" \
+--amount=100000000000000pnch \
+--gas=300000 
+```
+
+### 退款HTLC
+
+若HTLC超时仍未认领，则创建者可以调用RefundHTLC接口，执行退款
+
+```bash
+nchcli vm call \
+--from=$(nchcli keys show -a alice) \
+--contract_addr=nch1yw28p8hve4lspwfcaysswu82f80pvpse79w5a8 \
+--method=RefundHTLC \
+--abi_file=./HashedTimeLock.abi \
+--args="768c22feacb1a83088947c0996198b57789cd05cd4b0e949bef91992b8f8af37" \
+--amount=100000000000000pnch \
+--gas=300000
+```
+
 ## 更多资源
 
 * 合约仓库github地址，点击[这里](https://github.com/netcloth/contracts)
