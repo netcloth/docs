@@ -161,6 +161,12 @@ module.exports = {
                         ]
                     },
                     {
+                        title: '功能模块',
+                        children: [
+                            '/modules/upgrade',
+                        ]
+                    },
+                    {
                         title: '验证人',
                         children: [
                             '/get-started/how-to-become-validator',
