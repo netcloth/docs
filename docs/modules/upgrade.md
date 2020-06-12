@@ -1,11 +1,15 @@
 # 投票升级
-## 软件升级流程：
-![流程图](../images/upgradeFlowchart.png)
 
+## 软件升级流程
+
+<div align = "center">
+<img src="../images/upgradeFlowchart.png" width = "271" height = "506" alt="upgrade流程图" />
+</div>
 
 ## 提交升级提案
 提案内容以json的方式存储在文件software_upgrade_proposal中
-``` text
+
+``` json
 {
     "title":"testnet-v1.1.0 upgrade",
     "description":"upgrade for smart contract",
@@ -22,6 +26,7 @@
 ```
 
 ### 字段详情
+
 - title 标题
 - description 升级的描述
 - type 软件升级使用SoftwareUpgrade
@@ -51,7 +56,7 @@ nchcli tx gov vote 1 yes --from $(nchcli keys show -a bob) -y
 kill -f nchd
 
 # 3. 安装新版本 nchd1 并启动（copy to bin）
-nchd1 start
+nchd start
 
 # 4. 区块到达指定高度，自动升级
 
@@ -62,16 +67,15 @@ nchcli query upgrade info
 ### 被动升级
 如果本次升级提案通过并且在指定高度升级到新版本的voting power比例超过软件升级的阈值那么本次升级会最终会执行，对于没有在指定高度升级的节点会自动退出程序，需要升级到新版本才能继续运行，升级成功后会继续自动同步到最近区块
 
-``` sh
+```sh
 # 1. 下载新版本nchd1
 
 # 2. 确保关闭旧软件
 kill -f nchd
 
 # 3. 安装新版本 nchd1 并启动
-nchd1 start
+nchd start
 
 # 4. 查询当前版本是否升级成功
 nchcli query upgrade info
 ```
-
