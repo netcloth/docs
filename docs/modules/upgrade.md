@@ -75,13 +75,3 @@ nchd1 start
 nchcli query upgrade info
 ```
 
-```mermaid
-#graph TB
-proposal[提交升级提案] --> proposalCond{提案通过?}
-proposalCond --是--> nodeUpgrading[节点升级]
-proposalCond --否--> finish[结束]
-nodeUpgrading --> upgradeSuccCond{超过阈值?}
-upgradeSuccCond --是--> newVersion[启动新版本]
-upgradeSuccCond --否--> finish
-newVersion --> finish
-```
