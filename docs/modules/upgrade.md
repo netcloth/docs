@@ -1,6 +1,6 @@
 # 投票升级
 ## 软件升级流程：
-![7c430cb089869f3c7d1d3c4f62542c6b.png](evernotecid://881A3885-C4FD-4AED-85CE-F0097C06F1DD/appyinxiangcom/23974310/ENResource/p70)
+![流程图](../images/upgradeFlowchart.png)
 
 
 ## 提交升级提案
