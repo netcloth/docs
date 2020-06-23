@@ -213,6 +213,7 @@ module.exports = {
                     {
                         title: '高级教程',
                         children: [
+                            '/advanced/vesting',
                             '/advanced/multisig',
                             '/advanced/nips',
                             '/advanced/keys',
