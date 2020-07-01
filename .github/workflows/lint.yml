@@ -1,6 +1,4 @@
-on:
-  schedule:
-  - cron: '0 0 1 * *'
+on: push
 name: Check markdown links
 jobs:
   linkChecker:
