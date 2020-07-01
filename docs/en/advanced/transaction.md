@@ -12,7 +12,7 @@ A transaction on the NetCloth chain mainly includes type, msg, fee, signatures, 
 }
 ```
 
-For transaction fees, please refer to [here](./Q&A.md#Transaction-fees).
+For transaction fees, please refer to [here](../Q&A.md#_1-transaction-fees).
 
 
 Comparing the two transactions of transfer and IPAL, the transaction structure is as follows:

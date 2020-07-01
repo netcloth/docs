@@ -6,19 +6,18 @@
 
 委托人是未运行验证节点的token持有者，这些持有者可以将token委托给验证人并获得委托收益。
 
-
 ### 验证人
 
 NetCloth区块链网络需要一组验证人来维护网络的安全。 验证人的主要作用是通过参与网络共识，收集网络中的交易并打包新区块，以获得网络出块激励。
 此外，验证人还将通过提案投票的形式参与链上治理，节点的投票权取决于其总质押token数量。
 
-如何创建验证人，点击[这里](../get-started/how-to-become-validator.md)
+如何创建验证人，点击[这里](./get-started/how-to-become-validator.md)
 
 ### 质押/委托
 
 NetCloth区块链网络是基于BPoS共识算法的，网络中验证人的投票权取决于其总质押的token数量。 验证人可以将自身的token委托给自己，用户可将自已钱包的token委托给指定的验证人，也可以自己创建一个验证人然后委托给自己。
 
-如何质押，点击[这里](../get-started/how-to-delegate.md)
+如何质押，点击[这里](./get-started/how-to-delegate.md)
 
 ### 质押收益
 
@@ -39,7 +38,7 @@ NetCloth 网络中发起交易，需要支付一定的交易手续费。
 
 请注意：在设定```--gas-prices```时，请至少带一位小数，最多12位小数（如1000.0、1100.0）。输入整数是无效的。
 
-如何发起一笔交易？点击[这里](../software/nchcli.md#交易)
+如何发起一笔交易？点击[这里](./software/nchcli.md#交易)
 
 ### 关于NCH token
 

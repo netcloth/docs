@@ -2,7 +2,7 @@
 
 Message 用来封装在交易结构中，表示不同的交易类型。 一笔交易中，可包含多个Msgs。
 
-Message的定义位于各个模块的```types/msgs.go```中，比如转账的```Message``` [定义](https://github.com/netcloth/netcloth-chain/blob/develop/modules/bank/internal/types/msgs.go#L17)。
+Message的定义位于各个模块的```types/msgs.go```中，比如转账的```Message``` [定义](https://github.com/netcloth/netcloth-chain/blob/develop/app/v0/bank/internal/types/msgs.go#L17)。
 
 ```go
 // MsgSend - high level transaction of the coin module

@@ -25,9 +25,9 @@ nchcli ipal claim --from=$(nchcli keys show -a alice) --moniker=netcloth --websi
 
 Among them, the endpointsis composed of an array, and the numeric part indicates the Service Type, and the domain name or IP followed by it is the address of the service. Among them, 1 represents the entrance address of the IM server of the starfish node, and 3 represents your H5 front-end address.
 
-To learn more about IPAL, please click [here](./ipal.md).
+To learn more about IPAL, please click [here](../ipal/ipal.md).
 
-To learn more about the types of IPAL Service Type, please click [here](./ipal-service-type.md).
+To learn more about the types of IPAL Service Type, please click [here](../ipal/ipal-service-type.md).
 
 After the IPAL declaration is successful, your starfish node is registered successfully. Now you just need to find your node in NetCloth's "Settings"-> "Client Service Settings"-> "Application Address"-> and choose your starfish node to connect. You can see your Mini APPs Portal on the NetCloth APP.
 

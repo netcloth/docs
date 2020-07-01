@@ -30,9 +30,9 @@ nchcli ipal claim --from=$(nchcli keys show -a alice) \
 ```
 其中，endpoints字段由数组组成，数字部分表示Service Type，后面跟随的域名或IP为该服务的地址。其中1表示的是海星节点IM服务端的入口地址，3表示你的H5前端地址。
 
-了解更多IPAL相关，请点击[这里](./ipal.md)。
+了解更多IPAL相关，请点击[这里](../ipal/ipal.md)。
 
-了解更多有关IPAL Service Type的种类，请点击[这里](./ipal-service-type.md)。
+了解更多有关IPAL Service Type的种类，请点击[这里](../ipal/ipal-service-type.md)。
 
 IPAL声明成功后，你的海星节点就注册成功了。现在只需要在NetCloth的“设置”-->"客户端服务设置"-->"应用地址"-->找到你的节点，选择连接。你就可以在NetCloth APP上看到你的小应用区啦。
 

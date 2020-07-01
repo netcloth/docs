@@ -331,7 +331,7 @@ response:
 
 #### Call contracts
 
-You need to create payload according to the abi of call methods. You can refer to function of GetCmdQueryCallFee in https://github.com/netcloth/netcloth-chain/blob/develop/modules/vm/client/cli/query.go 
+You need to create payload according to the abi of call methods. You can refer to function of GetCmdQueryCallFee in https://github.com/netcloth/netcloth-chain/blob/develop/app/v0/vm/client/cli/query.go 
 
 request:
 ```bash

@@ -1661,7 +1661,7 @@ nchcli ipal claim --from=$(nchcli keys show alice -a) \
 --bond=1000000000000000pnch
 ```
 
-IPAL 声明详细参数，可点击[这里](./ipal.md)
+IPAL 声明详细参数，可点击[这里](../ipal/ipal.md)
 
 ### 查询服务节点列表
 
@@ -1876,7 +1876,7 @@ response:
 
 #### 调用合约
 
-调用合约的payload要根据调用方法的abi来构造，可参考代码 https://github.com/netcloth/netcloth-chain/blob/develop/modules/vm/client/cli/query.go 的GetCmdQueryCallFee函数
+调用合约的payload要根据调用方法的abi来构造，可[参考代码实现](https://github.com/netcloth/netcloth-chain/blob/develop/app/v0/vm/client/cli/query.go)中 的GetCmdQueryCallFee函数
 
 request:
 
