@@ -22,8 +22,8 @@
 
 ### 智能合约
 
-* [智能合约教程](./contract.md)
-* [智能合约仓库](./contract-repertory.md)
+* [智能合约教程](../contracts/contract.md)
+* [智能合约仓库](../contracts/contract-repertory.md)
 
 ### NetCloth个人网络海星节点搭建
 * [NetCloth个人网络小应用区配置](../advanced/how-to-config-app-portal.md)

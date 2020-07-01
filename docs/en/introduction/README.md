@@ -15,12 +15,12 @@ NetCloth-Chain is a blockchain application network based on privacy protection a
 * [How to create a proposal](../advanced/how-to-create-proposal.md)
 * [API reference](../advanced/api.md)
 * [Multisig account](../advanced/multisig.md)
-* [Smart Contract](../advanced/contract.md)
+* [Smart Contract](../contracts/contract.md)
 
 ### IPAL operation
 * [IPAL Document](../ipal/ipal.md)
 * [How to use nch-sdk](../ipal/ipal-sdk.md)
-* [IPAL Service Type](../ipal/ipal-service-type)
+* [IPAL Service Type](../ipal/ipal-service-type.md)
   
 ### NetCloth Personal Network Starfish Node Deploy
 * [NetCloth Personal Network Mini APPs Portal Configurations](../advanced/how-to-config-app-portal.md)

@@ -9,7 +9,7 @@
 * [How to create a proposal](../advanced/how-to-create-proposal.md)
 * [API reference](../advanced/api.md)
 * [Multisig account](../advanced/multisig.md)
-* [Smart Contract](../advanced/contract.md)
+* [Smart Contract](../contracts/contract.md)
 
 ### IPAL operation
 * [IPAL Document](../ipal/ipal.md)

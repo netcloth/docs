@@ -15,7 +15,7 @@
 
 ## 2 NetCloth客户端看不到部署的IM服务节点
 
-在NetCloth客户端通信地址列表显示的服务节点必须完成IPAL声明，请检查[IPAL声明](../ipal/ipal.html#声明ipal)是否完成
+在NetCloth客户端通信地址列表显示的服务节点必须完成IPAL声明，请检查[IPAL声明](../ipal/ipal.md#声明IPAL)是否完成
 
 ## 3 NetCloth客户端能看到我的服务节点，但是显示无法连接
 

@@ -11,10 +11,10 @@
 * [常见问题](../Q&A.md)
 
 ### IPAL操作
-* [IPAL使用](../advanced/ipal.md)
+* [IPAL使用](../ipal/ipal.md)
 * [IPAL API](../advanced/api.md)
-* [使用sdk发起IPAL记账](../advanced/ipal-sdk.md)
-* [IPAL Service Type介绍](../advanced/ipal-service-type.md)
+* [使用sdk发起IPAL记账](../ipal/ipal-sdk.md)
+* [IPAL Service Type介绍](../ipal/ipal-service-type.md)
 
 
 ### NetCloth个人网络海星节点搭建
