@@ -11,7 +11,8 @@ script:
 - cd docs && npm run build
 - echo "Build done!"
 after_success:
-- travis_wait cd .vuepress/dist/ && scp -rf * ubuntu@18.191.12.61:/nch-docs/
+- cd .vuepress/dist/
+- travis_wait scp -r * ubuntu@18.191.12.61:/nch-docs/
 branches:
   only:
   - master
