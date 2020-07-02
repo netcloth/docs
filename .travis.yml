@@ -1,9 +1,30 @@
 language: node_js
-node_js:
-- "14"
+node_js: 14.0.0
 
-before_install:
+cache:
+  directories:
+    - node_modules
+
+install:
+  - rm -rf docs/.vuepress/dist
   - npm install vuepress -g
-
+  - echo "Install done!"
+  
 script:
   - cd docs && npm run build
+  - echo "Build done!"
+  
+after_success:
+  - cd docs/.vuepress/dist
+  - scp -r ./ root@18.191.12.61:/nch-docs/
+
+branches:
+  only:
+    - master
+    
+before_install:
+  - echo "Before install"
+  
+addons:
+  ssh_known_hosts: 18.191.12.61
+ 
