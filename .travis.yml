@@ -11,8 +11,8 @@ script:
 - cd docs && npm run build
 - echo "Build done!"
 after_success:
-- echo $(ls -al .vuepress/dist)
-- scp -rf .vuepress/dist/* ubuntu@18.191.12.61:/nch-docs/
+- cd .vuepress/dist/
+- scp -rf ./* ubuntu@18.191.12.61:/nch-docs/
 branches:
   only:
   - master
