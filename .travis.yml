@@ -9,9 +9,9 @@ install:
 - echo "Install done!"
 script:
 - cd docs && npm run build
-- echo $(ls docs/.vuepress/dist)
 - echo "Build done!"
 after_success:
+- echo $(ls)
 - cd docs/docs/.vuepress/dist
 - scp -r ./ root@18.191.12.61:/nch-docs/
 branches:
