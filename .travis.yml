@@ -22,3 +22,5 @@ before_install:
 - chmod 600 ~/.ssh/id_rsa
 addons:
   ssh_known_hosts: 18.191.12.61
+notifications:
+  webhooks: https://oapi.dingtalk.com/robot/send?access_token=8c3beda804fc8770fce858b9d6bd62447bf7454ed587fdfa9c2cdea1891642da
