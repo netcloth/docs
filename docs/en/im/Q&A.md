@@ -26,11 +26,11 @@ For example, to check the configuration of the nchtest02 node through the comman
     "endpoints": [
       {
         "type": "1",
-        "endpoint": "http://47.104.199.106"
+        "endpoint": "http://220.181.38.148"
       },
       {
         "type": "3",
-        "endpoint": "http://47.90.5.138"
+        "endpoint": "http://220.181.38.148"
       }
     ],
     "bond": {
@@ -40,10 +40,10 @@ For example, to check the configuration of the nchtest02 node through the comman
   }
 ```
 
-Find the endpoint as http://47.104.199.106, and then execute the following command to check if it can be accessed
+Find the endpoint as ```http://220.181.38.148```, and then execute the following command to check if it can be accessed
 
 ```bash
-curl http://47.104.199.106/v1/ping
+curl http://220.181.38.148/v1/ping
 ```
 
 If it can be accessed normally, a "ping" response should be displayed. If the curl command fails to execute, you can check it as follows
@@ -69,7 +69,7 @@ Client login is to connect to the gateway service. If the client shows that it i
 curl ${endpoint}/v1/service/gateway?pub_key=0453a31024548b41d8f4cd54806289948774ea7b303543035dc88efd70217efed243609e8883b4acd75fe68a22e6a322c71275a6a35173538a60896d10a1d0ae80
 
 E.g
-curl http://47.104.199.106/v1/service/gateway?pub_key=0453a31024548b41d8f4cd54806289948774ea7b303543035dc88efd70217efed243609e8883b4acd75fe68a22e6a322c71275a6a35173538a60896d10a1d0ae80
+curl http://220.181.38.148v1/service/gateway?pub_key=0453a31024548b41d8f4cd54806289948774ea7b303543035dc88efd70217efed243609e8883b4acd75fe68a22e6a322c71275a6a35173538a60896d10a1d0ae80
 ```
 
 Execute telnet with the IP and port of the returned gateway endpoint to check whether the IM gateway can be connected

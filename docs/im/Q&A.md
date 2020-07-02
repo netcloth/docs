@@ -32,11 +32,11 @@
     "endpoints": [
       {
         "type": "1",
-        "endpoint": "http://47.104.199.106"
+        "endpoint": "http://220.181.38.148"
       },
       {
         "type": "3",
-        "endpoint": "http://47.90.5.138"
+        "endpoint": "http://220.181.38.148"
       }
     ],
     "bond": {
@@ -46,10 +46,10 @@
   }
 ```
 
-找到endpoint为 http://47.104.199.106， 然后执行如下命令，检查是否可以访问
+找到endpoint为 http://220.181.38.148， 然后执行如下命令，检查是否可以访问
 
 ```bash
-curl http://47.104.199.106/v1/ping
+curl http://220.181.38.148/v1/ping
 ```
 
 如果能正常访问，应该会显示“ping” 回应。如果curl命令执行失败，可以按如下步骤查
@@ -77,7 +77,7 @@ curl http://47.104.199.106/v1/ping
 curl ${endpoint}/v1/service/gateway?pub_key=0453a31024548b41d8f4cd54806289948774ea7b303543035dc88efd70217efed243609e8883b4acd75fe68a22e6a322c71275a6a35173538a60896d10a1d0ae80
 
 例如
-curl http://47.104.199.106/v1/service/gateway?pub_key=0453a31024548b41d8f4cd54806289948774ea7b303543035dc88efd70217efed243609e8883b4acd75fe68a22e6a322c71275a6a35173538a60896d10a1d0ae80
+curl http://220.181.38.148/v1/service/gateway?pub_key=0453a31024548b41d8f4cd54806289948774ea7b303543035dc88efd70217efed243609e8883b4acd75fe68a22e6a322c71275a6a35173538a60896d10a1d0ae80
 ```
 
 根据返回的gateway endpoint的ip和port执行 telnet操作排查IM网关是否可连接

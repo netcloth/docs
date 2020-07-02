@@ -241,4 +241,4 @@ nchcli tx staking unbond nchvaloper133vmttt6n49jac5zn3z0klcpe7m8qluglfu58z 100pn
 
 ```
 
-To learn more about unbond, withdraw rewards and commission, [click here](../software/nchcli##Validators).
+To learn more about unbond, withdraw rewards and commission, [click here](../software/nchcli.md#Validators).
