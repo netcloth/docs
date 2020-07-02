@@ -13,7 +13,7 @@ script:
 after_success:
 - echo $(ls -al .vuepress)
 - cd .vuepress/dist
-- scp -r ./ root@18.191.12.61:/nch-docs/
+- scp -r ./ ubuntu@18.191.12.61:/nch-docs/
 branches:
   only:
   - master
