@@ -1,30 +1,24 @@
 language: node_js
 node_js: 14.0.0
-
 cache:
   directories:
-    - node_modules
-
+  - node_modules
 install:
-  - rm -rf docs/.vuepress/dist
-  - npm install vuepress -g
-  - echo "Install done!"
-  
+- rm -rf docs/.vuepress/dist
+- npm install vuepress -g
+- echo "Install done!"
 script:
-  - cd docs && npm run build
-  - echo "Build done!"
-  
+- cd docs && npm run build
+- echo "Build done!"
 after_success:
-  - cd docs/.vuepress/dist
-  - scp -r ./ root@18.191.12.61:/nch-docs/
-
+- cd docs/.vuepress/dist
+- scp -r ./ root@18.191.12.61:/nch-docs/
 branches:
   only:
-    - master
-    
+  - master
 before_install:
-  - echo "Before install"
-  
+- openssl aes-256-cbc -K $encrypted_4b1c888bc596_key -iv $encrypted_4b1c888bc596_iv
+  -in id_rsa.enc -out ~/.ssh/id_rsa -d
+- chmod 600 ~/.ssh/id_rsa
 addons:
   ssh_known_hosts: 18.191.12.61
- 
