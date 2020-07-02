@@ -40,7 +40,7 @@ For example, to check the configuration of the nchtest02 node through the comman
   }
 ```
 
-Find the endpoint as ```http://220.181.38.148```, and then execute the following command to check if it can be accessed
+Find the endpoint as ```http://220.181.38.148``` and then execute the following command to check if it can be accessed
 
 ```bash
 curl http://220.181.38.148/v1/ping
