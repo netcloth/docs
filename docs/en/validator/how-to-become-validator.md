@@ -2,7 +2,7 @@
 
 ## 1. Install and deploy a full node
 
-Please follow the [tutorial](./how-to-join-testnet.md) to deploy the full node of the testnet and ensure that it is synchronized to the latest block height.
+Please follow the [tutorial](../get-started/how-to-join-testnet.md) to deploy the full node of the testnet and ensure that it is synchronized to the latest block height.
 
 ## 2. Set the environment
 
@@ -24,7 +24,7 @@ nchcli keys add <key_name>
 
 ## 4. Obtain test Token
 
-To get the test token, please refer to [here](./testcoin.md)
+To get the test token, please refer to [here](../get-started/testcoin.md)
 
 ## 5. Create a validator
 

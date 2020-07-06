@@ -52,7 +52,7 @@ nchcli send --from <key name> --to=<account address> --chain-id=<chain-id> --amo
 
 ### 创建验证人
 
-创建验证人，参考[这里](../get-started/how-to-become-validator.md)
+创建验证人，参考[这里](../validator/how-to-become-validator.md)
 
 ### 修改验证人
 

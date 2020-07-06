@@ -157,7 +157,7 @@ curl http://127.0.0.1:26657/status
 
 之后你可以使用nchcli的各项指令，点击[这里](../software/nchcli.md)
 
-**测试网全节点同步到最新区块高度后**，你可以尝试创建测试网验证人，点击[这里](./how-to-become-validator.md)
+**测试网全节点同步到最新区块高度后**，你可以尝试创建测试网验证人，点击[这里](../validator/how-to-become-validator.md)
 
 ## 更多资源
 

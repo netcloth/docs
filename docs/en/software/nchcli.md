@@ -45,7 +45,7 @@ For more details on Tx fees, [click here](../Q&A.md)
 ## Validators
 
 ### Create a validator
-How to Create a validator, refer to [here](../get-started/how-to-become-validator.md)
+How to Create a validator, refer to [here](../validator/how-to-become-validator.md)
 
 ### Modify a validator
 
