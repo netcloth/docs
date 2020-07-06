@@ -2,7 +2,7 @@
 
 It is assumed here that you have deployed and synchronized the nodes of the  testnet network.
 
-How to join the testnet, click [here](how-to-join-testnet.md)。
+How to join the testnet, click [here](../get-started/how-to-join-testnet.md)。
 
 ## Create a new wallet
 
@@ -25,7 +25,7 @@ Repeat the passphrase:
 
 ## Obtain test Token
 
-Obtain test Token, refer to [here](./testcoin.md)
+Obtain test Token, refer to [here](../get-started/testcoin.md)
 
 ## delegation
 
