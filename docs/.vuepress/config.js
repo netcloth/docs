@@ -60,8 +60,8 @@ module.exports = {
                     {
                         title: 'Validator',
                         children: [
-                            '/en/get-started/how-to-become-validator',
-                            '/en/get-started/how-to-delegate'
+                            '/en/validator/how-to-become-validator',
+                            '/en/validator/how-to-delegate'
                         ]
                     },
                     {
@@ -148,6 +148,7 @@ module.exports = {
                         sidebarDepth: 3,    // 可选的, 默认值是 1
                         children: [
                             '/software/how-to-install',
+                            '/get-started/join-mainnet',
                             '/get-started/how-to-join-testnet',
                             '/get-started/testcoin'
                         ]
@@ -169,8 +170,9 @@ module.exports = {
                     {
                         title: '验证人',
                         children: [
-                            '/get-started/how-to-become-validator',
-                            '/get-started/how-to-delegate'
+                            '/validator/how-to-become-validator',
+                            '/validator/how-to-delegate',
+                            '/validator/sentry-node'
                         ]
                     },
                     {

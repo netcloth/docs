@@ -1,5 +1,8 @@
 ## Testnet gentx files
 
+The NetCloth mainnet has not yet been started. You can participate in the creation of the genesis file and apply to become the initial verifier for the start of the mainnet.
+
+
 ### Requirement
 
 Recommended server configuration:
@@ -38,10 +41,19 @@ nchcli version
 nchcli keys add <key_name>
 ```
 
+config nchcli
+
+```bash
+nchcli config chain-id nch-chain
+nchcli config output json
+nchcli config indent true
+nchcli config trust-node true
+```
+
 ### 2. Initialize your node
 
 ```bash
-nchd init --moniker=<node_name> --chain-id nch-testnet
+nchd init --moniker=<node_name> --chain-id nch-chain
 ```
 
 This command will create the genesis& config files in the home directory(~/.nchd/ by default).
@@ -50,9 +62,13 @@ This command will create the genesis& config files in the home directory(~/.nchd
 
 ```bash
 nchd gentx \
-  --amount=10000000000000pnch \
+  --amount=1000000000000pnch \
   --pubkey $(nchd tendermint show-validator) \
-  --name  <key_name>
+  --ip=<node_public_IP> \
+  --node-id=$(nchd tendermint show-node-id) \
+  --name=<key_name> \
+  --details=<validator details> \
+  --website=<webiste>
 ```
 
 This commond will generate the transaction in the directory ``` ~/.nchd/config/gentx/``` 
@@ -64,11 +80,11 @@ delegation amount: 10000000000000pnch
 commission rate: 0.1
 commission max rate: 0.2
 commission max change rate: 0.01
-min_self_delegation: 1pnch
+min_self_delegation: 1 nch
 ```
 
 You could also change thesemetrics.
 
 ### 4. Sumbit your gentx.json
 
-Save your gentx file as [github-user-name].json,  ansd submit your json file tohttps://github.com/netcloth/testnet/tree/master/gentx by creating a pull request.
+Save your gentx file as [github-user-name].json,  ansd submit your json file tohttps://github.com/netcloth/mainnet/tree/master/gentx by creating a pull request.
