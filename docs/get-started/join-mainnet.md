@@ -6,7 +6,7 @@ NetCloth主网尚未启动，你可以参与创世文件的生成，申请成为
 
 请点击[这里](../software/how-to-install.md)安装最新测试版本程序
 
-## 1. 创建账户
+## 2. 创建账户
 
 执行如下命令，创建一个钱包地址
 
@@ -24,7 +24,7 @@ nchcli config indent true
 nchcli config trust-node true
 ```
 
-## 2. 初始化节点
+## 3. 初始化节点
 
 执行如下命令，初始化节点
 
@@ -35,7 +35,7 @@ nchd init --moniker=<node_name> --chain-id nch-chain
 
 该命令会在home目录下(默认为~/.nchd/)创建相应genesis&config文件
 
-## 3. 执行gentx交易
+## 4. 执行gentx交易
 
 使用步骤1创建的验证人账户，执行gentx交易
 
@@ -64,10 +64,10 @@ min_self_delegation: 1 nch
 
 如果要修改上述参数，可通过```nchd gentx -h```查看命令行选项。
 
-## 4. 提交gentx文件
+## 5. 提交gentx文件
 
 将步骤3产生的json文件保存为 [github-user-name].json,  通过提交pull request将json文件提交到https://github.com/netcloth/mainnet/tree/master/gentx 目录下。
 
-## 5. 备份私钥和验证人配置
+## 6. 备份私钥和验证人配置
 
 妥善保存助记词和~/.nchd/config，~/.nchcli目录的数据，含有账号和验证人的私钥等信息，如果泄露可能导致token丢失，如果遗失账号将无法恢复，账号的资产将无法使用。
