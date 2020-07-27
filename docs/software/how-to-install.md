@@ -2,7 +2,7 @@
 
 ## 最新版本
 
-* 当前最新测试版本为: **testnet-v1.2.0**
+* 当前最新测试版本为: **testnet-v1.3.0**
 
 ## 服务器配置
 
@@ -33,7 +33,7 @@ sudo apt-get install git gcc cmake make golang-statik
 ```bash
 # 获取nch 源码
 git clone https://github.com/netcloth/netcloth-chain.git
-cd netcloth-chain && git checkout testnet-v1.2.0
+cd netcloth-chain && git checkout testnet-v1.3.0
 
 # 设置goproxy(make install过程会下载依赖的go模块,设置适合自己的代理,大陆用户可以设置以下代理来加快下载速度)
 export GOPROXY=https://mirrors.aliyun.com/goproxy/
