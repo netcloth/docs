@@ -12,7 +12,7 @@ script:
 - echo "Build done!"
 after_success:
 - cd .vuepress/dist/
-- travis_wait scp -r * ubuntu@44.242.146.25:/nch-docs/dist/
+- travis_wait scp -r * ubuntu@44.242.146.255:/nch-docs/dist/
 branches:
   only:
   - master
