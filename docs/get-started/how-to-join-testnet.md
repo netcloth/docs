@@ -58,10 +58,11 @@ wget http://nch.oss-cn-hangzhou.aliyuncs.com/pkgs/genesis.json -O  ~/.nchd/confi
 ```bash
 修改配置文件：~/.nchd/config/config.toml， 在[p2p]配置部分，修改seeds和persistent_peers配置项，添加种子节点seed， 如下：
 # Comma separated list of seed nodes to connect to
-seeds = "a21b34979c49965df7437f4efceeb6f96faa189e@13.124.101.63:26656,2112fbc5c5eef9991c09bfa8b5f9692fa9a6f93c@44.242.149.39:26656,74485379be10995ba4b4baba45a35e4f4b57599a@44.234.190.81:26656,2ddab0d84992d487b3b85ebacebad1b7d61547e3@47.91.245.243:26656"
+
+seeds = "7d215e97342e7ffd8f25995681bffb73d1caf083@44.242.149.39:26656,d027471e3c92163bd7f9d07acc19f04787613d8b@44.234.190.81:26656,1b34a4053a9a9205cba2dd67ee8a071031f38d5a@44.242.146.255:26656"
 
 # Comma separated list of nodes to keep persistent connections to
-persistent_peers = "a21b34979c49965df7437f4efceeb6f96faa189e@13.124.101.63:26656,2112fbc5c5eef9991c09bfa8b5f9692fa9a6f93c@44.242.149.39:26656,74485379be10995ba4b4baba45a35e4f4b57599a@44.234.190.81:26656,2ddab0d84992d487b3b85ebacebad1b7d61547e3@47.91.245.243:26656"
+persistent_peers = "7d215e97342e7ffd8f25995681bffb73d1caf083@44.242.149.39:26656,d027471e3c92163bd7f9d07acc19f04787613d8b@44.234.190.81:26656,1b34a4053a9a9205cba2dd67ee8a071031f38d5a@44.242.146.255:26656"
 ```
 
 ## 3. 启动节点，同步区块
